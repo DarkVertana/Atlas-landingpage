@@ -4,6 +4,14 @@ import { useRef, useMemo, useEffect, useState, useCallback } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
+function makeSeededRandom(seed: number) {
+  let s = seed >>> 0;
+  return () => {
+    s = (s * 1664525 + 1013904223) >>> 0;
+    return s / 4294967296;
+  };
+}
+
 /* ─── Globe Model ─── */
 function Globe({ progress }: { progress: number }) {
   const groupRef = useRef<THREE.Group>(null);
@@ -15,10 +23,11 @@ function Globe({ progress }: { progress: number }) {
   const wireGeo = useMemo(() => new THREE.SphereGeometry(2, 36, 36), []);
 
   const dotGeo = useMemo(() => {
+    const rand = makeSeededRandom(0xa71a5);
     const positions: number[] = [];
     for (let i = 0; i < 800; i++) {
-      const phi = Math.acos(2 * Math.random() - 1);
-      const theta = 2 * Math.PI * Math.random();
+      const phi = Math.acos(2 * rand() - 1);
+      const theta = 2 * Math.PI * rand();
       const r = 2.01;
       positions.push(r * Math.sin(phi) * Math.cos(theta), r * Math.sin(phi) * Math.sin(theta), r * Math.cos(phi));
     }
@@ -310,8 +319,9 @@ function CameraController({ scrollProgress }: { scrollProgress: number }) {
 function Particles() {
   const ref = useRef<THREE.Points>(null);
   const geo = useMemo(() => {
+    const rand = makeSeededRandom(0x50c1a1);
     const pos: number[] = [];
-    for (let i = 0; i < 150; i++) pos.push((Math.random() - 0.5) * 12, (Math.random() - 0.5) * 12, (Math.random() - 0.5) * 12);
+    for (let i = 0; i < 150; i++) pos.push((rand() - 0.5) * 12, (rand() - 0.5) * 12, (rand() - 0.5) * 12);
     const g = new THREE.BufferGeometry();
     g.setAttribute("position", new THREE.Float32BufferAttribute(pos, 3));
     return g;

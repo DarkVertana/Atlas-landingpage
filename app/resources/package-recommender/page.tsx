@@ -1,8 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
 
 const addOnLabels: Record<string, string> = {
   mvr: "Motor vehicle records",
@@ -138,8 +136,6 @@ export default function PackageRecommenderPage() {
 
   return (
     <main className="bg-white text-[#01463A]">
-      <Header />
-
       {/* Hero */}
       <section className="relative pt-36 pb-20 px-6 overflow-hidden bg-gradient-to-b from-[#01463A] to-[#058B74]">
         <div className="absolute -top-32 -right-32 w-[32rem] h-[32rem] rounded-full bg-[#0aa88a]/25 blur-3xl pointer-events-none" />
@@ -330,7 +326,6 @@ export default function PackageRecommenderPage() {
         </div>
       </section>
 
-      <Footer />
     </main>
   );
 }

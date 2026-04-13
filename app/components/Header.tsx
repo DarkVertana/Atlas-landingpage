@@ -2,6 +2,8 @@
 
 import { useState, useEffect, useRef, type ReactNode } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 /* ─── Inline SVG Icons ─── */
 const I = ({ d }: { d: string }) => (
@@ -139,6 +141,8 @@ const navLinks = [
 ];
 
 export default function Header({ solid = false }: { solid?: boolean }) {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
   const [scrolled, setScrolled] = useState(solid);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
@@ -147,11 +151,13 @@ export default function Header({ solid = false }: { solid?: boolean }) {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(solid || window.scrollY > window.innerHeight - 100);
+      const threshold = isHome ? window.innerHeight - 100 : 80;
+      setScrolled(solid || window.scrollY > threshold);
     };
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [solid, isHome]);
 
   // Lock body scroll when menu is open
   useEffect(() => {
@@ -181,7 +187,7 @@ export default function Header({ solid = false }: { solid?: boolean }) {
       >
         <div className="mx-auto max-w-7xl flex items-center justify-between py-4">
           {/* Logo */}
-          <a href="/" className="flex items-center">
+          <Link href="/" className="flex items-center">
             <Image
               src="/assets/atlas-logo.svg"
               alt="Atlas Screening"
@@ -192,7 +198,7 @@ export default function Header({ solid = false }: { solid?: boolean }) {
                 menuOpen || !scrolled ? "brightness-0 invert hover:brightness-100 hover:invert-0" : ""
               }`}
             />
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
