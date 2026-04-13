@@ -1,0 +1,92 @@
+export default function AboutIntro() {
+  const services = [
+    {
+      label: "Criminal background checks",
+      desc: "County, state, and federal records.",
+      href: "/services/criminal-background-checks",
+      image: "/assets/images/Criminal-background-checks.webp",
+      gradient: "from-[#01463A] to-[#058B74]",
+    },
+    {
+      label: "Employment verification",
+      desc: "Confirm titles, dates, and history.",
+      href: "/services/employment-verification",
+      image: "/assets/images/Employment-verification.webp",
+      gradient: "from-[#058B74] to-[#0aa88a]",
+    },
+    {
+      label: "SSN trace & address history",
+      desc: "Identity foundation for every report.",
+      href: "/services/ssn-trace",
+      image: "/assets/images/SSN-trace-%26-address-history.webp",
+      gradient: "from-[#01463A] to-[#0aa88a]",
+    },
+    {
+      label: "Motor vehicle records",
+      desc: "Driving history for fleet roles.",
+      href: "/services/mvr",
+      image: "/assets/images/Motor-vehicle-records.webp",
+      gradient: "from-[#058B74] to-[#01463A]",
+    },
+    {
+      label: "Tenant screening",
+      desc: "Built for property managers.",
+      href: "/services/tenant-screening",
+      image: "/assets/images/Tenant-screening.webp",
+      gradient: "from-[#0aa88a] to-[#01463A]",
+    },
+  ];
+
+  const themedCursor =
+    "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M3 2l0 16 4.2-3.8 2.6 6 2.7-1.2-2.6-6 5.5-.5z' fill='%23058B74' stroke='white' stroke-width='1.2' stroke-linejoin='round'/></svg>\") 2 2, auto";
+
+  return (
+    <section className="bg-white py-20 px-6" style={{ cursor: themedCursor }}>
+      <div className="mx-auto max-w-6xl text-center">
+        <h2 className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
+          Every background check, one platform.
+        </h2>
+        <p className="mt-5 text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
+          From criminal records to tenant screening, Atlas brings every report into a single
+          FCRA-compliant workflow — built for employers, property managers, and organizations.
+        </p>
+
+        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-6">
+          {services.map((service, i) => {
+            const placement =
+              i < 3
+                ? "md:col-span-2"
+                : i === 3
+                ? "md:col-span-2 md:col-start-2"
+                : "md:col-span-2";
+            return (
+              <a
+                key={service.label}
+                href={service.href}
+                className={`group relative overflow-hidden rounded-2xl bg-white border border-gray-200 hover:border-[#058B74]/50 hover:shadow-xl hover:shadow-[#058B74]/10 hover:-translate-y-1 transition-all duration-300 text-left ${placement}`}
+              >
+                <div className={`relative h-60 overflow-hidden bg-gradient-to-br ${service.gradient}`}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={service.image}
+                    alt={service.label}
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                </div>
+
+                <div className="p-5">
+                  <h3 className="text-base font-semibold text-[#01463A] group-hover:text-[#058B74] transition-colors">
+                    {service.label}
+                  </h3>
+                  <p className="mt-1.5 text-sm text-gray-500">{service.desc}</p>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
