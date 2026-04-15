@@ -1,4 +1,5 @@
 import NumbersStrip from "../components/NumbersStrip";
+import Reveal from "../components/Reveal";
 
 const testimonials = [
   {
@@ -30,18 +31,32 @@ export default function AboutPage() {
         <div className="absolute -bottom-32 -left-32 w-[32rem] h-[32rem] rounded-full bg-[#058B74]/30 blur-3xl pointer-events-none" />
 
         <div className="relative mx-auto max-w-4xl text-center">
-          <p className="text-xs font-semibold tracking-widest uppercase text-white/70 mb-4">
+          <Reveal
+            as="p"
+            variant="fade"
+            className="text-xs font-semibold tracking-widest uppercase text-white/70 mb-4"
+          >
             About Atlas
-          </p>
-          <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight">
+          </Reveal>
+          <Reveal
+            as="h1"
+            variant="up"
+            delay={100}
+            className="text-3xl md:text-5xl font-bold text-white leading-tight"
+          >
             Background checks built on defensible trust.
-          </h1>
-          <p className="mt-5 text-white/70 max-w-xl mx-auto text-sm leading-relaxed">
+          </Reveal>
+          <Reveal
+            as="p"
+            variant="fade"
+            delay={200}
+            className="mt-5 text-white/70 max-w-xl mx-auto text-sm leading-relaxed"
+          >
             We help human resource teams and property managers make faster and more
             confident decisions. Atlas Screening delivers enterprise-grade background
             investigations that prioritize rapid turnaround times without sacrificing
             strict compliance and fairness.
-          </p>
+          </Reveal>
         </div>
       </section>
 
@@ -50,33 +65,52 @@ export default function AboutPage() {
         <div className="mx-auto max-w-6xl">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
-              <h2 className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
+              <Reveal
+                as="h2"
+                variant="left"
+                className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight"
+              >
                 Our engineering and investigative story.
-              </h2>
-              <p className="mt-5 text-gray-500 text-sm leading-relaxed max-w-lg">
+              </Reveal>
+              <Reveal
+                as="p"
+                variant="fade"
+                delay={100}
+                className="mt-5 text-gray-500 text-sm leading-relaxed max-w-lg"
+              >
                 Atlas Screening emerged from a clear industry frustration. Traditional
                 employment screening remained stuck in the past — hiring teams dealt
                 with clunky legacy software, slow turnaround times, and opaque
                 reporting. We recognized that managing background checks should not
                 require extensive manual effort or compromise the candidate experience.
-              </p>
-              <p className="mt-4 text-gray-500 text-sm leading-relaxed max-w-lg">
+              </Reveal>
+              <Reveal
+                as="p"
+                variant="fade"
+                delay={200}
+                className="mt-4 text-gray-500 text-sm leading-relaxed max-w-lg"
+              >
                 We rebuilt the entire screening workflow from the ground up to conceal
                 operational complexity behind a modern, intuitive interface. By
                 combining decades of investigative expertise with seamless software
                 automation, we deliver a platform that demands absolute minimal client
                 effort.
-              </p>
-              <p className="mt-4 text-gray-500 text-sm leading-relaxed max-w-lg">
+              </Reveal>
+              <Reveal
+                as="p"
+                variant="fade"
+                delay={300}
+                className="mt-4 text-gray-500 text-sm leading-relaxed max-w-lg"
+              >
                 You only need to submit an applicant name and an email address. Our
                 intelligent platform automatically manages secure applicant invitations,
                 biometric identity collection, and comprehensive legal verifications —
                 and every completed PDF report is natively aligned with Fair Credit
                 Reporting Act guidelines and federal compliance standards.
-              </p>
+              </Reveal>
             </div>
 
-            <div className="relative">
+            <Reveal as="div" variant="right" delay={150} className="relative">
               <div className="relative overflow-hidden rounded-3xl border border-gray-200 bg-gradient-to-br from-[#01463A] to-[#058B74] aspect-[4/3] shadow-xl shadow-[#058B74]/20">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -132,7 +166,7 @@ export default function AboutPage() {
 
               <div className="absolute -bottom-10 right-8 w-24 h-24 rounded-2xl bg-[#058B74]/15 -z-10" />
               <div className="absolute top-12 -right-8 w-28 h-28 rounded-3xl bg-[#01463A]/10 -z-10" />
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -140,21 +174,33 @@ export default function AboutPage() {
       {/* Mission pull-quote */}
       <section className="bg-white py-20 px-6">
         <div className="mx-auto max-w-4xl text-center">
-          <svg
-            width="42"
-            height="42"
-            viewBox="0 0 24 24"
-            className="mx-auto text-[#058B74]/30"
-            fill="currentColor"
+          <Reveal variant="scale" className="inline-block">
+            <svg
+              width="42"
+              height="42"
+              viewBox="0 0 24 24"
+              className="mx-auto text-[#058B74]/30"
+              fill="currentColor"
+            >
+              <path d="M7 7c-2.8 0-5 2.2-5 5v7h7v-7H4c0-1.7 1.3-3 3-3V7zm10 0c-2.8 0-5 2.2-5 5v7h7v-7h-5c0-1.7 1.3-3 3-3V7z" />
+            </svg>
+          </Reveal>
+          <Reveal
+            as="p"
+            variant="up"
+            delay={100}
+            className="mt-6 text-2xl md:text-3xl font-semibold text-[#01463A] leading-snug"
           >
-            <path d="M7 7c-2.8 0-5 2.2-5 5v7h7v-7H4c0-1.7 1.3-3 3-3V7zm10 0c-2.8 0-5 2.2-5 5v7h7v-7h-5c0-1.7 1.3-3 3-3V7z" />
-          </svg>
-          <p className="mt-6 text-2xl md:text-3xl font-semibold text-[#01463A] leading-snug">
             Rapid turnaround times, without sacrificing <span className="text-[#058B74]">strict compliance and fairness</span> — background checks built on defensible trust.
-          </p>
-          <p className="mt-6 text-sm text-gray-500">
+          </Reveal>
+          <Reveal
+            as="p"
+            variant="fade"
+            delay={200}
+            className="mt-6 text-sm text-gray-500"
+          >
             — The Atlas Screening team
-          </p>
+          </Reveal>
         </div>
       </section>
 
@@ -165,19 +211,31 @@ export default function AboutPage() {
       <section className="bg-gradient-to-b from-gray-50 to-white py-20 px-6">
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
+            <Reveal
+              as="h2"
+              variant="up"
+              className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight"
+            >
               Teams that trust us.
-            </h2>
-            <p className="mt-5 text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
+            </Reveal>
+            <Reveal
+              as="p"
+              variant="fade"
+              delay={100}
+              className="mt-5 text-gray-500 max-w-xl mx-auto text-sm leading-relaxed"
+            >
               From staffing agencies to property groups and healthcare networks —
               here&apos;s what the people running the workflows say.
-            </p>
+            </Reveal>
           </div>
 
           <div className="grid md:grid-cols-3 gap-5">
-            {testimonials.map((t) => (
-              <figure
+            {testimonials.map((t, i) => (
+              <Reveal
                 key={t.name}
+                as="figure"
+                variant="up"
+                delay={i * 100}
                 className="relative rounded-2xl border border-gray-200 bg-white p-6 hover:border-[#058B74]/40 hover:shadow-lg hover:shadow-[#058B74]/10 hover:-translate-y-1 transition-all duration-300"
               >
                 <div className="flex items-center gap-0.5 text-[#f5a623] mb-4">
@@ -194,7 +252,7 @@ export default function AboutPage() {
                   <p className="text-sm font-semibold text-[#01463A]">{t.name}</p>
                   <p className="text-xs text-gray-500 mt-0.5">{t.role}</p>
                 </figcaption>
-              </figure>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -203,7 +261,10 @@ export default function AboutPage() {
       {/* Careers CTA — uses the Get Started CTA visual */}
       <section className="px-6 py-20 bg-white">
         <div className="mx-auto max-w-7xl">
-          <div
+          <Reveal
+            as="div"
+            variant="scale"
+            delay={100}
             className="relative overflow-hidden rounded-2xl px-8 md:px-16 py-10 md:py-14 flex items-center shadow-lg"
           >
             {/* Background Image */}
@@ -225,25 +286,25 @@ export default function AboutPage() {
 
             {/* Content */}
             <div className="relative z-10 max-w-xl">
-              <p className="text-sm font-semibold tracking-widest uppercase text-white/50 mb-3">
+              <Reveal as="p" variant="fade" className="text-sm font-semibold tracking-widest uppercase text-white/50 mb-3">
                 Careers at Atlas
-              </p>
-              <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight">
+              </Reveal>
+              <Reveal as="h2" variant="up" delay={100} className="text-3xl md:text-4xl font-bold text-white leading-tight">
                 Build the future<br className="hidden md:block" /> of screening with us.
-              </h2>
-              <p className="mt-4 text-white/60 text-base leading-relaxed max-w-md">
+              </Reveal>
+              <Reveal as="p" variant="fade" delay={200} className="mt-4 text-white/60 text-base leading-relaxed max-w-md">
                 Engineering, research, and compliance roles open — help us rewrite background screening.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-3">
+              </Reveal>
+              <Reveal as="div" variant="fade" delay={300} className="mt-6 flex flex-wrap gap-3">
                 <a
                   href="/careers"
                   className="inline-flex items-center gap-2 bg-white text-[#01463A] px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-white/90 transition-colors"
                 >
                   View open roles
                 </a>
-              </div>
+              </Reveal>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
