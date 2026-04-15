@@ -1,3 +1,7 @@
+"use client";
+
+import Reveal from "../components/Reveal";
+
 const categories = [
   {
     id: "employer-resources",
@@ -56,17 +60,31 @@ export default function FAQPage() {
         <div className="absolute -bottom-32 -left-32 w-[32rem] h-[32rem] rounded-full bg-[#058B74]/30 blur-3xl pointer-events-none" />
 
         <div className="relative mx-auto max-w-4xl text-center">
-          <p className="text-xs font-semibold tracking-widest uppercase text-white/70 mb-4">
+          <Reveal
+            as="p"
+            variant="fade"
+            className="text-xs font-semibold tracking-widest uppercase text-white/70 mb-4"
+          >
             Help Center
-          </p>
-          <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight">
+          </Reveal>
+          <Reveal
+            as="h1"
+            variant="up"
+            delay={100}
+            className="text-3xl md:text-5xl font-bold text-white leading-tight"
+          >
             Atlas help center and frequently asked questions.
-          </h1>
-          <p className="mt-5 text-white/70 max-w-xl mx-auto text-sm leading-relaxed">
+          </Reveal>
+          <Reveal
+            as="p"
+            variant="fade"
+            delay={200}
+            className="mt-5 text-white/70 max-w-xl mx-auto text-sm leading-relaxed"
+          >
             Find immediate answers regarding screening timelines, platform billing, and
             candidate data security. We designed this resource hub to provide complete
             transparency for both hiring teams and job applicants.
-          </p>
+          </Reveal>
         </div>
       </section>
 
@@ -75,21 +93,31 @@ export default function FAQPage() {
         <div className="mx-auto max-w-6xl grid lg:grid-cols-[1fr_280px] gap-12 lg:gap-16 items-start">
           {/* Main column — categories */}
           <div className="space-y-20 min-w-0">
-            {categories.map((cat) => (
-              <div key={cat.id} id={cat.id} className="scroll-mt-28">
+            {categories.map((cat, catIndex) => (
+              <Reveal
+                as="div"
+                key={cat.id}
+                id={cat.id}
+                variant="left"
+                delay={catIndex * 100}
+                className="scroll-mt-28"
+              >
                 <div className="mb-8">
-                  <p className="text-xs font-semibold tracking-widest uppercase text-[#058B74] mb-2">
+                  <Reveal as="p" variant="fade" className="text-xs font-semibold tracking-widest uppercase text-[#058B74] mb-2">
                     {cat.title}
-                  </p>
-                  <h2 className="text-2xl md:text-3xl font-bold text-[#01463A] leading-tight">
+                  </Reveal>
+                  <Reveal as="h2" variant="up" delay={50} className="text-2xl md:text-3xl font-bold text-[#01463A] leading-tight">
                     {cat.desc}
-                  </h2>
+                  </Reveal>
                 </div>
 
-                <div className="space-y-3">
-                  {cat.faqs.map((faq) => (
-                    <details
+                <Reveal as="div" variant="fade" delay={100} className="space-y-3">
+                  {cat.faqs.map((faq, faqIndex) => (
+                    <Reveal
+                      as="details"
                       key={faq.q}
+                      variant="up"
+                      delay={faqIndex * 60}
                       className="group rounded-2xl border border-gray-200 bg-white hover:border-[#058B74]/40 hover:shadow-md hover:shadow-[#058B74]/5 open:border-[#058B74]/40 open:shadow-md open:shadow-[#058B74]/5 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden"
                     >
                       <summary className="flex items-center justify-between gap-4 cursor-pointer list-none px-6 py-5">
@@ -105,17 +133,17 @@ export default function FAQPage() {
                       <div className="px-6 pb-5 -mt-1 text-sm text-gray-500 leading-relaxed">
                         {faq.a}
                       </div>
-                    </details>
+                    </Reveal>
                   ))}
-                </div>
-              </div>
+                </Reveal>
+              </Reveal>
             ))}
           </div>
 
           {/* Sidebar */}
-          <aside className="lg:sticky lg:top-28 space-y-5">
+          <Reveal as="aside" variant="right" delay={200} className="lg:sticky lg:top-28 space-y-5">
             {/* Category nav */}
-            <div className="rounded-2xl border border-gray-200 bg-white p-5">
+            <Reveal as="div" variant="scale" className="rounded-2xl border border-gray-200 bg-white p-5">
               <p className="text-[11px] font-semibold tracking-[0.18em] uppercase text-gray-400 mb-4">
                 On this page
               </p>
@@ -131,10 +159,10 @@ export default function FAQPage() {
                   </a>
                 ))}
               </nav>
-            </div>
+            </Reveal>
 
             {/* Resources */}
-            <div className="rounded-2xl border border-gray-200 bg-white p-5">
+            <Reveal as="div" variant="scale" delay={100} className="rounded-2xl border border-gray-200 bg-white p-5">
               <p className="text-[11px] font-semibold tracking-[0.18em] uppercase text-gray-400 mb-4">
                 Resources
               </p>
@@ -184,23 +212,23 @@ export default function FAQPage() {
                   </a>
                 </li>
               </ul>
-            </div>
-          </aside>
+            </Reveal>
+          </Reveal>
         </div>
       </section>
 
       {/* Still stuck callout */}
       <section className="bg-white pb-20 px-6">
         <div className="mx-auto max-w-3xl">
-          <div className="rounded-2xl border border-gray-200 bg-gray-50/60 p-8 md:p-10 text-center">
-            <h3 className="text-xl md:text-2xl font-bold text-[#01463A]">
+          <Reveal as="div" variant="scale" delay={100} className="rounded-2xl border border-gray-200 bg-gray-50/60 p-8 md:p-10 text-center">
+            <Reveal as="h3" variant="up" className="text-xl md:text-2xl font-bold text-[#01463A]">
               Didn&apos;t find what you were looking for?
-            </h3>
-            <p className="mt-3 text-sm text-gray-500 max-w-lg mx-auto leading-relaxed">
+            </Reveal>
+            <Reveal as="p" variant="fade" delay={100} className="mt-3 text-sm text-gray-500 max-w-lg mx-auto leading-relaxed">
               Our support team usually replies in under an hour during business days —
               with a real person, never a form letter.
-            </p>
-            <div className="mt-6 flex flex-wrap justify-center gap-3">
+            </Reveal>
+            <Reveal as="div" variant="fade" delay={200} className="mt-6 flex flex-wrap justify-center gap-3">
               <a
                 href="/contact"
                 className="inline-flex items-center gap-2 bg-[#01463A] text-white px-6 py-3 rounded-xl text-sm font-semibold hover:bg-[#058B74] transition-colors"
@@ -213,15 +241,15 @@ export default function FAQPage() {
               >
                 hello@atlasscreening.com
               </a>
-            </div>
-          </div>
+            </Reveal>
+          </Reveal>
         </div>
       </section>
 
       {/* Bottom CTA */}
       <section className="px-6 py-20 bg-white">
         <div className="mx-auto max-w-7xl">
-          <div className="relative overflow-hidden rounded-2xl px-8 md:px-16 py-10 md:py-14 flex items-center shadow-lg">
+          <Reveal as="div" variant="scale" delay={100} className="relative overflow-hidden rounded-2xl px-8 md:px-16 py-10 md:py-14 flex items-center shadow-lg">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/assets/banner_cta.webp"
@@ -236,17 +264,17 @@ export default function FAQPage() {
               }}
             />
             <div className="relative z-10 max-w-xl">
-              <p className="text-sm font-semibold tracking-widest uppercase text-white/50 mb-3">
+              <Reveal as="p" variant="fade" className="text-sm font-semibold tracking-widest uppercase text-white/50 mb-3">
                 Ready when you are
-              </p>
-              <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight">
+              </Reveal>
+              <Reveal as="h2" variant="up" delay={100} className="text-3xl md:text-4xl font-bold text-white leading-tight">
                 Start screening<br className="hidden md:block" /> in minutes.
-              </h2>
-              <p className="mt-4 text-white/60 text-base leading-relaxed max-w-md">
+              </Reveal>
+              <Reveal as="p" variant="fade" delay={200} className="mt-4 text-white/60 text-base leading-relaxed max-w-md">
                 Create an account and run your first check today. No contracts,
                 no setup fees.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-3">
+              </Reveal>
+              <Reveal as="div" variant="fade" delay={300} className="mt-6 flex flex-wrap gap-3">
                 <a
                   href="/signup"
                   className="inline-flex items-center gap-2 bg-white text-[#01463A] px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-white/90 transition-colors"
@@ -259,9 +287,9 @@ export default function FAQPage() {
                 >
                   Email sales
                 </a>
-              </div>
+              </Reveal>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
