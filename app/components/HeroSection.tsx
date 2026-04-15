@@ -65,12 +65,13 @@ export default function HeroSection() {
           <div className="relative z-10 h-full flex items-end px-4 md:px-6 pb-20">
             <div className="mx-auto max-w-7xl w-full text-left">
               <h1 className="text-3xl md:text-6xl font-bold tracking-tight text-white leading-tight">
-                Built on Strength.<br />Driven by Trust.
+                Enterprise Background<br />Screening, Fully Automated.
               </h1>
               <p className="mt-6 text-base md:text-lg text-white/60 max-w-2xl leading-relaxed">
-                Atlas Screening delivers enterprise-grade background
-                investigations with uncompromising accuracy, security, and
-                compliance.
+                Accelerate your hiring pipeline with rigorous and FCRA-compliant
+                investigations. We combine deep investigative accuracy with seamless
+                platform automation to deliver definitive results without the
+                administrative friction.
               </p>
             </div>
           </div>

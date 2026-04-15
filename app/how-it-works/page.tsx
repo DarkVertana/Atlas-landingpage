@@ -1,89 +1,103 @@
 import NumbersStrip from "../components/NumbersStrip";
+import HoverVideo from "../components/HoverVideo";
 
-const deepDive = [
+type DeepDiveStep = {
+  num: string;
+  title: string;
+  eyebrow: string;
+  desc: string;
+  bullets: string[];
+  image: string;
+  video?: string;
+  gradient: string;
+};
+
+const deepDive: DeepDiveStep[] = [
   {
     num: "01",
-    title: "Create your account.",
-    eyebrow: "Signup",
-    desc: "Spin up an Atlas account in minutes. No sales call required, no credit card on file until you run a real check. Invite your team, set roles, and connect your ATS or property-management tool whenever you&apos;re ready.",
+    title: "Rapid account creation and order placement.",
+    eyebrow: "Client setup",
+    desc: "Create an account, access your centralized dashboard, and select a predefined package or custom-built bundle. You only need to input the applicant's name and email — the platform handles everything that follows.",
     bullets: [
-      "Free to start, pay-as-you-go",
-      "Role-based access for your team",
-      "ATS and PMS integrations available",
+      "Centralized dashboard access",
+      "Predefined or custom-built bundles",
+      "Name and email are the only inputs needed",
     ],
-    image: "/assets/images/Ai-section.webp",
+    image: "/assets/soft-capture/Home-img.png",
+    video: "/assets/soft-capture/Home-vdo.mov",
     gradient: "from-[#01463A] to-[#058B74]",
   },
   {
     num: "02",
-    title: "Provide the essentials.",
-    eyebrow: "Identity & details",
-    desc: "Applicants enter government ID, contact info, and the personal details required for the specific checks you ordered. The flow is mobile-first, localized, and respects candidate privacy from the first field.",
+    title: "Automated candidate invitation.",
+    eyebrow: "Secure dispatch",
+    desc: "The platform immediately dispatches a secure, time-limited automated invitation to your candidate — no manual outreach or coordination required from your team.",
     bullets: [
-      "Mobile-first applicant experience",
-      "Tokenized, time-limited invite links",
-      "Clear consent and disclosure screens",
+      "Instant automated dispatch",
+      "Secure, time-limited access link",
+      "No manual follow-up required",
     ],
-    image: "/assets/images/SSN-trace-%26-address-history.webp",
+    image: "/assets/soft-capture/Step%202.png",
+    video: "/assets/soft-capture/Step%202%20vdo.mov",
     gradient: "from-[#058B74] to-[#0aa88a]",
   },
   {
     num: "03",
-    title: "Upload supporting documents.",
-    eyebrow: "Verification",
-    desc: "Photo-capture for government-issued ID, selfie match, and any additional documents required by your specific screening package — all encrypted end-to-end.",
+    title: "Secure applicant submission flow.",
+    eyebrow: "Candidate experience",
+    desc: "Candidates complete a mobile-optimized flow that captures FCRA consent, SSN, address history, a government-issued ID upload, and a live selfie for identity verification.",
     bullets: [
-      "Automated document capture & quality checks",
-      "Tamper and forgery detection powered by ML",
-      "Encrypted in transit and at rest",
+      "Mobile-optimized experience",
+      "FCRA consent, SSN, and address history",
+      "Government ID upload and selfie verification",
     ],
-    image: "/assets/images/Employment-verification.webp",
+    image: "/assets/soft-capture/step%203.png",
     gradient: "from-[#01463A] to-[#0aa88a]",
   },
   {
     num: "04",
-    title: "We review and screen.",
-    eyebrow: "Behind the scenes",
-    desc: "Atlas runs FCRA-compliant searches across licensed national and local databases, verifies documents, and flags anomalies for human review. Every decision is logged for full auditability.",
+    title: "Smart payment and investigation processing.",
+    eyebrow: "Billing & checks",
+    desc: "Automated billing triggers only upon the applicant's submission — you never pay for drop-offs. The background checks and investigative verifications begin immediately after authorization.",
     bullets: [
-      "Criminal, MVR, credit, and verification searches",
-      "Human review where AI flags uncertainty",
-      "Full audit trail for every case",
+      "Billing triggers only on submission",
+      "No charges for incomplete invitations",
+      "Investigations begin immediately after consent",
     ],
-    image: "/assets/images/Criminal-background-checks.webp",
+    image: "/assets/soft-capture/step%204.png",
     gradient: "from-[#058B74] to-[#01463A]",
   },
   {
     num: "05",
-    title: "Receive a verified report.",
-    eyebrow: "Decision-ready",
-    desc: "Employers, property managers, or customers receive a branded, FCRA-compliant PDF — with clear pass/flag indicators, source citations, and adjudication tooling built right in.",
+    title: "Clear reporting and instant notifications.",
+    eyebrow: "Final delivery",
+    desc: "The system generates a branded, FCRA-compliant PDF report and notifies your team via instant email and dashboard alerts the moment it is ready for review.",
     bullets: [
-      "Branded, compliant PDF + dashboard view",
-      "Pass/flag indicators with sourcing",
-      "Adverse-action workflow built in",
+      "Branded, FCRA-compliant PDF report",
+      "Instant email and dashboard alerts",
+      "Real-time status visibility throughout",
     ],
-    image: "/assets/images/Tenant-screening.webp",
+    image: "/assets/soft-capture/step%205.png",
     gradient: "from-[#0aa88a] to-[#01463A]",
   },
 ];
 
 const faqs = [
   {
-    q: "How long does the whole process take?",
-    a: "Most reports are delivered within 24 hours. Criminal searches, identity verification, and MVR often complete in minutes; employment and education verifications may take 1–3 business days depending on sources.",
+    q: "How long does the entire process take?",
+    a: "Your administrative work takes less than a minute. Once you submit the candidate details, the platform immediately sends the invitation. After the applicant completes their secure submission, most standard criminal checks and SSN traces return results within 24 hours. Complex county court searches or employment verifications may require up to three business days.",
   },
   {
-    q: "What does the applicant actually see?",
-    a: "A secure, time-limited link that opens on any device. They provide consent, submit required data, and capture ID/selfie. Most applicants finish in 5–10 minutes.",
+    q: "What exactly does the applicant see?",
+    a: "Candidates receive a secure access link via email. Clicking the link opens a mobile-optimized portal that guides them through reviewing the legally required disclosure forms, providing electronic consent, and entering their address history. Finally, they authenticate their identity by uploading a government-issued ID and taking a live selfie.",
   },
   {
-    q: "Who can see the report?",
-    a: "Only authorized users in your account. Every view is logged, and you can control access with role-based permissions.",
+    q: "Who has access to the final report?",
+    a: "Only authorized personnel within your organization can view the completed background report. We protect all data using strict role-based access controls and enterprise-grade encryption. Atlas Screening never sells applicant data or shares it with unauthorized third parties.",
   },
   {
-    q: "Can I dispute a finding?",
-    a: "Yes. Applicants can open disputes directly from the report. Our team responds within one business day, and corrections flow through automatically.",
+    q: "What happens if a candidate disputes a finding?",
+    a: "We maintain a transparent, applicant-friendly dispute workflow. If a candidate believes a public record on their report is inaccurate, they can initiate a formal review directly with our compliance team. We investigate the claim promptly according to strict Fair Credit Reporting Act guidelines.",
   },
 ];
 
@@ -100,11 +114,12 @@ export default function HowItWorksPage() {
             How it works
           </p>
           <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight">
-            From invite to verified report.
+            The end-to-end background screening workflow.
           </h1>
           <p className="mt-5 text-white/70 max-w-xl mx-auto text-sm leading-relaxed">
-            A look at the five-step Atlas workflow — and what happens behind the
-            scenes to keep every report accurate, compliant, and fast.
+            We engineered our platform to demand minimal client effort while delivering
+            maximum visibility. Discover how we process complex background investigations
+            efficiently and securely.
           </p>
         </div>
       </section>
@@ -164,17 +179,25 @@ export default function HowItWorksPage() {
                   <div
                     className={`relative overflow-hidden rounded-3xl border border-gray-200 bg-gradient-to-br ${step.gradient} aspect-[4/3] shadow-xl shadow-[#058B74]/15`}
                   >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={step.image}
-                      alt={step.title}
-                      loading="lazy"
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
+                    {step.video ? (
+                      <HoverVideo
+                        poster={step.image}
+                        video={step.video}
+                        alt={step.title}
+                      />
+                    ) : (
+                      /* eslint-disable-next-line @next/next/no-img-element */
+                      <img
+                        src={step.image}
+                        alt={step.title}
+                        loading="lazy"
+                        className="absolute inset-0 w-full h-full object-cover"
+                      />
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-[#01463A]/30 via-transparent to-transparent pointer-events-none" />
 
                     {/* Step badge */}
-                    <div className="absolute top-5 left-5 inline-flex items-center gap-2 bg-white/15 backdrop-blur-md border border-white/25 rounded-full px-3 py-1.5 text-[11px] font-semibold uppercase tracking-widest text-white">
+                    <div className="absolute top-5 left-5 inline-flex items-center gap-2 bg-black/40 backdrop-blur-md border border-white/15 rounded-full px-3 py-1.5 text-[11px] font-semibold uppercase tracking-widest text-white">
                       Step {step.num}
                     </div>
                   </div>
@@ -211,15 +234,15 @@ export default function HowItWorksPage() {
                 For hiring teams.
               </h3>
               <p className="mt-2 text-sm text-gray-500 leading-relaxed">
-                Pre-employment screening, bulk orders, and ATS integration — wired
-                up in minutes.
+                Accelerate your talent acquisition with seamless pre-employment
+                screening. Manage bulk orders and integrate with your ATS in minutes.
               </p>
               <ul className="mt-5 space-y-2.5">
                 {[
-                  "Pre-employment checks in under 24 hours",
-                  "Bulk ordering for high-volume hiring",
-                  "Native ATS integrations + REST API",
-                  "Adverse-action workflow built in",
+                  "Pre-employment background checks within 24 hours",
+                  "Scalable bulk ordering for high-volume recruitment",
+                  "Native ATS integrations and robust REST API access",
+                  "Automated adverse action workflows built directly in",
                 ].map((b) => (
                   <li key={b} className="flex items-start gap-2.5 text-sm text-[#01463A]">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#058B74" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0 mt-0.5">
@@ -257,15 +280,15 @@ export default function HowItWorksPage() {
                 For leasing teams.
               </h3>
               <p className="mt-2 text-sm text-gray-500 leading-relaxed">
-                Tenant screening as a full solution — criminal, credit, and
-                eviction history in one report.
+                Secure comprehensive tenant screening data to protect your real estate
+                portfolio — all through one unified, compliant dashboard.
               </p>
               <ul className="mt-5 space-y-2.5">
                 {[
-                  "Criminal, credit, and eviction checks",
-                  "Integrates with property-management tools",
-                  "Applicant-friendly dispute workflow",
-                  "Branded reports for your portfolio",
+                  "Complete criminal, credit, and eviction history checks",
+                  "Seamless integration with property management software",
+                  "Transparent, applicant-friendly dispute resolution",
+                  "Fully branded background reports for your portfolio",
                 ].map((b) => (
                   <li key={b} className="flex items-start gap-2.5 text-sm text-[#01463A]">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#058B74" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0 mt-0.5">
@@ -304,15 +327,15 @@ export default function HowItWorksPage() {
                 For the person being screened.
               </h3>
               <p className="mt-2 text-sm text-gray-500 leading-relaxed">
-                Your rights under the FCRA, how to check your report status, and
-                how to dispute any finding.
+                Understand your legal rights under the FCRA, track your background check
+                status, and maintain complete control over your personal data.
               </p>
               <ul className="mt-5 space-y-2.5">
                 {[
-                  "Know what's in your file",
-                  "Check report status in real time",
-                  "Dispute inaccurate findings",
-                  "Clear FCRA rights explanations",
+                  "Complete transparency into your personal screening file",
+                  "Real-time status tracking from your mobile device",
+                  "Straightforward workflow to dispute inaccurate findings",
+                  "Clear, accessible explanations of your FCRA rights",
                 ].map((b) => (
                   <li key={b} className="flex items-start gap-2.5 text-sm text-[#01463A]">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#058B74" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0 mt-0.5">

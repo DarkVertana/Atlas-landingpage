@@ -1,36 +1,36 @@
 export default function AboutIntro() {
   const services = [
     {
-      label: "Criminal background checks",
-      desc: "County, state, and federal records.",
+      label: "Criminal Background Checks",
+      desc: "Basic, standard, or premium tiers across county, state, and federal databases.",
       href: "/services/criminal-background-checks",
       image: "/assets/images/Criminal-background-checks.webp",
       gradient: "from-[#01463A] to-[#058B74]",
     },
     {
-      label: "Employment verification",
-      desc: "Confirm titles, dates, and history.",
-      href: "/services/employment-verification",
-      image: "/assets/images/Employment-verification.webp",
+      label: "SSN Trace & Address History",
+      desc: "Establish a verified baseline identity for every report.",
+      href: "/services/ssn-trace",
+      image: "/assets/images/SSN-trace-%26-address-history.webp",
       gradient: "from-[#058B74] to-[#0aa88a]",
     },
     {
-      label: "SSN trace & address history",
-      desc: "Identity foundation for every report.",
-      href: "/services/ssn-trace",
-      image: "/assets/images/SSN-trace-%26-address-history.webp",
+      label: "Motor Vehicle Records",
+      desc: "Detailed driving histories for transportation and fleet personnel.",
+      href: "/services/mvr",
+      image: "/assets/images/Motor-vehicle-records.webp",
       gradient: "from-[#01463A] to-[#0aa88a]",
     },
     {
-      label: "Motor vehicle records",
-      desc: "Driving history for fleet roles.",
-      href: "/services/mvr",
-      image: "/assets/images/Motor-vehicle-records.webp",
+      label: "Employment Verification",
+      desc: "Validate past titles, dates, and workplace history with previous employers.",
+      href: "/services/employment-verification",
+      image: "/assets/images/Employment-verification.webp",
       gradient: "from-[#058B74] to-[#01463A]",
     },
     {
-      label: "Tenant screening",
-      desc: "Built for property managers.",
+      label: "Transparent Add-On Services",
+      desc: "Global Watchlist, Tenant Screening, and Credit Reports at a flat $39.99.",
       href: "/services/tenant-screening",
       image: "/assets/images/Tenant-screening.webp",
       gradient: "from-[#0aa88a] to-[#01463A]",
@@ -44,11 +44,12 @@ export default function AboutIntro() {
     <section className="bg-white py-20 px-6" style={{ cursor: themedCursor }}>
       <div className="mx-auto max-w-6xl text-center">
         <h2 className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
-          Every background check, one platform.
+          A unified platform for comprehensive screening.
         </h2>
         <p className="mt-5 text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
-          From criminal records to tenant screening, Atlas brings every report into a single
-          FCRA-compliant workflow — built for employers, property managers, and organizations.
+          Consolidate your entire verification process. Whether you are scaling a
+          corporate workforce or managing real estate portfolios, our workflow delivers
+          exactly what you need in one centralized dashboard.
         </p>
 
         <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-6">

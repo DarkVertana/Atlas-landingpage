@@ -1,27 +1,27 @@
 const faqs = [
   {
     q: "How long does a background check take?",
-    a: "Most reports are delivered within 24 hours. Criminal record searches, identity verification, and motor vehicle records often complete within minutes, while employment and education verifications may take 1–3 business days depending on the source.",
+    a: "Most standard background checks and SSN traces complete within 24 hours. Complex investigative verifications require two to three business days. Our platform provides real-time status tracking directly in your dashboard so your team always knows where a candidate stands.",
   },
   {
     q: "Are Atlas reports FCRA compliant?",
-    a: "Yes. Every report follows strict Fair Credit Reporting Act (FCRA) guidelines, EEOC guidance, and applicable state and local laws. We provide applicant consent, adverse action workflows, and audit logging by default.",
+    a: "Yes. Strict adherence to the Fair Credit Reporting Act is engineered directly into our platform. We automate candidate consent and deliver all mandated disclosure documents before initiating any database search.",
   },
   {
-    q: "What industries do you serve?",
-    a: "Atlas supports employers, property managers, staffing agencies, healthcare, transportation, financial services, education, and nonprofit organizations. Packages can be tailored to industry-specific risk profiles.",
+    q: "What is required from the employer to start a check?",
+    a: "We designed our platform for absolute minimal client effort. You only need to log into your dashboard, select your preferred screening package, and submit the applicant name and email address. The automated system handles the entire data collection process from there.",
   },
   {
-    q: "How is AI used in your screening?",
-    a: "Machine learning assists with document verification, anomaly detection across identity and employment data, risk scoring, and continuous post-hire monitoring. Every AI-assisted decision remains fully reviewable and FCRA-compliant.",
+    q: "How does the billing and payment system work?",
+    a: "Our smart payment processing ensures you only pay for active screenings. Automated billing triggers exactly when the applicant completes their submission flow and provides consent, so you never pay for candidates who drop out of onboarding early.",
   },
   {
-    q: "Is candidate data secure?",
-    a: "All data is encrypted in transit and at rest, hosted on SOC 2 Type II certified infrastructure, with role-based access controls and full audit trails. Candidate information is retained only as long as legally required.",
+    q: "Are applicant documents and selfies secure?",
+    a: "We secure all applicant and employer information using advanced encryption protocols. Sensitive data is stored on encrypted servers, with strict role-based access controls so only authorized personnel can view completed consumer reports.",
   },
   {
-    q: "Do you integrate with existing HR or ATS tools?",
-    a: "Yes. Atlas offers a REST API and native integrations with common applicant tracking systems and property-management platforms, plus bulk-order CSV workflows for high-volume hiring.",
+    q: "What additional screening add-ons are available?",
+    a: "You can customize any predefined package with specific verifications. We offer Global Watchlist checks, Tenant Screening, and complete Credit Reports at an upfront and transparent price of $39.99 each.",
   },
 ];
 

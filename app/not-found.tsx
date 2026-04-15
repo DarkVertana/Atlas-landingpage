@@ -1,6 +1,14 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect } from "react";
 
 export default function NotFound() {
+  useEffect(() => {
+    document.body.classList.add("force-header-solid");
+    return () => document.body.classList.remove("force-header-solid");
+  }, []);
+
   return (
     <div className="min-h-screen bg-white flex flex-col">
       {/* Main content */}
@@ -26,7 +34,6 @@ export default function NotFound() {
           </Link>
         </div>
       </main>
-
     </div>
   );
 }

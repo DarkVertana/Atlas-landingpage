@@ -1,8 +1,8 @@
 const steps = [
   {
     num: "01",
-    title: "Create Account",
-    desc: "Applicant signs up and sets up their secure profile.",
+    title: "Select Package",
+    desc: "Choose a predefined package or build a custom bundle in your dashboard.",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2" />
@@ -13,8 +13,8 @@ const steps = [
   },
   {
     num: "02",
-    title: "Provide Details",
-    desc: "Add government ID and essential personal info.",
+    title: "Enter Applicant Details",
+    desc: "Provide only the candidate name and email — the system handles the rest.",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="3" y="5" width="18" height="14" rx="2" />
@@ -26,8 +26,8 @@ const steps = [
   },
   {
     num: "03",
-    title: "Upload Documents",
-    desc: "Submit supporting documents for verification.",
+    title: "Automated Invitation",
+    desc: "Atlas instantly dispatches a secure, time-limited access link to the applicant.",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
@@ -38,8 +38,8 @@ const steps = [
   },
   {
     num: "04",
-    title: "Review & Screening",
-    desc: "Atlas verifies documents and runs compliant checks.",
+    title: "Secure Submission",
+    desc: "Candidate gives consent, verifies identity, and triggers smart payment processing.",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="11" cy="11" r="7" />
@@ -50,8 +50,8 @@ const steps = [
   },
   {
     num: "05",
-    title: "Receive Report",
-    desc: "Employer or client receives the verified report.",
+    title: "Final Report Delivery",
+    desc: "Receive email and dashboard alerts the moment the branded PDF report is ready.",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
@@ -72,11 +72,12 @@ export default function HowItWorks() {
             Process
           </p>
           <h2 className="text-3xl md:text-5xl font-bold text-white">
-            How It Works.
+            How the Atlas workflow operates.
           </h2>
           <p className="mt-5 text-white/50 max-w-xl mx-auto text-sm leading-relaxed">
-            From signup to a verified report, Atlas guides every applicant through a secure,
-            compliant workflow — so your team can hire and lease with confidence.
+            Move candidates from an initial invitation to a completed report in a matter
+            of days. We guide applicants through a secure, mobile-optimized process so
+            you can hire and lease with total confidence.
           </p>
         </div>
 

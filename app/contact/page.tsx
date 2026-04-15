@@ -28,11 +28,11 @@ export default function ContactPage() {
             Contact Atlas
           </p>
           <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight">
-            Let&apos;s talk screening.
+            Connect with Atlas screening experts.
           </h1>
           <p className="mt-5 text-white/70 max-w-xl mx-auto text-sm leading-relaxed">
-            Tell us about your team. We reply in under an hour during business
-            days — with a real person, never a form letter.
+            Whether you need a custom enterprise screening package or require technical
+            support for an ongoing order, our team is ready to assist.
           </p>
         </div>
       </section>
@@ -42,65 +42,73 @@ export default function ContactPage() {
         <div className="mx-auto max-w-6xl">
           <div className="grid md:grid-cols-3 gap-5">
             <a
-              href="mailto:hello@atlasscreening.com"
+              href="mailto:sales@atlasscreening.com"
               className="group relative overflow-hidden p-6 rounded-2xl border border-gray-200 bg-white hover:border-[#058B74]/40 hover:shadow-lg hover:shadow-[#058B74]/10 hover:-translate-y-1 transition-all duration-300"
             >
               <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-[#058B74]/5 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#058B74" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="2" y="5" width="20" height="14" rx="2" />
-                  <path d="M2 7l10 6 10-6" />
+                  <path d="M3 21V5a2 2 0 012-2h14a2 2 0 012 2v16" />
+                  <path d="M3 21h18" />
+                  <path d="M9 9h1M9 13h1M14 9h1M14 13h1M9 17h6" />
                 </svg>
                 <p className="mt-5 text-xs font-semibold uppercase tracking-widest text-[#058B74]">
-                  Email us
+                  Enterprise sales inquiries
                 </p>
                 <h3 className="mt-1 text-lg font-semibold text-[#01463A]">
-                  hello@atlasscreening.com
+                  Request a platform demo
                 </h3>
                 <p className="mt-2 text-sm text-gray-500 leading-relaxed">
-                  Drop a line and watch your inbox — we land on it before your coffee goes cold.
+                  Building a high-volume screening program requires strategic planning.
+                  Connect with our sales team to discuss custom-built bundles, API
+                  integrations, and volume pricing tailored to your organization.
                 </p>
               </div>
             </a>
 
-            <button
-              type="button"
+            <a
+              href="/support"
               className="group text-left relative overflow-hidden p-6 rounded-2xl border border-gray-200 bg-white hover:border-[#058B74]/40 hover:shadow-lg hover:shadow-[#058B74]/10 hover:-translate-y-1 transition-all duration-300"
             >
               <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-[#058B74]/5 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#058B74" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
+                  <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                  <path d="M13.73 21a2 2 0 01-3.46 0" />
                 </svg>
                 <p className="mt-5 text-xs font-semibold uppercase tracking-widest text-[#058B74]">
-                  Live chat
+                  Employer support
                 </p>
                 <h3 className="mt-1 text-lg font-semibold text-[#01463A]">
-                  Chat with us
+                  Open a support ticket
                 </h3>
                 <p className="mt-2 text-sm text-gray-500 leading-relaxed">
-                  Pop the bubble in the corner. No bots, no menus — just a teammate on the other end.
+                  Existing clients can access immediate assistance for dashboard
+                  navigation, billing questions, or specific screening status updates.
                 </p>
               </div>
-            </button>
+            </a>
 
             <a
-              href="tel:+15550123456"
+              href="/disputes"
               className="group relative overflow-hidden p-6 rounded-2xl border border-gray-200 bg-white hover:border-[#058B74]/40 hover:shadow-lg hover:shadow-[#058B74]/10 hover:-translate-y-1 transition-all duration-300"
             >
               <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-[#058B74]/5 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#058B74" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M22 16.92V21a1 1 0 01-1.08 1 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A1 1 0 014.11 3h4.09a1 1 0 011 .75 12.6 12.6 0 00.7 2.81 1 1 0 01-.22 1L7.91 9.09a16 16 0 006 6l1.52-1.76a1 1 0 011-.23 12.6 12.6 0 002.81.71 1 1 0 01.76 1z" />
+                  <path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z" />
+                  <path d="M9 12l2 2 4-4" />
                 </svg>
                 <p className="mt-5 text-xs font-semibold uppercase tracking-widest text-[#058B74]">
-                  Call us
+                  Applicant dispute resolution
                 </p>
                 <h3 className="mt-1 text-lg font-semibold text-[#01463A]">
-                  (555) 012-3456
+                  Initiate the dispute process
                 </h3>
                 <p className="mt-2 text-sm text-gray-500 leading-relaxed">
-                  Old school? Us too. Dial in and talk screening with a human who knows the product.
+                  We maintain strict adherence to all Fair Credit Reporting Act
+                  guidelines. If you need to challenge the accuracy of a completed
+                  report, our compliance team will investigate promptly.
                 </p>
               </div>
             </a>

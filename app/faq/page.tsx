@@ -1,115 +1,47 @@
 const categories = [
   {
-    id: "getting-started",
-    title: "Getting started",
-    desc: "Onboarding, first checks, and setup.",
+    id: "employer-resources",
+    title: "Employer resources",
+    desc: "Dashboard, timelines, billing, and compliance.",
     faqs: [
       {
-        q: "How quickly can I start running background checks?",
-        a: "Create an account and run your first check in under 10 minutes — no lengthy onboarding, no contracts, no setup fees.",
+        q: "How do I initiate a background check on a new candidate?",
+        a: "You only need to provide the candidate name and email address. Log into your centralized dashboard, select a predefined package or custom-built bundle, and enter those two details. The platform immediately dispatches a secure, time-limited invitation to your candidate to complete the data entry process.",
       },
       {
-        q: "Do I need to sign a contract?",
-        a: "No. Atlas is pay-as-you-go by default. Enterprise plans are available if you prefer committed volume pricing.",
+        q: "How long does a standard background check take?",
+        a: "Most criminal background checks and SSN traces finalize within 24 hours. Complex investigative verifications — such as manual county court searches or employment verification — require two to three business days. You maintain clear status visibility for every candidate directly within your dashboard.",
       },
       {
-        q: "How do I invite an applicant?",
-        a: "From your dashboard, enter the applicant's name and email. They'll receive a secure, time-limited invitation and can complete the process on any device.",
+        q: "How does smart payment processing and billing work?",
+        a: "Automated billing triggers only when an applicant officially submits their authorized information. You never pay for incomplete invitations or dropped candidates. Base screening packages and optional add-ons — such as a $39.99 Global Watchlist or Tenant Screening check — feature transparent, upfront pricing.",
+      },
+      {
+        q: "Is the Atlas platform fully FCRA compliant?",
+        a: "Yes. Compliance is a non-negotiable foundation for our entire system. The platform automatically captures timestamped applicant consent, provides all legally mandated disclosure documents, and generates fully branded, FCRA-compliant PDF reports for your final review.",
       },
     ],
   },
   {
-    id: "applicants",
-    title: "Applicant experience",
-    desc: "What candidates and tenants see and do.",
+    id: "applicant-resources",
+    title: "Applicant resources",
+    desc: "What to submit, how your data is protected, and your rights.",
     faqs: [
       {
-        q: "What does the applicant experience look like?",
-        a: "Applicants receive a secure, time-limited invite. They provide consent, SSN, date of birth, address history, government ID, and a selfie for verification — most finish in 5–10 minutes.",
+        q: "What information do I need to provide for my background check?",
+        a: "You must provide your electronic consent, Social Security Number, date of birth, and recent address history. Our secure mobile flow also requires you to upload a valid government ID and take a live selfie. This multi-step verification protects your identity and prevents matching errors during the public records search.",
       },
       {
-        q: "Can applicants use a phone?",
-        a: "Yes. The entire applicant flow is mobile-first and works on any modern browser — no app install required.",
+        q: "Is my personal information and biometric data secure?",
+        a: "We protect your personal details using enterprise-grade encrypted document storage and transmission. You access the submission flow through a secure, time-limited tokenized link. Your data is strictly guarded by role-based access controls and is only shared with the specific employer requesting the report.",
       },
       {
-        q: "How do applicants dispute a report?",
-        a: "Every report includes a clear dispute pathway. Applicants can open a dispute from the report link, and our team responds with next steps within one business day.",
-      },
-    ],
-  },
-  {
-    id: "pricing",
-    title: "Pricing & billing",
-    desc: "How and when you're charged.",
-    faqs: [
-      {
-        q: "When do I get charged?",
-        a: "You're only billed after your applicant submits their information — never before. No upfront payments, no charges for drop-offs.",
+        q: "Why does the system require a selfie and ID upload?",
+        a: "Uploading a government ID and taking a live selfie proves that the person submitting the background check is actually you. This critical step protects your identity from fraud and ensures the resulting background report is highly accurate.",
       },
       {
-        q: "Are there volume discounts?",
-        a: "Yes — enterprise and high-volume customers unlock tiered pricing. Reach out to sales@atlasscreening.com for a tailored quote.",
-      },
-      {
-        q: "Do you charge for add-ons separately?",
-        a: "Each add-on (tenant screening, credit report, global watchlist, etc.) is priced per check on top of the base package you choose. Exact pricing lives on the Pricing page.",
-      },
-    ],
-  },
-  {
-    id: "reports",
-    title: "Reports & data",
-    desc: "Formats, delivery, and what's inside.",
-    faqs: [
-      {
-        q: "What format do reports come in?",
-        a: "You'll get a branded, FCRA-compliant PDF delivered to your dashboard with an email notification. Reports include all findings organized by check type with clear pass/flag indicators.",
-      },
-      {
-        q: "Can I export data to my ATS?",
-        a: "Yes — Atlas integrates with common applicant tracking systems via a REST API and native connectors. CSV exports are also available for bulk workflows.",
-      },
-      {
-        q: "How long are reports retained?",
-        a: "Reports are retained for the minimum period required by law, plus any additional window you configure. All data is purged securely afterward.",
-      },
-    ],
-  },
-  {
-    id: "compliance",
-    title: "Compliance & security",
-    desc: "FCRA, SOC 2, and applicant rights.",
-    faqs: [
-      {
-        q: "Are Atlas reports FCRA compliant?",
-        a: "Yes. Every report follows Fair Credit Reporting Act (FCRA) guidelines, EEOC guidance, and applicable state and local laws. Consent, adverse action, and audit logging are built in.",
-      },
-      {
-        q: "How is my applicants' data protected?",
-        a: "All data is encrypted in transit and at rest, hosted on SOC 2 Type II certified infrastructure. Applicant invite links are tokenized and time-limited, with role-based access controls for your team.",
-      },
-      {
-        q: "Do you offer social media screening?",
-        a: "Yes — Atlas offers FCRA-compliant social media inquiry. We review public profiles for concerning content while respecting candidate privacy and protected-class information.",
-      },
-    ],
-  },
-  {
-    id: "integrations",
-    title: "Integrations",
-    desc: "ATS, property management, and APIs.",
-    faqs: [
-      {
-        q: "Which ATS platforms do you integrate with?",
-        a: "We support direct integrations with several major ATS platforms and offer a REST API for custom workflows. Reach out if you'd like us to prioritize a specific one.",
-      },
-      {
-        q: "Do you integrate with property management software?",
-        a: "Yes — tenant screening integrations are available for most major property-management platforms, plus bulk CSV workflows for scaled portfolios.",
-      },
-      {
-        q: "Is there an API?",
-        a: "Yes. Atlas offers a REST API with webhook events for every stage of the screening lifecycle. API documentation is available to all accounts.",
+        q: "How do I dispute a finding on my completed report?",
+        a: "You hold the right to challenge any inaccurate public records under the Fair Credit Reporting Act. If you find an error on your completed screening report, you can initiate a formal review directly through our dedicated compliance team.",
       },
     ],
   },
@@ -128,11 +60,12 @@ export default function FAQPage() {
             Help Center
           </p>
           <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight">
-            Frequently asked questions.
+            Atlas help center and frequently asked questions.
           </h1>
           <p className="mt-5 text-white/70 max-w-xl mx-auto text-sm leading-relaxed">
-            Straight answers about turnaround, compliance, applicants, and
-            everything in between. Still stuck? Our team is an email away.
+            Find immediate answers regarding screening timelines, platform billing, and
+            candidate data security. We designed this resource hub to provide complete
+            transparency for both hiring teams and job applicants.
           </p>
         </div>
       </section>

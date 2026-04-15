@@ -181,7 +181,7 @@ export default function CostCalculatorPage() {
                           ))}
                         </ul>
                         {active && (
-                          <span className="absolute top-3 left-3 w-4 h-4 rounded-full bg-[#058B74] flex items-center justify-center">
+                          <span className="absolute -top-2 -left-2 w-5 h-5 rounded-full bg-[#058B74] ring-2 ring-white flex items-center justify-center shadow-sm">
                             <svg
                               width="10"
                               height="10"
@@ -346,19 +346,19 @@ export default function CostCalculatorPage() {
             <aside className="lg:sticky lg:top-28">
               <div className="rounded-3xl overflow-hidden border border-[#01463A]/20 shadow-xl shadow-[#01463A]/10">
                 {/* Header */}
-                <div className="relative bg-[#01463A] text-white p-6 overflow-hidden">
+                <div className="relative bg-[#01463A] text-white px-7 py-8 overflow-hidden">
                   <div className="absolute -top-16 -right-16 w-40 h-40 rounded-full bg-[#058B74]/30 blur-3xl pointer-events-none" />
                   <div className="relative">
                     <p className="text-[10px] font-semibold tracking-widest uppercase text-white/50">
                       Your estimate
                     </p>
-                    <div className="mt-3 flex items-baseline gap-2">
+                    <div className="mt-5 flex items-baseline gap-2">
                       <span className="text-4xl font-extrabold leading-none">
                         ${fmt(monthlyCost)}
                       </span>
                       <span className="text-xs text-white/60">/ month</span>
                     </div>
-                    <p className="mt-1 text-sm text-white/70">
+                    <p className="mt-3 text-sm text-white/70">
                       <span className="font-semibold text-white">${fmt(annualCost)}</span>{" "}
                       annually · {volume} checks/mo
                     </p>
@@ -480,39 +480,17 @@ export default function CostCalculatorPage() {
         </div>
       </section>
 
-      {/* Reassurance strip */}
-      <section className="bg-white py-20 px-6">
-        <div className="mx-auto max-w-5xl grid md:grid-cols-3 gap-5">
-          {[
-            {
-              title: "No contracts",
-              desc: "Pay-as-you-go by default. Switch tiers or cancel anytime.",
-            },
-            {
-              title: "Volume discounts",
-              desc: "Enterprise pricing kicks in automatically at higher volumes.",
-            },
-            {
-              title: "Flexible billing",
-              desc: "Need applicant-paid or invoiced billing? We&apos;re flexible.",
-            },
-          ].map((card) => (
-            <div
-              key={card.title}
-              className="rounded-2xl border border-gray-200 bg-white p-6 hover:border-[#058B74]/40 hover:shadow-sm transition-all"
-            >
-              <h3 className="text-sm font-semibold text-[#01463A]">{card.title}</h3>
-              <p className="mt-2 text-sm text-gray-500 leading-relaxed">
-                {card.desc.replace(/&apos;/g, "'")}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* FAQ */}
-      <section className="bg-white pb-20 px-6">
+      <section className="bg-white py-20 px-6">
         <div className="mx-auto max-w-3xl">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
+              Estimate questions.
+            </h2>
+            <p className="mt-5 text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
+              How the numbers are built, when discounts kick in, and what happens when applicants drop off.
+            </p>
+          </div>
           <div className="space-y-3">
             {[
               {

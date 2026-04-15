@@ -1,18 +1,13 @@
 const sections = [
-  { id: "acceptance", title: "1. Acceptance of terms" },
-  { id: "services", title: "2. Description of services" },
-  { id: "accounts", title: "3. Accounts & eligibility" },
-  { id: "customer-obligations", title: "4. Customer obligations" },
-  { id: "acceptable-use", title: "5. Acceptable use" },
-  { id: "fees", title: "6. Fees & billing" },
-  { id: "data", title: "7. Data & privacy" },
-  { id: "compliance", title: "8. FCRA compliance" },
-  { id: "disclaimers", title: "9. Disclaimers" },
-  { id: "liability", title: "10. Limitation of liability" },
-  { id: "termination", title: "11. Termination" },
-  { id: "governing-law", title: "12. Governing law" },
-  { id: "changes", title: "13. Changes to terms" },
-  { id: "contact", title: "14. Contact us" },
+  { id: "overview", title: "1. Overview" },
+  { id: "permissible-purpose", title: "2. Employer obligations & permissible purpose" },
+  { id: "applicant-consent", title: "3. Applicant consent requirements" },
+  { id: "adverse-action", title: "4. Adverse action compliance" },
+  { id: "billing", title: "5. Smart payment processing & billing" },
+  { id: "pricing", title: "6. Transparent pricing structure" },
+  { id: "accuracy", title: "7. Public record accuracy & service limitations" },
+  { id: "liability", title: "8. Indemnification and liability" },
+  { id: "account-security", title: "9. Account security & role-based access" },
 ];
 
 export default function TermsPage() {
@@ -28,11 +23,12 @@ export default function TermsPage() {
             Legal
           </p>
           <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight">
-            Terms of Service.
+            Atlas Screening terms of service.
           </h1>
           <p className="mt-5 text-white/70 max-w-xl mx-auto text-sm leading-relaxed">
-            The agreement between Atlas Screening and customers who use our
-            background-check platform. Please read carefully.
+            These legal provisions govern your access to the Atlas Screening platform,
+            dashboards, and associated investigative services. By registering an
+            account, you agree to follow these operating standards.
           </p>
           <p className="mt-6 text-xs uppercase tracking-widest text-white/40">
             Last updated · April 1, 2026
@@ -44,175 +40,92 @@ export default function TermsPage() {
       <section className="bg-white py-20 px-6">
         <div className="mx-auto max-w-6xl grid lg:grid-cols-[1fr_260px] gap-12 lg:gap-16 items-start">
           <article className="min-w-0 space-y-12">
-            <LegalSection id="acceptance" title="1. Acceptance of terms">
+            <LegalSection id="overview" title="1. Overview">
               <p>
-                By accessing or using Atlas Screening&apos;s website, platform, or
-                services (the &ldquo;Services&rdquo;), you agree to be bound by
-                these Terms of Service (&ldquo;Terms&rdquo;). If you are using the
-                Services on behalf of an organization, you represent that you have
-                authority to bind that organization to these Terms.
+                These legal provisions govern your access to the Atlas Screening
+                platform, dashboards, and associated investigative services. By
+                registering an account, you agree to follow these operating standards.
+                This document outlines the legal responsibilities for both our company
+                and your organization.
               </p>
             </LegalSection>
 
-            <LegalSection id="services" title="2. Description of services">
+            <LegalSection id="permissible-purpose" title="2. Employer obligations & permissible purpose">
               <p>
-                Atlas provides consumer-reporting and background-screening tools for
-                hiring, leasing, and credentialing purposes, including criminal
-                record searches, identity verification, employment and education
-                verification, motor vehicle records, tenant screening, and related
-                services.
+                Clients using our dashboard must establish a permissible purpose to
+                request a consumer report. The Fair Credit Reporting Act defines the
+                acceptable use cases. You must have a valid employment or tenant
+                screening reason to initiate any background check through our system.
               </p>
             </LegalSection>
 
-            <LegalSection id="accounts" title="3. Accounts & eligibility">
+            <LegalSection id="applicant-consent" title="3. Applicant consent requirements">
               <p>
-                You must provide accurate and complete information to create an
-                account, keep it up to date, and safeguard your credentials. You
-                are responsible for all activity that occurs under your account.
-                Services are available only to users who are at least 18 years old
-                and authorized to request consumer reports under applicable law.
+                You agree to obtain explicit, written consent from all candidates
+                before starting a screening request. Our platform automates delivery of
+                these disclosure documents during the secure applicant submission flow.
+                However, you remain legally responsible for ensuring your overall
+                hiring process complies with all state and federal consent laws.
               </p>
             </LegalSection>
 
-            <LegalSection id="customer-obligations" title="4. Customer obligations">
-              <p>As a customer using Atlas, you agree to:</p>
-              <ul>
-                <li>
-                  Obtain all required written consents and disclosures from each
-                  applicant before requesting a report.
-                </li>
-                <li>
-                  Use reports only for permissible purposes under the FCRA and
-                  applicable state law.
-                </li>
-                <li>
-                  Comply with the adverse action process, including providing
-                  pre-adverse and adverse action notices where required.
-                </li>
-                <li>
-                  Keep applicant data confidential and stored only as long as
-                  legally permitted.
-                </li>
-                <li>
-                  Provide accurate information about your use case and the types of
-                  reports you intend to request.
-                </li>
-              </ul>
-            </LegalSection>
-
-            <LegalSection id="acceptable-use" title="5. Acceptable use">
-              <p>You may not use the Services to:</p>
-              <ul>
-                <li>
-                  Run reports on individuals without a lawful permissible purpose or
-                  without their required consent.
-                </li>
-                <li>
-                  Reverse-engineer, scrape, or interfere with the platform&apos;s
-                  security, performance, or availability.
-                </li>
-                <li>
-                  Use the Services for discriminatory purposes in violation of the
-                  EEOC, fair-housing laws, or similar regulations.
-                </li>
-                <li>
-                  Resell, sublicense, or transfer the Services without our prior
-                  written consent.
-                </li>
-              </ul>
-            </LegalSection>
-
-            <LegalSection id="fees" title="6. Fees & billing">
+            <LegalSection id="adverse-action" title="4. Adverse action compliance">
               <p>
-                Fees are billed per report on a pay-as-you-go basis unless an
-                enterprise agreement applies. You authorize us to charge your
-                selected payment method for all fees incurred under your account.
-                All fees are non-refundable except as expressly stated.
+                If a background report influences your decision to deny employment or
+                housing, you must follow strict adverse action procedures. You agree to
+                provide the candidate with a pre-adverse action notice, a copy of their
+                report, and a final adverse action notice. Our platform provides the
+                tools and documentation to support your legal compliance workflow.
               </p>
             </LegalSection>
 
-            <LegalSection id="data" title="7. Data & privacy">
+            <LegalSection id="billing" title="5. Smart payment processing & billing">
               <p>
-                Our collection, use, and protection of personal information is
-                governed by our{" "}
-                <a href="/privacy" className="text-[#058B74] underline">
-                  Privacy Policy
-                </a>
-                . By using the Services, you acknowledge and agree to the
-                practices described there.
+                Initiating a screening order authorizes Atlas Screening to charge your
+                selected payment method. We operate on a smart billing model —
+                automated charges trigger exactly when the applicant successfully
+                completes their secure data and biometric submission. You never pay for
+                uncompleted or ignored invitations.
               </p>
             </LegalSection>
 
-            <LegalSection id="compliance" title="8. FCRA compliance">
+            <LegalSection id="pricing" title="6. Transparent pricing structure">
               <p>
-                As a Consumer Reporting Agency, Atlas operates in accordance with
-                the Fair Credit Reporting Act (FCRA), EEOC guidance, and applicable
-                state laws. You are a &ldquo;user of consumer reports&rdquo; under
-                the FCRA and are responsible for fulfilling all user obligations,
-                including notice and disclosure requirements.
+                All base package costs and optional add-on services display clearly
+                before you confirm an order. We do not implement hidden fees. Selecting
+                a Global Watchlist check or a Tenant Screening report adds a flat fee
+                to your active order. All transactions process securely through our
+                encrypted payment gateway.
               </p>
             </LegalSection>
 
-            <LegalSection id="disclaimers" title="9. Disclaimers">
+            <LegalSection id="accuracy" title="7. Public record accuracy & service limitations">
               <p>
-                The Services are provided &ldquo;as is&rdquo; and &ldquo;as
-                available,&rdquo; without warranties of any kind, express or
-                implied, except as required by law. While we work diligently to
-                source accurate information, report data reflects third-party
-                records that may contain errors. You are solely responsible for
-                verifying information before relying on it for any decision.
+                We use advanced data aggregation and human review to ensure high
+                accuracy. However, public records inherently contain occasional human
+                errors at the county and state court levels. We provide background
+                reports exactly as the public data presents them at the specific time
+                of the investigation.
               </p>
             </LegalSection>
 
-            <LegalSection id="liability" title="10. Limitation of liability">
+            <LegalSection id="liability" title="8. Indemnification and liability">
               <p>
-                To the maximum extent permitted by law, Atlas&apos;s total
-                aggregate liability arising out of or relating to the Services will
-                not exceed the fees paid by you to Atlas during the twelve (12)
-                months preceding the event giving rise to the claim. In no event
-                will Atlas be liable for indirect, incidental, consequential,
-                special, or punitive damages.
+                Atlas Screening acts strictly as a consumer reporting agency. We supply
+                data, but we do not make hiring or leasing decisions for your
+                organization. You agree to hold our platform harmless from any legal
+                claims arising from your specific employment decisions or your failure
+                to follow required federal compliance workflows.
               </p>
             </LegalSection>
 
-            <LegalSection id="termination" title="11. Termination">
+            <LegalSection id="account-security" title="9. Account security & role-based access">
               <p>
-                Either party may terminate the account at any time with notice. We
-                may suspend or terminate your access immediately if you violate
-                these Terms, misuse the Services, or fail to pay fees when due.
-                Provisions that by their nature should survive termination (such
-                as indemnities, disclaimers, and limitations of liability) will
-                survive.
-              </p>
-            </LegalSection>
-
-            <LegalSection id="governing-law" title="12. Governing law">
-              <p>
-                These Terms are governed by the laws of the State of California,
-                without regard to its conflict of laws principles. Any dispute
-                arising from these Terms will be resolved in the state or federal
-                courts located in San Francisco, California, unless otherwise
-                required by applicable law.
-              </p>
-            </LegalSection>
-
-            <LegalSection id="changes" title="13. Changes to terms">
-              <p>
-                We may revise these Terms from time to time. If we make material
-                changes, we will notify customers by email or through the
-                platform. Continued use of the Services after changes take effect
-                constitutes acceptance of the revised Terms.
-              </p>
-            </LegalSection>
-
-            <LegalSection id="contact" title="14. Contact us">
-              <p>
-                Questions about these Terms? Reach us at{" "}
-                <a href="mailto:legal@atlasscreening.com" className="text-[#058B74] underline">
-                  legal@atlasscreening.com
-                </a>{" "}
-                or by mail at Atlas Screening, 123 Screening Avenue, Suite 400, San
-                Francisco, CA 94107.
+                You assume responsibility for maintaining the security of your
+                administrative dashboard credentials. You agree to utilize our built-in
+                role-based access controls properly. You must restrict sensitive report
+                data so that only authorized personnel within your human resources or
+                leasing departments can view completed consumer files.
               </p>
             </LegalSection>
           </article>

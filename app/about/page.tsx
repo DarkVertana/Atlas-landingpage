@@ -34,11 +34,13 @@ export default function AboutPage() {
             About Atlas
           </p>
           <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight">
-            Background checks, built on trust.
+            Background checks built on defensible trust.
           </h1>
           <p className="mt-5 text-white/70 max-w-xl mx-auto text-sm leading-relaxed">
-            Atlas helps employers, property managers, and organizations make faster,
-            more confident decisions — with reports that stay compliant and fair.
+            We help human resource teams and property managers make faster and more
+            confident decisions. Atlas Screening delivers enterprise-grade background
+            investigations that prioritize rapid turnaround times without sacrificing
+            strict compliance and fairness.
           </p>
         </div>
       </section>
@@ -49,22 +51,28 @@ export default function AboutPage() {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
               <h2 className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
-                Our story.
+                Our engineering and investigative story.
               </h2>
               <p className="mt-5 text-gray-500 text-sm leading-relaxed max-w-lg">
-                Atlas was founded by a team of investigators, engineers, and
-                compliance specialists who saw the same problem across every
-                industry we served: background screening felt stuck in the past.
-                Opaque reports, slow turnarounds, and stitched-together tools
-                made it hard for hiring and leasing teams to move with
-                confidence.
+                Atlas Screening emerged from a clear industry frustration. Traditional
+                employment screening remained stuck in the past — hiring teams dealt
+                with clunky legacy software, slow turnaround times, and opaque
+                reporting. We recognized that managing background checks should not
+                require extensive manual effort or compromise the candidate experience.
               </p>
               <p className="mt-4 text-gray-500 text-sm leading-relaxed max-w-lg">
-                We set out to rebuild the workflow end-to-end — accurate
-                sourcing, AI-assisted verification, transparent reporting, and
-                a respectful candidate experience — in one platform. Every
-                report is calibrated against FCRA, EEOC, and state-level
-                requirements, so compliance is baked in rather than bolted on.
+                We rebuilt the entire screening workflow from the ground up to conceal
+                operational complexity behind a modern, intuitive interface. By
+                combining decades of investigative expertise with seamless software
+                automation, we deliver a platform that demands absolute minimal client
+                effort.
+              </p>
+              <p className="mt-4 text-gray-500 text-sm leading-relaxed max-w-lg">
+                You only need to submit an applicant name and an email address. Our
+                intelligent platform automatically manages secure applicant invitations,
+                biometric identity collection, and comprehensive legal verifications —
+                and every completed PDF report is natively aligned with Fair Credit
+                Reporting Act guidelines and federal compliance standards.
               </p>
             </div>
 
@@ -142,7 +150,7 @@ export default function AboutPage() {
             <path d="M7 7c-2.8 0-5 2.2-5 5v7h7v-7H4c0-1.7 1.3-3 3-3V7zm10 0c-2.8 0-5 2.2-5 5v7h7v-7h-5c0-1.7 1.3-3 3-3V7z" />
           </svg>
           <p className="mt-6 text-2xl md:text-3xl font-semibold text-[#01463A] leading-snug">
-            We believe hiring and leasing decisions should be <span className="text-[#058B74]">fast, fair, and defensible</span> — never a black box, and never at the cost of the person on the other side of the report.
+            Rapid turnaround times, without sacrificing <span className="text-[#058B74]">strict compliance and fairness</span> — background checks built on defensible trust.
           </p>
           <p className="mt-6 text-sm text-gray-500">
             — The Atlas Screening team

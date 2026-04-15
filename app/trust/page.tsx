@@ -9,8 +9,8 @@ const badges = [
 
 const pillars = [
   {
-    title: "FCRA compliance",
-    desc: "Every report follows Fair Credit Reporting Act requirements — consent, disclosures, adverse action workflow, and dispute resolution baked into the platform.",
+    title: "Native FCRA automation",
+    desc: "Mandated standalone disclosures and timestamped electronic authorization are enforced directly in the workflow — no manual steps, no missed notices.",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 2L4 5v7c0 5 3.5 9 8 10 4.5-1 8-5 8-10V5l-8-3z" />
@@ -19,8 +19,8 @@ const pillars = [
     ),
   },
   {
-    title: "SOC 2 Type II",
-    desc: "Continuously audited controls for security, availability, and confidentiality. Reports are available to qualified customers under NDA.",
+    title: "Two-step adverse action",
+    desc: "When a report returns actionable data, the system generates the pre-adverse notice, report copy, and final adverse action documentation automatically.",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
         <rect x="4" y="11" width="16" height="10" rx="2" />
@@ -29,8 +29,8 @@ const pillars = [
     ),
   },
   {
-    title: "Encrypted by default",
-    desc: "TLS 1.2+ in transit and AES-256 at rest. Tokenized applicant links, role-based access, and no shared credentials across customer environments.",
+    title: "EEOC & state adaptability",
+    desc: "Ban-the-box timing, individualized assessment context, and dynamic state filtering keep reports aligned with jurisdictional rules across all 50 states.",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 2a4 4 0 00-4 4v4h8V6a4 4 0 00-4-4z" />
@@ -39,8 +39,8 @@ const pillars = [
     ),
   },
   {
-    title: "Applicant rights",
-    desc: "Clear consent, a self-serve dispute workflow, and plain-language explanations of how data is used — applicant-first, not an afterthought.",
+    title: "Integrated dispute resolution",
+    desc: "A transparent, built-in workflow lets applicants challenge inaccurate public records directly with our compliance team — fulfilling your federal obligations.",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
         <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
@@ -49,8 +49,8 @@ const pillars = [
     ),
   },
   {
-    title: "Full audit trail",
-    desc: "Every report view, search, decision, and access event is logged with timestamp, actor, and source — exportable on request for your own audits.",
+    title: "Comprehensive action logging",
+    desc: "Every administrative action is tracked and recorded with immediate, exportable reporting — the paper trail your compliance officers require.",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
         <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
@@ -60,8 +60,8 @@ const pillars = [
     ),
   },
   {
-    title: "Continuous monitoring",
-    desc: "Vulnerability scanning, intrusion detection, and a 24/7 on-call security team. We disclose material incidents promptly and transparently.",
+    title: "Automated retention lifecycles",
+    desc: "We don't hold consumer data indefinitely. The system automatically archives and securely purges applicant files based on federal retention timelines.",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="9" />
@@ -73,43 +73,43 @@ const pillars = [
 
 const applicantRights = [
   {
-    title: "The right to know",
-    desc: "What information is in your file and how it was used to make a decision about you.",
+    title: "Mandated standalone disclosures",
+    desc: "Clear, legally compliant disclosure documents are delivered to candidates automatically before the submission process begins.",
   },
   {
-    title: "The right to dispute",
-    desc: "Any inaccurate or incomplete information — with a clear, trackable resolution workflow.",
+    title: "Timestamped electronic authorization",
+    desc: "Every candidate completes a secure, digitally timestamped consent workflow before any public record search initiates.",
   },
   {
-    title: "The right to be informed",
-    desc: "Written notice before adverse action, a copy of your report, and your FCRA rights summary.",
+    title: "Two-step adverse action support",
+    desc: "Pre-adverse action notice, consumer report copy, and final adverse action documentation are generated instantly when actionable data is returned.",
   },
   {
-    title: "The right to consent",
-    desc: "Explicit, informed consent before any report is run — never buried, never bundled.",
+    title: "Integrated dispute resolution",
+    desc: "A transparent, built-in workflow for applicants to challenge inaccurate public records directly with our compliance team.",
   },
 ];
 
 const faqs = [
   {
-    q: "Are your reports FCRA compliant?",
-    a: "Yes. We operate as a Consumer Reporting Agency (CRA) under the FCRA. Every report, workflow, and integration is designed to support the compliant use of consumer reports, including adverse-action requirements.",
+    q: "How does Atlas enforce FCRA compliance automatically?",
+    a: "Navigating the Fair Credit Reporting Act requires absolute precision. Our platform natively enforces federal guidelines inside the workflow — delivering mandated standalone disclosures, capturing timestamped electronic authorization, generating two-step adverse action documentation, and providing integrated dispute resolution.",
   },
   {
-    q: "How is applicant data protected?",
-    a: "Applicant data is encrypted in transit (TLS 1.2+) and at rest (AES-256). Access is tokenized and time-limited, with role-based controls and full audit logging. Infrastructure is SOC 2 Type II audited.",
+    q: "How does the platform adapt to EEOC and state-level rules?",
+    a: "Fair hiring practices extend beyond the FCRA. Our workflow supports ban-the-box timing, gives your HR team the reporting context needed for individualized assessments, and applies dynamic state filtering so reports adhere to local limitations such as salary history bans and criminal record timeframes in states like California and New York.",
   },
   {
-    q: "Can I request a SOC 2 report?",
-    a: "Yes. Qualified customers can request our latest SOC 2 Type II report under NDA. Reach out to security@atlasscreening.com.",
+    q: "How is candidate PII protected?",
+    a: "All candidate personally identifiable information is secured with advanced cryptographic protocols — encrypted in transit and at rest. Candidate entry portals operate strictly through secure, tokenized access links that expire automatically, and biometric uploads (government IDs, live selfies) sit entirely within secure server storage restricted from general administrative view.",
   },
   {
-    q: "What happens if there&apos;s a security incident?",
-    a: "We maintain an incident response plan with defined SLAs. Material incidents are disclosed to affected customers as required by law and best practice — we default to transparency.",
+    q: "Who can access completed consumer reports?",
+    a: "Role-based permissions let you restrict dashboard access exclusively to authorized hiring, legal, and leasing personnel. You control exactly who views sensitive consumer reports, and every administrative action is automatically tracked and exportable for compliance review.",
   },
   {
-    q: "Do you share data with third parties?",
-    a: "Only with authorized users on your account, vetted service providers under binding confidentiality agreements, and regulators where required by law. We never sell personal information.",
+    q: "How long is applicant data retained?",
+    a: "We do not hold consumer data indefinitely. Our system automatically manages the archiving and secure purging of applicant files based on federal data retention timelines.",
   },
 ];
 
@@ -126,11 +126,13 @@ export default function TrustPage() {
             Trust &amp; Compliance
           </p>
           <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight">
-            Compliance isn&apos;t a feature. It&apos;s the foundation.
+            Enterprise-grade security and FCRA compliance.
           </h1>
           <p className="mt-5 text-white/70 max-w-xl mx-auto text-sm leading-relaxed">
-            How Atlas protects your data, stays on the right side of the FCRA,
-            and gives every applicant a fair, transparent experience.
+            Protecting consumer data and maintaining strict legal adherence form the
+            absolute foundation of Atlas Screening. Our platform is engineered from the
+            ground up to meet the exact demands of federal, state, and local employment
+            laws.
           </p>
         </div>
       </section>
@@ -160,11 +162,12 @@ export default function TrustPage() {
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-14">
             <h2 className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
-              Six things we get right.
+              Compliance engineered into every layer.
             </h2>
             <p className="mt-5 text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
-              The guarantees our customers and applicants rely on every day — not
-              features we tacked on, but principles built into the platform.
+              In the highly regulated U.S. hiring market, we treat regulatory compliance
+              as a non-negotiable operational standard — these are the guarantees built
+              directly into the platform.
             </p>
           </div>
 
@@ -198,29 +201,30 @@ export default function TrustPage() {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
               <p className="text-xs font-semibold tracking-widest uppercase text-[#058B74] mb-3">
-                Security architecture
+                Cryptography & biometric security
               </p>
               <h2 className="text-3xl md:text-4xl font-bold text-[#01463A] leading-tight">
-                Built on modern, audited infrastructure.
+                Sensitive applicant data never sits exposed.
               </h2>
               <p className="mt-5 text-sm text-gray-500 leading-relaxed max-w-lg">
-                We run on SOC 2 Type II audited cloud infrastructure with network
-                segmentation, least-privilege IAM, and encrypted storage. Secrets
-                are managed through hardware-backed key stores and rotated on a
-                continuous schedule.
+                We secure all candidate Personally Identifiable Information using
+                advanced cryptographic protocols. All system data is protected by
+                enterprise-grade encryption in transit and at rest, guarding against
+                unauthorized interception.
               </p>
               <p className="mt-4 text-sm text-gray-500 leading-relaxed max-w-lg">
-                Every deploy passes automated security checks, and a 24/7 on-call
-                team monitors for anomalies, vulnerability disclosures, and
-                third-party advisories affecting our stack.
+                Candidate entry portals operate strictly through secure, tokenized
+                access links that expire automatically. Government-issued IDs and live
+                selfie verification data sit entirely within secure server storage and
+                are restricted from general administrative view.
               </p>
 
               <ul className="mt-8 space-y-3">
                 {[
-                  "TLS 1.2+ in transit, AES-256 at rest",
-                  "Tokenized applicant links, role-based access",
-                  "Continuous vulnerability scanning",
-                  "Documented incident response plan",
+                  "Enterprise-grade encryption in transit and at rest",
+                  "Tokenized applicant portals with auto-expiring links",
+                  "Biometric uploads stored on restricted-access servers",
+                  "Role-based permissions across all consumer reports",
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-3 text-sm text-[#01463A]">
                     <svg
@@ -291,14 +295,15 @@ export default function TrustPage() {
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-14">
             <p className="text-xs font-semibold tracking-widest uppercase text-[#058B74] mb-3">
-              Applicant Bill of Rights
+              FCRA automation
             </p>
             <h2 className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
-              Every applicant deserves these.
+              Native FCRA automation and adverse action management.
             </h2>
             <p className="mt-5 text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
-              Your rights under the FCRA and applicable state laws — and how we
-              make them real in every report we issue.
+              A single manual error can expose your business to significant litigation.
+              We simplify this complexity by natively enforcing federal guidelines
+              directly within your screening workflow.
             </p>
           </div>
 
@@ -340,11 +345,12 @@ export default function TrustPage() {
         <div className="mx-auto max-w-3xl">
           <div className="text-center mb-14">
             <h2 className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
-              Questions about trust.
+              Complete system auditing and access control.
             </h2>
             <p className="mt-5 text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
-              The most common compliance, security, and data-handling questions
-              we hear from security teams and legal reviewers.
+              Maintain absolute visibility over your entire screening program. Our
+              infrastructure provides the definitive paper trail required for internal
+              compliance reviews and external regulatory audits.
             </p>
           </div>
 

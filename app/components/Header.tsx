@@ -150,13 +150,19 @@ export default function Header({ solid = false }: { solid?: boolean }) {
   const menuTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
+    const check = () => {
+      const forced = document.body.classList.contains("force-header-solid");
       const threshold = isHome ? window.innerHeight - 100 : 80;
-      setScrolled(solid || window.scrollY > threshold);
+      setScrolled(solid || forced || window.scrollY > threshold);
     };
-    handleScroll();
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    check();
+    window.addEventListener("scroll", check);
+    const observer = new MutationObserver(check);
+    observer.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+    return () => {
+      window.removeEventListener("scroll", check);
+      observer.disconnect();
+    };
   }, [solid, isHome]);
 
   // Lock body scroll when menu is open

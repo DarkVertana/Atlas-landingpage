@@ -1,7 +1,7 @@
 const features = [
   {
-    title: "AI Risk Scoring",
-    desc: "Decision-ready risk scores calibrated against FCRA-compliant signals.",
+    title: "Timestamped FCRA Consent",
+    desc: "Automated authorization workflows aligned with Fair Credit Reporting Act guidelines.",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="9" />
@@ -10,8 +10,8 @@ const features = [
     ),
   },
   {
-    title: "Document Intelligence",
-    desc: "Automated ID verification with tamper and forgery detection.",
+    title: "Tokenized Candidate Access",
+    desc: "Applicant data stays private through secure, time-limited submission links.",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
         <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
@@ -21,8 +21,8 @@ const features = [
     ),
   },
   {
-    title: "Anomaly Detection",
-    desc: "ML flags identity and employment inconsistencies before review.",
+    title: "Encrypted Data Transmission",
+    desc: "Sensitive identification documents and selfie verifications stay protected end-to-end.",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
         <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
@@ -31,8 +31,8 @@ const features = [
     ),
   },
   {
-    title: "Continuous Monitoring",
-    desc: "Post-hire alerts the moment a new record or sanction appears.",
+    title: "Comprehensive Audit Logging",
+    desc: "Role-based access controls and complete tracking of every system action.",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
         <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9" />
@@ -50,12 +50,12 @@ export default function AIFeatures() {
           {/* Left — details */}
           <div>
             <h2 className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
-              AI built into every background check.
+              Non-negotiable security and compliance.
             </h2>
             <p className="mt-5 text-gray-500 text-sm leading-relaxed max-w-lg">
-              Machine learning runs quietly underneath every report — surfacing risk,
-              verifying documents, and catching anomalies so your team can make confident
-              decisions faster.
+              Protecting consumer data and maintaining legal adherence sit at the core of
+              our platform. We conceal operational complexity behind enterprise-grade
+              controls so your team can make safe, data-driven hiring decisions.
             </p>
 
             <ul className="mt-8 space-y-8">

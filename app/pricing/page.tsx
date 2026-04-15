@@ -86,7 +86,7 @@ const addOns = [
   },
   {
     name: "Credit report",
-    price: "$19.99",
+    price: "$39.99",
     desc: "For financial, fiduciary, and executive roles (permissible-purpose required).",
   },
   {
@@ -96,7 +96,7 @@ const addOns = [
   },
   {
     name: "Global watchlist",
-    price: "$14.99",
+    price: "$39.99",
     desc: "OFAC, sanctions, terror lists, and PEP screening.",
   },
   {
