@@ -12,7 +12,7 @@ const columns: { title: string; links: FooterLink[] }[] = [
     links: [
       { label: "Criminal Background Checks", href: "/services/criminal-background-checks" },
       { label: "Employment Verification", href: "/services/employment-verification" },
-      { label: "National Criminal Database", href: "/services" },
+      { label: "SSN Trace & Address History", href: "/services/ssn-trace" },
       { label: "Motor Vehicle Records", href: "/services/mvr" },
       { label: "Social Media Screening", href: "/services/social-media-screening" },
       { label: "Sex Offender Registry", href: "/services/sex-offender-registry" },
@@ -34,17 +34,17 @@ const columns: { title: string; links: FooterLink[] }[] = [
       { label: "Privacy Policy", href: "/privacy" },
       { label: "Terms of Service", href: "/terms" },
       { label: "FCRA Compliance", href: "/trust" },
-      { label: "Help Center", href: "/contact" },
       { label: "FAQ", href: "/faq" },
+      { label: "Dispute Resolution", href: "/contact" },
     ],
   },
   {
     title: "Connect",
     links: [
-      { label: "LinkedIn", href: "https://www.linkedin.com", external: true },
-      { label: "X (Twitter)", href: "https://x.com", external: true },
-      { label: "Facebook", href: "https://www.facebook.com", external: true },
-      { label: "Instagram", href: "https://www.instagram.com", external: true },
+      { label: "LinkedIn", href: "https://www.linkedin.com/company/atlas-screening", external: true },
+      { label: "X (Twitter)", href: "https://twitter.com/atlasscreening", external: true },
+      { label: "Facebook", href: "https://www.facebook.com/atlasscreening", external: true },
+      { label: "Instagram", href: "https://www.instagram.com/atlasscreening", external: true },
     ],
   },
 ];
