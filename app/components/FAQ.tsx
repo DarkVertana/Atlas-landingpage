@@ -1,3 +1,5 @@
+import Reveal from "./Reveal";
+
 const faqs = [
   {
     q: "How long does a background check take?",
@@ -27,25 +29,25 @@ const faqs = [
 
 export default function FAQ() {
   return (
-    <section id="faq" className="bg-white py-20 px-6">
+    <section id="faq" className="bg-white py-14 sm:py-20 px-4 sm:px-6">
       <div className="mx-auto max-w-3xl">
-        <div className="text-center mb-14">
-          <h2 className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
+        <div className="text-center mb-10 sm:mb-14">
+          <Reveal as="h2" className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
             Frequently asked questions.
-          </h2>
-          <p className="mt-5 text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
+          </Reveal>
+          <Reveal as="p" delay={100} className="mt-5 text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
             Answers to the most common questions about Atlas Screening — from turnaround times
             to compliance. Still stuck?{" "}
             <a href="/contact" className="text-[#058B74] font-semibold hover:underline">
               Get in touch
             </a>.
-          </p>
+          </Reveal>
         </div>
 
         <div className="space-y-3">
-          {faqs.map((faq) => (
+          {faqs.map((faq, i) => (
+            <Reveal key={faq.q} delay={i * 60}>
             <details
-              key={faq.q}
               className="group rounded-2xl border border-gray-200 bg-white hover:border-[#058B74]/40 hover:shadow-md hover:shadow-[#058B74]/5 open:border-[#058B74]/40 open:shadow-md open:shadow-[#058B74]/5 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden"
             >
               <summary className="flex items-center justify-between gap-4 cursor-pointer list-none px-6 py-5">
@@ -62,6 +64,7 @@ export default function FAQ() {
                 {faq.a}
               </div>
             </details>
+            </Reveal>
           ))}
         </div>
       </div>

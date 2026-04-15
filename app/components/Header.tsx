@@ -88,7 +88,7 @@ const resourcesMenu = {
       title: "Blog & educational content",
       items: [
         { label: "Blog", href: "/blog", desc: "Compliance updates, hiring tips, industry insights", icon: "blog" },
-        { label: "FAQ / Help center", href: "/help", desc: "Client FAQ and applicant FAQ sections", icon: "faq" },
+        { label: "FAQ / Help center", href: "/faq", desc: "Client FAQ and applicant FAQ sections", icon: "faq" },
       ],
     },
     {
@@ -185,7 +185,7 @@ export default function Header({ solid = false }: { solid?: boolean }) {
       <header
         className={`fixed top-0 left-0 right-0 z-50 px-6 transition-all duration-500 ease-in-out ${
           menuOpen
-            ? "bg-transparent backdrop-blur-none shadow-none"
+            ? "bg-[#01463A] shadow-none"
             : scrolled
               ? "bg-white backdrop-blur-md shadow-sm border-b border-gray-200/60"
               : "bg-transparent backdrop-blur-none shadow-none"
@@ -314,7 +314,7 @@ export default function Header({ solid = false }: { solid?: boolean }) {
             onMouseLeave={handleMenuLeave}
           >
             <div
-              className={`bg-white shadow-xl shadow-black/5 border border-gray-200/80 overflow-hidden w-[960px] ${
+              className={`bg-white shadow-xl shadow-black/5 border border-gray-200/80 overflow-hidden w-[min(960px,calc(100vw-2rem))] ${
                 scrolled ? "rounded-b-xl border-t-0" : "rounded-xl"
               }`}
             >
@@ -363,7 +363,7 @@ export default function Header({ solid = false }: { solid?: boolean }) {
           menuOpen ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0"
         }`}
       >
-        <div className="flex flex-col h-full px-6 pt-20 pb-10">
+        <div className="flex flex-col h-full overflow-y-auto overscroll-contain px-6 pt-20 pb-10">
           {/* Nav Links */}
           <nav className="flex flex-col gap-1 mt-8">
             {navLinks.map((link, i) => {

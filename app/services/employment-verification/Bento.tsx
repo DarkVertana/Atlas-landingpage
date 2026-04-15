@@ -15,7 +15,7 @@ const methods: Method[] = [
   {
     key: "phone",
     label: "Phone",
-    image: "/assets/images/Employment-verification.webp",
+    image: "https://images.pexels.com/photos/8204403/pexels-photo-8204403.jpeg?auto=compress&cs=tinysrgb&w=1200",
     headline: "Live-phone verifications with HR.",
     desc: "For employers without automated networks, our trained analysts call HR directly to confirm titles, employment dates, and reason for separation — every attempt timestamped and logged.",
     tags: ["Direct HR contact", "Multi-attempt logic", "Timestamped call notes"],
@@ -23,7 +23,7 @@ const methods: Method[] = [
   {
     key: "email",
     label: "Email",
-    image: "/assets/images/Ai-section.webp",
+    image: "https://images.pexels.com/photos/6279113/pexels-photo-6279113.jpeg?auto=compress&cs=tinysrgb&w=1200",
     headline: "Tracked email verifications.",
     desc: "Structured verification emails to authorized HR addresses — responses are parsed, validated, and attached to the report with a full delivery and response audit trail.",
     tags: ["Authorized-domain outreach", "Parsed structured response", "Delivery + read receipts"],
@@ -31,7 +31,7 @@ const methods: Method[] = [
   {
     key: "network",
     label: "Networks",
-    image: "/assets/images/call-center-agent-office-helping-customers-by-answering-questions.webp",
+    image: "https://images.pexels.com/photos/8062287/pexels-photo-8062287.jpeg?auto=compress&cs=tinysrgb&w=1200",
     headline: "Automated verification networks.",
     desc: "Where The Work Number, Equifax Workforce, or vendor HRIS integrations are available, we pull instant verification data — no manual outreach, no waiting.",
     tags: ["The Work Number", "HRIS integrations", "Instant turnaround"],
@@ -54,7 +54,7 @@ export default function Bento() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-6 md:auto-rows-[minmax(220px,auto)] gap-4">
       {/* Interactive method card (spans 2 rows, left) */}
-      <article className="md:col-span-3 md:row-span-2 relative overflow-hidden rounded-3xl group">
+      <article className="md:col-span-3 md:row-span-2 relative overflow-hidden rounded-3xl group h-[460px] md:h-auto">
         {methods.map((m) => (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -69,17 +69,17 @@ export default function Bento() {
         ))}
         <div className="absolute inset-0 bg-gradient-to-t from-[#01463A]/95 via-[#01463A]/45 to-transparent" />
 
-        <div className="absolute top-5 left-5 right-5 flex items-center justify-between gap-3">
-          <span className="inline-flex items-center bg-white/15 backdrop-blur-md border border-white/25 rounded-full px-3 py-1.5 text-[11px] font-semibold uppercase tracking-widest text-white">
+        <div className="absolute top-4 left-4 right-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5 sm:gap-3">
+          <span className="self-start inline-flex items-center bg-white/15 backdrop-blur-md border border-white/25 rounded-full px-3 py-1.5 text-[10px] sm:text-[11px] font-semibold uppercase tracking-widest text-white">
             Verification method
           </span>
-          <div className="flex items-center gap-1 bg-black/30 backdrop-blur-md border border-white/15 rounded-full p-1">
+          <div className="flex items-stretch gap-1 bg-black/30 backdrop-blur-md border border-white/15 rounded-full p-1 w-full sm:w-auto">
             {methods.map((m) => (
               <button
                 key={m.key}
                 onClick={() => setMethod(m.key)}
                 aria-pressed={m.key === active.key}
-                className={`px-3 py-1.5 rounded-full text-[11px] font-semibold transition-all ${
+                className={`flex-1 sm:flex-initial px-3 py-2 sm:py-1.5 rounded-full text-xs sm:text-[11px] font-semibold transition-all ${
                   m.key === active.key
                     ? "bg-white text-[#01463A]"
                     : "text-white/75 hover:text-white"

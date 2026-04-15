@@ -62,12 +62,18 @@ export default function HeroSection() {
           <div className="absolute inset-0 bg-black/60 backdrop-blur-[1px]" />
 
           {/* Hero Content */}
-          <div className="relative z-10 h-full flex items-end px-4 md:px-6 pb-20">
+          <div className="relative z-10 h-full flex items-end px-4 md:px-6 pb-14 sm:pb-20">
             <div className="mx-auto max-w-7xl w-full text-left">
-              <h1 className="text-3xl md:text-6xl font-bold tracking-tight text-white leading-tight">
-                Enterprise Background<br />Screening, Fully Automated.
+              <h1
+                className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight text-white leading-tight animate-hero-enter"
+                style={{ animationDelay: "100ms" }}
+              >
+                Enterprise Background<br className="hidden sm:inline" /> Screening, Fully Automated.
               </h1>
-              <p className="mt-6 text-base md:text-lg text-white/60 max-w-2xl leading-relaxed">
+              <p
+                className="mt-5 sm:mt-6 text-sm sm:text-base md:text-lg text-white/60 max-w-2xl leading-relaxed animate-hero-enter"
+                style={{ animationDelay: "300ms" }}
+              >
                 Accelerate your hiring pipeline with rigorous and FCRA-compliant
                 investigations. We combine deep investigative accuracy with seamless
                 platform automation to deliver definitive results without the

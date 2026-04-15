@@ -18,8 +18,8 @@ export default function TrustedBySection() {
   const allLogos = [...logos, ...logos];
 
   return (
-    <section className="relative bg-white pt-8 pb-20 overflow-hidden">
-      <div className="text-center mb-12">
+    <section className="relative bg-white pt-6 pb-14 sm:pt-8 sm:pb-20 overflow-hidden">
+      <div className="text-center mb-10 sm:mb-12">
         <p className="text-sm font-semibold tracking-widest uppercase text-gray-400">
           Trusted by leading companies worldwide
         </p>

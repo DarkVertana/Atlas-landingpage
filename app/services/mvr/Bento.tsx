@@ -15,7 +15,7 @@ const focuses: Focus[] = [
   {
     key: "standard",
     label: "Standard",
-    image: "/assets/images/Motor-vehicle-records.webp",
+    image: "https://images.pexels.com/photos/13781/pexels-photo-13781.jpeg?auto=compress&cs=tinysrgb&w=1200",
     headline: "Direct-from-DMV driving records.",
     desc: "Atlas queries state DMVs directly — not scraped aggregators. You get license status, class, violations, suspensions, and accident history straight from the authoritative source.",
     tags: ["Authoritative DMV source", "License class and status", "Violations + accidents"],
@@ -23,7 +23,7 @@ const focuses: Focus[] = [
   {
     key: "cdl",
     label: "CDL",
-    image: "/assets/images/Ai-section.webp",
+    image: "https://images.pexels.com/photos/27099096/pexels-photo-27099096.jpeg?auto=compress&cs=tinysrgb&w=1200",
     headline: "Commercial driver records, DOT-ready.",
     desc: "For CDL roles, Atlas surfaces endorsements, medical certifications, restrictions, and interstate driving eligibility — everything fleet compliance teams and DOT audits require.",
     tags: ["CDL endorsements", "Medical certifications", "DOT audit ready"],
@@ -31,7 +31,7 @@ const focuses: Focus[] = [
   {
     key: "monitoring",
     label: "Continuous",
-    image: "/assets/images/call-center-agent-office-helping-customers-by-answering-questions.webp",
+    image: "https://images.pexels.com/photos/7567486/pexels-photo-7567486.jpeg?auto=compress&cs=tinysrgb&w=1200",
     headline: "Continuous post-hire monitoring.",
     desc: "Turn on continuous monitoring and Atlas alerts you the moment a violation, suspension, or status change lands — catch risk before it ends up on the road.",
     tags: ["Real-time alerts", "Violation + suspension triggers", "Fleet-scale dashboard"],
@@ -54,7 +54,7 @@ export default function Bento() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-6 md:auto-rows-[minmax(220px,auto)] gap-4">
       {/* Interactive focus card (spans 2 rows, left) */}
-      <article className="md:col-span-3 md:row-span-2 relative overflow-hidden rounded-3xl group">
+      <article className="md:col-span-3 md:row-span-2 relative overflow-hidden rounded-3xl group h-[460px] md:h-auto">
         {focuses.map((f) => (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -69,17 +69,17 @@ export default function Bento() {
         ))}
         <div className="absolute inset-0 bg-gradient-to-t from-[#01463A]/95 via-[#01463A]/45 to-transparent" />
 
-        <div className="absolute top-5 left-5 right-5 flex items-center justify-between gap-3">
-          <span className="inline-flex items-center bg-white/15 backdrop-blur-md border border-white/25 rounded-full px-3 py-1.5 text-[11px] font-semibold uppercase tracking-widest text-white">
+        <div className="absolute top-4 left-4 right-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5 sm:gap-3">
+          <span className="self-start inline-flex items-center bg-white/15 backdrop-blur-md border border-white/25 rounded-full px-3 py-1.5 text-[10px] sm:text-[11px] font-semibold uppercase tracking-widest text-white">
             Report focus
           </span>
-          <div className="flex items-center gap-1 bg-black/30 backdrop-blur-md border border-white/15 rounded-full p-1">
+          <div className="flex items-stretch gap-1 bg-black/30 backdrop-blur-md border border-white/15 rounded-full p-1 w-full sm:w-auto">
             {focuses.map((f) => (
               <button
                 key={f.key}
                 onClick={() => setFocus(f.key)}
                 aria-pressed={f.key === active.key}
-                className={`px-3 py-1.5 rounded-full text-[11px] font-semibold transition-all ${
+                className={`flex-1 sm:flex-initial px-3 py-2 sm:py-1.5 rounded-full text-xs sm:text-[11px] font-semibold transition-all ${
                   f.key === active.key
                     ? "bg-white text-[#01463A]"
                     : "text-white/75 hover:text-white"

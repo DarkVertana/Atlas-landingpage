@@ -1,5 +1,6 @@
 import NumbersStrip from "../components/NumbersStrip";
 import HoverVideo from "../components/HoverVideo";
+import Reveal from "../components/Reveal";
 
 type DeepDiveStep = {
   num: string;
@@ -110,17 +111,17 @@ export default function HowItWorksPage() {
         <div className="absolute -bottom-32 -left-32 w-[32rem] h-[32rem] rounded-full bg-[#058B74]/30 blur-3xl pointer-events-none" />
 
         <div className="relative mx-auto max-w-4xl text-center">
-          <p className="text-xs font-semibold tracking-widest uppercase text-white/70 mb-4">
+          <Reveal as="p" className="text-xs font-semibold tracking-widest uppercase text-white/70 mb-4">
             How it works
-          </p>
-          <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight">
+          </Reveal>
+          <Reveal as="h1" delay={80} className="text-3xl md:text-5xl font-bold text-white leading-tight">
             The end-to-end background screening workflow.
-          </h1>
-          <p className="mt-5 text-white/70 max-w-xl mx-auto text-sm leading-relaxed">
+          </Reveal>
+          <Reveal as="p" delay={160} className="mt-5 text-white/70 max-w-xl mx-auto text-sm leading-relaxed">
             We engineered our platform to demand minimal client effort while delivering
             maximum visibility. Discover how we process complex background investigations
             efficiently and securely.
-          </p>
+          </Reveal>
         </div>
       </section>
 
@@ -137,7 +138,7 @@ export default function HowItWorksPage() {
                 }`}
               >
                 {/* Copy */}
-                <div>
+                <Reveal variant={reversed ? "right" : "left"}>
                   <p className="text-xs font-semibold tracking-widest uppercase text-[#058B74] mb-3">
                     {step.eyebrow}
                   </p>
@@ -172,10 +173,10 @@ export default function HowItWorksPage() {
                       </li>
                     ))}
                   </ul>
-                </div>
+                </Reveal>
 
                 {/* Image */}
-                <div className="relative">
+                <Reveal variant={reversed ? "left" : "right"} delay={120} className="relative">
                   <div
                     className={`relative overflow-hidden rounded-3xl border border-gray-200 bg-gradient-to-br ${step.gradient} aspect-[4/3] shadow-xl shadow-[#058B74]/15`}
                   >
@@ -204,7 +205,7 @@ export default function HowItWorksPage() {
 
                   <div className="absolute -bottom-6 -right-6 w-24 h-24 rounded-2xl bg-[#058B74]/15 -z-10" />
                   <div className="absolute -top-6 -left-6 w-20 h-20 rounded-2xl bg-[#01463A]/10 -z-10" />
-                </div>
+                </Reveal>
               </div>
             );
           })}
@@ -216,7 +217,7 @@ export default function HowItWorksPage() {
         <div className="mx-auto max-w-6xl">
           <div className="grid md:grid-cols-3 gap-5">
             {/* For employers */}
-            <div
+            <Reveal
               id="for-employers"
               className="scroll-mt-40 group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-7 hover:border-[#058B74]/40 hover:shadow-lg hover:shadow-[#058B74]/10 hover:-translate-y-1 transition-all duration-300 flex flex-col"
             >
@@ -261,11 +262,12 @@ export default function HowItWorksPage() {
                   <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </a>
-            </div>
+            </Reveal>
 
             {/* For property managers */}
-            <div
+            <Reveal
               id="for-property-managers"
+              delay={120}
               className="scroll-mt-40 group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-7 hover:border-[#058B74]/40 hover:shadow-lg hover:shadow-[#058B74]/10 hover:-translate-y-1 transition-all duration-300 flex flex-col"
             >
               <div className="w-12 h-12 rounded-xl bg-[#058B74]/10 text-[#058B74] flex items-center justify-center ring-1 ring-inset ring-[#058B74]/10 group-hover:bg-[#058B74] group-hover:text-white group-hover:ring-[#058B74] transition-all duration-300">
@@ -307,11 +309,12 @@ export default function HowItWorksPage() {
                   <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </a>
-            </div>
+            </Reveal>
 
             {/* For applicants */}
-            <div
+            <Reveal
               id="for-applicants"
+              delay={240}
               className="scroll-mt-40 group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-7 hover:border-[#058B74]/40 hover:shadow-lg hover:shadow-[#058B74]/10 hover:-translate-y-1 transition-all duration-300 flex flex-col"
             >
               <div className="w-12 h-12 rounded-xl bg-[#058B74]/10 text-[#058B74] flex items-center justify-center ring-1 ring-inset ring-[#058B74]/10 group-hover:bg-[#058B74] group-hover:text-white group-hover:ring-[#058B74] transition-all duration-300">
@@ -354,7 +357,7 @@ export default function HowItWorksPage() {
                   <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </a>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -366,19 +369,21 @@ export default function HowItWorksPage() {
       <section className="bg-white py-20 px-6">
         <div className="mx-auto max-w-3xl">
           <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
+            <Reveal as="h2" className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
               Questions about the flow.
-            </h2>
-            <p className="mt-5 text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
+            </Reveal>
+            <Reveal as="p" delay={80} className="mt-5 text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
               The most common things hiring and leasing teams want to know before
               running their first check.
-            </p>
+            </Reveal>
           </div>
 
           <div className="space-y-3">
-            {faqs.map((faq) => (
-              <details
+            {faqs.map((faq, i) => (
+              <Reveal
                 key={faq.q}
+                as="details"
+                delay={i * 60}
                 className="group rounded-2xl border border-gray-200 bg-white hover:border-[#058B74]/40 hover:shadow-md hover:shadow-[#058B74]/5 open:border-[#058B74]/40 open:shadow-md open:shadow-[#058B74]/5 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden"
               >
                 <summary className="flex items-center justify-between gap-4 cursor-pointer list-none px-6 py-5">
@@ -394,7 +399,7 @@ export default function HowItWorksPage() {
                 <div className="px-6 pb-5 -mt-1 text-sm text-gray-500 leading-relaxed">
                   {faq.a}
                 </div>
-              </details>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -403,7 +408,7 @@ export default function HowItWorksPage() {
       {/* Bottom CTA */}
       <section className="px-6 py-20 bg-white">
         <div className="mx-auto max-w-7xl">
-          <div className="relative overflow-hidden rounded-2xl px-8 md:px-16 py-10 md:py-14 flex items-center shadow-lg">
+          <Reveal variant="scale" className="relative overflow-hidden rounded-2xl px-8 md:px-16 py-10 md:py-14 flex items-center shadow-lg">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/assets/banner_cta.webp"
@@ -443,7 +448,7 @@ export default function HowItWorksPage() {
                 </a>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 

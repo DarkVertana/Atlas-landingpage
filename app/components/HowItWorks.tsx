@@ -1,3 +1,5 @@
+import Reveal from "./Reveal";
+
 const steps = [
   {
     num: "01",
@@ -64,29 +66,31 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="pt-20 pb-4 px-6 bg-[#01463A] overflow-hidden">
+    <section id="how-it-works" className="pt-14 sm:pt-20 pb-4 px-4 sm:px-6 bg-[#01463A] overflow-hidden">
       <div className="mx-auto max-w-6xl">
         {/* Header */}
-        <div className="text-center mb-20">
-          <p className="text-sm font-semibold tracking-widest uppercase text-[#058B74] mb-3">
+        <div className="text-center mb-14 sm:mb-20">
+          <Reveal as="p" className="text-sm font-semibold tracking-widest uppercase text-[#058B74] mb-3">
             Process
-          </p>
-          <h2 className="text-3xl md:text-5xl font-bold text-white">
+          </Reveal>
+          <Reveal as="h2" delay={80} className="text-3xl md:text-5xl font-bold text-white">
             How the Atlas workflow operates.
-          </h2>
-          <p className="mt-5 text-white/50 max-w-xl mx-auto text-sm leading-relaxed">
+          </Reveal>
+          <Reveal as="p" delay={160} className="mt-5 text-white/50 max-w-xl mx-auto text-sm leading-relaxed">
             Move candidates from an initial invitation to a completed report in a matter
             of days. We guide applicants through a secure, mobile-optimized process so
             you can hire and lease with total confidence.
-          </p>
+          </Reveal>
         </div>
 
         {/* Steps */}
         <div className="relative">
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-12 md:gap-0 relative z-10">
-            {steps.map((step) => (
-              <div
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 sm:gap-8 lg:gap-0 relative z-10">
+            {steps.map((step, i) => (
+              <Reveal
                 key={step.num}
+                delay={i * 100}
+                variant="scale"
                 className="group flex flex-col items-center text-center cursor-default"
               >
                 {/* Icon box */}
@@ -115,12 +119,12 @@ export default function HowItWorks() {
                 <p className="text-xs leading-relaxed max-w-[180px] text-white/50 line-clamp-2 transition-colors group-hover:text-white/70">
                   {step.desc}
                 </p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
 
-        <p className="mt-24 text-center text-[9px] leading-relaxed text-white/30">
+        <p className="mt-16 sm:mt-24 text-center text-[9px] leading-relaxed text-white/30">
           *All screenings are conducted in accordance with the Fair Credit Reporting Act (FCRA), EEOC, and applicable state laws.
           By using Atlas Screening you agree to our{" "}
           <a href="/terms" className="underline hover:text-white/60 transition-colors">Terms of Service</a>{" "}

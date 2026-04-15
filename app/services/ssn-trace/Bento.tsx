@@ -15,7 +15,7 @@ const sources: DataSource[] = [
   {
     key: "credit",
     label: "Credit headers",
-    image: "/assets/images/SSN-trace-&-address-history.webp",
+    image: "https://images.pexels.com/photos/10653886/pexels-photo-10653886.jpeg?auto=compress&cs=tinysrgb&w=1200",
     headline: "Credit header data from the big three.",
     desc: "Atlas pulls name, SSN, address, and date-of-birth headers from Experian, Equifax, and TransUnion — the deepest and most complete source of residential history in the U.S.",
     tags: ["Experian · Equifax · TransUnion", "7-year residential history", "Alias and AKA surfacing"],
@@ -23,7 +23,7 @@ const sources: DataSource[] = [
   {
     key: "public",
     label: "Public records",
-    image: "/assets/images/Ai-section.webp",
+    image: "https://images.pexels.com/photos/5669619/pexels-photo-5669619.jpeg?auto=compress&cs=tinysrgb&w=1200",
     headline: "Public records verified across jurisdictions.",
     desc: "Voter rolls, property deeds, court filings, and marriage records cross-reference the identity and fill gaps the credit bureaus miss — especially for renters and younger candidates.",
     tags: ["50-state coverage", "Deed and voter matches", "Litigation cross-check"],
@@ -31,7 +31,7 @@ const sources: DataSource[] = [
   {
     key: "utility",
     label: "Utility & telco",
-    image: "/assets/images/call-center-agent-office-helping-customers-by-answering-questions.webp",
+    image: "https://images.pexels.com/photos/20320345/pexels-photo-20320345.jpeg?auto=compress&cs=tinysrgb&w=1200",
     headline: "Utility and telecom footprints.",
     desc: "Phone, cable, and utility connections add the short-tenure addresses credit bureaus miss — catching move-ins from the last few months before they hit the credit file.",
     tags: ["Phone + email association", "Current-address signals", "Recent-move detection"],
@@ -54,7 +54,7 @@ export default function Bento() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-6 md:auto-rows-[minmax(220px,auto)] gap-4">
       {/* Interactive data-source card (spans 2 rows, left) */}
-      <article className="md:col-span-3 md:row-span-2 relative overflow-hidden rounded-3xl group">
+      <article className="md:col-span-3 md:row-span-2 relative overflow-hidden rounded-3xl group h-[460px] md:h-auto">
         {sources.map((s) => (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -69,17 +69,17 @@ export default function Bento() {
         ))}
         <div className="absolute inset-0 bg-gradient-to-t from-[#01463A]/95 via-[#01463A]/45 to-transparent" />
 
-        <div className="absolute top-5 left-5 right-5 flex items-center justify-between gap-3">
-          <span className="inline-flex items-center bg-white/15 backdrop-blur-md border border-white/25 rounded-full px-3 py-1.5 text-[11px] font-semibold uppercase tracking-widest text-white">
+        <div className="absolute top-4 left-4 right-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5 sm:gap-3">
+          <span className="self-start inline-flex items-center bg-white/15 backdrop-blur-md border border-white/25 rounded-full px-3 py-1.5 text-[10px] sm:text-[11px] font-semibold uppercase tracking-widest text-white">
             Data sources
           </span>
-          <div className="flex items-center gap-1 bg-black/30 backdrop-blur-md border border-white/15 rounded-full p-1">
+          <div className="flex items-stretch gap-1 bg-black/30 backdrop-blur-md border border-white/15 rounded-full p-1 w-full sm:w-auto">
             {sources.map((s) => (
               <button
                 key={s.key}
                 onClick={() => setSource(s.key)}
                 aria-pressed={s.key === active.key}
-                className={`px-3 py-1.5 rounded-full text-[11px] font-semibold transition-all ${
+                className={`flex-1 sm:flex-initial px-3 py-2 sm:py-1.5 rounded-full text-xs sm:text-[11px] font-semibold transition-all ${
                   s.key === active.key
                     ? "bg-white text-[#01463A]"
                     : "text-white/75 hover:text-white"

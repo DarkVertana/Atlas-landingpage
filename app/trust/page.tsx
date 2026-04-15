@@ -1,3 +1,5 @@
+import Reveal from "../components/Reveal";
+
 const badges = [
   { name: "FCRA", sub: "Compliant" },
   { name: "SOC 2", sub: "Type II" },
@@ -122,36 +124,38 @@ export default function TrustPage() {
         <div className="absolute -bottom-32 -left-32 w-[32rem] h-[32rem] rounded-full bg-[#058B74]/30 blur-3xl pointer-events-none" />
 
         <div className="relative mx-auto max-w-4xl text-center">
-          <p className="text-xs font-semibold tracking-widest uppercase text-white/70 mb-4">
+          <Reveal as="p" className="text-xs font-semibold tracking-widest uppercase text-white/70 mb-4">
             Trust &amp; Compliance
-          </p>
-          <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight">
+          </Reveal>
+          <Reveal as="h1" delay={80} className="text-3xl md:text-5xl font-bold text-white leading-tight">
             Enterprise-grade security and FCRA compliance.
-          </h1>
-          <p className="mt-5 text-white/70 max-w-xl mx-auto text-sm leading-relaxed">
+          </Reveal>
+          <Reveal as="p" delay={160} className="mt-5 text-white/70 max-w-xl mx-auto text-sm leading-relaxed">
             Protecting consumer data and maintaining strict legal adherence form the
             absolute foundation of Atlas Screening. Our platform is engineered from the
             ground up to meet the exact demands of federal, state, and local employment
             laws.
-          </p>
+          </Reveal>
         </div>
       </section>
 
       {/* Badges strip */}
       <section className="bg-white py-14 px-6 border-b border-gray-100">
         <div className="mx-auto max-w-6xl">
-          <p className="text-center text-xs font-semibold tracking-widest uppercase text-gray-400 mb-6">
+          <Reveal as="p" className="text-center text-xs font-semibold tracking-widest uppercase text-gray-400 mb-6">
             Certifications &amp; Frameworks
-          </p>
+          </Reveal>
           <div className="flex flex-wrap justify-center gap-4 md:gap-6">
-            {badges.map((b) => (
-              <div
+            {badges.map((b, i) => (
+              <Reveal
                 key={b.name}
+                delay={i * 60}
+                variant="scale"
                 className="flex flex-col items-center justify-center w-28 h-28 rounded-2xl border border-gray-200 hover:border-[#058B74]/30 hover:shadow-sm transition-all"
               >
                 <span className="text-lg font-bold text-[#01463A]">{b.name}</span>
                 <span className="text-[11px] text-gray-400 mt-0.5">{b.sub}</span>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -161,20 +165,21 @@ export default function TrustPage() {
       <section className="bg-white py-20 px-6">
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
+            <Reveal as="h2" className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
               Compliance engineered into every layer.
-            </h2>
-            <p className="mt-5 text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
+            </Reveal>
+            <Reveal as="p" delay={80} className="mt-5 text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
               In the highly regulated U.S. hiring market, we treat regulatory compliance
               as a non-negotiable operational standard — these are the guarantees built
               directly into the platform.
-            </p>
+            </Reveal>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {pillars.map((p) => (
-              <div
+            {pillars.map((p, i) => (
+              <Reveal
                 key={p.title}
+                delay={i * 80}
                 className="group relative overflow-hidden p-6 rounded-2xl border border-gray-200 bg-white hover:border-[#058B74]/40 hover:shadow-lg hover:shadow-[#058B74]/10 hover:-translate-y-1 transition-all duration-300"
               >
                 <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-[#058B74]/5 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -189,7 +194,7 @@ export default function TrustPage() {
                     {p.desc}
                   </p>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -199,7 +204,7 @@ export default function TrustPage() {
       <section className="bg-white py-20 px-6">
         <div className="mx-auto max-w-6xl">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div>
+            <Reveal variant="left">
               <p className="text-xs font-semibold tracking-widest uppercase text-[#058B74] mb-3">
                 Cryptography & biometric security
               </p>
@@ -244,9 +249,9 @@ export default function TrustPage() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </Reveal>
 
-            <div className="relative">
+            <Reveal variant="right" delay={120} className="relative">
               <div className="relative overflow-hidden rounded-3xl border border-gray-200 bg-gradient-to-br from-[#01463A] to-[#058B74] aspect-[4/3] shadow-xl shadow-[#058B74]/20">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -285,7 +290,7 @@ export default function TrustPage() {
                 </p>
                 <p className="text-xs text-gray-500 mt-0.5">Last 12 months</p>
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -294,23 +299,24 @@ export default function TrustPage() {
       <section className="bg-gradient-to-b from-white to-gray-50 py-20 px-6">
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-14">
-            <p className="text-xs font-semibold tracking-widest uppercase text-[#058B74] mb-3">
+            <Reveal as="p" className="text-xs font-semibold tracking-widest uppercase text-[#058B74] mb-3">
               FCRA automation
-            </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
+            </Reveal>
+            <Reveal as="h2" delay={80} className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
               Native FCRA automation and adverse action management.
-            </h2>
-            <p className="mt-5 text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
+            </Reveal>
+            <Reveal as="p" delay={160} className="mt-5 text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
               A single manual error can expose your business to significant litigation.
               We simplify this complexity by natively enforcing federal guidelines
               directly within your screening workflow.
-            </p>
+            </Reveal>
           </div>
 
           <div className="grid md:grid-cols-2 gap-5">
             {applicantRights.map((r, i) => (
-              <div
+              <Reveal
                 key={r.title}
+                delay={i * 90}
                 className="rounded-2xl border border-gray-200 bg-white p-6 hover:border-[#058B74]/40 hover:shadow-md hover:shadow-[#058B74]/5 transition-all duration-300"
               >
                 <div className="flex items-start gap-4">
@@ -322,11 +328,11 @@ export default function TrustPage() {
                     <p className="mt-1.5 text-sm text-gray-500 leading-relaxed">{r.desc}</p>
                   </div>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
 
-          <div className="mt-10 text-center">
+          <Reveal delay={220} className="mt-10 text-center">
             <a
               href="mailto:applicants@atlasscreening.com"
               className="inline-flex items-center gap-2 text-sm font-semibold text-[#058B74] hover:text-[#01463A] transition-colors"
@@ -336,7 +342,7 @@ export default function TrustPage() {
                 <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </a>
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -344,20 +350,22 @@ export default function TrustPage() {
       <section className="bg-white py-20 px-6">
         <div className="mx-auto max-w-3xl">
           <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
+            <Reveal as="h2" className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
               Complete system auditing and access control.
-            </h2>
-            <p className="mt-5 text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
+            </Reveal>
+            <Reveal as="p" delay={80} className="mt-5 text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
               Maintain absolute visibility over your entire screening program. Our
               infrastructure provides the definitive paper trail required for internal
               compliance reviews and external regulatory audits.
-            </p>
+            </Reveal>
           </div>
 
           <div className="space-y-3">
-            {faqs.map((faq) => (
-              <details
+            {faqs.map((faq, i) => (
+              <Reveal
                 key={faq.q}
+                as="details"
+                delay={i * 60}
                 className="group rounded-2xl border border-gray-200 bg-white hover:border-[#058B74]/40 hover:shadow-md hover:shadow-[#058B74]/5 open:border-[#058B74]/40 open:shadow-md open:shadow-[#058B74]/5 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden"
               >
                 <summary className="flex items-center justify-between gap-4 cursor-pointer list-none px-6 py-5">
@@ -373,7 +381,7 @@ export default function TrustPage() {
                 <div className="px-6 pb-5 -mt-1 text-sm text-gray-500 leading-relaxed">
                   {faq.a}
                 </div>
-              </details>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -382,7 +390,7 @@ export default function TrustPage() {
       {/* Bottom CTA */}
       <section className="px-6 py-20 bg-white">
         <div className="mx-auto max-w-7xl">
-          <div className="relative overflow-hidden rounded-2xl px-8 md:px-16 py-10 md:py-14 flex items-center shadow-lg">
+          <Reveal variant="scale" className="relative overflow-hidden rounded-2xl px-8 md:px-16 py-10 md:py-14 flex items-center shadow-lg">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/assets/banner_cta.webp"
@@ -422,7 +430,7 @@ export default function TrustPage() {
                 </a>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 

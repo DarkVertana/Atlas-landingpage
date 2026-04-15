@@ -1,3 +1,5 @@
+import Reveal from "../components/Reveal";
+
 type Post = {
   slug: string;
   title: string;
@@ -132,23 +134,23 @@ export default function BlogPage() {
         <div className="absolute -bottom-32 -left-32 w-[32rem] h-[32rem] rounded-full bg-[#058B74]/30 blur-3xl pointer-events-none" />
 
         <div className="relative mx-auto max-w-4xl text-center">
-          <p className="text-xs font-semibold tracking-widest uppercase text-white/70 mb-4">
+          <Reveal as="p" className="text-xs font-semibold tracking-widest uppercase text-white/70 mb-4">
             The Atlas Blog
-          </p>
-          <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight">
+          </Reveal>
+          <Reveal as="h1" delay={80} className="text-3xl md:text-5xl font-bold text-white leading-tight">
             Field notes on compliant screening.
-          </h1>
-          <p className="mt-5 text-white/70 max-w-xl mx-auto text-sm leading-relaxed">
+          </Reveal>
+          <Reveal as="p" delay={160} className="mt-5 text-white/70 max-w-xl mx-auto text-sm leading-relaxed">
             Compliance updates, hiring playbooks, and product deep-dives — written
             by the people who build and run Atlas every day.
-          </p>
+          </Reveal>
         </div>
       </section>
 
       {/* Filters */}
       <section className="bg-white py-10 px-6 border-b border-gray-100">
         <div className="mx-auto max-w-6xl">
-          <div className="flex flex-wrap justify-center gap-2">
+          <Reveal className="flex flex-wrap justify-center gap-2">
             {categories.map((c, i) => (
               <a
                 key={c}
@@ -162,7 +164,7 @@ export default function BlogPage() {
                 {c}
               </a>
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -170,9 +172,11 @@ export default function BlogPage() {
       <section id="all" className="bg-white py-20 px-6">
         <div className="mx-auto max-w-6xl">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {posts.map((post) => (
-              <a
+            {posts.map((post, i) => (
+              <Reveal
                 key={post.slug}
+                as="a"
+                delay={(i % 3) * 90}
                 href={`/blog/${post.slug}`}
                 className="group relative overflow-hidden rounded-2xl bg-white border border-gray-200 hover:border-[#058B74]/50 hover:shadow-xl hover:shadow-[#058B74]/10 hover:-translate-y-1 transition-all duration-300 text-left flex flex-col"
               >
@@ -208,26 +212,26 @@ export default function BlogPage() {
                     By {post.author}
                   </p>
                 </div>
-              </a>
+              </Reveal>
             ))}
           </div>
 
           {/* Load more */}
-          <div className="mt-14 flex justify-center">
+          <Reveal className="mt-14 flex justify-center">
             <button
               type="button"
               className="inline-flex items-center gap-2 border border-gray-200 text-[#01463A] px-6 py-3 rounded-xl text-sm font-semibold hover:border-[#058B74]/40 hover:bg-[#058B74]/5 hover:text-[#058B74] transition-all"
             >
               Load more posts
             </button>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* CTA */}
       <section className="px-6 py-20 bg-white">
         <div className="mx-auto max-w-7xl">
-          <div className="relative overflow-hidden rounded-2xl px-8 md:px-16 py-10 md:py-14 flex items-center shadow-lg">
+          <Reveal variant="scale" className="relative overflow-hidden rounded-2xl px-8 md:px-16 py-10 md:py-14 flex items-center shadow-lg">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/assets/banner_cta.webp"
@@ -266,7 +270,7 @@ export default function BlogPage() {
                 </button>
               </form>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 

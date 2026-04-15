@@ -1,3 +1,5 @@
+import Reveal from "./Reveal";
+
 const features = [
   {
     title: "Timestamped FCRA Consent",
@@ -44,11 +46,11 @@ const features = [
 
 export default function AIFeatures() {
   return (
-    <section className="bg-white py-20 px-6">
+    <section className="bg-white py-14 sm:py-20 px-4 sm:px-6">
       <div className="mx-auto max-w-6xl">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 items-center">
           {/* Left — details */}
-          <div>
+          <Reveal variant="left">
             <h2 className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
               Non-negotiable security and compliance.
             </h2>
@@ -59,8 +61,13 @@ export default function AIFeatures() {
             </p>
 
             <ul className="mt-8 space-y-8">
-              {features.map((f) => (
-                <li key={f.title} className="flex items-center gap-4 group">
+              {features.map((f, i) => (
+                <Reveal
+                  key={f.title}
+                  as="li"
+                  delay={200 + i * 80}
+                  className="flex items-center gap-4 group"
+                >
                   <div className="flex-shrink-0 text-[#058B74]">
                     {f.icon}
                   </div>
@@ -68,13 +75,13 @@ export default function AIFeatures() {
                     <h3 className="text-sm font-semibold text-[#01463A]">{f.title}</h3>
                     <p className="mt-1 text-sm text-gray-500 leading-relaxed">{f.desc}</p>
                   </div>
-                </li>
+                </Reveal>
               ))}
             </ul>
-          </div>
+          </Reveal>
 
           {/* Right — image */}
-          <div className="relative">
+          <Reveal variant="right" delay={120} className="relative">
             <div className="relative overflow-hidden rounded-3xl border border-gray-200 bg-gradient-to-br from-[#01463A] to-[#058B74] aspect-[4/5] shadow-xl shadow-[#058B74]/20">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -100,7 +107,7 @@ export default function AIFeatures() {
             </div>
 
             {/* Floating rating card */}
-            <div className="absolute bottom-8 -right-8 z-20 bg-white rounded-2xl shadow-xl shadow-[#01463A]/15 border border-gray-100 px-4 py-3 w-[180px]">
+            <div className="absolute bottom-4 right-4 sm:bottom-8 sm:-right-8 z-20 bg-white rounded-2xl shadow-xl shadow-[#01463A]/15 border border-gray-100 px-4 py-3 w-[160px] sm:w-[180px]">
               <div className="flex items-center gap-2">
                 <div className="flex items-center gap-0.5 text-[#f5a623]">
                   {[0, 1, 2, 3, 4].map((i) => (
@@ -123,9 +130,9 @@ export default function AIFeatures() {
             </div>
 
             {/* Decorative accents */}
-            <div className="absolute -bottom-10 right-8 w-24 h-24 rounded-2xl bg-[#058B74]/15 -z-10" />
-            <div className="absolute top-12 -right-8 w-28 h-28 rounded-3xl bg-[#01463A]/10 -z-10" />
-          </div>
+            <div className="hidden sm:block absolute -bottom-10 right-8 w-24 h-24 rounded-2xl bg-[#058B74]/15 -z-10 animate-float-slow" />
+            <div className="hidden sm:block absolute top-12 -right-8 w-28 h-28 rounded-3xl bg-[#01463A]/10 -z-10 animate-float-slow" style={{ animationDelay: "1.5s" }} />
+          </Reveal>
         </div>
       </div>
     </section>

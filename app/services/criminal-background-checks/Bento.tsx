@@ -15,7 +15,7 @@ const jurisdictions: Jurisdiction[] = [
   {
     key: "county",
     label: "County",
-    image: "/assets/images/Criminal-background-checks.webp",
+    image: "https://images.pexels.com/photos/15452110/pexels-photo-15452110.jpeg?auto=compress&cs=tinysrgb&w=1200",
     headline: "County court, direct from the source.",
     desc: "Atlas pulls records straight from the clerk's office in the counties your candidate has lived in — the gold standard for conviction accuracy.",
     tags: ["3,000+ county courts", "7-year lookback", "Disposition verified"],
@@ -23,7 +23,7 @@ const jurisdictions: Jurisdiction[] = [
   {
     key: "state",
     label: "Statewide",
-    image: "/assets/images/Ai-section.webp",
+    image: "https://images.pexels.com/photos/9102582/pexels-photo-9102582.jpeg?auto=compress&cs=tinysrgb&w=1200",
     headline: "Statewide criminal repositories.",
     desc: "Where state-level repositories exist, we search them for a broader view of a candidate's criminal history across every county in the state.",
     tags: ["All available state repos", "Name + DOB + SSN match", "Cross-county coverage"],
@@ -31,7 +31,7 @@ const jurisdictions: Jurisdiction[] = [
   {
     key: "federal",
     label: "Federal",
-    image: "/assets/images/call-center-agent-office-helping-customers-by-answering-questions.webp",
+    image: "https://images.pexels.com/photos/12504957/pexels-photo-12504957.jpeg?auto=compress&cs=tinysrgb&w=1200",
     headline: "All 94 U.S. federal districts.",
     desc: "Federal crimes — wire fraud, trafficking, white-collar — rarely appear in state databases. Atlas queries every federal district court in parallel.",
     tags: ["94 federal districts", "White-collar coverage", "PACER-sourced"],
@@ -55,7 +55,7 @@ export default function Bento() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-6 md:auto-rows-[minmax(220px,auto)] gap-4">
       {/* Interactive jurisdiction card (spans 2 rows, left) */}
-      <article className="md:col-span-3 md:row-span-2 relative overflow-hidden rounded-3xl group">
+      <article className="md:col-span-3 md:row-span-2 relative overflow-hidden rounded-3xl group h-[460px] md:h-auto">
         {jurisdictions.map((j) => (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -73,17 +73,17 @@ export default function Bento() {
         <div className="absolute inset-0 bg-gradient-to-t from-[#01463A]/95 via-[#01463A]/45 to-transparent" />
 
         {/* Top toggle */}
-        <div className="absolute top-5 left-5 right-5 flex items-center justify-between gap-3">
-          <span className="inline-flex items-center bg-white/15 backdrop-blur-md border border-white/25 rounded-full px-3 py-1.5 text-[11px] font-semibold uppercase tracking-widest text-white">
+        <div className="absolute top-4 left-4 right-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5 sm:gap-3">
+          <span className="self-start inline-flex items-center bg-white/15 backdrop-blur-md border border-white/25 rounded-full px-3 py-1.5 text-[10px] sm:text-[11px] font-semibold uppercase tracking-widest text-white">
             Court of record
           </span>
-          <div className="flex items-center gap-1 bg-black/30 backdrop-blur-md border border-white/15 rounded-full p-1">
+          <div className="flex items-stretch gap-1 bg-black/30 backdrop-blur-md border border-white/15 rounded-full p-1 w-full sm:w-auto">
             {jurisdictions.map((j) => (
               <button
                 key={j.key}
                 onClick={() => setJuris(j.key)}
                 aria-pressed={j.key === active.key}
-                className={`px-3 py-1.5 rounded-full text-[11px] font-semibold transition-all ${
+                className={`flex-1 sm:flex-initial px-3 py-2 sm:py-1.5 rounded-full text-xs sm:text-[11px] font-semibold transition-all ${
                   j.key === active.key
                     ? "bg-white text-[#01463A]"
                     : "text-white/75 hover:text-white"

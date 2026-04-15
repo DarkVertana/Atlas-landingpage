@@ -1,3 +1,5 @@
+import Reveal from "./Reveal";
+
 export default function AboutIntro() {
   const services = [
     {
@@ -41,31 +43,35 @@ export default function AboutIntro() {
     "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M3 2l0 16 4.2-3.8 2.6 6 2.7-1.2-2.6-6 5.5-.5z' fill='%23058B74' stroke='white' stroke-width='1.2' stroke-linejoin='round'/></svg>\") 2 2, auto";
 
   return (
-    <section className="bg-white py-20 px-6" style={{ cursor: themedCursor }}>
+    <section className="bg-white py-14 sm:py-20 px-4 sm:px-6" style={{ cursor: themedCursor }}>
       <div className="mx-auto max-w-6xl text-center">
-        <h2 className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
+        <Reveal as="h2" className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
           A unified platform for comprehensive screening.
-        </h2>
-        <p className="mt-5 text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
+        </Reveal>
+        <Reveal
+          as="p"
+          delay={100}
+          className="mt-5 text-gray-500 max-w-xl mx-auto text-sm leading-relaxed"
+        >
           Consolidate your entire verification process. Whether you are scaling a
           corporate workforce or managing real estate portfolios, our workflow delivers
           exactly what you need in one centralized dashboard.
-        </p>
+        </Reveal>
 
-        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-6">
+        <div className="mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4 sm:gap-6">
           {services.map((service, i) => {
             const placement =
               i < 3
-                ? "md:col-span-2"
+                ? "lg:col-span-2"
                 : i === 3
-                ? "md:col-span-2 md:col-start-2"
-                : "md:col-span-2";
+                ? "lg:col-span-2 lg:col-start-2"
+                : "lg:col-span-2";
             return (
-              <a
-                key={service.label}
-                href={service.href}
-                className={`group relative overflow-hidden rounded-2xl bg-white border border-gray-200 hover:border-[#058B74]/50 hover:shadow-xl hover:shadow-[#058B74]/10 hover:-translate-y-1 transition-all duration-300 text-left ${placement}`}
-              >
+              <Reveal key={service.label} delay={i * 80} className={placement}>
+                <a
+                  href={service.href}
+                  className="group relative overflow-hidden rounded-2xl bg-white border border-gray-200 hover:border-[#058B74]/50 hover:shadow-xl hover:shadow-[#058B74]/10 hover:-translate-y-1 transition-all duration-300 text-left block h-full"
+                >
                 <div className={`relative h-60 overflow-hidden bg-gradient-to-br ${service.gradient}`}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
@@ -83,7 +89,8 @@ export default function AboutIntro() {
                   </h3>
                   <p className="mt-1.5 text-sm text-gray-500">{service.desc}</p>
                 </div>
-              </a>
+                </a>
+              </Reveal>
             );
           })}
         </div>
