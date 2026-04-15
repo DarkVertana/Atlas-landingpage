@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Reveal from "../components/Reveal";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -24,16 +25,30 @@ export default function ContactPage() {
         <div className="absolute -bottom-32 -left-32 w-[32rem] h-[32rem] rounded-full bg-[#058B74]/30 blur-3xl pointer-events-none" />
 
         <div className="relative mx-auto max-w-4xl text-center">
-          <p className="text-xs font-semibold tracking-widest uppercase text-white/70 mb-4">
+          <Reveal
+            as="p"
+            variant="fade"
+            className="text-xs font-semibold tracking-widest uppercase text-white/70 mb-4"
+          >
             Contact Atlas
-          </p>
-          <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight">
+          </Reveal>
+          <Reveal
+            as="h1"
+            variant="up"
+            delay={100}
+            className="text-3xl md:text-5xl font-bold text-white leading-tight"
+          >
             Connect with Atlas screening experts.
-          </h1>
-          <p className="mt-5 text-white/70 max-w-xl mx-auto text-sm leading-relaxed">
+          </Reveal>
+          <Reveal
+            as="p"
+            variant="fade"
+            delay={200}
+            className="mt-5 text-white/70 max-w-xl mx-auto text-sm leading-relaxed"
+          >
             Whether you need a custom enterprise screening package or require technical
             support for an ongoing order, our team is ready to assist.
-          </p>
+          </Reveal>
         </div>
       </section>
 
@@ -41,8 +56,11 @@ export default function ContactPage() {
       <section className="bg-white py-20 px-6">
         <div className="mx-auto max-w-6xl">
           <div className="grid md:grid-cols-3 gap-5">
-            <a
+            <Reveal
+              as="a"
               href="mailto:sales@atlasscreening.com"
+              variant="up"
+              delay={0}
               className="group relative overflow-hidden p-6 rounded-2xl border border-gray-200 bg-white hover:border-[#058B74]/40 hover:shadow-lg hover:shadow-[#058B74]/10 hover:-translate-y-1 transition-all duration-300"
             >
               <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-[#058B74]/5 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -64,10 +82,13 @@ export default function ContactPage() {
                   integrations, and volume pricing tailored to your organization.
                 </p>
               </div>
-            </a>
+            </Reveal>
 
-            <a
+            <Reveal
+              as="a"
               href="/support"
+              variant="up"
+              delay={100}
               className="group text-left relative overflow-hidden p-6 rounded-2xl border border-gray-200 bg-white hover:border-[#058B74]/40 hover:shadow-lg hover:shadow-[#058B74]/10 hover:-translate-y-1 transition-all duration-300"
             >
               <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-[#058B74]/5 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -87,10 +108,13 @@ export default function ContactPage() {
                   navigation, billing questions, or specific screening status updates.
                 </p>
               </div>
-            </a>
+            </Reveal>
 
-            <a
+            <Reveal
+              as="a"
               href="/disputes"
+              variant="up"
+              delay={200}
               className="group relative overflow-hidden p-6 rounded-2xl border border-gray-200 bg-white hover:border-[#058B74]/40 hover:shadow-lg hover:shadow-[#058B74]/10 hover:-translate-y-1 transition-all duration-300"
             >
               <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-[#058B74]/5 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -111,7 +135,7 @@ export default function ContactPage() {
                   report, our compliance team will investigate promptly.
                 </p>
               </div>
-            </a>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -121,18 +145,18 @@ export default function ContactPage() {
         <div className="mx-auto max-w-6xl grid lg:grid-cols-2 gap-12 lg:gap-16">
           {/* Left — minimal */}
           <div className="lg:pr-8 lg:pt-4">
-            <p className="text-xs font-semibold tracking-[0.24em] uppercase text-[#058B74] mb-4">
+            <Reveal as="p" variant="fade" className="text-xs font-semibold tracking-[0.24em] uppercase text-[#058B74] mb-4">
               Say hello
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#01463A] leading-[1.1]">
+            </Reveal>
+            <Reveal as="h2" variant="left" delay={100} className="text-3xl md:text-4xl font-bold text-[#01463A] leading-[1.1]">
               Humans on <span className="text-[#058B74]">standby</span>.
-            </h2>
-            <p className="mt-5 text-sm text-gray-500 leading-relaxed max-w-md">
+            </Reveal>
+            <Reveal as="p" variant="fade" delay={200} className="mt-5 text-sm text-gray-500 leading-relaxed max-w-md">
               No form letters, no ticket queues. Share a few details and the right
               person on our team will pick it up — usually within the hour.
-            </p>
+            </Reveal>
 
-            <div className="relative mt-10">
+            <Reveal as="div" variant="right" delay={300} className="relative mt-10">
               <div className="relative overflow-hidden rounded-3xl border border-gray-200 bg-gradient-to-br from-[#01463A] to-[#058B74] aspect-[4/3] shadow-xl shadow-[#058B74]/20">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -161,11 +185,11 @@ export default function ContactPage() {
                   Mon–Fri · 8am–6pm PT
                 </p>
               </div>
-            </div>
+            </Reveal>
           </div>
 
           {/* Right — form in a box */}
-          <div className="rounded-2xl border border-gray-200 bg-white p-8 md:p-10 shadow-sm">
+          <Reveal as="div" variant="left" delay={150} className="rounded-2xl border border-gray-200 bg-white p-8 md:p-10 shadow-sm">
             {submitted ? (
               <div className="flex flex-col items-center justify-center text-center py-10">
                 <div className="w-14 h-14 rounded-2xl bg-[#058B74]/10 text-[#058B74] flex items-center justify-center ring-1 ring-inset ring-[#058B74]/10 mb-4">
@@ -229,14 +253,14 @@ export default function ContactPage() {
                 </p>
               </form>
             )}
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* Bottom CTA */}
       <section className="px-6 py-20 bg-white">
         <div className="mx-auto max-w-7xl">
-          <div className="relative overflow-hidden rounded-2xl px-8 md:px-16 py-10 md:py-14 flex items-center shadow-lg">
+          <Reveal as="div" variant="scale" delay={100} className="relative overflow-hidden rounded-2xl px-8 md:px-16 py-10 md:py-14 flex items-center shadow-lg">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/assets/banner_cta.webp"
@@ -251,17 +275,17 @@ export default function ContactPage() {
               }}
             />
             <div className="relative z-10 max-w-xl">
-              <p className="text-sm font-semibold tracking-widest uppercase text-white/50 mb-3">
+              <Reveal as="p" variant="fade" className="text-sm font-semibold tracking-widest uppercase text-white/50 mb-3">
                 Prefer to skip the form?
-              </p>
-              <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight">
+              </Reveal>
+              <Reveal as="h2" variant="up" delay={100} className="text-3xl md:text-4xl font-bold text-white leading-tight">
                 Start screening<br className="hidden md:block" /> in minutes.
-              </h2>
-              <p className="mt-4 text-white/60 text-base leading-relaxed max-w-md">
+              </Reveal>
+              <Reveal as="p" variant="fade" delay={200} className="mt-4 text-white/60 text-base leading-relaxed max-w-md">
                 Create an account and run your first check today. No contracts,
                 no setup fees.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-3">
+              </Reveal>
+              <Reveal as="div" variant="fade" delay={300} className="mt-6 flex flex-wrap gap-3">
                 <a
                   href="/signup"
                   className="inline-flex items-center gap-2 bg-white text-[#01463A] px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-white/90 transition-colors"
@@ -274,9 +298,9 @@ export default function ContactPage() {
                 >
                   Email sales
                 </a>
-              </div>
+              </Reveal>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
