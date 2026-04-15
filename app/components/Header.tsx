@@ -119,8 +119,8 @@ const pricingMenu = {
     {
       title: "Transparency extensions",
       items: [
-        { label: "What's included", href: "/pricing/whats-included", desc: "Detailed breakdown of every check in each tier", icon: "included" },
-        { label: "Compare plans", href: "/pricing/compare", desc: "Side-by-side: Basic vs Standard vs Premium", icon: "compare" },
+        { label: "What's included", href: "/pricing#whats-included", desc: "Detailed breakdown of every check in each tier", icon: "included" },
+        { label: "Compare plans", href: "/pricing#comparison", desc: "Side-by-side: Basic vs Standard vs Premium", icon: "compare" },
       ],
     },
   ],
