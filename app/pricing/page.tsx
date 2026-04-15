@@ -1,3 +1,7 @@
+"use client";
+
+import Reveal from "../components/Reveal";
+
 type Tier = {
   name: string;
   tagline: string;
@@ -152,16 +156,30 @@ export default function PricingPage() {
         <div className="absolute -bottom-32 -left-32 w-[32rem] h-[32rem] rounded-full bg-[#058B74]/30 blur-3xl pointer-events-none" />
 
         <div className="relative mx-auto max-w-4xl text-center">
-          <p className="text-xs font-semibold tracking-widest uppercase text-white/70 mb-4">
+          <Reveal
+            as="p"
+            variant="fade"
+            className="text-xs font-semibold tracking-widest uppercase text-white/70 mb-4"
+          >
             Pricing
-          </p>
-          <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight">
+          </Reveal>
+          <Reveal
+            as="h1"
+            variant="up"
+            delay={100}
+            className="text-3xl md:text-5xl font-bold text-white leading-tight"
+          >
             Transparent pay-as-you-go.
-          </h1>
-          <p className="mt-5 text-white/70 max-w-xl mx-auto text-sm leading-relaxed">
+          </Reveal>
+          <Reveal
+            as="p"
+            variant="fade"
+            delay={200}
+            className="mt-5 text-white/70 max-w-xl mx-auto text-sm leading-relaxed"
+          >
             Pick a tier, add what you need. No contracts, no setup fees — billed
             only when applicants complete a check.
-          </p>
+          </Reveal>
         </div>
       </section>
 
@@ -169,8 +187,11 @@ export default function PricingPage() {
       <section className="bg-white py-20 px-6">
         <div className="mx-auto max-w-6xl">
           <div className="grid md:grid-cols-3 gap-6">
-            {tiers.map((t) => (
-              <div
+            {tiers.map((t, i) => (
+              <Reveal
+                as="div"
+                variant="up"
+                delay={i * 100}
                 key={t.name}
                 className={`relative rounded-3xl p-8 flex flex-col transition-all duration-300 ${
                   t.highlight
@@ -255,7 +276,7 @@ export default function PricingPage() {
                 >
                   {t.cta}
                 </a>
-              </div>
+              </Reveal>
             ))}
           </div>
 
@@ -270,22 +291,25 @@ export default function PricingPage() {
       <section className="bg-gradient-to-b from-white to-gray-50 py-20 px-6">
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-14">
-            <p className="text-xs font-semibold tracking-widest uppercase text-[#058B74] mb-3">
+            <Reveal as="p" variant="fade" className="text-xs font-semibold tracking-widest uppercase text-[#058B74] mb-3">
               Add-ons
-            </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
+            </Reveal>
+            <Reveal as="h2" variant="up" delay={100} className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
               Add exactly what you need.
-            </h2>
-            <p className="mt-5 text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
+            </Reveal>
+            <Reveal as="p" variant="fade" delay={200} className="mt-5 text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
               Every add-on stacks on top of any tier. Mix and match — you&apos;re
               billed per add-on, only when an applicant completes it.
-            </p>
+            </Reveal>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-            {addOns.map((a) => (
-              <div
+            {addOns.map((a, i) => (
+              <Reveal
+                as="div"
                 key={a.name}
+                variant="up"
+                delay={i * 80}
                 className="rounded-2xl border border-gray-200 bg-white p-6 hover:border-[#058B74]/40 hover:shadow-md hover:shadow-[#058B74]/5 transition-all duration-300"
               >
                 <div className="flex items-baseline justify-between gap-2">
@@ -302,7 +326,7 @@ export default function PricingPage() {
                 <p className="mt-3 text-sm text-gray-500 leading-relaxed">
                   {a.desc}
                 </p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -312,15 +336,15 @@ export default function PricingPage() {
       <section className="bg-gray-50 py-12 px-6 border-y border-gray-200">
         <div className="mx-auto max-w-6xl">
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
-            <div className="text-center md:text-left flex-1">
+            <Reveal as="div" variant="left" className="text-center md:text-left flex-1">
               <p className="text-xs font-semibold tracking-widest uppercase text-[#058B74] mb-2">
                 Transparency extensions
               </p>
               <p className="text-sm text-gray-600">
                 Deep dive into pricing details and plan comparisons
               </p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+            </Reveal>
+            <Reveal as="div" variant="right" delay={100} className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
               <a
                 href="#comparison"
                 className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-white border border-gray-200 text-sm font-semibold text-[#01463A] hover:border-[#058B74]/40 hover:bg-white hover:shadow-sm transition-all"
@@ -343,7 +367,7 @@ export default function PricingPage() {
                   What's included
                 </span>
               </a>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -352,21 +376,24 @@ export default function PricingPage() {
       <section id="whats-included" className="bg-white py-20 px-6">
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-14">
-            <p className="text-xs font-semibold tracking-widest uppercase text-[#058B74] mb-3">
+            <Reveal as="p" variant="fade" className="text-xs font-semibold tracking-widest uppercase text-[#058B74] mb-3">
               What's included
-            </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
+            </Reveal>
+            <Reveal as="h2" variant="up" delay={100} className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
               Detailed breakdown of every check.
-            </h2>
-            <p className="mt-5 text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
+            </Reveal>
+            <Reveal as="p" variant="fade" delay={200} className="mt-5 text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
               See exactly what verification services and data points are included in each tier so you can make an informed decision.
-            </p>
+            </Reveal>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {tiers.map((tier) => (
-              <div
+            {tiers.map((tier, i) => (
+              <Reveal
+                as="div"
                 key={tier.name}
+                variant="up"
+                delay={i * 100}
                 className={`rounded-2xl p-8 border ${
                   tier.highlight
                     ? "bg-[#01463A] text-white border-[#058B74]/50 shadow-lg shadow-[#058B74]/15"
@@ -389,7 +416,7 @@ export default function PricingPage() {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -399,16 +426,16 @@ export default function PricingPage() {
       <section id="comparison" className="bg-white py-20 px-6">
         <div className="mx-auto max-w-5xl">
           <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
+            <Reveal as="h2" variant="up" className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
               Compare plans side-by-side.
-            </h2>
-            <p className="mt-5 text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
+            </Reveal>
+            <Reveal as="p" variant="fade" delay={100} className="mt-5 text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
               See exactly what&apos;s included in each tier so you can pick the
               right fit from day one.
-            </p>
+            </Reveal>
           </div>
 
-          <div className="overflow-hidden rounded-2xl border border-gray-200">
+          <Reveal as="div" variant="scale" delay={200} className="overflow-hidden rounded-2xl border border-gray-200">
             <table className="w-full text-sm">
               <thead>
                 <tr className="bg-gray-50/60 text-[11px] font-semibold uppercase tracking-widest text-gray-500">
@@ -437,7 +464,7 @@ export default function PricingPage() {
                 ))}
               </tbody>
             </table>
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -445,18 +472,21 @@ export default function PricingPage() {
       <section className="bg-white pb-20 px-6">
         <div className="mx-auto max-w-3xl">
           <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
+            <Reveal as="h2" variant="up" className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
               Pricing questions.
-            </h2>
-            <p className="mt-5 text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
+            </Reveal>
+            <Reveal as="p" variant="fade" delay={100} className="mt-5 text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
               Common questions about how billing and tiers work at Atlas.
-            </p>
+            </Reveal>
           </div>
 
           <div className="space-y-3">
-            {faqs.map((faq) => (
-              <details
+            {faqs.map((faq, i) => (
+              <Reveal
+                as="details"
                 key={faq.q}
+                variant="up"
+                delay={i * 80}
                 className="group rounded-2xl border border-gray-200 bg-white hover:border-[#058B74]/40 hover:shadow-md hover:shadow-[#058B74]/5 open:border-[#058B74]/40 open:shadow-md open:shadow-[#058B74]/5 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden"
               >
                 <summary className="flex items-center justify-between gap-4 cursor-pointer list-none px-6 py-5">
@@ -472,7 +502,7 @@ export default function PricingPage() {
                 <div className="px-6 pb-5 -mt-1 text-sm text-gray-500 leading-relaxed">
                   {faq.a}
                 </div>
-              </details>
+              </Reveal>
             ))}
           </div>
         </div>
