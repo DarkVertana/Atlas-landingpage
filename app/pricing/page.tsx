@@ -308,8 +308,95 @@ export default function PricingPage() {
         </div>
       </section>
 
+      {/* Transparency extensions nav */}
+      <section className="bg-gray-50 py-12 px-6 border-y border-gray-200">
+        <div className="mx-auto max-w-6xl">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
+            <div className="text-center md:text-left flex-1">
+              <p className="text-xs font-semibold tracking-widest uppercase text-[#058B74] mb-2">
+                Transparency extensions
+              </p>
+              <p className="text-sm text-gray-600">
+                Deep dive into pricing details and plan comparisons
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+              <a
+                href="#comparison"
+                className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-white border border-gray-200 text-sm font-semibold text-[#01463A] hover:border-[#058B74]/40 hover:bg-white hover:shadow-sm transition-all"
+              >
+                <span className="inline-flex items-center gap-2">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+                  </svg>
+                  Compare plans
+                </span>
+              </a>
+              <a
+                href="#whats-included"
+                className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-[#01463A] text-white text-sm font-semibold hover:bg-[#058B74] transition-colors"
+              >
+                <span className="inline-flex items-center gap-2">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  What's included
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* What's included section */}
+      <section id="whats-included" className="bg-white py-20 px-6">
+        <div className="mx-auto max-w-6xl">
+          <div className="text-center mb-14">
+            <p className="text-xs font-semibold tracking-widest uppercase text-[#058B74] mb-3">
+              What's included
+            </p>
+            <h2 className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
+              Detailed breakdown of every check.
+            </h2>
+            <p className="mt-5 text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
+              See exactly what verification services and data points are included in each tier so you can make an informed decision.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {tiers.map((tier) => (
+              <div
+                key={tier.name}
+                className={`rounded-2xl p-8 border ${
+                  tier.highlight
+                    ? "bg-[#01463A] text-white border-[#058B74]/50 shadow-lg shadow-[#058B74]/15"
+                    : "bg-gray-50 border-gray-200"
+                }`}
+              >
+                <h3 className={`text-lg font-bold ${tier.highlight ? "text-white" : "text-[#01463A]"}`}>
+                  {tier.name}
+                </h3>
+                <p className={`mt-1 text-sm ${tier.highlight ? "text-white/70" : "text-gray-600"}`}>
+                  {tier.tagline}
+                </p>
+                <ul className="mt-6 space-y-3">
+                  {tier.features.map((feature) => (
+                    <li key={feature} className={`flex items-start gap-3 text-sm ${tier.highlight ? "text-white/90" : "text-[#01463A]"}`}>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={tier.highlight ? "#0aa88a" : "#058B74"} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0 mt-0.5">
+                        <path d="M5 12l5 5 9-11" />
+                      </svg>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Comparison table */}
-      <section className="bg-white py-20 px-6">
+      <section id="comparison" className="bg-white py-20 px-6">
         <div className="mx-auto max-w-5xl">
           <div className="text-center mb-14">
             <h2 className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
