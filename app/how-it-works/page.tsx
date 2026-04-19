@@ -106,18 +106,18 @@ export default function HowItWorksPage() {
   return (
     <main className="bg-white text-[#01463A]">
       {/* Hero */}
-      <section className="relative pt-36 pb-20 px-6 overflow-hidden bg-gradient-to-b from-[#01463A] to-[#058B74]">
-        <div className="absolute -top-32 -right-32 w-[32rem] h-[32rem] rounded-full bg-[#0aa88a]/25 blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-32 -left-32 w-[32rem] h-[32rem] rounded-full bg-[#058B74]/30 blur-3xl pointer-events-none" />
+      <section className="relative pt-28 sm:pt-36 pb-14 sm:pb-20 px-4 sm:px-6 overflow-hidden bg-gradient-to-b from-[#01463A] to-[#058B74]">
+        <div className="absolute -top-32 -right-32 w-[20rem] sm:w-[32rem] h-[20rem] sm:h-[32rem] rounded-full bg-[#0aa88a]/25 blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-32 -left-32 w-[20rem] sm:w-[32rem] h-[20rem] sm:h-[32rem] rounded-full bg-[#058B74]/30 blur-3xl pointer-events-none" />
 
         <div className="relative mx-auto max-w-4xl text-center">
-          <Reveal as="p" className="text-xs font-semibold tracking-widest uppercase text-white/70 mb-4">
+          <Reveal as="p" className="text-[10px] sm:text-xs font-semibold tracking-widest uppercase text-white/70 mb-3 sm:mb-4">
             How it works
           </Reveal>
-          <Reveal as="h1" delay={80} className="text-3xl md:text-5xl font-bold text-white leading-tight">
+          <Reveal as="h1" delay={80} className="text-2xl sm:text-3xl md:text-5xl font-bold text-white leading-tight">
             The end-to-end background screening workflow.
           </Reveal>
-          <Reveal as="p" delay={160} className="mt-5 text-white/70 max-w-xl mx-auto text-sm leading-relaxed">
+          <Reveal as="p" delay={160} className="mt-4 sm:mt-5 text-white/70 max-w-xl mx-auto text-xs sm:text-sm leading-relaxed">
             We engineered our platform to demand minimal client effort while delivering
             maximum visibility. Discover how we process complex background investigations
             efficiently and securely.
@@ -126,36 +126,36 @@ export default function HowItWorksPage() {
       </section>
 
       {/* Deep-dive steps — alternating split */}
-      <section id="workflow" className="bg-white py-20 px-6 scroll-mt-40">
-        <div className="mx-auto max-w-6xl space-y-24">
+      <section id="workflow" className="bg-white py-14 sm:py-20 px-4 sm:px-6 scroll-mt-40">
+        <div className="mx-auto max-w-6xl space-y-16 sm:space-y-24">
           {deepDive.map((step, i) => {
             const reversed = i % 2 === 1;
             return (
               <div
                 key={step.num}
-                className={`grid lg:grid-cols-2 gap-10 lg:gap-16 items-center ${
+                className={`grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-16 items-center ${
                   reversed ? "lg:[&>div:first-child]:order-2" : ""
                 }`}
               >
                 {/* Copy */}
-                <Reveal variant={reversed ? "right" : "left"}>
-                  <p className="text-xs font-semibold tracking-widest uppercase text-[#058B74] mb-3">
+                <Reveal variant={reversed ? "right" : "left"} className="order-2 lg:order-none">
+                  <p className="text-[10px] sm:text-xs font-semibold tracking-widest uppercase text-[#058B74] mb-2 sm:mb-3">
                     {step.eyebrow}
                   </p>
-                  <div className="flex items-baseline gap-4">
-                    <span className="text-5xl md:text-6xl font-extrabold text-[#058B74]/15 leading-none">
+                  <div className="flex items-baseline gap-3 sm:gap-4">
+                    <span className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#058B74]/15 leading-none flex-shrink-0">
                       {step.num}
                     </span>
-                    <h2 className="text-2xl md:text-3xl font-bold text-[#01463A] leading-tight">
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#01463A] leading-tight">
                       {step.title}
                     </h2>
                   </div>
-                  <p className="mt-5 text-sm text-gray-500 leading-relaxed max-w-lg">
+                  <p className="mt-4 sm:mt-5 text-sm text-gray-500 leading-relaxed max-w-lg">
                     {step.desc.replace(/&apos;/g, "'")}
                   </p>
-                  <ul className="mt-6 space-y-3">
+                  <ul className="mt-5 sm:mt-6 space-y-2.5 sm:space-y-3">
                     {step.bullets.map((b) => (
-                      <li key={b} className="flex items-start gap-3 text-sm text-[#01463A]">
+                      <li key={b} className="flex items-start gap-2.5 sm:gap-3 text-sm text-[#01463A]">
                         <svg
                           width="18"
                           height="18"
@@ -176,9 +176,9 @@ export default function HowItWorksPage() {
                 </Reveal>
 
                 {/* Image */}
-                <Reveal variant={reversed ? "left" : "right"} delay={120} className="relative">
+                <Reveal variant={reversed ? "left" : "right"} delay={120} className="relative order-1 lg:order-none">
                   <div
-                    className={`relative overflow-hidden rounded-3xl border border-gray-200 bg-gradient-to-br ${step.gradient} aspect-[4/3] shadow-xl shadow-[#058B74]/15`}
+                    className={`relative overflow-hidden rounded-2xl sm:rounded-3xl border border-gray-200 bg-gradient-to-br ${step.gradient} aspect-[4/3] shadow-lg sm:shadow-xl shadow-[#058B74]/15`}
                   >
                     {step.video ? (
                       <HoverVideo
@@ -198,13 +198,13 @@ export default function HowItWorksPage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-[#01463A]/30 via-transparent to-transparent pointer-events-none" />
 
                     {/* Step badge */}
-                    <div className="absolute top-5 left-5 inline-flex items-center gap-2 bg-black/40 backdrop-blur-md border border-white/15 rounded-full px-3 py-1.5 text-[11px] font-semibold uppercase tracking-widest text-white">
+                    <div className="absolute top-3 sm:top-5 left-3 sm:left-5 inline-flex items-center gap-2 bg-black/40 backdrop-blur-md border border-white/15 rounded-full px-2.5 sm:px-3 py-1 sm:py-1.5 text-[10px] sm:text-[11px] font-semibold uppercase tracking-widest text-white">
                       Step {step.num}
                     </div>
                   </div>
 
-                  <div className="absolute -bottom-6 -right-6 w-24 h-24 rounded-2xl bg-[#058B74]/15 -z-10" />
-                  <div className="absolute -top-6 -left-6 w-20 h-20 rounded-2xl bg-[#01463A]/10 -z-10" />
+                  <div className="hidden sm:block absolute -bottom-6 -right-6 w-24 h-24 rounded-2xl bg-[#058B74]/15 -z-10" />
+                  <div className="hidden sm:block absolute -top-6 -left-6 w-20 h-20 rounded-2xl bg-[#01463A]/10 -z-10" />
                 </Reveal>
               </div>
             );
@@ -213,13 +213,13 @@ export default function HowItWorksPage() {
       </section>
 
       {/* Who it's for */}
-      <section className="bg-gradient-to-b from-white to-gray-50 py-20 px-6">
+      <section className="bg-gradient-to-b from-white to-gray-50 py-14 sm:py-20 px-4 sm:px-6">
         <div className="mx-auto max-w-6xl">
-          <div className="grid md:grid-cols-3 gap-5">
+          <div className="grid md:grid-cols-3 gap-4 sm:gap-5">
             {/* For employers */}
             <Reveal
               id="for-employers"
-              className="scroll-mt-40 group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-7 hover:border-[#058B74]/40 hover:shadow-lg hover:shadow-[#058B74]/10 hover:-translate-y-1 transition-all duration-300 flex flex-col"
+              className="scroll-mt-40 group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-5 sm:p-7 hover:border-[#058B74]/40 hover:shadow-lg hover:shadow-[#058B74]/10 hover:-translate-y-1 transition-all duration-300 flex flex-col"
             >
               <div className="w-12 h-12 rounded-xl bg-[#058B74]/10 text-[#058B74] flex items-center justify-center ring-1 ring-inset ring-[#058B74]/10 group-hover:bg-[#058B74] group-hover:text-white group-hover:ring-[#058B74] transition-all duration-300">
                 <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
@@ -268,7 +268,7 @@ export default function HowItWorksPage() {
             <Reveal
               id="for-property-managers"
               delay={120}
-              className="scroll-mt-40 group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-7 hover:border-[#058B74]/40 hover:shadow-lg hover:shadow-[#058B74]/10 hover:-translate-y-1 transition-all duration-300 flex flex-col"
+              className="scroll-mt-40 group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-5 sm:p-7 hover:border-[#058B74]/40 hover:shadow-lg hover:shadow-[#058B74]/10 hover:-translate-y-1 transition-all duration-300 flex flex-col"
             >
               <div className="w-12 h-12 rounded-xl bg-[#058B74]/10 text-[#058B74] flex items-center justify-center ring-1 ring-inset ring-[#058B74]/10 group-hover:bg-[#058B74] group-hover:text-white group-hover:ring-[#058B74] transition-all duration-300">
                 <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
@@ -315,7 +315,7 @@ export default function HowItWorksPage() {
             <Reveal
               id="for-applicants"
               delay={240}
-              className="scroll-mt-40 group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-7 hover:border-[#058B74]/40 hover:shadow-lg hover:shadow-[#058B74]/10 hover:-translate-y-1 transition-all duration-300 flex flex-col"
+              className="scroll-mt-40 group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-5 sm:p-7 hover:border-[#058B74]/40 hover:shadow-lg hover:shadow-[#058B74]/10 hover:-translate-y-1 transition-all duration-300 flex flex-col"
             >
               <div className="w-12 h-12 rounded-xl bg-[#058B74]/10 text-[#058B74] flex items-center justify-center ring-1 ring-inset ring-[#058B74]/10 group-hover:bg-[#058B74] group-hover:text-white group-hover:ring-[#058B74] transition-all duration-300">
                 <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
@@ -366,13 +366,13 @@ export default function HowItWorksPage() {
       <NumbersStrip />
 
       {/* Workflow FAQ */}
-      <section className="bg-white py-20 px-6">
+      <section className="bg-white py-14 sm:py-20 px-4 sm:px-6">
         <div className="mx-auto max-w-3xl">
-          <div className="text-center mb-14">
-            <Reveal as="h2" className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
+          <div className="text-center mb-10 sm:mb-14">
+            <Reveal as="h2" className="text-2xl sm:text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
               Questions about the flow.
             </Reveal>
-            <Reveal as="p" delay={80} className="mt-5 text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
+            <Reveal as="p" delay={80} className="mt-4 sm:mt-5 text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
               The most common things hiring and leasing teams want to know before
               running their first check.
             </Reveal>
@@ -386,17 +386,17 @@ export default function HowItWorksPage() {
                 delay={i * 60}
                 className="group rounded-2xl border border-gray-200 bg-white hover:border-[#058B74]/40 hover:shadow-md hover:shadow-[#058B74]/5 open:border-[#058B74]/40 open:shadow-md open:shadow-[#058B74]/5 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden"
               >
-                <summary className="flex items-center justify-between gap-4 cursor-pointer list-none px-6 py-5">
+                <summary className="flex items-center justify-between gap-3 sm:gap-4 cursor-pointer list-none px-4 sm:px-6 py-4 sm:py-5">
                   <span className="text-sm md:text-base font-semibold text-[#01463A] group-hover:text-[#058B74] group-open:text-[#058B74] transition-colors">
                     {faq.q}
                   </span>
-                  <span className="flex-shrink-0 w-9 h-9 rounded-xl bg-[#058B74]/10 text-[#058B74] flex items-center justify-center ring-1 ring-inset ring-[#058B74]/10 transition-all duration-300 group-open:rotate-45 group-open:bg-[#058B74] group-open:text-white group-open:ring-[#058B74]">
+                  <span className="flex-shrink-0 w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#058B74]/10 text-[#058B74] flex items-center justify-center ring-1 ring-inset ring-[#058B74]/10 transition-all duration-300 group-open:rotate-45 group-open:bg-[#058B74] group-open:text-white group-open:ring-[#058B74]">
                     <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                       <path d="M8 3v10M3 8h10" />
                     </svg>
                   </span>
                 </summary>
-                <div className="px-6 pb-5 -mt-1 text-sm text-gray-500 leading-relaxed">
+                <div className="px-4 sm:px-6 pb-4 sm:pb-5 -mt-1 text-sm text-gray-500 leading-relaxed">
                   {faq.a}
                 </div>
               </Reveal>
@@ -406,9 +406,9 @@ export default function HowItWorksPage() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="px-6 py-20 bg-white">
+      <section className="px-4 sm:px-6 py-14 sm:py-20 bg-white">
         <div className="mx-auto max-w-7xl">
-          <Reveal variant="scale" className="relative overflow-hidden rounded-2xl px-8 md:px-16 py-10 md:py-14 flex items-center shadow-lg">
+          <Reveal variant="scale" className="relative overflow-hidden rounded-2xl px-6 sm:px-8 md:px-16 py-8 sm:py-10 md:py-14 flex items-center shadow-lg">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/assets/banner_cta.webp"
@@ -423,26 +423,26 @@ export default function HowItWorksPage() {
               }}
             />
             <div className="relative z-10 max-w-xl">
-              <p className="text-sm font-semibold tracking-widest uppercase text-white/50 mb-3">
+              <p className="text-xs sm:text-sm font-semibold tracking-widest uppercase text-white/50 mb-2 sm:mb-3">
                 Ready when you are
               </p>
-              <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight">
                 Run your first check<br className="hidden md:block" /> in minutes.
               </h2>
-              <p className="mt-4 text-white/60 text-base leading-relaxed max-w-md">
+              <p className="mt-3 sm:mt-4 text-white/60 text-sm sm:text-base leading-relaxed max-w-md">
                 Create an account and invite your first applicant today. No
                 contracts, no setup fees.
               </p>
-              <div className="mt-6 flex flex-wrap gap-3">
+              <div className="mt-5 sm:mt-6 flex flex-wrap gap-3">
                 <a
                   href="/signup"
-                  className="inline-flex items-center gap-2 bg-white text-[#01463A] px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-white/90 transition-colors"
+                  className="inline-flex items-center gap-2 bg-white text-[#01463A] px-5 sm:px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-white/90 transition-colors"
                 >
                   Create account
                 </a>
                 <a
                   href="/contact"
-                  className="inline-flex items-center border border-white/30 text-white px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-white/10 transition-colors"
+                  className="inline-flex items-center border border-white/30 text-white px-5 sm:px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-white/10 transition-colors"
                 >
                   Talk to sales
                 </a>
