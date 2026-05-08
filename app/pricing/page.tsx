@@ -135,7 +135,7 @@ const faqs = [
   },
   {
     q: "Do you offer volume discounts?",
-    a: "Enterprise plans and custom volume pricing are available. Reach out to sales@atlasscreening.com for a tailored quote.",
+    a: "Enterprise plans and custom volume pricing are available. Reach out to Contact@Atlasscreening.com for a tailored quote.",
   },
   {
     q: "Are there setup fees?",

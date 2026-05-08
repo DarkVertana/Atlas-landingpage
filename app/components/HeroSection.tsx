@@ -1,12 +1,29 @@
 "use client";
 
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef, useCallback, useState } from "react";
+
+const FLIP_WORDS = ["Trust.", "Accuracy.", "Compliance."];
+const FLIP_INTERVAL = 2200; // ms per word
 
 export default function HeroSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const paddingRef = useRef<HTMLDivElement>(null);
   const innerRef = useRef<HTMLDivElement>(null);
   const rafId = useRef<number>(0);
+  const [wordIndex, setWordIndex] = useState(0);
+  const [animClass, setAnimClass] = useState("animate-flip-in");
+
+  // Flip words in a loop
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setAnimClass("animate-flip-out");
+      setTimeout(() => {
+        setWordIndex((prev) => (prev + 1) % FLIP_WORDS.length);
+        setAnimClass("animate-flip-in");
+      }, 400);
+    }, FLIP_INTERVAL);
+    return () => clearInterval(interval);
+  }, []);
 
   const updateStyles = useCallback(() => {
     if (!sectionRef.current || !paddingRef.current || !innerRef.current) return;
@@ -68,16 +85,19 @@ export default function HeroSection() {
                 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight text-white leading-tight animate-hero-enter"
                 style={{ animationDelay: "100ms" }}
               >
-                Enterprise Background<br className="hidden sm:inline" /> Screening, Fully Automated.
+                Background Screening,<br className="hidden sm:inline" /> Defined by{" "}
+                <span className="inline-block relative overflow-hidden align-bottom" style={{ minWidth: "4ch" }}>
+                  <span key={wordIndex} className={`inline-block text-[#0aa88a] ${animClass}`}>
+                    {FLIP_WORDS[wordIndex]}
+                  </span>
+                </span>
               </h1>
               <p
                 className="mt-5 sm:mt-6 text-sm sm:text-base md:text-lg text-white/60 max-w-2xl leading-relaxed animate-hero-enter"
                 style={{ animationDelay: "300ms" }}
               >
-                Accelerate your hiring pipeline with rigorous and FCRA-compliant
-                investigations. We combine deep investigative accuracy with seamless
-                platform automation to deliver definitive results without the
-                administrative friction.
+                Built for employers, property managers, and partners requiring
+                accurate, compliant, and timely background reports.
               </p>
             </div>
           </div>

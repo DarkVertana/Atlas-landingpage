@@ -1,10 +1,19 @@
 const sections = [
-  { id: "overview", title: "1. Overview" },
-  { id: "information-we-collect", title: "2. Information we collect and how we use it" },
-  { id: "sharing", title: "3. Strict rules on data sharing" },
-  { id: "retention", title: "4. Data retention guidelines" },
-  { id: "data-security", title: "5. Enterprise-grade data security" },
-  { id: "applicant-rights", title: "6. Your privacy rights and control" },
+  { id: "cra-status", title: "1. Consumer Reporting Agency Status" },
+  { id: "information-we-collect", title: "2. Information We Collect" },
+  { id: "how-we-use", title: "3. How We Use Information" },
+  { id: "permissible-purpose", title: "4. Permissible Purpose Requirement" },
+  { id: "sharing", title: "5. Information Sharing and Disclosure" },
+  { id: "data-security", title: "6. Data Security" },
+  { id: "retention", title: "7. Data Retention" },
+  { id: "consumer-rights", title: "8. Consumer Rights" },
+  { id: "disputes", title: "9. Disputes and Reinvestigation" },
+  { id: "accuracy", title: "10. Accuracy of Information" },
+  { id: "third-party", title: "11. Third-Party Services" },
+  { id: "childrens-privacy", title: "12. Children's Privacy" },
+  { id: "changes", title: "13. Changes to This Policy" },
+  { id: "governing-law", title: "14. Governing Law" },
+  { id: "contact", title: "15. Contact Information" },
 ];
 
 export default function PrivacyPage() {
@@ -23,10 +32,10 @@ export default function PrivacyPage() {
             Atlas Screening privacy policy.
           </h1>
           <p className="mt-5 text-white/70 max-w-xl mx-auto text-sm leading-relaxed">
-            Protecting personal information forms the foundation of our entire screening
-            platform. This policy provides complete transparency on how we collect,
-            secure, and manage data for both our business clients and the individual
-            applicants utilizing our system.
+            We are committed to protecting the privacy and security of personal
+            information. This Privacy Policy explains how we collect, use,
+            disclose, and safeguard information in connection with our background
+            screening services.
           </p>
           <p className="mt-6 text-xs uppercase tracking-widest text-white/40">
             Last updated · April 1, 2026
@@ -38,91 +47,206 @@ export default function PrivacyPage() {
       <section className="bg-white py-20 px-6">
         <div className="mx-auto max-w-6xl grid lg:grid-cols-[1fr_260px] gap-12 lg:gap-16 items-start">
           <article className="prose-legal min-w-0 space-y-12">
-            <LegalSection id="overview" title="1. Overview">
+            <LegalSection id="cra-status" title="1. Consumer Reporting Agency Status">
               <p>
-                Protecting personal information forms the foundation of our entire
-                screening platform. We designed this privacy policy to provide complete
-                transparency regarding how we collect, secure, and manage data for both
-                our business clients and the individual applicants utilizing our system.
+                Atlas Screening operates as a Consumer Reporting Agency (CRA) and
+                provides background screening services in accordance with the Fair
+                Credit Reporting Act (FCRA) and applicable state laws.
+              </p>
+              <p>
+                Our services are provided solely for permissible purposes as defined
+                under applicable law, including employment screening, tenant
+                screening, and other legally authorized uses.
               </p>
             </LegalSection>
 
-            <LegalSection id="information-we-collect" title="2. Information we collect and how we use it">
-              <p>
-                We gather personal data exclusively to conduct authorized background
-                investigations and manage active client accounts. We never collect
-                information outside of what is strictly necessary to perform these
-                functions.
-              </p>
+            <LegalSection id="information-we-collect" title="2. Information We Collect">
+              <h3 className="text-base font-semibold text-[#01463A] mt-2">A. Personal Identifiers</h3>
               <ul>
-                <li>
-                  <strong>Client account data:</strong> business contact details,
-                  billing information, and user credentials used to manage dashboard
-                  access and process smart payments.
-                </li>
-                <li>
-                  <strong>Applicant identifiers:</strong> candidate name, date of
-                  birth, recent address history, and Social Security Number required
-                  to conduct accurate background checks.
-                </li>
-                <li>
-                  <strong>Biometric verification:</strong> live selfie and government
-                  ID upload, used strictly for immediate identity verification to
-                  prevent matching errors and fraud.
-                </li>
+                <li>Full name</li>
+                <li>Date of birth</li>
+                <li>Social Security Number (full or partial)</li>
+                <li>Address history</li>
+                <li>Phone number</li>
+                <li>Email address</li>
+              </ul>
+
+              <h3 className="text-base font-semibold text-[#01463A] mt-6">B. Background Information</h3>
+              <ul>
+                <li>Criminal records</li>
+                <li>Public records</li>
+                <li>Employment history</li>
+                <li>Education verification</li>
+                <li>Identity verification data</li>
+              </ul>
+
+              <h3 className="text-base font-semibold text-[#01463A] mt-6">C. Technical Information</h3>
+              <ul>
+                <li>IP address</li>
+                <li>Browser type</li>
+                <li>Device information</li>
               </ul>
             </LegalSection>
 
-            <LegalSection id="sharing" title="3. Strict rules on data sharing">
+            <LegalSection id="how-we-use" title="3. How We Use Information">
+              <ul>
+                <li>Perform background screening services</li>
+                <li>Verify identity and personal history</li>
+                <li>Generate consumer reports</li>
+                <li>Comply with legal and regulatory requirements</li>
+                <li>Support dispute and reinvestigation processes</li>
+                <li>Improve service functionality and security</li>
+              </ul>
+            </LegalSection>
+
+            <LegalSection id="permissible-purpose" title="4. Permissible Purpose Requirement">
               <p>
-                We never sell your personal data. Your privacy remains our primary
-                concern throughout the screening workflow.
+                All background checks conducted by Atlas Screening are performed
+                only for permissible purposes under applicable law.
               </p>
+              <ul>
+                <li>Have a lawful purpose</li>
+                <li>Have obtained proper authorization</li>
+                <li>Will comply with all applicable laws</li>
+              </ul>
+            </LegalSection>
+
+            <LegalSection id="sharing" title="5. Information Sharing and Disclosure">
+              <h3 className="text-base font-semibold text-[#01463A] mt-2">A. Data Providers and Vendors</h3>
+              <ul>
+                <li>Criminal data providers</li>
+                <li>Court researchers</li>
+                <li>Verification services</li>
+                <li>Technology and processing partners</li>
+              </ul>
+
+              <h3 className="text-base font-semibold text-[#01463A] mt-6">B. Clients</h3>
+              <ul>
+                <li>Employers</li>
+                <li>Property managers</li>
+                <li>Authorized requestors</li>
+              </ul>
+
+              <h3 className="text-base font-semibold text-[#01463A] mt-6">C. Legal and Regulatory Authorities</h3>
               <p>
-                We only share applicant information with authorized third-party data
-                furnishers, federal and state court systems, and official verification
-                agencies. This data exchange occurs strictly to fulfill the requested
-                background check. Once the investigation concludes, the final consumer
-                report transmits securely and exclusively to the specific employer or
-                property manager who initiated the request.
+                When required by law, subpoena, or legal process.
+              </p>
+              <p className="mt-2">
+                <strong>We do not sell personal information for marketing purposes.</strong>
               </p>
             </LegalSection>
 
-            <LegalSection id="retention" title="4. Data retention guidelines">
-              <p>
-                We do not store your data indefinitely. We retain consumer and client
-                information only for the duration necessary to fulfill our service
-                agreements and comply with strict federal regulations, including the
-                Fair Credit Reporting Act. Once applicant data reaches the end of its
-                legally mandated retention lifecycle, our systems securely purge it from
-                our active servers.
+            <LegalSection id="data-security" title="6. Data Security">
+              <ul>
+                <li>Secure data transmission (encryption where appropriate)</li>
+                <li>Access controls and authentication</li>
+                <li>Monitoring and security practices</li>
+              </ul>
+              <p className="mt-4">
+                Despite these measures, no system can guarantee complete security.
               </p>
             </LegalSection>
 
-            <LegalSection id="data-security" title="5. Enterprise-grade data security">
+            <LegalSection id="retention" title="7. Data Retention">
               <p>
-                Protecting sensitive candidate data requires rigorous technical
-                infrastructure. We secure all personal information, including
-                identification documents and biometric inputs, behind enterprise-grade
-                encryption protocols.
-              </p>
-              <p>
-                Candidate data flows directly through secure, time-limited tokenized
-                access links. We store all files on protected servers and enforce
-                strict role-based authentication — ensuring only authorized personnel
-                within the requesting organization can view the completed consumer
-                files.
+                We retain personal information only as long as necessary to provide
+                services, comply with legal obligations, resolve disputes, and enforce
+                agreements. After this period, data is securely deleted or anonymized.
               </p>
             </LegalSection>
 
-            <LegalSection id="applicant-rights" title="6. Your privacy rights and control">
+            <LegalSection id="consumer-rights" title="8. Consumer Rights">
+              <ul>
+                <li>The right to request a copy of their report</li>
+                <li>The right to dispute inaccurate or incomplete information</li>
+                <li>The right to request correction or deletion where applicable</li>
+              </ul>
+            </LegalSection>
+
+            <LegalSection id="disputes" title="9. Disputes and Reinvestigation">
               <p>
-                We respect the privacy rights granted to you under federal and state
-                laws. Candidates retain the specific right to request access to their
-                screening files, dispute inaccurate findings on their consumer reports,
-                and understand exactly how their data informs hiring or leasing
-                decisions.
+                Consumers who believe information in a report is inaccurate may
+                submit a dispute.
               </p>
+              <ul>
+                <li>Initiate a reinvestigation</li>
+                <li>Review information with original sources</li>
+                <li>Correct or remove inaccurate data</li>
+                <li>Provide updated results when applicable</li>
+              </ul>
+              <p className="mt-4">
+                To submit a dispute, contact:{" "}
+                <a
+                  href="mailto:compliance@atlasscreening.com"
+                  className="text-[#058B74] underline hover:text-[#01463A] transition-colors"
+                >
+                  compliance@atlasscreening.com
+                </a>
+              </p>
+            </LegalSection>
+
+            <LegalSection id="accuracy" title="10. Accuracy of Information">
+              <p>
+                Information provided in background reports is obtained from
+                third-party sources. While we strive for accuracy, Atlas Screening
+                does not guarantee that all information is complete, current, or
+                error-free.
+              </p>
+            </LegalSection>
+
+            <LegalSection id="third-party" title="11. Third-Party Services">
+              <p>
+                Our services may involve third-party providers. We are not
+                responsible for the privacy practices of those third parties.
+              </p>
+            </LegalSection>
+
+            <LegalSection id="childrens-privacy" title="12. Children's Privacy">
+              <p>
+                Our services are not intended for individuals under the age of 18,
+                and we do not knowingly collect information from minors.
+              </p>
+            </LegalSection>
+
+            <LegalSection id="changes" title="13. Changes to This Policy">
+              <p>
+                We may update this Privacy Policy from time to time. Updates will be
+                posted on this page with a revised effective date.
+              </p>
+            </LegalSection>
+
+            <LegalSection id="governing-law" title="14. Governing Law">
+              <p>
+                This Privacy Policy is governed by the laws of the State of New
+                York, without regard to conflict of law principles.
+              </p>
+            </LegalSection>
+
+            <LegalSection id="contact" title="15. Contact Information">
+              <div className="space-y-2">
+                <p>
+                  <strong>Atlas Screening</strong>, New York, NY
+                </p>
+                <p>
+                  Email:{" "}
+                  <a
+                    href="mailto:contact@atlasscreening.com"
+                    className="text-[#058B74] underline hover:text-[#01463A] transition-colors"
+                  >
+                    contact@atlasscreening.com
+                  </a>
+                </p>
+                <p>
+                  Compliance:{" "}
+                  <a
+                    href="mailto:compliance@atlasscreening.com"
+                    className="text-[#058B74] underline hover:text-[#01463A] transition-colors"
+                  >
+                    compliance@atlasscreening.com
+                  </a>
+                </p>
+                <p>Phone: (917) 275-7712</p>
+              </div>
             </LegalSection>
           </article>
 
@@ -167,7 +291,7 @@ function LegalSection({
       <h2 className="text-xl md:text-2xl font-bold text-[#01463A] leading-tight">
         {title}
       </h2>
-      <div className="mt-4 space-y-4 text-sm text-gray-600 leading-relaxed [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-2 [&_strong]:text-[#01463A] [&_strong]:font-semibold">
+      <div className="mt-4 space-y-4 text-sm text-gray-600 leading-relaxed [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-2 [&_strong]:text-[#01463A] [&_strong]:font-semibold [&_h3]:text-base [&_h3]:font-semibold [&_h3]:text-[#01463A]">
         {children}
       </div>
     </section>

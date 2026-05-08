@@ -11,11 +11,11 @@ const columns: { title: string; links: FooterLink[] }[] = [
     title: "Services",
     links: [
       { label: "Criminal Background Checks", href: "/services/criminal-background-checks" },
+      { label: "Identity Verification", href: "/services/ssn-trace" },
       { label: "Employment Verification", href: "/services/employment-verification" },
-      { label: "SSN Trace & Address History", href: "/services/ssn-trace" },
-      { label: "Motor Vehicle Records", href: "/services/mvr" },
+      { label: "County Court Searches", href: "/services/criminal-background-checks" },
+      { label: "Tenant Screening", href: "/services/tenant-screening" },
       { label: "Social Media Screening", href: "/services/social-media-screening" },
-      { label: "Sex Offender Registry", href: "/services/sex-offender-registry" },
     ],
   },
   {
@@ -33,9 +33,10 @@ const columns: { title: string; links: FooterLink[] }[] = [
     links: [
       { label: "Privacy Policy", href: "/privacy" },
       { label: "Terms of Service", href: "/terms" },
-      { label: "FCRA Compliance", href: "/trust" },
       { label: "FAQ", href: "/faq" },
-      { label: "Dispute Resolution", href: "/contact" },
+      { label: "Dispute Resolution", href: "/dispute-resolution" },
+      { label: "Client Certification", href: "/client-certification" },
+      { label: "Compliance", href: "/compliance" },
     ],
   },
   {
@@ -65,10 +66,10 @@ export default function Footer() {
                 height={30}
               />
               <p className="mt-4 text-gray-500 text-sm leading-relaxed max-w-xs">
-                Atlas Screening delivers compliant, accurate background checks with secure reporting and strict adherence to FCRA and state laws.
+                Atlas Screening is a Consumer Reporting Agency (CRA) that provides background screening services in accordance with the Fair Credit Reporting Act (FCRA) and applicable state laws.
               </p>
-              <p className="mt-4 text-gray-500 text-sm">info@atlasscreening.com</p>
-              <p className="text-gray-500 text-sm">1-800-555-0199</p>
+              <p className="mt-4 text-gray-500 text-sm">Contact@atlasscreening.com</p>
+              <p className="text-gray-500 text-sm">(917) 275-7712</p>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:w-2/3">

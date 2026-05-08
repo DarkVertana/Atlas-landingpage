@@ -445,14 +445,14 @@ export default function ThreeDSections() {
                       <span className="text-[#058B74]">Trust</span>
                     </h2>
                     <p className="mt-6 text-gray-500 leading-relaxed max-w-lg md:ml-auto">
-                      Every report is backed by enterprise-grade security. SOC 2 Type II
+                      Every report is backed by compliant security practices. Strict protocols
                       certified, FCRA compliant, and end-to-end encrypted — so your
                       candidate data stays protected at every step.
                     </p>
                     <div className="mt-8 flex flex-wrap gap-6 md:justify-end">
                       {[
-                        { value: "SOC 2", label: "Type II Certified" },
                         { value: "FCRA", label: "Fully Compliant" },
+                        { value: "EEOC", label: "Guidelines" },
                         { value: "256-bit", label: "Encryption" },
                       ].map((stat) => (
                         <div key={stat.label}>

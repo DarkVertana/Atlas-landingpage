@@ -63,7 +63,7 @@ export default function CTASection() {
               Ready to Start<br className="hidden lg:block" /> Screening?
             </Reveal>
             <Reveal as="p" delay={160} className="mt-4 text-white/60 text-base leading-relaxed max-w-md">
-              Sign up today and get enterprise-grade background screening for
+              Sign up today and get compliant, accurate background screening for
               your organization.
             </Reveal>
             <Reveal delay={240} className="mt-6 flex flex-wrap gap-3">

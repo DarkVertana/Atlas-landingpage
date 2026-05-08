@@ -56,7 +56,7 @@ export default function AIFeatures() {
             </h2>
             <p className="mt-5 text-gray-500 text-sm leading-relaxed max-w-lg">
               Protecting consumer data and maintaining legal adherence sit at the core of
-              our platform. We conceal operational complexity behind enterprise-grade
+              our platform. We conceal operational complexity behind robust
               controls so your team can make safe, data-driven hiring decisions.
             </p>
 

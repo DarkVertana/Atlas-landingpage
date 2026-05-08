@@ -4,48 +4,60 @@ import Reveal from "../components/Reveal";
 
 const categories = [
   {
-    id: "employer-resources",
-    title: "Employer resources",
-    desc: "Dashboard, timelines, billing, and compliance.",
+    id: "general",
+    title: "General",
+    desc: "Services, compliance, and how Atlas Screening works.",
     faqs: [
       {
-        q: "How do I initiate a background check on a new candidate?",
-        a: "You only need to provide the candidate name and email address. Log into your centralized dashboard, select a predefined package or custom-built bundle, and enter those two details. The platform immediately dispatches a secure, time-limited invitation to your candidate to complete the data entry process.",
+        q: "What services does Atlas Screening provide?",
+        a: "Atlas Screening provides background screening services including:\n\n• Criminal background checks (national, state, county)\n• Identity verification (SSN trace and address history)\n• Employment verification\n• Tenant screening\n\nAll services are conducted in accordance with applicable laws and regulations.",
       },
       {
-        q: "How long does a standard background check take?",
-        a: "Most criminal background checks and SSN traces finalize within 24 hours. Complex investigative verifications — such as manual county court searches or employment verification — require two to three business days. You maintain clear status visibility for every candidate directly within your dashboard.",
+        q: "How long does a background check take?",
+        a: "Turnaround times vary depending on the type of search:\n\n• Instant database searches: Same day\n• County criminal searches: Typically 24–72 hours\n• Employment verification: 1–3 business days\n\nSome results may require additional verification depending on jurisdiction and data availability.",
       },
       {
-        q: "How does smart payment processing and billing work?",
-        a: "Automated billing triggers only when an applicant officially submits their authorized information. You never pay for incomplete invitations or dropped candidates. Base screening packages and optional add-ons — such as a $39.99 Global Watchlist or Tenant Screening check — feature transparent, upfront pricing.",
+        q: "Are background checks instant?",
+        a: "Some portions of a background check may return results quickly. However, complete reports may require additional verification and are not always instant. This ensures accuracy and compliance.",
       },
       {
-        q: "Is the Atlas platform fully FCRA compliant?",
-        a: "Yes. Compliance is a non-negotiable foundation for our entire system. The platform automatically captures timestamped applicant consent, provides all legally mandated disclosure documents, and generates fully branded, FCRA-compliant PDF reports for your final review.",
+        q: "Is Atlas Screening compliant with the law?",
+        a: "Yes. Atlas Screening operates in accordance with the Fair Credit Reporting Act and applicable state laws.\n\nWe follow procedures for:\n\n• Consumer authorization\n• Permissible purpose\n• Adverse action support\n• Dispute and reinvestigation",
+      },
+      {
+        q: "What is required before running a background check?",
+        a: "Clients must:\n\n• Have a lawful, permissible purpose\n• Obtain written authorization from the individual\n• Comply with all applicable laws",
+      },
+      {
+        q: "Does the individual being screened know about it?",
+        a: "Yes. Proper disclosure and authorization are required before any background check is conducted.",
       },
     ],
   },
   {
-    id: "applicant-resources",
-    title: "Applicant resources",
-    desc: "What to submit, how your data is protected, and your rights.",
+    id: "accuracy-privacy",
+    title: "Accuracy & Privacy",
+    desc: "Data protection, dispute rights, and report accuracy.",
     faqs: [
       {
-        q: "What information do I need to provide for my background check?",
-        a: "You must provide your electronic consent, Social Security Number, date of birth, and recent address history. Our secure mobile flow also requires you to upload a valid government ID and take a live selfie. This multi-step verification protects your identity and prevents matching errors during the public records search.",
+        q: "What happens if a report contains incorrect information?",
+        a: "Consumers have the right to dispute inaccurate or incomplete information.\n\nAtlas Screening will:\n\n• Conduct a reinvestigation\n• Verify information with original sources\n• Correct or remove inaccurate data\n\nTo submit a dispute: compliance@atlasscreening.com",
       },
       {
-        q: "Is my personal information and biometric data secure?",
-        a: "We protect your personal details using enterprise-grade encrypted document storage and transmission. You access the submission flow through a secure, time-limited tokenized link. Your data is strictly guarded by role-based access controls and is only shared with the specific employer requesting the report.",
+        q: "Are background reports guaranteed to be accurate?",
+        a: "Atlas Screening obtains data from third-party sources, including public records. While we strive for accuracy, we do not guarantee that all information is complete, current, or error-free.",
       },
       {
-        q: "Why does the system require a selfie and ID upload?",
-        a: "Uploading a government ID and taking a live selfie proves that the person submitting the background check is actually you. This critical step protects your identity from fraud and ensures the resulting background report is highly accurate.",
+        q: "How is personal information protected?",
+        a: "We use reasonable administrative and technical safeguards to protect personal information, including secure handling and access controls.",
       },
       {
-        q: "How do I dispute a finding on my completed report?",
-        a: "You hold the right to challenge any inaccurate public records under the Fair Credit Reporting Act. If you find an error on your completed screening report, you can initiate a formal review directly through our dedicated compliance team.",
+        q: "Can reports be used for any purpose?",
+        a: "No. Reports may only be used for lawful, permissible purposes such as employment or tenant screening. Unauthorized use is strictly prohibited.",
+      },
+      {
+        q: "Do you offer contracts or subscriptions?",
+        a: "Atlas Screening offers flexible, pay-per-report services. Custom arrangements may be available for higher volume clients.",
       },
     ],
   },
@@ -73,7 +85,7 @@ export default function FAQPage() {
             delay={100}
             className="text-3xl md:text-5xl font-bold text-white leading-tight"
           >
-            Atlas help center and frequently asked questions.
+            Frequently asked questions.
           </Reveal>
           <Reveal
             as="p"
@@ -81,9 +93,8 @@ export default function FAQPage() {
             delay={200}
             className="mt-5 text-white/70 max-w-xl mx-auto text-sm leading-relaxed"
           >
-            Find immediate answers regarding screening timelines, platform billing, and
-            candidate data security. We designed this resource hub to provide complete
-            transparency for both hiring teams and job applicants.
+            Find answers about our screening services, turnaround times, compliance
+            practices, and how we protect your information.
           </Reveal>
         </div>
       </section>
@@ -130,7 +141,7 @@ export default function FAQPage() {
                           </svg>
                         </span>
                       </summary>
-                      <div className="px-6 pb-5 -mt-1 text-sm text-gray-500 leading-relaxed">
+                      <div className="px-6 pb-5 -mt-1 text-sm text-gray-500 leading-relaxed whitespace-pre-line">
                         {faq.a}
                       </div>
                     </Reveal>
@@ -169,10 +180,10 @@ export default function FAQPage() {
               <ul className="space-y-2.5 text-sm">
                 <li>
                   <a
-                    href="/resources/background-check-guide"
+                    href="/terms"
                     className="flex items-center justify-between text-[#01463A] hover:text-[#058B74] transition-colors"
                   >
-                    Background check guide
+                    Terms of service
                     <svg width="12" height="12" viewBox="0 0 16 16" fill="none" className="text-gray-300">
                       <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
@@ -180,10 +191,21 @@ export default function FAQPage() {
                 </li>
                 <li>
                   <a
-                    href="/resources/fcra-guide"
+                    href="/privacy"
                     className="flex items-center justify-between text-[#01463A] hover:text-[#058B74] transition-colors"
                   >
-                    FCRA compliance guide
+                    Privacy policy
+                    <svg width="12" height="12" viewBox="0 0 16 16" fill="none" className="text-gray-300">
+                      <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/compliance"
+                    className="flex items-center justify-between text-[#01463A] hover:text-[#058B74] transition-colors"
+                  >
+                    Trust & compliance
                     <svg width="12" height="12" viewBox="0 0 16 16" fill="none" className="text-gray-300">
                       <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
@@ -194,18 +216,7 @@ export default function FAQPage() {
                     href="/pricing"
                     className="flex items-center justify-between text-[#01463A] hover:text-[#058B74] transition-colors"
                   >
-                    Pricing &amp; packages
-                    <svg width="12" height="12" viewBox="0 0 16 16" fill="none" className="text-gray-300">
-                      <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/trust"
-                    className="flex items-center justify-between text-[#01463A] hover:text-[#058B74] transition-colors"
-                  >
-                    Trust &amp; compliance
+                    Pricing & packages
                     <svg width="12" height="12" viewBox="0 0 16 16" fill="none" className="text-gray-300">
                       <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
@@ -217,16 +228,15 @@ export default function FAQPage() {
         </div>
       </section>
 
-      {/* Still stuck callout */}
+      {/* Contact callout */}
       <section className="bg-white pb-20 px-6">
         <div className="mx-auto max-w-3xl">
           <Reveal as="div" variant="scale" delay={100} className="rounded-2xl border border-gray-200 bg-gray-50/60 p-8 md:p-10 text-center">
             <Reveal as="h3" variant="up" className="text-xl md:text-2xl font-bold text-[#01463A]">
-              Didn&apos;t find what you were looking for?
+              Didn't find what you were looking for?
             </Reveal>
             <Reveal as="p" variant="fade" delay={100} className="mt-3 text-sm text-gray-500 max-w-lg mx-auto leading-relaxed">
-              Our support team usually replies in under an hour during business days —
-              with a real person, never a form letter.
+              Reach out to our team and we'll get back to you as soon as possible.
             </Reveal>
             <Reveal as="div" variant="fade" delay={200} className="mt-6 flex flex-wrap justify-center gap-3">
               <a
@@ -236,59 +246,12 @@ export default function FAQPage() {
                 Contact support
               </a>
               <a
-                href="mailto:hello@atlasscreening.com"
+                href="mailto:Contact@Atlasscreening.com"
                 className="inline-flex items-center border border-gray-200 text-[#01463A] px-6 py-3 rounded-xl text-sm font-semibold hover:bg-white hover:border-[#058B74]/40 transition-colors"
               >
-                hello@atlasscreening.com
+                Contact@Atlasscreening.com
               </a>
             </Reveal>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* Bottom CTA */}
-      <section className="px-6 py-20 bg-white">
-        <div className="mx-auto max-w-7xl">
-          <Reveal as="div" variant="scale" delay={100} className="relative overflow-hidden rounded-2xl px-8 md:px-16 py-10 md:py-14 flex items-center shadow-lg">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/assets/banner_cta.webp"
-              alt=""
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            <div
-              className="absolute inset-0"
-              style={{
-                background:
-                  "linear-gradient(to top right, #01463A 30%, transparent 100%)",
-              }}
-            />
-            <div className="relative z-10 max-w-xl">
-              <Reveal as="p" variant="fade" className="text-sm font-semibold tracking-widest uppercase text-white/50 mb-3">
-                Ready when you are
-              </Reveal>
-              <Reveal as="h2" variant="up" delay={100} className="text-3xl md:text-4xl font-bold text-white leading-tight">
-                Start screening<br className="hidden md:block" /> in minutes.
-              </Reveal>
-              <Reveal as="p" variant="fade" delay={200} className="mt-4 text-white/60 text-base leading-relaxed max-w-md">
-                Create an account and run your first check today. No contracts,
-                no setup fees.
-              </Reveal>
-              <Reveal as="div" variant="fade" delay={300} className="mt-6 flex flex-wrap gap-3">
-                <a
-                  href="/signup"
-                  className="inline-flex items-center gap-2 bg-white text-[#01463A] px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-white/90 transition-colors"
-                >
-                  Create account
-                </a>
-                <a
-                  href="mailto:sales@atlasscreening.com"
-                  className="inline-flex items-center border border-white/30 text-white px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-white/10 transition-colors"
-                >
-                  Email sales
-                </a>
-              </Reveal>
-            </div>
           </Reveal>
         </div>
       </section>

@@ -1,26 +1,10 @@
 import Reveal from "./Reveal";
 
 const stats = [
-  {
-    value: "99.8%",
-    label: "Report accuracy",
-    detail: "Multi-source verification",
-  },
-  {
-    value: "24hr",
-    label: "Avg. turnaround",
-    detail: "Most reports delivered same-day",
-  },
-  {
-    value: "10K+",
-    label: "Screenings completed",
-    detail: "Across employers & property managers",
-  },
-  {
-    value: "500+",
-    label: "Businesses onboarded",
-    detail: "From staffing to healthcare",
-  },
+  { value: "Compliant", detail: "FCRA & state law adherence" },
+  { value: "Accurate", detail: "Multi-source verification" },
+  { value: "Timely", detail: "Prompt report delivery" },
+  { value: "Trusted", detail: "Employers & property managers" },
 ];
 
 export default function NumbersStrip() {
@@ -33,7 +17,7 @@ export default function NumbersStrip() {
       <div className="relative mx-auto max-w-6xl grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-4 sm:gap-x-6 md:gap-12">
         {stats.map((stat, i) => (
           <Reveal
-            key={stat.label}
+            key={stat.value}
             delay={i * 120}
             variant="scale"
             className={`text-center px-2 sm:px-4 ${
@@ -43,8 +27,7 @@ export default function NumbersStrip() {
             <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-none">
               {stat.value}
             </p>
-            <p className="mt-3 text-sm font-semibold text-white">{stat.label}</p>
-            <p className="mt-1 text-[11px] text-white/50 leading-relaxed">{stat.detail}</p>
+            <p className="mt-2 text-[11px] text-white/50 leading-relaxed">{stat.detail}</p>
           </Reveal>
         ))}
       </div>
