@@ -3,6 +3,7 @@ import HeroSection from "./components/HeroSection";
 import AboutIntro from "./components/AboutIntro";
 import HowItWorks from "./components/HowItWorks";
 import AIFeatures from "./components/AIFeatures";
+import DashboardPreview from "./components/DashboardPreview";
 import NumbersStrip from "./components/NumbersStrip";
 import FAQ from "./components/FAQ";
 import CTASection from "./components/CTASection";
@@ -16,6 +17,7 @@ export default function Home() {
       <AboutIntro />
       <HowItWorks />
       <AIFeatures />
+      <DashboardPreview />
       <NumbersStrip />
 
       {/* Consumer Disputes & Reinvestigation */}
@@ -147,7 +149,7 @@ export default function Home() {
                     title: "Compliance-focused reporting",
                     desc: "Every report is produced within the bounds of FCRA and applicable state regulations.",
                   },
-                ].map((item, i) => (
+                ].map((item) => (
                   <div
                     key={item.title}
                     className="flex items-start gap-4 border-l-2 border-white/20 pl-5"

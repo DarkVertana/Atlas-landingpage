@@ -3,6 +3,7 @@ import CTASection from "../../components/CTASection";
 import ServicePricing from "../../components/ServicePricing";
 import Reveal from "../../components/Reveal";
 import Bento from "./Bento";
+import ProductShowcase from "../../components/ProductShowcase";
 
 export const metadata: Metadata = {
   title: "Criminal Background Checks | Atlas Screening",
@@ -148,6 +149,25 @@ export default function CriminalBackgroundChecksPage() {
           </Reveal>
         </div>
       </section>
+
+      <ProductShowcase
+        eyebrow="In the product"
+        title="Every search,"
+        highlight="tracked to disposition."
+        description="Order county, state, and federal searches in one flow, then watch each jurisdiction clear in real time — no phone calls, no chasing courts."
+        bullets={[
+          "Live status for every court searched",
+          "FCRA & EEOC filters applied automatically",
+          "Downloadable, adjudication-ready reports",
+        ]}
+        image="/assets/app/screenings.png"
+        imageAlt="Atlas Screening criminal check dashboard"
+        badges={[
+          { label: "Criminal record — Clear", tone: "clear", position: "-top-4 -left-4" },
+          { label: "County court verified", tone: "info", position: "top-1/2 -right-5" },
+          { label: "Report ready", tone: "clear", position: "-bottom-4 left-10" },
+        ]}
+      />
 
       <ServicePricing />
 

@@ -3,6 +3,7 @@ import CTASection from "../../components/CTASection";
 import ServicePricing from "../../components/ServicePricing";
 import Reveal from "../../components/Reveal";
 import Bento from "./Bento";
+import ProductShowcase from "../../components/ProductShowcase";
 
 export const metadata: Metadata = {
   title: "Employment Verification | Atlas Screening",
@@ -153,6 +154,26 @@ export default function EmploymentVerificationPage() {
           </Reveal>
         </div>
       </section>
+
+      <ProductShowcase
+        eyebrow="In the product"
+        title="Verified work history,"
+        highlight="delivered fast."
+        description="Atlas contacts past employers directly to confirm titles, dates, and eligibility — then drops a clean report straight into your dashboard."
+        bullets={[
+          "Direct employer outreach, tracked end-to-end",
+          "Titles, dates & separation reasons confirmed",
+          "Reports you can download and share in a click",
+        ]}
+        image="/assets/app/reports.png"
+        imageAlt="Atlas Screening employment verification reports"
+        reversed
+        badges={[
+          { label: "Employment verified", tone: "clear", position: "-top-4 -right-4" },
+          { label: "3 employers contacted", tone: "info", position: "top-1/2 -left-5" },
+          { label: "Report ready", tone: "clear", position: "-bottom-4 right-10" },
+        ]}
+      />
 
       <ServicePricing />
 

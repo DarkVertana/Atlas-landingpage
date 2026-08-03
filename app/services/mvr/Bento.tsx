@@ -15,7 +15,7 @@ const focuses: Focus[] = [
   {
     key: "standard",
     label: "Standard",
-    image: "https://images.pexels.com/photos/13781/pexels-photo-13781.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    image: "/assets/services/mvr-1.jpg",
     headline: "Direct-from-DMV driving records.",
     desc: "Atlas queries state DMVs directly — not scraped aggregators. You get license status, class, violations, suspensions, and accident history straight from the authoritative source.",
     tags: ["Authoritative DMV source", "License class and status", "Violations + accidents"],
@@ -23,7 +23,7 @@ const focuses: Focus[] = [
   {
     key: "cdl",
     label: "CDL",
-    image: "https://images.pexels.com/photos/27099096/pexels-photo-27099096.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    image: "/assets/services/mvr-2.jpg",
     headline: "Commercial driver records, DOT-ready.",
     desc: "For CDL roles, Atlas surfaces endorsements, medical certifications, restrictions, and interstate driving eligibility — everything fleet compliance teams and DOT audits require.",
     tags: ["CDL endorsements", "Medical certifications", "DOT audit ready"],
@@ -31,7 +31,7 @@ const focuses: Focus[] = [
   {
     key: "monitoring",
     label: "Continuous",
-    image: "https://images.pexels.com/photos/7567486/pexels-photo-7567486.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    image: "/assets/services/mvr-3.jpg",
     headline: "Continuous post-hire monitoring.",
     desc: "Turn on continuous monitoring and Atlas alerts you the moment a violation, suspension, or status change lands — catch risk before it ends up on the road.",
     tags: ["Real-time alerts", "Violation + suspension triggers", "Fleet-scale dashboard"],

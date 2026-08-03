@@ -15,7 +15,7 @@ const jurisdictions: Jurisdiction[] = [
   {
     key: "county",
     label: "County",
-    image: "https://images.pexels.com/photos/15452110/pexels-photo-15452110.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    image: "/assets/services/criminal-background-checks-1.jpg",
     headline: "County court, direct from the source.",
     desc: "Atlas pulls records straight from the clerk's office in the counties your candidate has lived in — the gold standard for conviction accuracy.",
     tags: ["3,000+ county courts", "7-year lookback", "Disposition verified"],
@@ -23,7 +23,7 @@ const jurisdictions: Jurisdiction[] = [
   {
     key: "state",
     label: "Statewide",
-    image: "https://images.pexels.com/photos/9102582/pexels-photo-9102582.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    image: "/assets/services/criminal-background-checks-2.jpg",
     headline: "Statewide criminal repositories.",
     desc: "Where state-level repositories exist, we search them for a broader view of a candidate's criminal history across every county in the state.",
     tags: ["All available state repos", "Name + DOB + SSN match", "Cross-county coverage"],
@@ -31,7 +31,7 @@ const jurisdictions: Jurisdiction[] = [
   {
     key: "federal",
     label: "Federal",
-    image: "https://images.pexels.com/photos/12504957/pexels-photo-12504957.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    image: "/assets/services/criminal-background-checks-3.jpg",
     headline: "All 94 U.S. federal districts.",
     desc: "Federal crimes — wire fraud, trafficking, white-collar — rarely appear in state databases. Atlas queries every federal district court in parallel.",
     tags: ["94 federal districts", "White-collar coverage", "PACER-sourced"],

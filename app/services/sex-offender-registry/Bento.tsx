@@ -15,7 +15,7 @@ const scopes: Scope[] = [
   {
     key: "state",
     label: "State",
-    image: "https://images.pexels.com/photos/14911092/pexels-photo-14911092.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    image: "/assets/services/sex-offender-registry-1.jpg",
     headline: "Every state registry, searched in parallel.",
     desc: "Atlas queries all 50 state sex offender registries in a single pass — name, alias, and date-of-birth matching logic runs across every public list without skipping jurisdictions.",
     tags: ["50 state registries", "Name + DOB matching", "Alias logic built-in"],
@@ -23,7 +23,7 @@ const scopes: Scope[] = [
   {
     key: "national",
     label: "NSOPW",
-    image: "https://images.pexels.com/photos/1202723/pexels-photo-1202723.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    image: "/assets/services/sex-offender-registry-2.jpg",
     headline: "U.S. DOJ National Sex Offender Public Website.",
     desc: "The NSOPW federal database aggregates registry data across every U.S. jurisdiction — Atlas hits it alongside state sources so nothing slips through the cracks.",
     tags: ["DOJ-sourced data", "Cross-state matching", "Federal aggregate"],
@@ -31,7 +31,7 @@ const scopes: Scope[] = [
   {
     key: "territory",
     label: "Territories",
-    image: "https://images.pexels.com/photos/9726893/pexels-photo-9726893.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    image: "/assets/services/sex-offender-registry-3.jpg",
     headline: "DC, Guam, and U.S. territories included.",
     desc: "Washington DC, Guam, Puerto Rico, the U.S. Virgin Islands, and other territories are searched by default — a common gap in lower-cost competitors.",
     tags: ["DC + Guam + PR", "Virgin Islands", "American Samoa"],

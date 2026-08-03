@@ -3,6 +3,7 @@ import CTASection from "../../components/CTASection";
 import ServicePricing from "../../components/ServicePricing";
 import Reveal from "../../components/Reveal";
 import Bento from "./Bento";
+import ProductShowcase from "../../components/ProductShowcase";
 
 export const metadata: Metadata = {
   title: "SSN Trace & Address History | Atlas Screening",
@@ -148,6 +149,26 @@ export default function SsnTracePage() {
           </Reveal>
         </div>
       </section>
+
+      <ProductShowcase
+        eyebrow="In the product"
+        title="SSN trace & address history,"
+        highlight="in minutes."
+        description="Validate identity and uncover the addresses and aliases that tell you exactly where to search next — the foundation of an accurate report."
+        bullets={[
+          "SSN validity & issuance verified",
+          "Full address & alias history surfaced",
+          "Feeds county searches automatically",
+        ]}
+        image="/assets/app/customer-dashboard.png"
+        imageAlt="Atlas Screening SSN trace dashboard"
+        reversed
+        badges={[
+          { label: "Identity verified", tone: "clear", position: "-top-4 -right-4" },
+          { label: "Address history", tone: "info", position: "top-1/2 -left-5" },
+          { label: "SSN validated", tone: "clear", position: "-bottom-4 right-10" },
+        ]}
+      />
 
       <ServicePricing />
 

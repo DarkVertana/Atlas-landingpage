@@ -3,6 +3,7 @@ import CTASection from "../../components/CTASection";
 import ServicePricing from "../../components/ServicePricing";
 import Reveal from "../../components/Reveal";
 import Bento from "./Bento";
+import ProductShowcase from "../../components/ProductShowcase";
 
 export const metadata: Metadata = {
   title: "Motor Vehicle Records (MVR) | Atlas Screening",
@@ -150,6 +151,25 @@ export default function MvrPage() {
           </Reveal>
         </div>
       </section>
+
+      <ProductShowcase
+        eyebrow="In the product"
+        title="Motor vehicle records,"
+        highlight="start to finish."
+        description="Pull driving history and license status across states, and follow every check from submitted to ready inside one dashboard."
+        bullets={[
+          "Real-time progress on every MVR pull",
+          "License status, violations & endorsements",
+          "Automatic alerts the moment a report lands",
+        ]}
+        image="/assets/app/customer-dashboard.png"
+        imageAlt="Atlas Screening MVR status dashboard"
+        badges={[
+          { label: "License valid", tone: "clear", position: "-top-4 -left-4" },
+          { label: "MVR pulled", tone: "info", position: "top-1/2 -right-5" },
+          { label: "Real-time status", tone: "info", position: "-bottom-4 left-10" },
+        ]}
+      />
 
       <ServicePricing />
 

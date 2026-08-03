@@ -3,6 +3,7 @@ import CTASection from "../../components/CTASection";
 import ServicePricing from "../../components/ServicePricing";
 import Reveal from "../../components/Reveal";
 import Bento from "./Bento";
+import ProductShowcase from "../../components/ProductShowcase";
 
 export const metadata: Metadata = {
   title: "Social Media Inquiry | Atlas Screening",
@@ -152,6 +153,25 @@ export default function SocialMediaScreeningPage() {
           </Reveal>
         </div>
       </section>
+
+      <ProductShowcase
+        eyebrow="In the product"
+        title="Social media insights,"
+        highlight="compliance-safe."
+        description="Surface publicly available, job-relevant behavior — with protected-class information redacted before it ever reaches your team."
+        bullets={[
+          "Only job-relevant, public content reviewed",
+          "Protected characteristics auto-redacted",
+          "Analyst-reviewed reports, ready to act on",
+        ]}
+        image="/assets/app/reports.png"
+        imageAlt="Atlas Screening social media report"
+        badges={[
+          { label: "Reviewed & redacted", tone: "info", position: "-top-4 -left-4" },
+          { label: "AI-flagged content", tone: "pending", position: "top-1/2 -right-5" },
+          { label: "Report ready", tone: "clear", position: "-bottom-4 left-10" },
+        ]}
+      />
 
       <ServicePricing />
 

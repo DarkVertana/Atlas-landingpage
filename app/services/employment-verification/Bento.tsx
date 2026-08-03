@@ -15,7 +15,7 @@ const methods: Method[] = [
   {
     key: "phone",
     label: "Phone",
-    image: "https://images.pexels.com/photos/8204403/pexels-photo-8204403.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    image: "/assets/services/employment-verification-1.jpg",
     headline: "Live-phone verifications with HR.",
     desc: "For employers without automated networks, our trained analysts call HR directly to confirm titles, employment dates, and reason for separation — every attempt timestamped and logged.",
     tags: ["Direct HR contact", "Multi-attempt logic", "Timestamped call notes"],
@@ -23,7 +23,7 @@ const methods: Method[] = [
   {
     key: "email",
     label: "Email",
-    image: "https://images.pexels.com/photos/6279113/pexels-photo-6279113.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    image: "/assets/services/employment-verification-2.jpg",
     headline: "Tracked email verifications.",
     desc: "Structured verification emails to authorized HR addresses — responses are parsed, validated, and attached to the report with a full delivery and response audit trail.",
     tags: ["Authorized-domain outreach", "Parsed structured response", "Delivery + read receipts"],
@@ -31,7 +31,7 @@ const methods: Method[] = [
   {
     key: "network",
     label: "Networks",
-    image: "https://images.pexels.com/photos/8062287/pexels-photo-8062287.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    image: "/assets/services/employment-verification-3.jpg",
     headline: "Automated verification networks.",
     desc: "Where The Work Number, Equifax Workforce, or vendor HRIS integrations are available, we pull instant verification data — no manual outreach, no waiting.",
     tags: ["The Work Number", "HRIS integrations", "Instant turnaround"],

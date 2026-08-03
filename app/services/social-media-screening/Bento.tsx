@@ -15,7 +15,7 @@ const lenses: Lens[] = [
   {
     key: "platforms",
     label: "Platforms",
-    image: "https://images.pexels.com/photos/7634159/pexels-photo-7634159.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    image: "/assets/services/social-media-screening-1.jpg",
     headline: "Public profiles across every major platform.",
     desc: "Facebook, X, Instagram, LinkedIn, TikTok, YouTube, Reddit, public blogs, and news mentions — scanned against the candidate's identity anchors without ever touching private content.",
     tags: ["Public content only", "No logins or scraping", "Source-cited hits"],
@@ -23,7 +23,7 @@ const lenses: Lens[] = [
   {
     key: "redaction",
     label: "Redaction",
-    image: "https://images.pexels.com/photos/11391947/pexels-photo-11391947.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    image: "/assets/services/social-media-screening-2.jpg",
     headline: "Protected-class signals stripped before delivery.",
     desc: "Race, religion, marital status, pregnancy, disability, and sexual orientation are detected and redacted automatically — the hiring manager never sees the biasing signal.",
     tags: ["EEOC-aligned redaction", "No protected-class leak", "Audit log retained"],
@@ -31,7 +31,7 @@ const lenses: Lens[] = [
   {
     key: "review",
     label: "Analyst",
-    image: "https://images.pexels.com/photos/7682211/pexels-photo-7682211.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    image: "/assets/services/social-media-screening-3.jpg",
     headline: "Human review on every flagged post.",
     desc: "Trained analysts confirm context, intent, and attribution on every hit. No algorithmic verdicts, no false-positive dump — only defensible, role-relevant findings.",
     tags: ["Trained reviewers", "Context verified", "Screenshots attached"],

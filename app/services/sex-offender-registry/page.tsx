@@ -3,6 +3,7 @@ import CTASection from "../../components/CTASection";
 import ServicePricing from "../../components/ServicePricing";
 import Reveal from "../../components/Reveal";
 import Bento from "./Bento";
+import ProductShowcase from "../../components/ProductShowcase";
 
 export const metadata: Metadata = {
   title: "Sex Offender Registry Search | Atlas Screening",
@@ -148,6 +149,26 @@ export default function SexOffenderRegistryPage() {
           </Reveal>
         </div>
       </section>
+
+      <ProductShowcase
+        eyebrow="In the product"
+        title="Nationwide registry search,"
+        highlight="in one click."
+        description="Search sex offender registries across all 50 states and territories, with clear, documented results returned to your dashboard in minutes."
+        bullets={[
+          "All-state & territory registry coverage",
+          "Instant results with full match detail",
+          "Documented, compliant records for every search",
+        ]}
+        image="/assets/app/screenings.png"
+        imageAlt="Atlas Screening registry search results"
+        reversed
+        badges={[
+          { label: "Registry — Clear", tone: "clear", position: "-top-4 -right-4" },
+          { label: "50-state search", tone: "info", position: "top-1/2 -left-5" },
+          { label: "Instant result", tone: "clear", position: "-bottom-4 right-10" },
+        ]}
+      />
 
       <ServicePricing />
 

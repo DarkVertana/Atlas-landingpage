@@ -15,7 +15,7 @@ const sources: DataSource[] = [
   {
     key: "credit",
     label: "Credit headers",
-    image: "https://images.pexels.com/photos/10653886/pexels-photo-10653886.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    image: "/assets/services/ssn-trace-1.jpg",
     headline: "Credit header data from the big three.",
     desc: "Atlas pulls name, SSN, address, and date-of-birth headers from Experian, Equifax, and TransUnion — the deepest and most complete source of residential history in the U.S.",
     tags: ["Experian · Equifax · TransUnion", "7-year residential history", "Alias and AKA surfacing"],
@@ -23,7 +23,7 @@ const sources: DataSource[] = [
   {
     key: "public",
     label: "Public records",
-    image: "https://images.pexels.com/photos/5669619/pexels-photo-5669619.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    image: "/assets/services/ssn-trace-2.jpg",
     headline: "Public records verified across jurisdictions.",
     desc: "Voter rolls, property deeds, court filings, and marriage records cross-reference the identity and fill gaps the credit bureaus miss — especially for renters and younger candidates.",
     tags: ["50-state coverage", "Deed and voter matches", "Litigation cross-check"],
@@ -31,7 +31,7 @@ const sources: DataSource[] = [
   {
     key: "utility",
     label: "Utility & telco",
-    image: "https://images.pexels.com/photos/20320345/pexels-photo-20320345.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    image: "/assets/services/ssn-trace-3.jpg",
     headline: "Utility and telecom footprints.",
     desc: "Phone, cable, and utility connections add the short-tenure addresses credit bureaus miss — catching move-ins from the last few months before they hit the credit file.",
     tags: ["Phone + email association", "Current-address signals", "Recent-move detection"],
