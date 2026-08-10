@@ -20,6 +20,8 @@ export default function GlobalWatchlistPage() {
       title="Global watchlist and sanctions screening."
       description="OFAC, PEP, terror lists, and sanctions databases across 1,000+ global sources. Required for regulated industries, recommended for international or executive hires."
       price="$39.99"
+      primaryCta={{ label: "Get started", href: "/contact" }}
+      heroSteps={["OFAC & SDN", "Global sanctions", "PEP", "Adverse media"]}
       includedHeading="Worldwide coverage, one query."
       includedSubheading="Every major sanctions list, enforcement action, and politically-exposed-persons database — refreshed continuously."
       features={[

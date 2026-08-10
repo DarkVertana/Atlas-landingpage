@@ -1,85 +1,72 @@
 import NumbersStrip from "../components/NumbersStrip";
-import HoverVideo from "../components/HoverVideo";
 import Reveal from "../components/Reveal";
+import SectionHeader from "../components/ui/SectionHeader";
+import WorkflowSteps from "../components/WorkflowSteps";
+import CTASection from "../components/CTASection";
 
-type DeepDiveStep = {
-  num: string;
-  title: string;
+type Audience = {
+  id: string;
   eyebrow: string;
+  title: string;
   desc: string;
   bullets: string[];
-  image: string;
-  video?: string;
-  gradient: string;
+  icon: React.ReactNode;
 };
 
-const deepDive: DeepDiveStep[] = [
+const audiences: Audience[] = [
   {
-    num: "01",
-    title: "Rapid account creation and order placement.",
-    eyebrow: "Client setup",
-    desc: "Create an account, access your centralized dashboard, and select a predefined package or custom-built bundle. You only need to input the applicant's name and email — the platform handles everything that follows.",
+    id: "for-employers",
+    eyebrow: "Employers",
+    title: "For hiring teams.",
+    desc: "Accelerate your talent acquisition with seamless pre-employment screening. Manage bulk orders and integrate with your ATS in minutes.",
     bullets: [
-      "Centralized dashboard access",
-      "Predefined or custom-built bundles",
-      "Name and email are the only inputs needed",
+      "Pre-employment background checks within 24 hours",
+      "Scalable bulk ordering for high-volume recruitment",
+      "Native ATS integrations and robust REST API access",
+      "Automated adverse action workflows built directly in",
     ],
-    image: "/assets/soft-capture/Home-img.png",
-    video: "/assets/soft-capture/Home-vdo.mov",
-    gradient: "from-[#01463A] to-[#058B74]",
+    icon: (
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="3" y="7" width="18" height="13" rx="2" />
+        <path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2" />
+        <path d="M3 12h18" />
+      </svg>
+    ),
   },
   {
-    num: "02",
-    title: "Automated candidate invitation.",
-    eyebrow: "Secure dispatch",
-    desc: "The platform immediately dispatches a secure, time-limited automated invitation to your candidate — no manual outreach or coordination required from your team.",
+    id: "for-property-managers",
+    eyebrow: "Property managers",
+    title: "For leasing teams.",
+    desc: "Secure comprehensive tenant screening data to protect your real estate portfolio — all through one unified, compliant dashboard.",
     bullets: [
-      "Instant automated dispatch",
-      "Secure, time-limited access link",
-      "No manual follow-up required",
+      "Complete criminal, credit, and eviction history checks",
+      "Seamless integration with property management software",
+      "Transparent, applicant-friendly dispute resolution",
+      "Fully branded background reports for your portfolio",
     ],
-    image: "/assets/soft-capture/Step%202.png",
-    video: "/assets/soft-capture/Step%202%20vdo.mov",
-    gradient: "from-[#058B74] to-[#0aa88a]",
+    icon: (
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-4v-6h-8v6H4a1 1 0 01-1-1v-9z" />
+      </svg>
+    ),
   },
   {
-    num: "03",
-    title: "Secure applicant submission flow.",
-    eyebrow: "Candidate experience",
-    desc: "Candidates complete a mobile-optimized flow that captures FCRA consent, SSN, address history, a government-issued ID upload, and a live selfie for identity verification.",
+    id: "for-applicants",
+    eyebrow: "Applicants",
+    title: "For the person being screened.",
+    desc: "Understand your legal rights under the FCRA, track your background check status, and maintain complete control over your personal data.",
     bullets: [
-      "Mobile-optimized experience",
-      "FCRA consent, SSN, and address history",
-      "Government ID upload and selfie verification",
+      "Complete transparency into your personal screening file",
+      "Real-time status tracking from your mobile device",
+      "Straightforward workflow to dispute inaccurate findings",
+      "Clear, accessible explanations of your FCRA rights",
     ],
-    image: "/assets/soft-capture/step%203.png",
-    gradient: "from-[#01463A] to-[#0aa88a]",
-  },
-  {
-    num: "04",
-    title: "Smart payment and investigation processing.",
-    eyebrow: "Billing & checks",
-    desc: "Automated billing triggers only upon the applicant's submission — you never pay for drop-offs. The background checks and investigative verifications begin immediately after authorization.",
-    bullets: [
-      "Billing triggers only on submission",
-      "No charges for incomplete invitations",
-      "Investigations begin immediately after consent",
-    ],
-    image: "/assets/soft-capture/step%204.png",
-    gradient: "from-[#058B74] to-[#01463A]",
-  },
-  {
-    num: "05",
-    title: "Clear reporting and instant notifications.",
-    eyebrow: "Final delivery",
-    desc: "The system generates a branded, FCRA-compliant PDF report and notifies your team via instant email and dashboard alerts the moment it is ready for review.",
-    bullets: [
-      "Branded, FCRA-compliant PDF report",
-      "Instant email and dashboard alerts",
-      "Real-time status visibility throughout",
-    ],
-    image: "/assets/soft-capture/step%205.png",
-    gradient: "from-[#0aa88a] to-[#01463A]",
+    icon: (
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+        <circle cx="12" cy="7" r="4" />
+      </svg>
+    ),
   },
 ];
 
@@ -104,354 +91,251 @@ const faqs = [
 
 export default function HowItWorksPage() {
   return (
-    <main className="bg-white text-[#01463A]">
-      {/* Hero */}
-      <section className="relative pt-28 sm:pt-36 pb-14 sm:pb-20 px-4 sm:px-6 overflow-hidden bg-gradient-to-b from-[#01463A] to-[#058B74]">
-        <div className="absolute -top-32 -right-32 w-[20rem] sm:w-[32rem] h-[20rem] sm:h-[32rem] rounded-full bg-[#0aa88a]/25 blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-32 -left-32 w-[20rem] sm:w-[32rem] h-[20rem] sm:h-[32rem] rounded-full bg-[#058B74]/30 blur-3xl pointer-events-none" />
+    <main className="bg-white text-[#0F1B17]">
+      {/* ── Hero — the site's signature dark, cartographic backdrop ── */}
+      <section className="relative overflow-hidden px-4 pb-24 pt-32 sm:px-6 sm:pb-28 sm:pt-40">
+        {/* base + brand gradient */}
+        <div className="absolute inset-0 bg-[#02120d]" />
+        <div className="absolute inset-0 bg-[radial-gradient(125%_95%_at_50%_-10%,#0a6b54_0%,#023528_42%,#01180f_78%,#020c08_100%)]" />
 
-        <div className="relative mx-auto max-w-4xl text-center">
-          <Reveal as="p" className="text-[10px] sm:text-xs font-semibold tracking-widest uppercase text-white/70 mb-3 sm:mb-4">
+        {/* graticule rings — the "Atlas" coordinate motif */}
+        <div className="pointer-events-none absolute inset-x-0 -top-24 flex justify-center">
+          <div
+            className="relative h-[520px] w-[520px] sm:h-[760px] sm:w-[760px]"
+            style={{
+              maskImage: "radial-gradient(circle, black 48%, transparent 78%)",
+              WebkitMaskImage: "radial-gradient(circle, black 48%, transparent 78%)",
+            }}
+          >
+            <div
+              className="absolute left-1/2 top-1/2 h-1/2 w-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full"
+              style={{ background: "radial-gradient(closest-side, rgba(62,232,190,0.10), transparent)" }}
+            />
+            {[0, 1, 2, 3, 4].map((i) => (
+              <div
+                key={i}
+                className="absolute rounded-full border border-white"
+                style={{ inset: `${i * 10}%`, opacity: 0.06 - i * 0.009 }}
+              />
+            ))}
+            <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-white/[0.05] to-transparent" />
+            <div className="absolute left-0 top-1/2 h-px w-full -translate-y-1/2 bg-gradient-to-r from-transparent via-white/[0.05] to-transparent" />
+          </div>
+        </div>
+
+        {/* tonal glows for depth */}
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div className="absolute -left-24 top-10 h-80 w-80 rounded-full bg-[#0aa88a]/20 blur-[130px]" />
+          <div className="absolute -right-16 top-4 h-80 w-80 rounded-full bg-[#3E92CC]/15 blur-[140px]" />
+        </div>
+
+        {/* grain */}
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.15] mix-blend-overlay"
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+          }}
+        />
+
+        <div className="relative mx-auto max-w-3xl text-center">
+          <Reveal
+            as="span"
+            className="inline-flex items-center justify-center gap-2 font-mono text-[11px] uppercase tracking-[0.28em] text-[#5EE3C0]"
+          >
+            <span className="h-1.5 w-1.5 rounded-full bg-[#5EE3C0] shadow-[0_0_10px_2px_rgba(94,227,192,0.6)]" />
             How it works
           </Reveal>
-          <Reveal as="h1" delay={80} className="text-2xl sm:text-3xl md:text-5xl font-bold text-white leading-tight">
+          <Reveal
+            as="h1"
+            delay={80}
+            className="mt-6 text-4xl font-semibold leading-[1.04] tracking-[-0.02em] text-white [text-wrap:balance] md:text-[3.4rem]"
+          >
             The end-to-end background screening workflow.
           </Reveal>
-          <Reveal as="p" delay={160} className="mt-4 sm:mt-5 text-white/70 max-w-xl mx-auto text-xs sm:text-sm leading-relaxed">
+          <Reveal
+            as="p"
+            delay={160}
+            className="mx-auto mt-6 max-w-xl text-[15.5px] leading-relaxed text-white/60"
+          >
             We engineered our platform to demand minimal client effort while delivering
             maximum visibility. Discover how we process complex background investigations
             efficiently and securely.
           </Reveal>
+          <Reveal
+            delay={240}
+            className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row"
+          >
+            <a
+              href="/contact"
+              className="group inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-semibold text-[#01463A] shadow-lg shadow-black/20 transition-all hover:-translate-y-0.5 hover:bg-white/95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#02120d]"
+            >
+              Get Started
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-0.5">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </a>
+            <a
+              href="#workflow"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/5 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#02120d]"
+            >
+              Walk through the steps
+            </a>
+          </Reveal>
         </div>
       </section>
 
-      {/* Deep-dive steps — alternating split */}
-      <section id="workflow" className="bg-white py-14 sm:py-20 px-4 sm:px-6 scroll-mt-40">
-        <div className="mx-auto max-w-6xl space-y-16 sm:space-y-24">
-          {deepDive.map((step, i) => {
-            const reversed = i % 2 === 1;
-            return (
-              <div
-                key={step.num}
-                className={`grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-16 items-center ${
-                  reversed ? "lg:[&>div:first-child]:order-2" : ""
-                }`}
-              >
-                {/* Copy */}
-                <Reveal variant={reversed ? "right" : "left"} className="order-2 lg:order-none">
-                  <p className="text-[10px] sm:text-xs font-semibold tracking-widest uppercase text-[#058B74] mb-2 sm:mb-3">
-                    {step.eyebrow}
-                  </p>
-                  <div className="flex items-baseline gap-3 sm:gap-4">
-                    <span className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#058B74]/15 leading-none flex-shrink-0">
-                      {step.num}
-                    </span>
-                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#01463A] leading-tight">
-                      {step.title}
-                    </h2>
-                  </div>
-                  <p className="mt-4 sm:mt-5 text-sm text-gray-500 leading-relaxed max-w-lg">
-                    {step.desc.replace(/&apos;/g, "'")}
-                  </p>
-                  <ul className="mt-5 sm:mt-6 space-y-2.5 sm:space-y-3">
-                    {step.bullets.map((b) => (
-                      <li key={b} className="flex items-start gap-2.5 sm:gap-3 text-sm text-[#01463A]">
-                        <svg
-                          width="18"
-                          height="18"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="#058B74"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="flex-shrink-0 mt-0.5"
-                        >
-                          <path d="M5 12l5 5 9-11" />
-                        </svg>
-                        {b}
-                      </li>
-                    ))}
-                  </ul>
-                </Reveal>
+      {/* ── Deep-dive steps on a connected spine ── */}
+      <WorkflowSteps />
 
-                {/* Image */}
-                <Reveal variant={reversed ? "left" : "right"} delay={120} className="relative order-1 lg:order-none">
-                  <div
-                    className={`relative overflow-hidden rounded-2xl sm:rounded-3xl border border-gray-200 bg-gradient-to-br ${step.gradient} aspect-[4/3] shadow-lg sm:shadow-xl shadow-[#058B74]/15`}
-                  >
-                    {step.video ? (
-                      <HoverVideo
-                        poster={step.image}
-                        video={step.video}
-                        alt={step.title}
-                      />
-                    ) : (
-                      /* eslint-disable-next-line @next/next/no-img-element */
-                      <img
-                        src={step.image}
-                        alt={step.title}
-                        loading="lazy"
-                        className="absolute inset-0 w-full h-full object-cover"
-                      />
-                    )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#01463A]/30 via-transparent to-transparent pointer-events-none" />
-
-                    {/* Step badge */}
-                    <div className="absolute top-3 sm:top-5 left-3 sm:left-5 inline-flex items-center gap-2 bg-black/40 backdrop-blur-md border border-white/15 rounded-full px-2.5 sm:px-3 py-1 sm:py-1.5 text-[10px] sm:text-[11px] font-semibold uppercase tracking-widest text-white">
-                      Step {step.num}
-                    </div>
-                  </div>
-
-                  <div className="hidden sm:block absolute -bottom-6 -right-6 w-24 h-24 rounded-2xl bg-[#058B74]/15 -z-10" />
-                  <div className="hidden sm:block absolute -top-6 -left-6 w-20 h-20 rounded-2xl bg-[#01463A]/10 -z-10" />
-                </Reveal>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* Who it's for */}
-      <section className="bg-gradient-to-b from-white to-gray-50 py-14 sm:py-20 px-4 sm:px-6">
+      {/* ── Proof band — why the workflow is fast and defensible ── */}
+      <section className="border-y border-[#E1E6E2] bg-[#F7F8F6] px-4 py-16 sm:px-6 sm:py-20">
         <div className="mx-auto max-w-6xl">
-          <div className="grid md:grid-cols-3 gap-4 sm:gap-5">
-            {/* For employers */}
-            <Reveal
-              id="for-employers"
-              className="scroll-mt-40 group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-5 sm:p-7 hover:border-[#058B74]/40 hover:shadow-lg hover:shadow-[#058B74]/10 hover:-translate-y-1 transition-all duration-300 flex flex-col"
-            >
-              <div className="w-12 h-12 rounded-xl bg-[#058B74]/10 text-[#058B74] flex items-center justify-center ring-1 ring-inset ring-[#058B74]/10 group-hover:bg-[#058B74] group-hover:text-white group-hover:ring-[#058B74] transition-all duration-300">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="3" y="7" width="18" height="13" rx="2" />
-                  <path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2" />
-                  <path d="M3 12h18" />
-                </svg>
-              </div>
-              <p className="mt-5 text-xs font-semibold uppercase tracking-widest text-[#058B74]">
-                Employers
-              </p>
-              <h3 className="mt-1 text-lg font-semibold text-[#01463A] leading-tight">
-                For hiring teams.
-              </h3>
-              <p className="mt-2 text-sm text-gray-500 leading-relaxed">
-                Accelerate your talent acquisition with seamless pre-employment
-                screening. Manage bulk orders and integrate with your ATS in minutes.
-              </p>
-              <ul className="mt-5 space-y-2.5">
-                {[
-                  "Pre-employment background checks within 24 hours",
-                  "Scalable bulk ordering for high-volume recruitment",
-                  "Native ATS integrations and robust REST API access",
-                  "Automated adverse action workflows built directly in",
-                ].map((b) => (
-                  <li key={b} className="flex items-start gap-2.5 text-sm text-[#01463A]">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#058B74" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0 mt-0.5">
-                      <path d="M5 12l5 5 9-11" />
-                    </svg>
-                    {b}
-                  </li>
-                ))}
-              </ul>
-              <a
-                href="/for-employers"
-                className="mt-auto pt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-[#058B74] hover:text-[#01463A] transition-colors"
-              >
-                Learn more
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" className="transition-transform group-hover:translate-x-0.5">
-                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </a>
-            </Reveal>
+          <Reveal className="mx-auto mb-12 max-w-2xl text-center">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#058B74]">
+              Built to move
+            </p>
+            <h2 className="mt-4 text-[1.9rem] font-semibold leading-[1.06] tracking-[-0.02em] text-[#01463A] md:text-[2.5rem]">
+              Minimal effort in, defensible reports out.
+            </h2>
+          </Reveal>
 
-            {/* For property managers */}
-            <Reveal
-              id="for-property-managers"
-              delay={120}
-              className="scroll-mt-40 group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-5 sm:p-7 hover:border-[#058B74]/40 hover:shadow-lg hover:shadow-[#058B74]/10 hover:-translate-y-1 transition-all duration-300 flex flex-col"
-            >
-              <div className="w-12 h-12 rounded-xl bg-[#058B74]/10 text-[#058B74] flex items-center justify-center ring-1 ring-inset ring-[#058B74]/10 group-hover:bg-[#058B74] group-hover:text-white group-hover:ring-[#058B74] transition-all duration-300">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-4v-6h-8v6H4a1 1 0 01-1-1v-9z" />
-                </svg>
-              </div>
-              <p className="mt-5 text-xs font-semibold uppercase tracking-widest text-[#058B74]">
-                Property managers
-              </p>
-              <h3 className="mt-1 text-lg font-semibold text-[#01463A] leading-tight">
-                For leasing teams.
-              </h3>
-              <p className="mt-2 text-sm text-gray-500 leading-relaxed">
-                Secure comprehensive tenant screening data to protect your real estate
-                portfolio — all through one unified, compliant dashboard.
-              </p>
-              <ul className="mt-5 space-y-2.5">
-                {[
-                  "Complete criminal, credit, and eviction history checks",
-                  "Seamless integration with property management software",
-                  "Transparent, applicant-friendly dispute resolution",
-                  "Fully branded background reports for your portfolio",
-                ].map((b) => (
-                  <li key={b} className="flex items-start gap-2.5 text-sm text-[#01463A]">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#058B74" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0 mt-0.5">
-                      <path d="M5 12l5 5 9-11" />
-                    </svg>
-                    {b}
-                  </li>
-                ))}
-              </ul>
-              <a
-                href="/for-property-managers"
-                className="mt-auto pt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-[#058B74] hover:text-[#01463A] transition-colors"
-              >
-                Learn more
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" className="transition-transform group-hover:translate-x-0.5">
-                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </a>
-            </Reveal>
-
-            {/* For applicants */}
-            <Reveal
-              id="for-applicants"
-              delay={240}
-              className="scroll-mt-40 group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-5 sm:p-7 hover:border-[#058B74]/40 hover:shadow-lg hover:shadow-[#058B74]/10 hover:-translate-y-1 transition-all duration-300 flex flex-col"
-            >
-              <div className="w-12 h-12 rounded-xl bg-[#058B74]/10 text-[#058B74] flex items-center justify-center ring-1 ring-inset ring-[#058B74]/10 group-hover:bg-[#058B74] group-hover:text-white group-hover:ring-[#058B74] transition-all duration-300">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
-                  <circle cx="12" cy="7" r="4" />
-                </svg>
-              </div>
-              <p className="mt-5 text-xs font-semibold uppercase tracking-widest text-[#058B74]">
-                Applicants
-              </p>
-              <h3 className="mt-1 text-lg font-semibold text-[#01463A] leading-tight">
-                For the person being screened.
-              </h3>
-              <p className="mt-2 text-sm text-gray-500 leading-relaxed">
-                Understand your legal rights under the FCRA, track your background check
-                status, and maintain complete control over your personal data.
-              </p>
-              <ul className="mt-5 space-y-2.5">
-                {[
-                  "Complete transparency into your personal screening file",
-                  "Real-time status tracking from your mobile device",
-                  "Straightforward workflow to dispute inaccurate findings",
-                  "Clear, accessible explanations of your FCRA rights",
-                ].map((b) => (
-                  <li key={b} className="flex items-start gap-2.5 text-sm text-[#01463A]">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#058B74" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0 mt-0.5">
-                      <path d="M5 12l5 5 9-11" />
-                    </svg>
-                    {b}
-                  </li>
-                ))}
-              </ul>
-              <a
-                href="/for-applicants"
-                className="mt-auto pt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-[#058B74] hover:text-[#01463A] transition-colors"
-              >
-                Learn more
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" className="transition-transform group-hover:translate-x-0.5">
-                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </a>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* Numbers strip */}
-      <NumbersStrip />
-
-      {/* Workflow FAQ */}
-      <section className="bg-white py-14 sm:py-20 px-4 sm:px-6">
-        <div className="mx-auto max-w-3xl">
-          <div className="text-center mb-10 sm:mb-14">
-            <Reveal as="h2" className="text-2xl sm:text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
-              Questions about the flow.
-            </Reveal>
-            <Reveal as="p" delay={80} className="mt-4 sm:mt-5 text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
-              The most common things hiring and leasing teams want to know before
-              running their first check.
-            </Reveal>
-          </div>
-
-          <div className="space-y-3">
-            {faqs.map((faq, i) => (
+          <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-[#E1E6E2] bg-[#E1E6E2] lg:grid-cols-4">
+            {[
+              { stat: "< 1 min", label: "Your admin time per order", sub: "Just a name and an email" },
+              { stat: "~24 hrs", label: "Typical turnaround", sub: "For standard criminal & SSN checks" },
+              { stat: "50 states", label: "County, state & federal", sub: "Nationwide records coverage" },
+              { stat: "100%", label: "FCRA-compliant by design", sub: "Consent & disclosures automated" },
+            ].map((m, i) => (
               <Reveal
-                key={faq.q}
-                as="details"
-                delay={i * 60}
-                className="group rounded-2xl border border-gray-200 bg-white hover:border-[#058B74]/40 hover:shadow-md hover:shadow-[#058B74]/5 open:border-[#058B74]/40 open:shadow-md open:shadow-[#058B74]/5 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden"
+                key={m.label}
+                delay={i * 90}
+                className="flex flex-col bg-white p-6 sm:p-7"
               >
-                <summary className="flex items-center justify-between gap-3 sm:gap-4 cursor-pointer list-none px-4 sm:px-6 py-4 sm:py-5">
-                  <span className="text-sm md:text-base font-semibold text-[#01463A] group-hover:text-[#058B74] group-open:text-[#058B74] transition-colors">
-                    {faq.q}
-                  </span>
-                  <span className="flex-shrink-0 w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#058B74]/10 text-[#058B74] flex items-center justify-center ring-1 ring-inset ring-[#058B74]/10 transition-all duration-300 group-open:rotate-45 group-open:bg-[#058B74] group-open:text-white group-open:ring-[#058B74]">
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                      <path d="M8 3v10M3 8h10" />
-                    </svg>
-                  </span>
-                </summary>
-                <div className="px-4 sm:px-6 pb-4 sm:pb-5 -mt-1 text-sm text-gray-500 leading-relaxed">
-                  {faq.a}
-                </div>
+                <span className="text-[2.1rem] font-semibold leading-none tracking-[-0.02em] text-[#058B74] sm:text-[2.4rem]">
+                  {m.stat}
+                </span>
+                <span className="mt-3 text-sm font-semibold text-[#01463A]">{m.label}</span>
+                <span className="mt-1 text-[13px] leading-relaxed text-[#5B6B64]">{m.sub}</span>
               </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Bottom CTA */}
-      <section className="px-4 sm:px-6 py-14 sm:py-20 bg-white">
-        <div className="mx-auto max-w-7xl">
-          <Reveal variant="scale" className="relative overflow-hidden rounded-2xl px-6 sm:px-8 md:px-16 py-8 sm:py-10 md:py-14 flex items-center shadow-lg">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/assets/banner_cta.webp"
-              alt=""
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            <div
-              className="absolute inset-0"
-              style={{
-                background:
-                  "linear-gradient(to top right, #01463A 30%, transparent 100%)",
-              }}
-            />
-            <div className="relative z-10 max-w-xl">
-              <p className="text-xs sm:text-sm font-semibold tracking-widest uppercase text-white/50 mb-2 sm:mb-3">
-                Ready when you are
-              </p>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight">
-                Run your first check<br className="hidden md:block" /> in minutes.
-              </h2>
-              <p className="mt-3 sm:mt-4 text-white/60 text-sm sm:text-base leading-relaxed max-w-md">
-                Create an account and invite your first applicant today. No
-                contracts, no setup fees.
-              </p>
-              <div className="mt-5 sm:mt-6 flex flex-wrap gap-3">
-                <a
-                  href="/signup"
-                  className="inline-flex items-center gap-2 bg-white text-[#01463A] px-5 sm:px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-white/90 transition-colors"
-                >
-                  Create account
-                </a>
+      {/* ── Who it's for ── */}
+      <section className="bg-[#F7F8F6] px-4 py-24 sm:px-6 sm:py-32">
+        <div className="mx-auto max-w-6xl">
+          <SectionHeader
+            eyebrow="Who it's for"
+            title="One platform, three perspectives."
+            intro="However you meet Atlas — hiring, leasing, or being screened — the workflow is built around your role."
+          />
+
+          <div className="mt-16 grid gap-5 md:grid-cols-3">
+            {audiences.map((a, i) => (
+              <Reveal
+                key={a.id}
+                id={a.id}
+                delay={i * 120}
+                className="group relative flex scroll-mt-40 flex-col overflow-hidden rounded-2xl border border-[#E4E9E6] bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:border-[#058B74]/40 hover:shadow-lg hover:shadow-[#058B74]/10"
+              >
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#058B74]/10 text-[#058B74] ring-1 ring-inset ring-[#058B74]/10 transition-all duration-300 group-hover:bg-[#058B74] group-hover:text-white group-hover:ring-[#058B74]">
+                  {a.icon}
+                </div>
+                <p className="mt-5 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#058B74]">
+                  {a.eyebrow}
+                </p>
+                <h3 className="mt-1.5 text-lg font-semibold leading-tight text-[#01463A]">
+                  {a.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-[#5B6B64]">
+                  {a.desc}
+                </p>
+                <ul className="mt-5 space-y-2.5">
+                  {a.bullets.map((b) => (
+                    <li key={b} className="flex items-start gap-2.5 text-sm text-[#1B2C25]">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#058B74" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mt-0.5 flex-shrink-0">
+                        <path d="M5 12l5 5 9-11" />
+                      </svg>
+                      {b}
+                    </li>
+                  ))}
+                </ul>
                 <a
                   href="/contact"
-                  className="inline-flex items-center border border-white/30 text-white px-5 sm:px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-white/10 transition-colors"
+                  className="mt-auto inline-flex items-center gap-1.5 pt-6 text-sm font-semibold text-[#058B74] transition-colors hover:text-[#01463A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2"
                 >
-                  Talk to sales
+                  Learn more
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" className="transition-transform group-hover:translate-x-0.5">
+                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
                 </a>
-              </div>
-            </div>
-          </Reveal>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
+      {/* ── Numbers strip ── */}
+      <NumbersStrip />
+
+      {/* ── Workflow FAQ ── */}
+      <section className="bg-white px-4 py-24 sm:px-6 sm:py-32">
+        <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+          <div className="lg:sticky lg:top-28 lg:self-start">
+            <SectionHeader
+              eyebrow="Answers"
+              title="Questions about the flow."
+              intro={
+                <>
+                  The most common things hiring and leasing teams want to know before
+                  running their first check. Still stuck?{" "}
+                  <a href="/contact" className="font-semibold text-[#058B74] hover:underline">
+                    Get in touch
+                  </a>
+                  .
+                </>
+              }
+            />
+          </div>
+
+          <div className="space-y-3">
+            {faqs.map((faq, i) => (
+              <Reveal key={faq.q} delay={i * 60}>
+                <details className="group rounded-2xl border border-[#E4E9E6] bg-white transition-all duration-300 open:border-[#058B74]/40 open:shadow-md open:shadow-[#058B74]/5 hover:border-[#058B74]/40 hover:shadow-md hover:shadow-[#058B74]/5 [&_summary::-webkit-details-marker]:hidden">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-2xl px-6 py-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2">
+                    <span className="text-sm font-semibold text-[#01463A] transition-colors group-hover:text-[#058B74] group-open:text-[#058B74] md:text-base">
+                      {faq.q}
+                    </span>
+                    <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-[#058B74]/10 text-[#058B74] ring-1 ring-inset ring-[#058B74]/10 transition-all duration-300 group-open:rotate-45 group-open:bg-[#058B74] group-open:text-white group-open:ring-[#058B74]">
+                      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                        <path d="M8 3v10M3 8h10" />
+                      </svg>
+                    </span>
+                  </summary>
+                  <div className="-mt-1 px-6 pb-5 text-sm leading-relaxed text-[#5B6B64]">
+                    {faq.a}
+                  </div>
+                </details>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Bottom CTA ── */}
+      <CTASection
+        eyebrow="Ready when you are"
+        title={
+          <>
+            Run your first check<br className="hidden lg:block" /> in minutes.
+          </>
+        }
+        description="Create an account and invite your first applicant today. No contracts, no setup fees."
+        primary={{ label: "Create account", href: "/contact" }}
+        secondary={{ label: "Talk to sales", href: "/contact?topic=sales" }}
+      />
     </main>
   );
 }

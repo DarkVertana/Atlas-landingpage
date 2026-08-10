@@ -69,7 +69,6 @@ export default function FAQPage() {
       {/* Hero */}
       <section className="relative pt-36 pb-20 px-6 overflow-hidden bg-gradient-to-b from-[#01463A] to-[#058B74]">
         <div className="absolute -top-32 -right-32 w-[32rem] h-[32rem] rounded-full bg-[#0aa88a]/25 blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-32 -left-32 w-[32rem] h-[32rem] rounded-full bg-[#058B74]/30 blur-3xl pointer-events-none" />
 
         <div className="relative mx-auto max-w-4xl text-center">
           <Reveal
@@ -114,10 +113,10 @@ export default function FAQPage() {
                 className="scroll-mt-28"
               >
                 <div className="mb-8">
-                  <Reveal as="p" variant="fade" className="text-xs font-semibold tracking-widest uppercase text-[#058B74] mb-2">
+                  <Reveal as="h2" variant="up" className="text-2xl md:text-3xl font-bold text-[#01463A] leading-tight">
                     {cat.title}
                   </Reveal>
-                  <Reveal as="h2" variant="up" delay={50} className="text-2xl md:text-3xl font-bold text-[#01463A] leading-tight">
+                  <Reveal as="p" variant="fade" delay={50} className="mt-2 text-sm text-gray-600 leading-relaxed">
                     {cat.desc}
                   </Reveal>
                 </div>
@@ -131,7 +130,7 @@ export default function FAQPage() {
                       delay={faqIndex * 60}
                       className="group rounded-2xl border border-gray-200 bg-white hover:border-[#058B74]/40 hover:shadow-md hover:shadow-[#058B74]/5 open:border-[#058B74]/40 open:shadow-md open:shadow-[#058B74]/5 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden"
                     >
-                      <summary className="flex items-center justify-between gap-4 cursor-pointer list-none px-6 py-5">
+                      <summary className="flex items-center justify-between gap-4 cursor-pointer list-none px-6 py-5 rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2">
                         <span className="text-sm md:text-base font-semibold text-[#01463A] group-hover:text-[#058B74] group-open:text-[#058B74] transition-colors">
                           {faq.q}
                         </span>
@@ -141,7 +140,7 @@ export default function FAQPage() {
                           </svg>
                         </span>
                       </summary>
-                      <div className="px-6 pb-5 -mt-1 text-sm text-gray-500 leading-relaxed whitespace-pre-line">
+                      <div className="px-6 pb-5 -mt-1 text-sm text-gray-600 leading-relaxed whitespace-pre-line">
                         {faq.a}
                       </div>
                     </Reveal>
@@ -155,7 +154,7 @@ export default function FAQPage() {
           <Reveal as="aside" variant="right" delay={200} className="lg:sticky lg:top-28 space-y-5">
             {/* Category nav */}
             <Reveal as="div" variant="scale" className="rounded-2xl border border-gray-200 bg-white p-5">
-              <p className="text-[11px] font-semibold tracking-[0.18em] uppercase text-gray-400 mb-4">
+              <p className="text-[11px] font-semibold tracking-[0.18em] uppercase text-gray-500 mb-4">
                 On this page
               </p>
               <nav className="flex flex-col">
@@ -163,7 +162,7 @@ export default function FAQPage() {
                   <a
                     key={c.id}
                     href={`#${c.id}`}
-                    className="group flex items-center gap-2 py-2 text-sm text-[#01463A] hover:text-[#058B74] transition-colors"
+                    className="group flex items-center gap-2 py-2.5 px-2 -mx-2 rounded-lg text-sm text-[#01463A] hover:text-[#058B74] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2"
                   >
                     <span className="w-1 h-1 rounded-full bg-[#058B74]/30 group-hover:bg-[#058B74] group-hover:w-2 transition-all" />
                     {c.title}
@@ -174,17 +173,17 @@ export default function FAQPage() {
 
             {/* Resources */}
             <Reveal as="div" variant="scale" delay={100} className="rounded-2xl border border-gray-200 bg-white p-5">
-              <p className="text-[11px] font-semibold tracking-[0.18em] uppercase text-gray-400 mb-4">
+              <p className="text-[11px] font-semibold tracking-[0.18em] uppercase text-gray-500 mb-4">
                 Resources
               </p>
               <ul className="space-y-2.5 text-sm">
                 <li>
                   <a
                     href="/terms"
-                    className="flex items-center justify-between text-[#01463A] hover:text-[#058B74] transition-colors"
+                    className="flex items-center justify-between py-1 px-2 -mx-2 rounded-lg text-[#01463A] hover:text-[#058B74] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2"
                   >
                     Terms of service
-                    <svg width="12" height="12" viewBox="0 0 16 16" fill="none" className="text-gray-300">
+                    <svg width="12" height="12" viewBox="0 0 16 16" fill="none" className="text-gray-400">
                       <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </a>
@@ -192,10 +191,10 @@ export default function FAQPage() {
                 <li>
                   <a
                     href="/privacy"
-                    className="flex items-center justify-between text-[#01463A] hover:text-[#058B74] transition-colors"
+                    className="flex items-center justify-between py-1 px-2 -mx-2 rounded-lg text-[#01463A] hover:text-[#058B74] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2"
                   >
                     Privacy policy
-                    <svg width="12" height="12" viewBox="0 0 16 16" fill="none" className="text-gray-300">
+                    <svg width="12" height="12" viewBox="0 0 16 16" fill="none" className="text-gray-400">
                       <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </a>
@@ -203,10 +202,10 @@ export default function FAQPage() {
                 <li>
                   <a
                     href="/compliance"
-                    className="flex items-center justify-between text-[#01463A] hover:text-[#058B74] transition-colors"
+                    className="flex items-center justify-between py-1 px-2 -mx-2 rounded-lg text-[#01463A] hover:text-[#058B74] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2"
                   >
                     Trust & compliance
-                    <svg width="12" height="12" viewBox="0 0 16 16" fill="none" className="text-gray-300">
+                    <svg width="12" height="12" viewBox="0 0 16 16" fill="none" className="text-gray-400">
                       <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </a>
@@ -214,10 +213,10 @@ export default function FAQPage() {
                 <li>
                   <a
                     href="/pricing"
-                    className="flex items-center justify-between text-[#01463A] hover:text-[#058B74] transition-colors"
+                    className="flex items-center justify-between py-1 px-2 -mx-2 rounded-lg text-[#01463A] hover:text-[#058B74] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2"
                   >
                     Pricing & packages
-                    <svg width="12" height="12" viewBox="0 0 16 16" fill="none" className="text-gray-300">
+                    <svg width="12" height="12" viewBox="0 0 16 16" fill="none" className="text-gray-400">
                       <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </a>
@@ -233,23 +232,23 @@ export default function FAQPage() {
         <div className="mx-auto max-w-3xl">
           <Reveal as="div" variant="scale" delay={100} className="rounded-2xl border border-gray-200 bg-gray-50/60 p-8 md:p-10 text-center">
             <Reveal as="h3" variant="up" className="text-xl md:text-2xl font-bold text-[#01463A]">
-              Didn't find what you were looking for?
+              Didn&apos;t find what you were looking for?
             </Reveal>
-            <Reveal as="p" variant="fade" delay={100} className="mt-3 text-sm text-gray-500 max-w-lg mx-auto leading-relaxed">
-              Reach out to our team and we'll get back to you as soon as possible.
+            <Reveal as="p" variant="fade" delay={100} className="mt-3 text-sm text-gray-600 max-w-lg mx-auto leading-relaxed">
+              Reach out to our team and we&apos;ll get back to you as soon as possible.
             </Reveal>
             <Reveal as="div" variant="fade" delay={200} className="mt-6 flex flex-wrap justify-center gap-3">
               <a
                 href="/contact"
-                className="inline-flex items-center gap-2 bg-[#01463A] text-white px-6 py-3 rounded-xl text-sm font-semibold hover:bg-[#058B74] transition-colors"
+                className="inline-flex items-center gap-2 bg-[#01463A] text-white px-6 py-3 rounded-xl text-sm font-semibold hover:bg-[#058B74] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2"
               >
                 Contact support
               </a>
               <a
-                href="mailto:Contact@Atlasscreening.com"
-                className="inline-flex items-center border border-gray-200 text-[#01463A] px-6 py-3 rounded-xl text-sm font-semibold hover:bg-white hover:border-[#058B74]/40 transition-colors"
+                href="mailto:contact@atlasscreening.com"
+                className="inline-flex items-center border border-gray-200 text-[#01463A] px-6 py-3 rounded-xl text-sm font-semibold hover:bg-white hover:border-[#058B74]/40 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2"
               >
-                Contact@Atlasscreening.com
+                contact@atlasscreening.com
               </a>
             </Reveal>
           </Reveal>

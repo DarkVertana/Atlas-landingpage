@@ -1,4 +1,5 @@
 import Reveal from "./Reveal";
+import SectionHeader from "./ui/SectionHeader";
 
 const faqs = [
   {
@@ -29,28 +30,32 @@ const faqs = [
 
 export default function FAQ() {
   return (
-    <section id="faq" className="bg-white py-14 sm:py-20 px-4 sm:px-6">
-      <div className="mx-auto max-w-3xl">
-        <div className="text-center mb-10 sm:mb-14">
-          <Reveal as="h2" className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
-            Frequently asked questions.
-          </Reveal>
-          <Reveal as="p" delay={100} className="mt-5 text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
-            Answers to the most common questions about Atlas Screening — from turnaround times
-            to compliance. Still stuck?{" "}
-            <a href="/contact" className="text-[#058B74] font-semibold hover:underline">
-              Get in touch
-            </a>.
-          </Reveal>
+    <section id="faq" className="bg-white py-24 sm:py-32 px-4 sm:px-6">
+      <div className="mx-auto max-w-6xl grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+        <div className="lg:sticky lg:top-28 lg:self-start">
+          <SectionHeader
+            eyebrow="Answers"
+            title="Frequently asked questions."
+            intro={
+              <>
+                Turnaround times, compliance, billing: the things teams ask before
+                their first check. Still stuck?{" "}
+                <a href="/contact" className="font-semibold text-[#058B74] hover:underline">
+                  Get in touch
+                </a>
+                .
+              </>
+            }
+          />
         </div>
 
         <div className="space-y-3">
           {faqs.map((faq, i) => (
             <Reveal key={faq.q} delay={i * 60}>
             <details
-              className="group rounded-2xl border border-gray-200 bg-white hover:border-[#058B74]/40 hover:shadow-md hover:shadow-[#058B74]/5 open:border-[#058B74]/40 open:shadow-md open:shadow-[#058B74]/5 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden"
+              className="group rounded-2xl border border-[#E4E9E6] bg-white hover:border-[#058B74]/40 hover:shadow-md hover:shadow-[#058B74]/5 open:border-[#058B74]/40 open:shadow-md open:shadow-[#058B74]/5 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden"
             >
-              <summary className="flex items-center justify-between gap-4 cursor-pointer list-none px-6 py-5">
+              <summary className="flex items-center justify-between gap-4 cursor-pointer list-none px-6 py-5 rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2">
                 <span className="text-sm md:text-base font-semibold text-[#01463A] group-hover:text-[#058B74] group-open:text-[#058B74] transition-colors">
                   {faq.q}
                 </span>
@@ -60,7 +65,7 @@ export default function FAQ() {
                   </svg>
                 </span>
               </summary>
-              <div className="px-6 pb-5 -mt-1 text-sm text-gray-500 leading-relaxed">
+              <div className="px-6 pb-5 -mt-1 text-sm text-[#5B6B64] leading-relaxed">
                 {faq.a}
               </div>
             </details>

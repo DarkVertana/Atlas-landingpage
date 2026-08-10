@@ -1,6 +1,9 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Reveal from "../../components/Reveal";
+import SectionHeader from "../../components/ui/SectionHeader";
+import CTASection from "../../components/CTASection";
 
 type TierValue = "basic" | "standard" | "premium";
 
@@ -54,14 +57,11 @@ const addOnList = [
   { key: "drug", label: "Drug screening", price: 49.99 },
   { key: "employment", label: "Employment verification", price: 19.99 },
   { key: "education", label: "Education verification", price: 19.99 },
-  { key: "credit", label: "Credit report", price: 19.99 },
+  { key: "credit", label: "Credit report", price: 39.99 },
   { key: "tenant", label: "Tenant screening", price: 39.99 },
-  { key: "watchlist", label: "Global watchlist", price: 14.99 },
+  { key: "watchlist", label: "Global watchlist", price: 39.99 },
   { key: "social", label: "Social media inquiry", price: 29.99 },
 ];
-
-// Heuristic "legacy vendor" per-check cost for the savings callout.
-const LEGACY_MULTIPLIER = 1.45;
 
 function fmt(n: number, opts: Intl.NumberFormatOptions = {}) {
   return n.toLocaleString("en-US", { maximumFractionDigits: 0, ...opts });
@@ -86,9 +86,6 @@ export default function CostCalculatorPage() {
   const perCheck = activeTier.price + addOnTotal;
   const monthlyCost = perCheck * volume;
   const annualCost = monthlyCost * 12;
-  const legacyAnnual = annualCost * LEGACY_MULTIPLIER;
-  const annualSavings = legacyAnnual - annualCost;
-  const savingsPct = legacyAnnual > 0 ? Math.round((annualSavings / legacyAnnual) * 100) : 0;
   const tierShare = perCheck > 0 ? (activeTier.price / perCheck) * 100 : 100;
   const addOnShare = 100 - tierShare;
 
@@ -102,20 +99,24 @@ export default function CostCalculatorPage() {
     <main className="bg-white text-[#01463A]">
       {/* Hero */}
       <section className="relative pt-36 pb-20 px-6 overflow-hidden bg-gradient-to-b from-[#01463A] to-[#058B74]">
-        <div className="absolute -top-32 -right-32 w-[32rem] h-[32rem] rounded-full bg-[#0aa88a]/25 blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-32 -left-32 w-[32rem] h-[32rem] rounded-full bg-[#058B74]/30 blur-3xl pointer-events-none" />
+        <div className="absolute -top-32 -right-32 w-[32rem] h-[32rem] rounded-full bg-[#058B74]/30 blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-40 -left-24 w-[28rem] h-[28rem] rounded-full bg-white/5 blur-3xl pointer-events-none" />
+        <div
+          className="absolute inset-0 opacity-[0.04] pointer-events-none"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, #ffffff 1px, transparent 1px)",
+            backgroundSize: "22px 22px",
+          }}
+        />
 
-        <div className="relative mx-auto max-w-4xl text-center">
-          <p className="text-xs font-semibold tracking-widest uppercase text-white/70 mb-4">
-            Interactive tool
-          </p>
-          <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight">
-            Screening cost calculator.
-          </h1>
-          <p className="mt-5 text-white/70 max-w-xl mx-auto text-sm leading-relaxed">
-            Estimate your annual screening spend in seconds — pick a tier, add
-            what you need, and see totals update live.
-          </p>
+        <div className="relative mx-auto max-w-4xl">
+          <SectionHeader
+            tone="light"
+            eyebrow="Interactive tool"
+            title="Screening cost calculator."
+            intro="Estimate your annual screening spend in seconds — pick a tier, add what you need, and see totals update live."
+          />
         </div>
       </section>
 
@@ -126,6 +127,7 @@ export default function CostCalculatorPage() {
             {/* ─── Inputs ─── */}
             <div className="space-y-8">
               {/* Tier */}
+              <Reveal delay={0}>
               <Panel step="01" title="Choose your base tier">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                   {tiers.map((t) => {
@@ -135,14 +137,16 @@ export default function CostCalculatorPage() {
                         key={t.value}
                         type="button"
                         onClick={() => setTier(t.value)}
-                        className={`relative text-left p-4 rounded-xl border-2 transition-all ${
+                        aria-pressed={active}
+                        className={`relative text-left p-4 rounded-3xl border-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2 ${
                           active
-                            ? "border-[#058B74] bg-[#058B74]/5 shadow-sm"
-                            : "border-gray-200 bg-white hover:border-[#058B74]/40"
+                            ? "border-[#058B74] ring-1 ring-[#058B74] bg-[#058B74]/5 shadow-sm"
+                            : "border-gray-200 bg-white hover:border-gray-300 hover:shadow-md hover:shadow-black/5"
                         }`}
                       >
                         {t.popular && (
-                          <span className="absolute -top-2 right-3 inline-flex items-center bg-[#01463A] text-[9px] font-bold uppercase tracking-widest text-white px-2 py-0.5 rounded-full">
+                          <span className="absolute -top-2 right-3 inline-flex items-center gap-1 bg-[#F5A524] text-[9px] font-bold uppercase tracking-widest text-white px-2 py-0.5 rounded-full shadow-sm">
+                            <span className="h-1 w-1 rounded-full bg-white" />
                             Popular
                           </span>
                         )}
@@ -201,8 +205,10 @@ export default function CostCalculatorPage() {
                   })}
                 </div>
               </Panel>
+              </Reveal>
 
               {/* Volume */}
+              <Reveal delay={80}>
               <Panel step="02" title="Set your monthly volume">
                 <div className="flex items-baseline justify-between mb-4">
                   <div>
@@ -230,14 +236,35 @@ export default function CostCalculatorPage() {
                   step={1}
                   value={volume}
                   onChange={(e) => setVolume(Number(e.target.value))}
-                  className="w-full accent-[#058B74]"
+                  aria-label="Checks per month"
+                  aria-valuetext={`${volume}${volume >= 500 ? "+" : ""} checks per month`}
+                  className="w-full accent-[#058B74] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2 rounded-full"
                 />
 
-                <div className="flex justify-between text-[10px] uppercase tracking-widest text-gray-400 mt-2">
-                  <span>1</span>
-                  <span>100</span>
-                  <span>250</span>
-                  <span>500+</span>
+                <div className="relative h-4 mt-2 text-[10px] uppercase tracking-widest text-gray-400">
+                  {[
+                    { at: 1, label: "1" },
+                    { at: 100, label: "100" },
+                    { at: 250, label: "250" },
+                    { at: 500, label: "500+" },
+                  ].map((tick) => {
+                    const pct = ((tick.at - 1) / (500 - 1)) * 100;
+                    const edge =
+                      pct <= 0
+                        ? "translate-x-0"
+                        : pct >= 100
+                        ? "-translate-x-full"
+                        : "-translate-x-1/2";
+                    return (
+                      <span
+                        key={tick.at}
+                        className={`absolute ${edge}`}
+                        style={{ left: `${pct}%` }}
+                      >
+                        {tick.label}
+                      </span>
+                    );
+                  })}
                 </div>
 
                 <div className="mt-4 flex flex-wrap gap-2">
@@ -246,7 +273,8 @@ export default function CostCalculatorPage() {
                       key={preset}
                       type="button"
                       onClick={() => setVolume(preset)}
-                      className={`px-3 py-1 rounded-full text-[11px] font-medium border transition-all ${
+                      aria-pressed={volume === preset}
+                      className={`min-h-[44px] min-w-[44px] px-4 py-2 rounded-full text-[11px] font-medium border transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2 ${
                         volume === preset
                           ? "bg-[#01463A] text-white border-[#01463A]"
                           : "bg-white text-[#01463A] border-gray-200 hover:border-[#058B74]/40"
@@ -275,7 +303,7 @@ export default function CostCalculatorPage() {
                       <p className="mt-0.5 text-[11px] text-gray-500 leading-relaxed">
                         Teams above ~200 checks/month unlock tiered discounts
                         automatically.{" "}
-                        <a href="/contact" className="text-[#058B74] font-semibold hover:underline">
+                        <a href="/contact" className="text-[#058B74] font-semibold hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2 rounded">
                           Request a quote
                         </a>
                         .
@@ -284,8 +312,10 @@ export default function CostCalculatorPage() {
                   </div>
                 )}
               </Panel>
+              </Reveal>
 
               {/* Add-ons */}
+              <Reveal delay={160}>
               <Panel step="03" title="Add what you need">
                 <p className="text-sm text-gray-500 leading-relaxed mb-4">
                   Every add-on stacks on top of your base tier and is billed only
@@ -299,10 +329,11 @@ export default function CostCalculatorPage() {
                         key={a.key}
                         type="button"
                         onClick={() => toggleAddOn(a.key)}
-                        className={`flex items-center justify-between gap-3 p-3 rounded-xl border text-left transition-all ${
+                        aria-pressed={active}
+                        className={`flex items-center justify-between gap-3 min-h-[44px] p-3 rounded-2xl border text-left transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2 ${
                           active
-                            ? "bg-[#058B74]/5 border-[#058B74]/40"
-                            : "bg-white border-gray-200 hover:border-[#058B74]/40"
+                            ? "bg-[#058B74]/5 border-[#058B74] ring-1 ring-[#058B74]"
+                            : "bg-white border-gray-200 hover:border-gray-300 hover:shadow-sm"
                         }`}
                       >
                         <div className="flex items-center gap-2.5 min-w-0">
@@ -340,11 +371,15 @@ export default function CostCalculatorPage() {
                   })}
                 </div>
               </Panel>
+              </Reveal>
             </div>
 
             {/* ─── Sticky summary ─── */}
-            <aside className="lg:sticky lg:top-28">
-              <div className="rounded-3xl overflow-hidden border border-[#01463A]/20 shadow-xl shadow-[#01463A]/10">
+            <Reveal delay={120} as="aside" className="lg:sticky lg:top-28">
+              <div
+                aria-live="polite"
+                className="rounded-3xl overflow-hidden border border-[#01463A]/20 shadow-xl shadow-[#01463A]/10"
+              >
                 {/* Header */}
                 <div className="relative bg-[#01463A] text-white px-7 py-8 overflow-hidden">
                   <div className="absolute -top-16 -right-16 w-40 h-40 rounded-full bg-[#058B74]/30 blur-3xl pointer-events-none" />
@@ -421,49 +456,45 @@ export default function CostCalculatorPage() {
                     </div>
                   </div>
 
-                  {/* Savings callout */}
+                  {/* Annual summary */}
                   <div className="mt-5 rounded-xl bg-gradient-to-br from-[#058B74]/10 to-[#0aa88a]/5 border border-[#058B74]/20 p-4">
-                    <div className="flex items-center justify-between gap-2">
-                      <div className="flex items-center gap-2">
-                        <svg
-                          width="16"
-                          height="16"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="#058B74"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <path d="M17 12l4-4-4-4" />
-                          <path d="M21 8H7a4 4 0 00-4 4v4" />
-                        </svg>
-                        <span className="text-[10px] font-semibold uppercase tracking-widest text-[#058B74]">
-                          Est. annual savings
-                        </span>
-                      </div>
-                      <span className="inline-flex items-center bg-[#058B74] text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
-                        −{savingsPct}%
+                    <div className="flex items-center gap-2">
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#058B74"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M3 3v18h18" />
+                        <path d="M7 14l4-4 3 3 5-6" />
+                      </svg>
+                      <span className="text-[10px] font-semibold uppercase tracking-widest text-[#058B74]">
+                        Estimated annual spend
                       </span>
                     </div>
                     <p className="mt-2 text-2xl font-extrabold text-[#01463A]">
-                      ${fmt(annualSavings)}
+                      ${fmt(annualCost)}
                     </p>
                     <p className="mt-1 text-[11px] text-gray-500 leading-relaxed">
-                      vs. a typical legacy screening vendor at this volume.
+                      Based on {volume} checks/mo at ${perCheck.toFixed(2)} per
+                      check, before any volume discounts.
                     </p>
                   </div>
 
                   <div className="mt-6 flex flex-col gap-2">
                     <a
-                      href="/signup"
-                      className="inline-flex items-center justify-center bg-[#01463A] text-white px-5 py-3 rounded-xl text-sm font-semibold hover:bg-[#058B74] transition-colors"
+                      href="/contact"
+                      className="inline-flex items-center justify-center bg-[#01463A] text-white px-5 py-3 rounded-xl text-sm font-semibold hover:bg-[#058B74] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2"
                     >
                       Get started
                     </a>
                     <a
                       href="/contact"
-                      className="inline-flex items-center justify-center border border-gray-200 text-[#01463A] px-5 py-3 rounded-xl text-sm font-semibold hover:border-[#058B74]/40 hover:text-[#058B74] transition-all"
+                      className="inline-flex items-center justify-center border border-gray-200 text-[#01463A] px-5 py-3 rounded-xl text-sm font-semibold hover:border-[#058B74]/40 hover:text-[#058B74] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2"
                     >
                       Talk to sales
                     </a>
@@ -475,7 +506,7 @@ export default function CostCalculatorPage() {
                 Estimates assume 100% applicant completion. You&apos;re only
                 billed when a check finishes, so real spend is usually lower.
               </p>
-            </aside>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -483,14 +514,12 @@ export default function CostCalculatorPage() {
       {/* FAQ */}
       <section className="bg-white py-20 px-6">
         <div className="mx-auto max-w-3xl">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
-              Estimate questions.
-            </h2>
-            <p className="mt-5 text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
-              How the numbers are built, when discounts kick in, and what happens when applicants drop off.
-            </p>
-          </div>
+          <SectionHeader
+            className="mb-14"
+            eyebrow="Estimate questions"
+            title="Estimate questions."
+            intro="How the numbers are built, when discounts kick in, and what happens when applicants drop off."
+          />
           <div className="space-y-3">
             {[
               {
@@ -513,10 +542,10 @@ export default function CostCalculatorPage() {
                 q: "Do add-ons stack on any tier?",
                 a: "Yes. Every add-on works with Basic, Standard, or Premium. Mix and match freely, and each add-on is billed only when an applicant completes it.",
               },
-            ].map((faq) => (
+            ].map((faq, i) => (
+              <Reveal key={faq.q} delay={i * 80}>
               <details
-                key={faq.q}
-                className="group rounded-2xl border border-gray-200 bg-white hover:border-[#058B74]/40 hover:shadow-md hover:shadow-[#058B74]/5 open:border-[#058B74]/40 open:shadow-md open:shadow-[#058B74]/5 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden"
+                className="group rounded-3xl border border-gray-200 bg-white hover:border-[#058B74]/40 hover:shadow-md hover:shadow-[#058B74]/5 open:border-[#058B74]/40 open:shadow-md open:shadow-[#058B74]/5 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden"
               >
                 <summary className="flex items-center justify-between gap-4 cursor-pointer list-none px-6 py-5">
                   <span className="text-sm md:text-base font-semibold text-[#01463A] group-hover:text-[#058B74] group-open:text-[#058B74] transition-colors">
@@ -532,57 +561,21 @@ export default function CostCalculatorPage() {
                   {faq.a.replace(/&apos;/g, "'")}
                 </div>
               </details>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* Bottom CTA */}
-      <section className="px-6 py-20 bg-white">
-        <div className="mx-auto max-w-7xl">
-          <div className="relative overflow-hidden rounded-2xl px-8 md:px-16 py-10 md:py-14 flex items-center shadow-lg">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/assets/banner_cta.webp"
-              alt=""
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            <div
-              className="absolute inset-0"
-              style={{
-                background:
-                  "linear-gradient(to top right, #01463A 30%, transparent 100%)",
-              }}
-            />
-            <div className="relative z-10 max-w-xl">
-              <p className="text-sm font-semibold tracking-widest uppercase text-white/50 mb-3">
-                Get Started Today
-              </p>
-              <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight">
-                Ready to Start<br className="hidden md:block" /> Screening?
-              </h2>
-              <p className="mt-4 text-white/60 text-base leading-relaxed max-w-md">
-                Sign up today and get enterprise-grade background screening for
-                your organization.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <a
-                  href="/signup"
-                  className="inline-flex items-center gap-2 bg-white text-[#01463A] px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-white/90 transition-colors"
-                >
-                  Get Started
-                </a>
-                <a
-                  href="/contact"
-                  className="inline-flex items-center border border-white/30 text-white px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-white/10 transition-colors"
-                >
-                  Contact Sales
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <CTASection
+        title={
+          <>
+            Ready to Start<br className="hidden lg:block" /> Screening?
+          </>
+        }
+        description="Sign up today and get enterprise-grade background screening for your organization."
+      />
 
     </main>
   );
@@ -598,7 +591,7 @@ function Panel({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-2xl border border-gray-200 bg-white p-6 md:p-8">
+    <div className="rounded-3xl border border-gray-200 bg-white p-6 md:p-8 transition-all duration-300 hover:border-gray-300 hover:shadow-lg hover:shadow-black/5">
       <div className="flex items-center gap-3 mb-5">
         <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[#058B74]/10 text-[#058B74] text-xs font-bold ring-1 ring-inset ring-[#058B74]/10">
           {step}

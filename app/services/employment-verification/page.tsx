@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import CTASection from "../../components/CTASection";
 import ServicePricing from "../../components/ServicePricing";
 import Reveal from "../../components/Reveal";
+import FeatureGrid from "../../components/ui/FeatureGrid";
+import ServiceHero from "../../components/ui/ServiceHero";
 import Bento from "./Bento";
 import ProductShowcase from "../../components/ProductShowcase";
 
@@ -105,46 +107,18 @@ const faqs = [
 export default function EmploymentVerificationPage() {
   return (
     <main className="bg-white text-[#01463A]">
-      {/* Hero */}
-      <section className="relative pt-36 pb-20 px-6 overflow-hidden bg-gradient-to-b from-[#01463A] to-[#058B74]">
-        <div className="absolute -top-32 -right-32 w-[32rem] h-[32rem] rounded-full bg-[#0aa88a]/25 blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-32 -left-32 w-[32rem] h-[32rem] rounded-full bg-[#058B74]/30 blur-3xl pointer-events-none" />
+      <ServiceHero
+        eyebrow="Employment verification"
+        title="Verified titles, dates, and separation reasons."
+        description="Atlas contacts prior employers directly — via automated networks, tracked email, or live phone — so every claim on a résumé is confirmed at the source, with a full audit trail."
+        steps={["Automated network", "Tracked email", "Live phone"]}
+      />
 
-        <div className="relative mx-auto max-w-4xl text-center">
-          <Reveal as="p" className="text-xs font-semibold tracking-widest uppercase text-white/70 mb-4">
-            Employment verification
-          </Reveal>
-          <Reveal as="h1" delay={80} className="text-3xl md:text-5xl font-bold text-white leading-tight">
-            Verified titles, dates, and separation reasons.
-          </Reveal>
-          <Reveal as="p" delay={160} className="mt-5 text-white/70 max-w-2xl mx-auto text-sm leading-relaxed">
-            Atlas contacts prior employers directly — via automated networks,
-            tracked email, or live phone — so every claim on a résumé is
-            confirmed at the source, with a full audit trail.
-          </Reveal>
-        </div>
-      </section>
-
-      {/* What's included */}
-      <section className="bg-white py-20 px-6">
-        <div className="mx-auto max-w-6xl">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {included.map((f, i) => (
-              <Reveal
-                key={f.title}
-                delay={i * 80}
-                className="group rounded-2xl border border-gray-200 bg-white p-6 hover:border-[#058B74]/40 hover:shadow-lg hover:shadow-[#058B74]/10 hover:-translate-y-1 transition-all duration-300"
-              >
-                <div className="w-12 h-12 rounded-xl bg-[#058B74]/10 text-[#058B74] flex items-center justify-center ring-1 ring-inset ring-[#058B74]/10 group-hover:bg-[#058B74] group-hover:text-white group-hover:ring-[#058B74] transition-all duration-300">
-                  {f.icon}
-                </div>
-                <h3 className="mt-5 text-lg font-semibold text-[#01463A]">{f.title}</h3>
-                <p className="mt-2 text-sm text-gray-500 leading-relaxed">{f.desc}</p>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FeatureGrid
+        title="Every title, date, and employer — confirmed."
+        intro="We contact past employers directly to validate what candidates claim, and flag the discrepancies that matter before you hire."
+        features={included}
+      />
 
       {/* Interactive bento */}
       <section className="bg-white pb-8 px-6">
@@ -198,7 +172,7 @@ export default function EmploymentVerificationPage() {
                 delay={i * 60}
                 className="group rounded-2xl border border-gray-200 bg-white hover:border-[#058B74]/40 hover:shadow-md hover:shadow-[#058B74]/5 open:border-[#058B74]/40 open:shadow-md open:shadow-[#058B74]/5 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden"
               >
-                <summary className="flex items-center justify-between gap-4 cursor-pointer list-none px-6 py-5">
+                <summary className="flex items-center justify-between gap-4 cursor-pointer list-none px-6 py-5 rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2">
                   <span className="text-sm md:text-base font-semibold text-[#01463A] group-hover:text-[#058B74] group-open:text-[#058B74] transition-colors">
                     {faq.q}
                   </span>

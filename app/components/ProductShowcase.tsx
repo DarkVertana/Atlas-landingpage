@@ -92,24 +92,8 @@ export default function ProductShowcase({
               {/* Ambient accent glow */}
               <div className="hidden sm:block absolute -inset-6 -z-10 rounded-[2rem] bg-gradient-to-br from-[#058B74]/10 to-transparent blur-2xl" />
 
-              {/* Browser frame */}
+              {/* Product frame */}
               <div className="rounded-2xl bg-white shadow-2xl shadow-[#01463A]/10 ring-1 ring-gray-200 overflow-hidden">
-                <div className="flex items-center gap-2 px-4 py-2.5 bg-gray-50/80 border-b border-gray-100">
-                  <div className="flex gap-1.5">
-                    <div className="w-2.5 h-2.5 rounded-full bg-[#FF5F57]" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-[#28C840]" />
-                  </div>
-                  <div className="flex-1 flex justify-center">
-                    <div className="flex items-center gap-1.5 bg-white rounded-lg px-3 py-1 text-[10px] text-gray-400 border border-gray-100 w-52">
-                      <svg width="10" height="10" viewBox="0 0 16 16" fill="none">
-                        <path d="M8 4a2 2 0 100 4 2 2 0 000-4z" fill="currentColor" />
-                        <path d="M4.5 7a3.5 3.5 0 117 0c0 2-3.5 5.5-3.5 5.5S4.5 9 4.5 7z" stroke="currentColor" strokeWidth="1.2" fill="none" />
-                      </svg>
-                      app.atlasscreening.com
-                    </div>
-                  </div>
-                </div>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={image} alt={imageAlt} loading="lazy" className="block w-full h-auto" />
               </div>

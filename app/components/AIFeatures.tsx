@@ -1,139 +1,262 @@
-import Reveal from "./Reveal";
+"use client";
 
-const features = [
+import { useState } from "react";
+import Reveal from "./Reveal";
+import DotField from "./reactbits/DotField";
+import CardSwap, { Card } from "./reactbits/CardSwap";
+
+/* Anatomy of a report — a rotating 3D deck (ReactBits CardSwap) where each card
+   is one facet of the report, but rendered in the live app's own visual language
+   (light surface, dark-green brand, real status pills) so it reads as a genuine
+   product artifact rather than an abstract mockup. The left index lights up in
+   sync with whichever card is at the front. */
+
+const MINT = "94,227,192";
+
+const parts = [
   {
-    title: "Timestamped FCRA Consent",
-    desc: "Automated authorization workflows aligned with Fair Credit Reporting Act guidelines.",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="9" />
-        <path d="M9 12l2 2 4-4" />
-      </svg>
-    ),
+    n: "01",
+    title: "A verdict, up top",
+    body: "Every report opens with one clear eligibility call, so there's no scrolling to find where the candidate landed.",
   },
   {
-    title: "Tokenized Candidate Access",
-    desc: "Applicant data stays private through secure, time-limited submission links.",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
-        <path d="M14 2v6h6" />
-        <circle cx="12" cy="14" r="2" />
-      </svg>
-    ),
+    n: "02",
+    title: "Each check, itemized",
+    body: "Criminal, identity, employment, watchlist: every search listed with its jurisdiction and the date it cleared.",
   },
   {
-    title: "Encrypted Data Transmission",
-    desc: "Sensitive identification documents and selfie verifications stay protected end-to-end.",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
-        <path d="M12 9v4M12 17h.01" />
-      </svg>
-    ),
+    n: "03",
+    title: "Findings surfaced, not buried",
+    body: "Anything needing a second look is flagged in amber with its source, so your team never misses it.",
   },
   {
-    title: "Comprehensive Audit Logging",
-    desc: "Role-based access controls and complete tracking of every system action.",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9" />
-        <path d="M13.73 21a2 2 0 01-3.46 0" />
-      </svg>
-    ),
+    n: "04",
+    title: "Compliance on the record",
+    body: "FCRA consent, adjudication basis, and turnaround are printed on the report itself, defensible by design.",
   },
 ];
 
-export default function AIFeatures() {
+const checkRows = [
+  { label: "Identity & SSN trace", meta: "3 sources" },
+  { label: "Criminal search", meta: "12 jurisdictions" },
+  { label: "Employment verification", meta: "2 employers" },
+  { label: "Global watchlist", meta: "OFAC · Interpol" },
+];
+
+/* ── document primitives (light product surface, matches the live app) ── */
+
+const TickGreen = () => (
+  <svg viewBox="0 0 16 16" fill="none" className="h-[15px] w-[15px] shrink-0">
+    <circle cx="8" cy="8" r="8" fill="#128A5E" />
+    <path d="M4.6 8.1l2.1 2.1 4.6-4.7" stroke="#fff" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+/* the app-style window chrome shared by every card */
+function CardShell({ n, label, children }: { n: string; label: string; children: React.ReactNode }) {
   return (
-    <section className="bg-white py-14 sm:py-20 px-4 sm:px-6">
-      <div className="mx-auto max-w-6xl">
-        <div className="grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 items-center">
-          {/* Left — details */}
-          <Reveal variant="left">
-            <h2 className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
-              Non-negotiable security and compliance.
-            </h2>
-            <p className="mt-5 text-gray-500 text-sm leading-relaxed max-w-lg">
-              Protecting consumer data and maintaining legal adherence sit at the core of
-              our platform. We conceal operational complexity behind robust
-              controls so your team can make safe, data-driven hiring decisions.
-            </p>
-
-            <ul className="mt-8 space-y-8">
-              {features.map((f, i) => (
-                <Reveal
-                  key={f.title}
-                  as="li"
-                  delay={200 + i * 80}
-                  className="flex items-center gap-4 group"
-                >
-                  <div className="flex-shrink-0 text-[#058B74]">
-                    {f.icon}
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-semibold text-[#01463A]">{f.title}</h3>
-                    <p className="mt-1 text-sm text-gray-500 leading-relaxed">{f.desc}</p>
-                  </div>
-                </Reveal>
-              ))}
-            </ul>
-          </Reveal>
-
-          {/* Right — image */}
-          <Reveal variant="right" delay={120} className="relative">
-            <div className="relative overflow-hidden rounded-3xl border border-gray-200 bg-gradient-to-br from-[#01463A] to-[#058B74] aspect-[4/5] shadow-xl shadow-[#058B74]/20">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/assets/images/Ai-section.webp"
-                alt="AI-powered screening"
-                loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#01463A]/40 via-transparent to-transparent pointer-events-none" />
-
-              {/* Trust badge inside image */}
-              <div className="absolute top-5 left-5 z-10 inline-flex items-center gap-2 bg-white/15 backdrop-blur-md border border-white/25 rounded-full pl-2 pr-4 py-1.5 shadow-lg shadow-black/10">
-                <span className="flex items-center justify-center w-6 h-6 rounded-full bg-white text-[#058B74]">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z" />
-                    <path d="M9 12l2 2 4-4" />
-                  </svg>
-                </span>
-                <span className="text-[11px] font-semibold uppercase tracking-wider text-white">
-                  Trusted &amp; Verified
-                </span>
-              </div>
-            </div>
-
-            {/* Floating rating card */}
-            <div className="absolute bottom-4 right-4 sm:bottom-8 sm:-right-8 z-20 bg-white rounded-2xl shadow-xl shadow-[#01463A]/15 border border-gray-100 px-4 py-3 w-[160px] sm:w-[180px]">
-              <div className="flex items-center gap-2">
-                <div className="flex items-center gap-0.5 text-[#f5a623]">
-                  {[0, 1, 2, 3, 4].map((i) => (
-                    <svg key={i} width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
-                      <path d="M10 1.5l2.6 5.5 6 .9-4.3 4.2 1 6-5.3-2.9-5.4 2.9 1-6L1.4 7.9l6-.9L10 1.5z" />
-                    </svg>
-                  ))}
-                </div>
-                <span className="text-base font-bold text-[#01463A]">4.9</span>
-              </div>
-              <p className="mt-1.5 text-xs text-gray-500">
-                Based on <span className="font-semibold text-[#01463A]">200+ reviews</span>
-              </p>
-              <div className="mt-2.5 flex items-center gap-1.5 text-[11px] text-[#01463A] font-semibold">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#058B74" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12l5 5 9-11" />
-                </svg>
-                Verified reviews
-              </div>
-            </div>
-
-            {/* Decorative accents */}
-            <div className="hidden sm:block absolute -bottom-10 right-8 w-24 h-24 rounded-2xl bg-[#058B74]/15 -z-10 animate-float-slow" />
-            <div className="hidden sm:block absolute top-12 -right-8 w-28 h-28 rounded-3xl bg-[#01463A]/10 -z-10 animate-float-slow" style={{ animationDelay: "1.5s" }} />
-          </Reveal>
+    <div className="relative flex h-full w-full flex-col overflow-hidden rounded-[18px] bg-white ring-1 ring-black/[0.06] shadow-[0_2px_4px_rgba(4,20,14,0.04),0_28px_56px_-24px_rgba(4,20,14,0.55)]">
+      <div className="flex items-center justify-between border-b border-black/[0.06] bg-white px-5 py-3.5">
+        <div className="flex items-center gap-2.5">
+          <span className="flex h-[22px] w-[22px] items-center justify-center rounded-md bg-[#0C3A2C] font-mono text-[10px] font-semibold text-[#7FE9C8]">
+            {n}
+          </span>
+          <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#5B6E67]">{label}</span>
         </div>
+        <span className="font-mono text-[10.5px] tracking-wide text-[#AAB6B0]">BGC-2026-4042</span>
+      </div>
+      <div className="flex flex-1 flex-col bg-[#FBFCFB] px-5 py-4">{children}</div>
+    </div>
+  );
+}
+
+export default function AIFeatures() {
+  const [front, setFront] = useState(0);
+
+  return (
+    <section id="security" className="relative overflow-hidden bg-[#04140E] px-4 py-24 text-white sm:px-6 sm:py-32">
+      <DotField
+        className="pointer-events-none absolute inset-0 opacity-50"
+        color="255,255,255"
+        glowColor={MINT}
+        baseAlpha={0.05}
+        dotRadius={0.9}
+        dotSpacing={16}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-1/4 left-1/2 h-[560px] w-[820px] -translate-x-1/2 rounded-full"
+        style={{ background: "radial-gradient(closest-side, rgba(94,227,192,0.12), transparent)" }}
+      />
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
+      <div className="relative mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-[0.92fr_1.08fr] lg:gap-10">
+        {/* ── Left: the four parts, synced to the deck ── */}
+        <div>
+          <Reveal as="span" className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.28em] text-[#5EE3C0]">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#5EE3C0] shadow-[0_0_10px_2px_rgba(94,227,192,0.6)]" />
+            Anatomy of a report
+          </Reveal>
+          <Reveal as="h2" delay={80} className="mt-5 text-[2.4rem] font-semibold leading-[1.04] tracking-[-0.02em] text-white md:text-[3.1rem] [text-wrap:balance]">
+            Everything a hiring decision needs, on one page.
+          </Reveal>
+          <Reveal as="p" delay={150} className="mt-5 max-w-md text-[15.5px] leading-relaxed text-white/55">
+            Not a data dump. Every Atlas report is built the same four ways.
+            Watch each part surface, or read them below.
+          </Reveal>
+
+          <ul className="mt-9 flex flex-col gap-1.5">
+            {parts.map((p, i) => {
+              const on = front === i;
+              return (
+                <li key={p.n}>
+                  <div
+                    className={`relative flex items-start gap-4 rounded-xl border px-4 py-3 transition-all duration-500 ${
+                      on ? "border-[#5EE3C0]/25 bg-white/[0.05]" : "border-transparent"
+                    }`}
+                  >
+                    <span
+                      className={`mt-0.5 font-mono text-[12px] font-medium tabular-nums transition-colors duration-500 ${
+                        on ? "text-[#5EE3C0]" : "text-white/30"
+                      }`}
+                    >
+                      {p.n}
+                    </span>
+                    <div>
+                      <h3 className={`text-[15.5px] font-semibold transition-colors duration-500 ${on ? "text-white" : "text-white/55"}`}>
+                        {p.title}
+                      </h3>
+                      <p
+                        className={`grid overflow-hidden text-[13.5px] leading-relaxed text-white/50 transition-all duration-500 ${
+                          on ? "mt-1.5 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                        }`}
+                      >
+                        <span className="min-h-0">{p.body}</span>
+                      </p>
+                    </div>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+
+        {/* ── Right: the rotating report deck ── */}
+        <Reveal variant="scale" delay={120} className="relative h-[520px] sm:h-[600px]">
+          <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,black_60%,transparent)]" />
+          <CardSwap
+            width={520}
+            height={384}
+            cardDistance={38}
+            verticalDistance={62}
+            delay={3400}
+            skewAmount={3}
+            onFront={setFront}
+            className="!bottom-1/2 !right-1/2 translate-x-1/2 translate-y-[calc(50%+34px)]"
+          >
+            {/* 01 · Verdict */}
+            <Card>
+              <CardShell n="01" label="Verdict">
+                <div className="flex flex-1 flex-col justify-center">
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#0C3A2C] text-[14px] font-semibold text-white">
+                      AM
+                    </span>
+                    <div className="min-w-0">
+                      <p className="truncate text-[20px] font-semibold tracking-[-0.01em] text-[#12211B]">Alex Morgan</p>
+                      <p className="mt-0.5 text-[12.5px] text-[#5B6E67]">Standard package · Jul 30, 2026</p>
+                    </div>
+                    <span className="ml-auto inline-flex shrink-0 items-center gap-1.5 rounded-full bg-[#E4F4EC] px-3 py-1.5 text-[12px] font-semibold text-[#0E7A50] ring-1 ring-inset ring-[#0E7A50]/15">
+                      <span className="h-1.5 w-1.5 rounded-full bg-[#12A365]" /> Eligible
+                    </span>
+                  </div>
+                  <div className="mt-4 grid grid-cols-3 gap-px overflow-hidden rounded-xl border border-black/[0.06] bg-black/[0.06]">
+                    {[
+                      { v: "4 / 4", l: "Checks cleared" },
+                      { v: "12", l: "Jurisdictions" },
+                      { v: "2 days", l: "Turnaround" },
+                    ].map((s) => (
+                      <div key={s.l} className="bg-white px-3 py-2.5">
+                        <p className="text-[16px] font-semibold tracking-tight text-[#12211B]">{s.v}</p>
+                        <p className="mt-0.5 text-[10.5px] font-medium uppercase tracking-[0.08em] text-[#83948C]">{s.l}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </CardShell>
+            </Card>
+
+            {/* 02 · Checks */}
+            <Card>
+              <CardShell n="02" label="Checks">
+                <ul className="flex flex-1 flex-col justify-center">
+                  {checkRows.map((c, i) => (
+                    <li key={c.label} className={`flex items-center gap-3 py-2 ${i > 0 ? "border-t border-black/[0.05]" : ""}`}>
+                      <TickGreen />
+                      <span className="text-[13.5px] font-medium text-[#1B2C25]">{c.label}</span>
+                      <span className="text-[12px] text-[#83948C]">{c.meta}</span>
+                      <span className="ml-auto inline-flex items-center gap-1.5 rounded-md bg-[#E8F4EE] px-2 py-0.5 text-[10.5px] font-semibold uppercase tracking-[0.1em] text-[#0E7A50]">Clear</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-3 flex items-center justify-between border-t border-black/[0.06] pt-3 text-[12px]">
+                  <span className="text-[#5B6E67]">4 of 4 searches returned</span>
+                  <span className="font-semibold text-[#0E7A50]">No adverse records</span>
+                </div>
+              </CardShell>
+            </Card>
+
+            {/* 03 · Finding */}
+            <Card>
+              <CardShell n="03" label="Finding">
+                <div className="flex flex-1 flex-col justify-center">
+                  <div className="rounded-xl border border-[#E7C583] bg-[#FBF3E1] px-4 py-3.5">
+                    <div className="flex items-start gap-3">
+                      <svg viewBox="0 0 16 16" fill="none" className="mt-0.5 h-4 w-4 shrink-0">
+                        <circle cx="8" cy="8" r="8" fill="#E29A18" />
+                        <path d="M8 4.4v4M8 11h.01" stroke="#fff" strokeWidth="1.7" strokeLinecap="round" />
+                      </svg>
+                      <div>
+                        <p className="text-[13.5px] font-semibold text-[#7A5410]">1 item to review: Motor vehicle record</p>
+                        <p className="mt-0.5 text-[12.5px] text-[#987A3E]">Source · State DMV · minor infraction, 2023</p>
+                      </div>
+                    </div>
+                    <div className="mt-3 flex items-center gap-2 border-t border-[#E7C583]/70 pt-3">
+                      <button className="rounded-lg bg-[#0C3A2C] px-3 py-1.5 text-[11.5px] font-semibold text-white">Review record</button>
+                      <span className="text-[11.5px] text-[#987A3E]">Awaiting adjudicator sign-off</span>
+                    </div>
+                  </div>
+                </div>
+              </CardShell>
+            </Card>
+
+            {/* 04 · Compliance */}
+            <Card>
+              <CardShell n="04" label="Compliance">
+                <div className="flex flex-1 flex-col justify-center gap-2.5">
+                  <div className="flex items-center gap-2.5 text-[13px] text-[#1B2C25]">
+                    <TickGreen /> FCRA consent on file
+                  </div>
+                  <div className="flex items-center gap-2.5 text-[13px] text-[#1B2C25]">
+                    <TickGreen /> Adjudicated · FCRA &amp; EEOC guidance
+                  </div>
+                  <div className="flex items-center gap-2.5 text-[13px] text-[#1B2C25]">
+                    <TickGreen /> Signed digitally · 2-day turnaround
+                  </div>
+                  <div className="mt-2 flex items-center justify-between border-t border-black/[0.06] pt-3">
+                    <div>
+                      <p className="text-[12.5px] font-semibold text-[#12211B]">Atlas Screening, Inc.</p>
+                      <p className="text-[11px] text-[#83948C]">Adjudicator · e-signed Jul 30, 2026</p>
+                    </div>
+                    <span className="inline-flex items-center gap-1.5 rounded-md bg-[#E8F4EE] px-2.5 py-1 text-[11px] font-semibold text-[#0E7A50]">
+                      <TickGreen /> Verified
+                    </span>
+                  </div>
+                </div>
+              </CardShell>
+            </Card>
+          </CardSwap>
+        </Reveal>
       </div>
     </section>
   );

@@ -1,6 +1,30 @@
 "use client";
 
 import { useState } from "react";
+import Reveal from "../../components/Reveal";
+import SectionHeader from "../../components/ui/SectionHeader";
+import CTASection from "../../components/CTASection";
+
+// What each base tier already covers, so the recommendation reads as a real
+// plan rather than just a name. Later tiers build on the earlier ones.
+const tierIncludes: Record<string, string[]> = {
+  Basic: [
+    "SSN trace & identity verification",
+    "National criminal database search",
+    "Sex offender registry check",
+  ],
+  Standard: [
+    "Everything in Basic",
+    "County criminal court search",
+    "Motor vehicle records (MVR)",
+  ],
+  Premium: [
+    "Everything in Standard",
+    "Federal criminal search",
+    "Employment & education verification",
+    "Global watchlist screening",
+  ],
+};
 
 const addOnLabels: Record<string, string> = {
   mvr: "Motor vehicle records",
@@ -138,20 +162,24 @@ export default function PackageRecommenderPage() {
     <main className="bg-white text-[#01463A]">
       {/* Hero */}
       <section className="relative pt-36 pb-20 px-6 overflow-hidden bg-gradient-to-b from-[#01463A] to-[#058B74]">
-        <div className="absolute -top-32 -right-32 w-[32rem] h-[32rem] rounded-full bg-[#0aa88a]/25 blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-32 -left-32 w-[32rem] h-[32rem] rounded-full bg-[#058B74]/30 blur-3xl pointer-events-none" />
+        <div className="absolute -top-32 -right-32 w-[32rem] h-[32rem] rounded-full bg-[#058B74]/30 blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-40 -left-24 w-[28rem] h-[28rem] rounded-full bg-white/5 blur-3xl pointer-events-none" />
+        <div
+          className="absolute inset-0 opacity-[0.04] pointer-events-none"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, #ffffff 1px, transparent 1px)",
+            backgroundSize: "22px 22px",
+          }}
+        />
 
-        <div className="relative mx-auto max-w-4xl text-center">
-          <p className="text-xs font-semibold tracking-widest uppercase text-white/70 mb-4">
-            Interactive tool
-          </p>
-          <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight">
-            Package recommender.
-          </h1>
-          <p className="mt-5 text-white/70 max-w-xl mx-auto text-sm leading-relaxed">
-            Tell us about your industry, the roles you hire, and your volume — we&apos;ll
-            point you to the Atlas package that fits best.
-          </p>
+        <div className="relative mx-auto max-w-4xl">
+          <SectionHeader
+            tone="light"
+            eyebrow="Interactive tool"
+            title="Package recommender."
+            intro="Tell us about your industry, the roles you hire, and your volume — we'll point you to the Atlas package that fits best."
+          />
         </div>
       </section>
 
@@ -160,7 +188,7 @@ export default function PackageRecommenderPage() {
         <div className="mx-auto max-w-5xl">
           <div className="grid lg:grid-cols-5 gap-6">
             {/* Inputs — 2/5 */}
-            <div className="lg:col-span-2 rounded-3xl border border-gray-200 bg-white p-8 shadow-sm">
+            <Reveal delay={0} className="lg:col-span-2 rounded-3xl border border-gray-200 bg-white p-8 shadow-sm transition-all duration-300 hover:border-gray-300 hover:shadow-lg hover:shadow-black/5">
               <p className="text-xs font-semibold tracking-widest uppercase text-[#058B74] mb-3">
                 Tell us about your team
               </p>
@@ -169,59 +197,95 @@ export default function PackageRecommenderPage() {
               </h2>
 
               <div className="mt-8 space-y-6">
-                <SelectField
+                <PillGroup
                   label="Industry"
+                  name="industry"
                   value={industry}
                   onChange={(v) => setIndustry(v as Industry)}
                   options={industryOptions}
                 />
-                <SelectField
+                <PillGroup
                   label="Role type"
+                  name="role"
                   value={role}
                   onChange={(v) => setRole(v as Role)}
                   options={roleOptions}
                 />
-                <SelectField
+                <PillGroup
                   label="Monthly volume"
+                  name="volume"
                   value={volume}
                   onChange={(v) => setVolume(v as Volume)}
                   options={volumeOptions}
                 />
               </div>
-            </div>
+            </Reveal>
 
             {/* Recommendation — 3/5 */}
-            <div className="lg:col-span-3 rounded-3xl bg-[#01463A] text-white p-8 md:p-10 relative overflow-hidden">
+            <Reveal
+              delay={80}
+              className="lg:col-span-3 lg:sticky lg:top-28 lg:self-start rounded-3xl bg-[#01463A] text-white p-8 md:p-10 relative overflow-hidden"
+            >
               <div className="absolute -top-24 -right-24 w-64 h-64 rounded-full bg-[#058B74]/30 blur-3xl pointer-events-none" />
-              <div className="absolute -bottom-24 -left-24 w-64 h-64 rounded-full bg-[#0aa88a]/20 blur-3xl pointer-events-none" />
 
-              <div className="relative">
-                <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-3 py-1.5 text-[11px] font-semibold uppercase tracking-widest text-white">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#0aa88a">
-                    <path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2L12 2z" />
-                  </svg>
-                  {rec.badge}
+              <div aria-live="polite" className="relative">
+                <div className="flex items-center justify-between gap-3">
+                  <p className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-widest text-white/50">
+                    <span className="relative flex h-1.5 w-1.5">
+                      <span className="absolute inline-flex h-full w-full rounded-full bg-[#0aa88a] opacity-75 animate-ping" />
+                      <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#0aa88a]" />
+                    </span>
+                    Updates as you choose
+                  </p>
+                  <div className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-white/90">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="#0aa88a">
+                      <path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2L12 2z" />
+                    </svg>
+                    {rec.badge}
+                  </div>
                 </div>
 
-                <h3 className="mt-5 text-3xl md:text-4xl font-extrabold leading-none">
-                  {rec.tier} <span className="text-white/60 text-2xl font-bold">plan</span>
+                <h3 className="mt-6 flex items-baseline gap-2 text-4xl font-extrabold leading-none text-white">
+                  {rec.tier}
+                  <span className="text-lg font-semibold uppercase tracking-[0.2em] text-white/45">
+                    plan
+                  </span>
                 </h3>
-                <p className="mt-4 text-sm text-white/70 leading-relaxed max-w-lg">
+                <p className="mt-4 max-w-lg text-sm leading-relaxed text-white/70">
                   {rec.reason}
                 </p>
 
+                {/* Included in the base tier */}
+                <div className="mt-7 border-t border-white/10 pt-6">
+                  <p className="mb-3 text-[10px] font-semibold uppercase tracking-widest text-white/50">
+                    Included in this plan
+                  </p>
+                  <ul className="grid gap-2.5 sm:grid-cols-2">
+                    {(tierIncludes[rec.tier] ?? []).map((item) => (
+                      <li key={item} className="flex items-start gap-2.5 text-sm text-white/85">
+                        <span className="mt-0.5 flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full bg-[#0aa88a]/20">
+                          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#3EE8BE" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M5 12l5 5 9-11" />
+                          </svg>
+                        </span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
                 {rec.addOns.length > 0 && (
-                  <div className="mt-6">
-                    <p className="text-[10px] uppercase tracking-widest text-white/50 mb-3">
+                  <div className="mt-6 border-t border-white/10 pt-6">
+                    <p className="mb-3 text-[10px] font-semibold uppercase tracking-widest text-white/50">
                       Suggested add-ons
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {rec.addOns.map((a) => (
                         <span
                           key={a}
-                          className="inline-flex items-center bg-white/10 border border-white/20 text-white text-xs font-medium px-3 py-1.5 rounded-full"
+                          className="inline-flex items-center rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-medium text-white"
                         >
-                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0aa88a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="mr-1.5">
+                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#3EE8BE" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="mr-1.5">
                             <path d="M5 12l5 5 9-11" />
                           </svg>
                           {addOnLabels[a]}
@@ -231,22 +295,22 @@ export default function PackageRecommenderPage() {
                   </div>
                 )}
 
-                <div className="mt-8 flex flex-wrap gap-3">
+                <div className="mt-8 flex flex-wrap gap-3 border-t border-white/10 pt-7">
                   <a
                     href="/pricing"
-                    className="inline-flex items-center gap-2 bg-white text-[#01463A] px-6 py-3 rounded-xl text-sm font-semibold hover:bg-white/90 transition-colors"
+                    className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-semibold text-[#01463A] transition-colors hover:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#01463A]"
                   >
                     See full pricing
                   </a>
                   <a
                     href="/contact"
-                    className="inline-flex items-center gap-2 border border-white/30 text-white px-6 py-3 rounded-xl text-sm font-semibold hover:bg-white/10 transition-colors"
+                    className="inline-flex items-center gap-2 rounded-xl border border-white/30 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#01463A]"
                   >
                     Talk to sales
                   </a>
                 </div>
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -254,109 +318,86 @@ export default function PackageRecommenderPage() {
       {/* Reassurance */}
       <section className="bg-gradient-to-b from-white to-gray-50 py-20 px-6">
         <div className="mx-auto max-w-5xl text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#01463A] leading-tight">
-            Not sure? Neither are we — at first.
-          </h2>
-          <p className="mt-5 text-sm text-gray-500 max-w-xl mx-auto leading-relaxed">
-            This recommender is a starting point, not a contract. You can switch
-            tiers or add services at any time, and our team is happy to tailor a
-            package to your exact hiring or leasing workflow.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <SectionHeader
+            align="center"
+            eyebrow="No commitment"
+            title="Not sure? Neither are we — at first."
+            intro="This recommender is a starting point, not a contract. You can switch tiers or add services at any time, and our team is happy to tailor a package to your exact hiring or leasing workflow."
+          />
+          <Reveal delay={200} className="mt-8 flex flex-wrap justify-center gap-3">
             <a
               href="/resources/cost-calculator"
-              className="inline-flex items-center gap-2 bg-[#01463A] text-white px-6 py-3 rounded-xl text-sm font-semibold hover:bg-[#058B74] transition-colors"
+              className="inline-flex items-center gap-2 bg-[#01463A] text-white px-6 py-3 rounded-xl text-sm font-semibold hover:bg-[#058B74] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2"
             >
               Estimate your cost
             </a>
             <a
               href="/contact"
-              className="inline-flex items-center gap-2 border border-gray-200 text-[#01463A] px-6 py-3 rounded-xl text-sm font-semibold hover:border-[#058B74]/40 hover:text-[#058B74] transition-all"
+              className="inline-flex items-center gap-2 border border-gray-200 text-[#01463A] px-6 py-3 rounded-xl text-sm font-semibold hover:border-[#058B74]/40 hover:text-[#058B74] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2"
             >
               Talk to sales
             </a>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* Bottom CTA */}
-      <section className="px-6 py-20 bg-white">
-        <div className="mx-auto max-w-7xl">
-          <div className="relative overflow-hidden rounded-2xl px-8 md:px-16 py-10 md:py-14 flex items-center shadow-lg">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/assets/banner_cta.webp"
-              alt=""
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            <div
-              className="absolute inset-0"
-              style={{
-                background:
-                  "linear-gradient(to top right, #01463A 30%, transparent 100%)",
-              }}
-            />
-            <div className="relative z-10 max-w-xl">
-              <p className="text-sm font-semibold tracking-widest uppercase text-white/50 mb-3">
-                Get Started Today
-              </p>
-              <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight">
-                Ready to Start<br className="hidden md:block" /> Screening?
-              </h2>
-              <p className="mt-4 text-white/60 text-base leading-relaxed max-w-md">
-                Sign up today and get enterprise-grade background screening for
-                your organization.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <a
-                  href="/signup"
-                  className="inline-flex items-center gap-2 bg-white text-[#01463A] px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-white/90 transition-colors"
-                >
-                  Get Started
-                </a>
-                <a
-                  href="/contact"
-                  className="inline-flex items-center border border-white/30 text-white px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-white/10 transition-colors"
-                >
-                  Contact Sales
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <CTASection
+        title={
+          <>
+            Ready to Start<br className="hidden lg:block" /> Screening?
+          </>
+        }
+        description="Sign up today and get enterprise-grade background screening for your organization."
+      />
 
     </main>
   );
 }
 
-function SelectField({
+function PillGroup({
   label,
+  name,
   value,
   onChange,
   options,
 }: {
   label: string;
+  name: string;
   value: string;
   onChange: (v: string) => void;
   options: { value: string; label: string }[];
 }) {
+  const groupId = `${name}-label`;
   return (
-    <div>
-      <label className="block text-xs font-semibold uppercase tracking-widest text-gray-500 mb-1.5">
-        {label}
-      </label>
-      <select
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        className="w-full text-sm text-[#01463A] bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:bg-white focus:border-[#058B74]/50 focus:ring-1 focus:ring-[#058B74]/20 transition-all"
+    <div role="radiogroup" aria-labelledby={groupId}>
+      <p
+        id={groupId}
+        className="block text-xs font-semibold uppercase tracking-widest text-gray-500 mb-2"
       >
-        {options.map((o) => (
-          <option key={o.value} value={o.value}>
-            {o.label}
-          </option>
-        ))}
-      </select>
+        {label}
+      </p>
+      <div className="flex flex-wrap gap-2">
+        {options.map((o) => {
+          const active = value === o.value;
+          return (
+            <button
+              key={o.value}
+              type="button"
+              role="radio"
+              aria-checked={active}
+              onClick={() => onChange(o.value)}
+              className={`min-h-[44px] px-4 py-2 rounded-2xl text-sm font-medium border text-left transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2 ${
+                active
+                  ? "bg-[#058B74]/5 border-[#058B74] ring-1 ring-[#058B74] text-[#01463A]"
+                  : "bg-gray-50 border-gray-200 text-[#01463A] hover:border-gray-300 hover:shadow-sm"
+              }`}
+            >
+              {o.label}
+            </button>
+          );
+        })}
+      </div>
     </div>
   );
 }

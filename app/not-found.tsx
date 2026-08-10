@@ -14,24 +14,48 @@ export default function NotFound() {
       {/* Main content */}
       <main className="relative z-10 flex-1 flex items-center justify-center px-6 pt-56 pb-40">
         <div className="max-w-lg w-full text-center">
-          <p className="text-[#01463A]/[0.06] text-[140px] md:text-[200px] font-bold leading-none tracking-tighter select-none mb-2">
+          <p
+            aria-hidden="true"
+            className="text-[#01463A]/[0.1] text-[140px] md:text-[200px] font-bold leading-none tracking-tighter select-none mb-2"
+          >
             404
           </p>
 
-          <h1 className="text-gray-900 text-2xl md:text-3xl font-semibold mb-4">
+          <h1 className="text-gray-900 text-3xl md:text-5xl font-bold leading-tight mb-4">
             This page could not be found.
           </h1>
 
-          <p className="text-gray-500 text-sm leading-relaxed mb-8">
-            The resource you requested does not exist or has been moved to a new location. Please verify the URL or return to the homepage.
+          <p className="text-gray-600 text-sm leading-relaxed mb-8">
+            The page you requested does not exist or may have moved. Check the URL, or pick up from one of the links below.
           </p>
 
           <Link
             href="/"
-            className="inline-flex items-center gap-2 bg-[#01463A] text-white px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-[#01463A]/90 transition-all duration-200 hover:shadow-lg hover:shadow-[#01463A]/20"
+            className="inline-flex items-center justify-center gap-2 bg-[#01463A] text-white px-6 py-3 min-h-[44px] rounded-lg text-sm font-semibold hover:bg-[#01463A]/90 transition-all duration-200 hover:shadow-lg hover:shadow-[#01463A]/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2"
           >
             Back to home
           </Link>
+
+          <nav aria-label="Helpful links" className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
+            <Link
+              href="/"
+              className="inline-flex items-center min-h-[44px] px-1 rounded-md text-[#058B74] font-semibold hover:text-[#01463A] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2"
+            >
+              Home
+            </Link>
+            <Link
+              href="/services"
+              className="inline-flex items-center min-h-[44px] px-1 rounded-md text-[#058B74] font-semibold hover:text-[#01463A] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2"
+            >
+              Services
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center min-h-[44px] px-1 rounded-md text-[#058B74] font-semibold hover:text-[#01463A] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2"
+            >
+              Contact
+            </Link>
+          </nav>
         </div>
       </main>
     </div>

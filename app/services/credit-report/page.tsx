@@ -20,6 +20,8 @@ export default function CreditReportPage() {
       title="Credit reports for roles where it matters."
       description="Employment-purpose credit data for financial, fiduciary, and executive hires — with permissible-purpose verification and state-law gating built in."
       price="$39.99"
+      primaryCta={{ label: "Get started", href: "/contact" }}
+      heroSteps={["Permissible purpose", "Soft pull", "State gating", "Adverse action"]}
       includedHeading="Credit signals that fit the role."
       includedSubheading="Never used for entry-level hiring. Scoped tightly to roles where financial responsibility is a documented job requirement."
       features={[

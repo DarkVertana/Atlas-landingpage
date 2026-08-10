@@ -20,6 +20,8 @@ export default function TenantScreeningPage() {
       title="Tenant screening that respects the applicant."
       description="Criminal, credit, and eviction history bundled for property managers. State-aware rules — including source-of-income and fair-chance housing — applied automatically."
       price="$39.99"
+      primaryCta={{ label: "Get started", href: "/contact" }}
+      heroSteps={["Eviction", "Credit", "Criminal", "Income"]}
       includedHeading="Everything a landlord actually needs."
       includedSubheading="Built specifically for residential leasing — not a rebranded employment check."
       features={[

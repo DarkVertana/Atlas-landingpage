@@ -23,6 +23,8 @@ type Props = {
   style?: CSSProperties;
   href?: string;
   id?: string;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
 };
 
 const variantClass: Record<Variant, string> = {

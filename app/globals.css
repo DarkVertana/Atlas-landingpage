@@ -9,6 +9,13 @@
   --accent-light: #06a98d;
   --muted: #4a7a72;
   --surface: #f0faf8;
+
+  /* Curated accent set — small pops only, never CTAs or backgrounds.
+     Each hue carries a meaning so accents read as intentional. */
+  --amber: #F5A524;   /* highlight / premium */
+  --coral: #F2694E;   /* human / attention   */
+  --sky: #3E92CC;     /* info / trust        */
+  --violet: #8B7DE0;  /* tech / AI           */
 }
 
 @theme inline {
@@ -20,14 +27,41 @@
   --color-accent-light: var(--accent-light);
   --color-muted: var(--muted);
   --color-surface: var(--surface);
+  --color-amber: var(--amber);
+  --color-coral: var(--coral);
+  --color-sky: var(--sky);
+  --color-violet: var(--violet);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-display);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+/* Headings use the Bricolage display face with tightened tracking + balanced
+   wrapping. One heading color (brand deep-green) is the default; sections on
+   dark backgrounds override with `text-white`. Kept in @layer base so Tailwind
+   utility classes (text-white, tracking-*, font-*) still win over these. */
+@layer base {
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display), var(--font-geist-sans), system-ui, sans-serif;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+    color: var(--primary);
+  }
+}
+
+/* Shared spacing / radius rhythm so every section aligns to one system. */
+:root {
+  --section-y: 7rem;      /* 112px — desktop vertical padding */
+  --section-y-sm: 4.5rem; /* 72px — mobile */
+  --radius-card: 1rem;    /* 16px — the single card radius */
 }
 
 /* Trusted-by marquee */
@@ -141,7 +175,134 @@ body {
   animation: heroFadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+/* ── Hero: advanced motion ── */
+
+/* Word-by-word clip reveal */
+@keyframes wordReveal {
+  from {
+    opacity: 0;
+    transform: translateY(0.5em) rotate(1.5deg);
+    clip-path: inset(0 0 110% 0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+    clip-path: inset(-20% 0 -20% 0);
+  }
+}
+.hero-word {
+  display: inline-block;
+  animation: wordReveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Glass sheen sweeping across the mockup */
+@keyframes sheenSweep {
+  0% { transform: translateX(-160%) skewX(-18deg); opacity: 0; }
+  12% { opacity: 0.55; }
+  35% { opacity: 0; }
+  100% { transform: translateX(260%) skewX(-18deg); opacity: 0; }
+}
+.hero-sheen {
+  animation: sheenSweep 6.5s ease-in-out 1.4s infinite;
+}
+
+/* Hide the horizontal scrollbar on scrubbable rails (WebKit) while keeping
+   the element scrollable. Firefox uses scrollbar-width via inline style. */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; }
+
+/* Screening map — waypoint halo pulse (opacity only, safe on SVG) and a
+   subtle live-route flow along traced legs. */
+@keyframes mapNodePulse { 0%, 100% { opacity: 0.16; } 50% { opacity: 0.5; } }
+.map-node-pulse { animation: mapNodePulse 2.2s ease-in-out infinite; }
+@keyframes mapFlow { to { stroke-dashoffset: -20; } }
+.map-flow { stroke-dasharray: 1.5 9; animation: mapFlow 0.9s linear infinite; }
+
+/* Platform section — soft swap-in for the active stage visual */
+@keyframes platformVisualIn {
+  from { opacity: 0; transform: translateY(10px) scale(0.99); }
+  to { opacity: 1; transform: none; }
+}
+.platform-visual-in { animation: platformVisualIn 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
 @media (prefers-reduced-motion: reduce) {
+  .platform-visual-in { animation: none; }
+}
+
+/* Slow drifting mesh */
+@keyframes meshDrift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(4%, -3%, 0) scale(1.08); }
+}
+.hero-mesh-a { animation: meshDrift 16s ease-in-out infinite; }
+.hero-mesh-b { animation: meshDrift 22s ease-in-out infinite reverse; }
+
+/* Gradient text shimmer */
+@keyframes textShimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+.hero-shimmer {
+  background-size: 200% auto;
+  animation: textShimmer 4s ease-in-out infinite;
+}
+
+/* Horizontal product-screen marquee (seamless: track duplicated, moves one half) */
+@keyframes heroMarquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.hero-marquee {
+  animation: heroMarquee 44s linear infinite;
+}
+.hero-marquee-viewport:hover .hero-marquee {
+  animation-play-state: paused;
+}
+
+/* Scroll cue */
+@keyframes scrollCue {
+  0% { transform: translateY(0); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: translateY(9px); opacity: 0; }
+}
+.hero-cue-dot { animation: scrollCue 2s ease-in-out infinite; }
+
+/* ── How-it-works: flowing multi-color rail + traveling light ── */
+@keyframes hiwFlow { to { background-position: -200% 0; } }
+.hiw-flow { background-size: 200% 100%; animation: hiwFlow 6s linear infinite; }
+
+@keyframes hiwTravel {
+  0%   { left: 0%;   opacity: 0; }
+  8%   { opacity: 1; }
+  92%  { opacity: 1; }
+  100% { left: 100%; opacity: 0; }
+}
+.hiw-travel { animation: hiwTravel 5.5s cubic-bezier(0.65, 0, 0.35, 1) infinite; }
+
+@keyframes hiwDrop {
+  0%   { top: 0%;   opacity: 0; }
+  8%   { opacity: 1; }
+  92%  { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+.hiw-drop { animation: hiwDrop 5.5s cubic-bezier(0.65, 0, 0.35, 1) infinite; }
+
+/* ── Criminal check: court-depth stack ── */
+/* A search "scan line" sweeping down through the stacked court layers, plus a
+   soft pulse on the active layer's depth tick. */
+@keyframes cdsScan {
+  0%   { top: -1%;  opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { top: 101%; opacity: 0; }
+}
+.cds-scan { animation: cdsScan 5.5s cubic-bezier(0.65, 0, 0.35, 1) infinite; }
+
+@keyframes cdsTickPulse { 0%, 100% { transform: scale(1); opacity: 0.9; } 50% { transform: scale(1.35); opacity: 1; } }
+.cds-tick-pulse { animation: cdsTickPulse 2.4s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cds-scan,
+  .cds-tick-pulse,
   .reveal,
   .reveal.reveal-left,
   .reveal.reveal-right,
@@ -155,7 +316,18 @@ body {
   .animate-hero-enter,
   .animate-marquee,
   .animate-flip-in,
-  .animate-flip-out {
+  .animate-flip-out,
+  .hero-word,
+  .hero-sheen,
+  .hero-mesh-a,
+  .hero-mesh-b,
+  .hero-shimmer,
+  .hero-cue-dot,
+  .hero-marquee,
+  .hiw-flow,
+  .hiw-travel,
+  .hiw-drop {
     animation: none;
   }
+  .hero-word { opacity: 1; clip-path: none; transform: none; }
 }

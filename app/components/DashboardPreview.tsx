@@ -5,24 +5,6 @@ import { useRef, useCallback, useEffect, useState } from "react";
 function DashboardFrame() {
   return (
     <div className="bg-white rounded-2xl shadow-2xl shadow-black/8 border border-gray-100 overflow-hidden w-full max-w-[880px] select-none">
-      {/* Browser chrome */}
-      <div className="flex items-center gap-2 px-4 py-2.5 bg-gray-50/80 border-b border-gray-100">
-        <div className="flex gap-1.5">
-          <div className="w-2.5 h-2.5 rounded-full bg-[#FF5F57]" />
-          <div className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
-          <div className="w-2.5 h-2.5 rounded-full bg-[#28C840]" />
-        </div>
-        <div className="flex-1 flex justify-center">
-          <div className="flex items-center gap-1.5 bg-white rounded-lg px-3 py-1 text-[10px] text-gray-400 border border-gray-100 w-56">
-            <svg width="10" height="10" viewBox="0 0 16 16" fill="none">
-              <path d="M8 4a2 2 0 100 4 2 2 0 000-4z" fill="currentColor" />
-              <path d="M4.5 7a3.5 3.5 0 117 0c0 2-3.5 5.5-3.5 5.5S4.5 9 4.5 7z" stroke="currentColor" strokeWidth="1.2" fill="none" />
-            </svg>
-            app.atlasscreening.com
-          </div>
-        </div>
-      </div>
-
       {/* Real product screenshot */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
@@ -59,10 +41,10 @@ export default function DashboardPreview() {
   const opacity = Math.min(eased * 1.5, 1);
 
   return (
-    <section ref={sectionRef} className="py-28 px-6 bg-gray-50 overflow-hidden">
+    <section ref={sectionRef} className="py-16 px-6 bg-gray-50 overflow-hidden">
       <div className="mx-auto max-w-7xl">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <p className="text-sm font-semibold tracking-widest uppercase text-[#058B74] mb-3">
             Dashboard
           </p>
@@ -93,7 +75,7 @@ export default function DashboardPreview() {
         </div>
 
         {/* Feature pills */}
-        <div className="flex flex-wrap justify-center gap-4 mt-14">
+        <div className="flex flex-wrap justify-center gap-4 mt-10">
           {[
             "Real-time status tracking",
             "Step-by-step progress",

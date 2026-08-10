@@ -1,5 +1,8 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import Reveal from "../components/Reveal";
+import SectionHeader from "../components/ui/SectionHeader";
+import CTASection from "../components/CTASection";
 
 type Service = {
   slug: string;
@@ -13,9 +16,8 @@ type Service = {
   useCases: string[];
   turnaround: string;
   priceFrom: string;
+  priceNote?: boolean;
   detailHref: string;
-  image: string;
-  gradient: string;
 };
 
 const iconSearch = (
@@ -114,8 +116,6 @@ const services: Service[] = [
     turnaround: "15 min – 3 business days",
     priceFrom: "$24.99",
     detailHref: "/services/criminal-background-checks",
-    image: "/assets/images/Criminal-background-checks.webp",
-    gradient: "from-[#01463A] to-[#058B74]",
   },
   {
     slug: "identity-verification",
@@ -145,9 +145,8 @@ const services: Service[] = [
     ],
     turnaround: "Under 60 seconds",
     priceFrom: "Included in all tiers",
+    priceNote: true,
     detailHref: "/services/ssn-trace",
-    image: "/assets/images/SSN-trace-%26-address-history.webp",
-    gradient: "from-[#058B74] to-[#0aa88a]",
   },
   {
     slug: "employment-verification",
@@ -178,8 +177,6 @@ const services: Service[] = [
     turnaround: "1 – 3 business days",
     priceFrom: "$14.99 per employer",
     detailHref: "/services/employment-verification",
-    image: "/assets/images/Employment-verification.webp",
-    gradient: "from-[#01463A] to-[#0aa88a]",
   },
   {
     slug: "county-court-searches",
@@ -210,8 +207,6 @@ const services: Service[] = [
     turnaround: "1 – 3 business days",
     priceFrom: "$14.99 per county",
     detailHref: "/services/criminal-background-checks",
-    image: "/assets/images/Criminal-background-checks.webp",
-    gradient: "from-[#01463A] to-[#058B74]",
   },
   {
     slug: "tenant-screening",
@@ -242,8 +237,6 @@ const services: Service[] = [
     turnaround: "Same day (most applicants)",
     priceFrom: "$39.99",
     detailHref: "/services/tenant-screening",
-    image: "/assets/images/Tenant-screening.webp",
-    gradient: "from-[#0aa88a] to-[#01463A]",
   },
   {
     slug: "social-media-screening",
@@ -274,8 +267,6 @@ const services: Service[] = [
     turnaround: "1 – 2 business days",
     priceFrom: "$29.99",
     detailHref: "/services/social-media-screening",
-    image: "/assets/images/Ai-section.webp",
-    gradient: "from-[#01463A] to-[#0aa88a]",
   },
 ];
 
@@ -309,32 +300,37 @@ export default function ServicesPage() {
       <section className="relative pt-36 pb-20 px-6 overflow-hidden bg-gradient-to-b from-[#01463A] to-[#058B74]">
         <div className="absolute -top-32 -right-32 w-[32rem] h-[32rem] rounded-full bg-[#0aa88a]/25 blur-3xl pointer-events-none" />
         <div className="absolute -bottom-32 -left-32 w-[32rem] h-[32rem] rounded-full bg-[#058B74]/30 blur-3xl pointer-events-none" />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.15]"
+          style={{
+            backgroundImage:
+              "radial-gradient(rgba(255,255,255,0.35) 1px, transparent 1px)",
+            backgroundSize: "22px 22px",
+          }}
+        />
 
-        <div className="relative mx-auto max-w-4xl text-center">
-          <p className="text-xs font-semibold tracking-widest uppercase text-white/70 mb-4">
-            Services
-          </p>
-          <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight">
-            Every background check, fully detailed.
-          </h1>
-          <p className="mt-5 text-white/70 max-w-xl mx-auto text-sm leading-relaxed">
-            From identity and criminal records to tenant screening, credit, and global
-            watchlists — every Atlas service is FCRA-compliant, transparently priced,
-            and built to work together.
-          </p>
+        <div className="relative">
+          <SectionHeader
+            align="center"
+            tone="light"
+            eyebrow="Services"
+            title="Every background check, fully detailed."
+            intro="From identity and criminal records to tenant screening, credit, and global watchlists — every Atlas service is FCRA-compliant, transparently priced, and built to work together."
+          />
         </div>
       </section>
 
       {/* Quick nav */}
       <section className="sticky top-[64px] z-30 bg-white/80 backdrop-blur-md border-b border-gray-100">
         <div className="mx-auto max-w-6xl px-6 py-3 overflow-x-auto">
-          <nav className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-widest text-[#01463A] whitespace-nowrap">
-            <span className="text-gray-400 pr-2">Jump to</span>
+          <nav className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#01463A] whitespace-nowrap">
+            <span className="text-gray-600 pr-2">Jump to</span>
             {services.map((s) => (
               <a
                 key={s.slug}
                 href={`#${s.slug}`}
-                className="px-3 py-1.5 rounded-full border border-gray-200 hover:border-[#058B74] hover:text-[#058B74] hover:bg-[#058B74]/5 transition-all"
+                className="inline-flex items-center min-h-11 px-3 py-2.5 rounded-full border border-gray-200 hover:border-[#058B74] hover:text-[#058B74] hover:bg-[#058B74]/5 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2"
               >
                 {s.name.replace(" & ", " + ")}
               </a>
@@ -351,7 +347,7 @@ export default function ServicesPage() {
             <article
               key={s.slug}
               id={s.slug}
-              className={`scroll-mt-40 px-6 py-20 ${
+              className={`scroll-mt-32 px-6 py-20 ${
                 i % 2 === 1 ? "bg-gradient-to-b from-white to-gray-50" : "bg-white"
               }`}
             >
@@ -362,18 +358,32 @@ export default function ServicesPage() {
                   }`}
                 >
                   {/* Copy column */}
-                  <div>
+                  <Reveal variant={reversed ? "right" : "left"}>
                     <div className="flex flex-wrap items-center gap-2 mb-4">
-                      <span className="inline-flex items-center text-[10px] font-semibold uppercase tracking-widest text-[#058B74] bg-[#058B74]/10 ring-1 ring-inset ring-[#058B74]/15 px-2.5 py-1 rounded-full">
-                        {s.category}
-                      </span>
-                      <span className="text-[11px] text-gray-400">
+                      {(() => {
+                        const isAddOn = s.category === "Add-on";
+                        const badge = isAddOn
+                          ? "text-[#B26A00] bg-[#F5A524]/12 ring-[#F5A524]/25"
+                          : "text-[#058B74] bg-[#058B74]/10 ring-[#058B74]/15";
+                        return (
+                          <span
+                            className={`inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-widest ring-1 ring-inset px-2.5 py-1 rounded-full ${badge}`}
+                          >
+                            <span
+                              className="h-1.5 w-1.5 rounded-full"
+                              style={{ backgroundColor: isAddOn ? "#F5A524" : "#058B74" }}
+                            />
+                            {s.category}
+                          </span>
+                        );
+                      })()}
+                      <span className="text-[11px] text-gray-600">
                         {s.eyebrow}
                       </span>
                     </div>
 
-                    <h2 className="text-2xl md:text-4xl font-bold text-[#01463A] leading-tight">
-                      {s.name}.
+                    <h2 className="text-3xl md:text-4xl font-bold text-[#01463A] leading-tight">
+                      {s.name}
                     </h2>
                     <p className="mt-3 text-base md:text-lg text-[#058B74] font-medium leading-snug">
                       {s.tagline}
@@ -385,7 +395,7 @@ export default function ServicesPage() {
                     {/* Meta strip */}
                     <dl className="mt-7 grid grid-cols-2 gap-4 max-w-md">
                       <div className="rounded-xl border border-gray-200 bg-white px-4 py-3">
-                        <dt className="text-[10px] font-semibold uppercase tracking-widest text-gray-400">
+                        <dt className="text-[10px] font-semibold uppercase tracking-widest text-gray-600">
                           Turnaround
                         </dt>
                         <dd className="mt-1 text-sm font-semibold text-[#01463A]">
@@ -393,12 +403,21 @@ export default function ServicesPage() {
                         </dd>
                       </div>
                       <div className="rounded-xl border border-gray-200 bg-white px-4 py-3">
-                        <dt className="text-[10px] font-semibold uppercase tracking-widest text-gray-400">
-                          Starts at
+                        <dt className="text-[10px] font-semibold uppercase tracking-widest text-gray-600">
+                          {s.priceNote ? "Pricing" : "Starts at"}
                         </dt>
-                        <dd className="mt-1 text-sm font-semibold text-[#01463A]">
-                          {s.priceFrom}
-                        </dd>
+                        {s.priceNote ? (
+                          <dd className="mt-1 inline-flex items-center gap-1.5 text-xs font-semibold text-[#058B74] bg-[#058B74]/10 ring-1 ring-inset ring-[#058B74]/15 px-2.5 py-1 rounded-full">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                              <path d="M5 12l5 5 9-11" />
+                            </svg>
+                            {s.priceFrom}
+                          </dd>
+                        ) : (
+                          <dd className="mt-1 text-sm font-semibold text-[#01463A]">
+                            {s.priceFrom}
+                          </dd>
+                        )}
                       </div>
                     </dl>
 
@@ -453,7 +472,7 @@ export default function ServicesPage() {
                     <div className="mt-8 flex flex-wrap gap-3">
                       <Link
                         href={`/signup?service=${s.slug}`}
-                        className="inline-flex items-center gap-2 bg-[#01463A] text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-[#058B74] transition-all"
+                        className="inline-flex items-center gap-2 bg-[#01463A] text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-[#058B74] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2"
                       >
                         Run this check
                         <svg
@@ -471,49 +490,42 @@ export default function ServicesPage() {
                       </Link>
                       <Link
                         href={s.detailHref}
-                        className="inline-flex items-center gap-2 border border-gray-200 text-[#01463A] px-5 py-2.5 rounded-lg text-sm font-semibold hover:border-[#058B74] hover:text-[#058B74] transition-all"
+                        className="inline-flex items-center gap-2 border border-gray-200 text-[#01463A] px-5 py-2.5 rounded-lg text-sm font-semibold hover:border-[#058B74] hover:text-[#058B74] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2"
                       >
-                        Full details
+                        {s.slug === "county-court-searches"
+                          ? "See criminal check details"
+                          : "Full details"}
                       </Link>
                     </div>
-                  </div>
+                  </Reveal>
 
-                  {/* Visual column */}
+                  {/* Visual column — highlight cards carry the section */}
                   <div className="lg:sticky lg:top-32">
-                    <div
-                      className={`relative overflow-hidden rounded-3xl border border-gray-200 bg-gradient-to-br ${s.gradient} aspect-[4/3] shadow-xl shadow-[#058B74]/15`}
+                    <Reveal
+                      as="p"
+                      variant={reversed ? "left" : "right"}
+                      className="text-[11px] font-semibold uppercase tracking-widest text-[#058B74] mb-3"
                     >
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={s.image}
-                        alt={s.name}
-                        loading="lazy"
-                        className="absolute inset-0 w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#01463A]/40 via-transparent to-transparent pointer-events-none" />
-
-                      <div className="absolute top-5 left-5 inline-flex items-center gap-2 bg-black/40 backdrop-blur-md border border-white/15 rounded-full px-3 py-1.5 text-[11px] font-semibold uppercase tracking-widest text-white">
-                        {s.category}
-                      </div>
-                    </div>
-
+                      Why it stands up to audit
+                    </Reveal>
                     {/* Included cards */}
-                    <div className="mt-5 grid sm:grid-cols-3 gap-3">
-                      {s.included.map((b) => (
-                        <div
-                          key={b.title}
-                          className="rounded-2xl border border-gray-200 bg-white p-4 hover:border-[#058B74]/40 hover:shadow-md hover:shadow-[#058B74]/5 transition-all"
-                        >
-                          <div className="w-9 h-9 rounded-lg bg-[#058B74]/10 text-[#058B74] flex items-center justify-center ring-1 ring-inset ring-[#058B74]/10">
-                            {b.icon}
+                    <div className="grid sm:grid-cols-3 gap-3">
+                      {s.included.map((b, bi) => (
+                        <Reveal key={b.title} delay={bi * 80}>
+                          <div
+                            className="h-full rounded-3xl border border-gray-200 bg-white p-4 hover:border-gray-300 hover:shadow-md hover:shadow-[#058B74]/5 transition-all"
+                          >
+                            <div className="w-9 h-9 rounded-lg bg-[#058B74]/10 text-[#058B74] flex items-center justify-center ring-1 ring-inset ring-[#058B74]/10">
+                              {b.icon}
+                            </div>
+                            <h3 className="mt-3 text-sm font-semibold text-[#01463A]">
+                              {b.title}
+                            </h3>
+                            <p className="mt-1 text-xs text-gray-500 leading-relaxed">
+                              {b.desc}
+                            </p>
                           </div>
-                          <h3 className="mt-3 text-sm font-semibold text-[#01463A]">
-                            {b.title}
-                          </h3>
-                          <p className="mt-1 text-xs text-gray-500 leading-relaxed">
-                            {b.desc}
-                          </p>
-                        </div>
+                        </Reveal>
                       ))}
                     </div>
                   </div>
@@ -527,18 +539,12 @@ export default function ServicesPage() {
       {/* Built-in benefits */}
       <section className="bg-white py-20 px-6 border-t border-gray-100">
         <div className="mx-auto max-w-6xl">
-          <div className="text-center mb-14">
-            <p className="text-xs font-semibold tracking-widest uppercase text-[#058B74] mb-3">
-              Shipped with every service
-            </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
-              Compliance, security, and applicant tooling — included.
-            </h2>
-            <p className="mt-5 text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
-              Every Atlas service inherits the same platform defaults. You never
-              bolt on compliance or security as an afterthought.
-            </p>
-          </div>
+          <SectionHeader
+            className="mb-14"
+            eyebrow="Shipped with every service"
+            title="Compliance, security, and applicant tooling — included"
+            intro="Every Atlas service inherits the same platform defaults. You never bolt on compliance or security as an afterthought."
+          />
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
@@ -558,23 +564,24 @@ export default function ServicesPage() {
                 title: "Dashboard & API",
                 desc: "Invite applicants from the dashboard or integrate via REST API for scale.",
               },
-            ].map((b) => (
-              <div
-                key={b.title}
-                className="rounded-2xl border border-gray-200 bg-white p-5 hover:border-[#058B74]/40 hover:shadow-sm transition-all"
-              >
-                <div className="flex items-center gap-2">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#058B74" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12l5 5 9-11" />
-                  </svg>
-                  <h3 className="text-sm font-semibold text-[#01463A]">
-                    {b.title}
-                  </h3>
+            ].map((b, i) => (
+              <Reveal key={b.title} delay={i * 80}>
+                <div
+                  className="h-full rounded-3xl border border-gray-200 bg-white p-5 hover:border-gray-300 hover:shadow-md hover:shadow-[#058B74]/5 transition-all"
+                >
+                  <div className="flex items-center gap-2">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#058B74" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M5 12l5 5 9-11" />
+                    </svg>
+                    <h3 className="text-sm font-semibold text-[#01463A]">
+                      {b.title}
+                    </h3>
+                  </div>
+                  <p className="mt-2 text-xs text-gray-500 leading-relaxed">
+                    {b.desc}
+                  </p>
                 </div>
-                <p className="mt-2 text-xs text-gray-500 leading-relaxed">
-                  {b.desc}
-                </p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -583,23 +590,22 @@ export default function ServicesPage() {
       {/* FAQ */}
       <section className="bg-white py-20 px-6">
         <div className="mx-auto max-w-3xl">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
-              Service questions.
-            </h2>
-            <p className="mt-5 text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
-              What teams ask most before running their first check or adding an
-              add-on to an existing package.
-            </p>
-          </div>
+          <SectionHeader
+            className="mb-14"
+            eyebrow="FAQ"
+            title="Service questions"
+            intro="What teams ask most before running their first check or adding an add-on to an existing package."
+          />
 
           <div className="space-y-3">
-            {faqs.map((faq) => (
-              <details
+            {faqs.map((faq, i) => (
+              <Reveal
+                as="details"
                 key={faq.q}
-                className="group rounded-2xl border border-gray-200 bg-white hover:border-[#058B74]/40 hover:shadow-md hover:shadow-[#058B74]/5 open:border-[#058B74]/40 open:shadow-md open:shadow-[#058B74]/5 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden"
+                delay={i * 80}
+                className="group block rounded-3xl border border-gray-200 bg-white hover:border-gray-300 hover:shadow-md hover:shadow-[#058B74]/5 open:border-[#058B74]/40 open:shadow-md open:shadow-[#058B74]/5 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden"
               >
-                <summary className="flex items-center justify-between gap-4 cursor-pointer list-none px-6 py-5">
+                <summary className="flex items-center justify-between gap-4 cursor-pointer list-none px-6 py-5 rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2">
                   <span className="text-sm md:text-base font-semibold text-[#01463A] group-hover:text-[#058B74] group-open:text-[#058B74] transition-colors">
                     {faq.q}
                   </span>
@@ -612,58 +618,24 @@ export default function ServicesPage() {
                 <div className="px-6 pb-5 -mt-1 text-sm text-gray-500 leading-relaxed">
                   {faq.a}
                 </div>
-              </details>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* Bottom CTA */}
-      <section className="px-6 py-20 bg-white">
-        <div className="mx-auto max-w-7xl">
-          <div className="relative overflow-hidden rounded-2xl px-8 md:px-16 py-10 md:py-14 flex items-center shadow-lg">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/assets/banner_cta.webp"
-              alt=""
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            <div
-              className="absolute inset-0"
-              style={{
-                background:
-                  "linear-gradient(to top right, #01463A 30%, transparent 100%)",
-              }}
-            />
-            <div className="relative z-10 max-w-xl">
-              <p className="text-sm font-semibold tracking-widest uppercase text-white/50 mb-3">
-                Get Started Today
-              </p>
-              <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight">
-                Ready to Start<br className="hidden md:block" /> Screening?
-              </h2>
-              <p className="mt-4 text-white/60 text-base leading-relaxed max-w-md">
-                Sign up today and run any Atlas service for your organization —
-                with transparent pricing, no contracts, and no setup fees.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <a
-                  href="/signup"
-                  className="inline-flex items-center gap-2 bg-white text-[#01463A] px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-white/90 transition-colors"
-                >
-                  Get Started
-                </a>
-                <a
-                  href="/contact"
-                  className="inline-flex items-center border border-white/30 text-white px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-white/10 transition-colors"
-                >
-                  Contact Sales
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <CTASection
+        eyebrow="Get started today"
+        title={
+          <>
+            Ready to start<br className="hidden lg:block" /> screening?
+          </>
+        }
+        description="Sign up today and run any Atlas service for your organization — with transparent pricing, no contracts, and no setup fees."
+        primary={{ label: "Get Started", href: "/signup" }}
+        secondary={{ label: "Contact Sales", href: "/contact" }}
+      />
     </main>
   );
 }

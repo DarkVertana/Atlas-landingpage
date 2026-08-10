@@ -1,54 +1,59 @@
 "use client";
 
+/**
+ * Honest trust strip. We do NOT claim specific companies as customers —
+ * instead we surface the compliance standards and safeguards the platform
+ * actually operates under. Replace/adjust any badge that is not yet true for
+ * your organization (see notes in the component prompt).
+ */
 export default function TrustedBySection() {
-  const logos = [
-    { name: "OpenAI", src: "/assets/logos/openai.svg" },
-    { name: "Amazon", src: "/assets/logos/amazon.svg" },
-    { name: "NVIDIA", src: "/assets/logos/nvidia.svg" },
-    { name: "Ford", src: "/assets/logos/ford.svg" },
-    { name: "Coinbase", src: "/assets/logos/coinbase.svg" },
-    { name: "Google", src: "/assets/logos/google.svg" },
-    { name: "Shopify", src: "/assets/logos/shopify.svg" },
-    { name: "Mindbody", src: "/assets/logos/mindbody.svg" },
-    { name: "MetLife", src: "/assets/logos/metlife.svg" },
-    { name: "Figma", src: "/assets/logos/figma.svg" },
+  const standards = [
+    { label: "FCRA compliant", detail: "Fair Credit Reporting Act" },
+    { label: "SOC 2", detail: "Security controls" },
+    { label: "AES-256", detail: "Encryption at rest" },
+    { label: "EEOC aligned", detail: "Adjudication guidelines" },
+    { label: "PBSA member", detail: "Prof. Background Screening Assoc." },
   ];
 
-  // Duplicate for seamless loop
-  const allLogos = [...logos, ...logos];
-
   return (
-    <section className="relative bg-white pt-6 pb-14 sm:pt-8 sm:pb-20 overflow-hidden">
-      <div className="text-center mb-10 sm:mb-12">
-        <p className="text-sm font-semibold tracking-widest uppercase text-gray-400">
-          Trusted by leading companies worldwide
-        </p>
-      </div>
-
-      <div className="relative">
-        {/* Left fade */}
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-        {/* Right fade */}
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
-
-        {/* Scrolling track */}
-        <div className="flex items-center animate-marquee group/track">
-          {allLogos.map((logo, i) => (
-            <div
-              key={`${logo.name}-${i}`}
-              className="flex-shrink-0 flex items-center justify-center px-6 md:px-8 group/item"
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={logo.src}
-                alt={logo.name}
-                className="h-8 md:h-10 w-auto object-contain grayscale opacity-40 group-hover/item:grayscale-0 group-hover/item:opacity-100 transition-all duration-500"
-              />
-            </div>
-          ))}
+    <section className="relative bg-white pt-6 pb-14 sm:pt-8 sm:pb-20">
+      <div className="mx-auto max-w-5xl px-6">
+        <div className="text-center mb-8 sm:mb-10">
+          <p className="text-sm font-semibold tracking-widest uppercase text-gray-600">
+            Built for compliance and data security
+          </p>
         </div>
-      </div>
 
+        <ul className="flex flex-wrap items-stretch justify-center gap-3 sm:gap-4">
+          {standards.map((s) => (
+            <li
+              key={s.label}
+              className="flex min-w-[150px] flex-1 flex-col items-center rounded-xl border border-gray-200 bg-white px-5 py-4 text-center"
+            >
+              <span className="flex items-center gap-2 text-base font-bold text-[#01463A]">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  aria-hidden="true"
+                  className="text-[#058B74]"
+                >
+                  <path
+                    d="M3 8.5l3 3 7-7"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                {s.label}
+              </span>
+              <span className="mt-1 text-xs text-gray-600">{s.detail}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   );
 }
