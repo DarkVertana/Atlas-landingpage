@@ -134,13 +134,24 @@ export default function Aurora(props: AuroraProps) {
     const ctn = ctnDom.current;
     if (!ctn) return;
 
-    const renderer = new Renderer({
-      alpha: true,
-      premultipliedAlpha: true,
-      antialias: false, // soft aurora doesn't need MSAA — big GPU saving
-      dpr: Math.min(window.devicePixelRatio || 1, 1.5), // cap resolution
-    });
+    let renderer: Renderer;
+    try {
+      renderer = new Renderer({
+        alpha: true,
+        premultipliedAlpha: true,
+        antialias: false, // soft aurora doesn't need MSAA — big GPU saving
+        dpr: Math.min(window.devicePixelRatio || 1, 1.5), // cap resolution
+      });
+    } catch {
+      // Renderer constructor can throw if context creation fails.
+      return;
+    }
+
     const gl = renderer.gl;
+    // WebGL may be unavailable (disabled, blocklisted GPU, or too many live
+    // contexts). Bail out quietly rather than crashing the whole page.
+    if (!gl) return;
+
     gl.clearColor(0, 0, 0, 0);
     gl.enable(gl.BLEND);
     gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
