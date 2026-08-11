@@ -1,0 +1,140 @@
+-- ============================================================
+-- Atlas — full setup: schema + RLS + seed the 9 starter posts.
+-- Run this ONCE in Supabase (SQL Editor -> New query -> paste -> Run).
+-- ============================================================
+
+-- Atlas Screening — admin/database schema
+-- Run this in the Supabase SQL editor (Dashboard → SQL → New query) once.
+-- It is idempotent-ish: safe to re-run on a fresh project.
+
+-- ─────────────────────────────────────────────────────────────
+-- Blog posts
+-- ─────────────────────────────────────────────────────────────
+create table if not exists public.posts (
+  id           uuid primary key default gen_random_uuid(),
+  slug         text unique not null,
+  title        text not null,
+  excerpt      text not null default '',
+  category     text not null default 'Guides',
+  author       text not null default 'Atlas Team',
+  read_time    text not null default '5 min read',
+  image        text not null default '',
+  image_alt    text not null default '',
+  body         text[] not null default '{}',      -- one entry per paragraph
+  published    boolean not null default true,
+  published_at timestamptz not null default now(),  -- the date shown on the post
+  created_at   timestamptz not null default now(),
+  updated_at   timestamptz not null default now()
+);
+
+create index if not exists posts_published_idx on public.posts (published, published_at desc);
+
+-- ─────────────────────────────────────────────────────────────
+-- Contact form submissions (leads)
+-- ─────────────────────────────────────────────────────────────
+create table if not exists public.contact_submissions (
+  id         uuid primary key default gen_random_uuid(),
+  name       text not null,
+  email      text not null,
+  company    text,
+  message    text not null,
+  status     text not null default 'new',   -- new | read | archived
+  created_at timestamptz not null default now()
+);
+
+create index if not exists contact_created_idx on public.contact_submissions (created_at desc);
+
+-- ─────────────────────────────────────────────────────────────
+-- Newsletter signups
+-- ─────────────────────────────────────────────────────────────
+create table if not exists public.newsletter_signups (
+  id         uuid primary key default gen_random_uuid(),
+  email      text unique not null,
+  source     text not null default 'blog',
+  created_at timestamptz not null default now()
+);
+
+create index if not exists newsletter_created_idx on public.newsletter_signups (created_at desc);
+
+-- ─────────────────────────────────────────────────────────────
+-- Keep updated_at fresh on posts
+-- ─────────────────────────────────────────────────────────────
+create or replace function public.set_updated_at()
+returns trigger language plpgsql as $$
+begin
+  new.updated_at = now();
+  return new;
+end;
+$$;
+
+drop trigger if exists posts_set_updated_at on public.posts;
+create trigger posts_set_updated_at
+  before update on public.posts
+  for each row execute function public.set_updated_at();
+
+-- ─────────────────────────────────────────────────────────────
+-- Row Level Security
+-- Public site reads published posts and can submit leads/signups.
+-- Any signed-in (admin) user has full access.
+-- ─────────────────────────────────────────────────────────────
+alter table public.posts               enable row level security;
+alter table public.contact_submissions enable row level security;
+alter table public.newsletter_signups  enable row level security;
+
+-- Posts: anyone can read published posts; admins do everything.
+drop policy if exists "posts public read" on public.posts;
+create policy "posts public read" on public.posts
+  for select using (published = true);
+
+drop policy if exists "posts admin all" on public.posts;
+create policy "posts admin all" on public.posts
+  for all to authenticated using (true) with check (true);
+
+-- Contact submissions: anyone can insert (from the contact form); admins manage.
+drop policy if exists "contact public insert" on public.contact_submissions;
+create policy "contact public insert" on public.contact_submissions
+  for insert to anon, authenticated with check (true);
+
+drop policy if exists "contact admin manage" on public.contact_submissions;
+create policy "contact admin manage" on public.contact_submissions
+  for all to authenticated using (true) with check (true);
+
+-- Newsletter: anyone can insert; admins read/delete.
+drop policy if exists "newsletter public insert" on public.newsletter_signups;
+create policy "newsletter public insert" on public.newsletter_signups
+  for insert to anon, authenticated with check (true);
+
+drop policy if exists "newsletter admin manage" on public.newsletter_signups;
+create policy "newsletter admin manage" on public.newsletter_signups
+  for all to authenticated using (true) with check (true);
+
+
+-- ============================================================
+-- SEED DATA
+-- ============================================================
+
+-- Seed the original 9 Atlas blog posts.
+-- Run once in Supabase → SQL Editor. Safe to re-run: existing slugs are updated, not duplicated.
+insert into public.posts
+  (slug, title, excerpt, category, author, read_time, image, image_alt, body, published, published_at)
+values
+  ('fcra-adverse-action-checklist-2026', 'The 2026 FCRA adverse-action checklist for hiring teams', 'A practical walkthrough of pre-adverse and adverse-action requirements — with the exact letters, timelines, and applicant rights you need.', 'Compliance', 'Atlas Compliance Team', '8 min read', '/assets/images/Criminal-background-checks.webp', 'A hiring manager reviewing a criminal background check report before making an adverse-action decision.', ARRAY['Under the Fair Credit Reporting Act (FCRA), any time you plan to reject an applicant based even partly on a background report, you must run a two-step adverse-action process. Skipping either step is one of the most common — and most expensive — mistakes in screening, with statutory damages of $100 to $1,000 per violation before class-action exposure.','Step one is the pre-adverse action notice. Before you make a final decision, you must send the candidate a copy of the report you relied on and the CFPB''s "A Summary of Your Rights Under the FCRA." This gives the applicant a chance to dispute inaccuracies or explain context — for example, a record that belongs to someone with a similar name, or a charge that was later dismissed.','Then you must wait a reasonable period before finalizing. Courts and the FTC have not fixed an exact number, but five business days has become the defensible industry standard. Waiting only a day or two invites a claim that you never gave the applicant a real opportunity to respond.','Step two is the adverse-action notice itself. Once the waiting period passes and you proceed, send a second notice stating the decision, the name and contact details of the consumer reporting agency (and a statement that the CRA did not make the decision), the applicant''s right to a free report within 60 days, and their right to dispute the accuracy of the information.','Document every step with timestamps. In an audit or lawsuit, your ability to prove exactly when each notice went out — and that the report and summary of rights were included — is usually what separates a dismissed claim from a settlement.'], true, '2026-04-09T18:30:00.000Z'),
+  ('tenant-screening-best-practices', 'Tenant screening that respects applicants — and protects your portfolio', 'How property managers can balance thorough vetting with a candidate-friendly experience in 2026.', 'Industry', 'Atlas Industry Desk', '6 min read', '/assets/images/Tenant-screening.webp', 'A property manager and prospective tenant reviewing a rental application at a leasing office.', ARRAY['Tenant screening sits at the intersection of the FCRA and a growing patchwork of state and local fair-housing rules. The screening report is a consumer report, which means the same adverse-action obligations that apply to employers apply to landlords who deny an applicant based on it.','The strongest programs publish their criteria up front: minimum income multiple, acceptable credit range, and how criminal history is weighed. Transparent, written standards applied consistently to every applicant are your best defense against a disparate-impact claim under the Fair Housing Act.','Be especially careful with criminal history. HUD guidance discourages blanket bans on anyone with a record; instead, consider the nature, severity, and recency of an offense relative to the safety of the property. An individualized assessment is far more defensible than an automatic rejection.','Finally, watch local law. Cities and states increasingly cap application fees, require you to accept portable screening reports, or limit how far back you can look at eviction records. Screen the jurisdiction before you screen the tenant.'], true, '2026-04-02T18:30:00.000Z'),
+  ('ai-in-background-checks', 'What AI actually does (and doesn''t do) in a background check', 'Separating the real applications of machine learning in screening from the vendor marketing fluff.', 'Product', 'Atlas Engineering', '7 min read', '/assets/images/Ai-section.webp', 'An abstract visualization of an automated data-matching pipeline used to process screening records.', ARRAY['The most valuable use of machine learning in screening is not making decisions — it is matching identities. Court and county records are notoriously messy: inconsistent name formats, missing middle initials, transposed dates of birth. Models that resolve whether two records describe the same person, and flag near-matches for human review, measurably reduce both false positives and missed records.','AI is also good at classification and extraction: reading an unstructured disposition line and identifying whether a charge was a felony or misdemeanor, dismissed or convicted. This speeds up review, but it should surface the source text alongside the label so a human can verify it.','What AI should not do is decide who gets hired or housed. An opaque score that rejects applicants is a compliance liability — it is hard to explain in an adverse-action notice and nearly impossible to defend against a disparate-impact challenge. Regulators have signaled that "the algorithm did it" is not a defense.','The honest framing is this: AI makes screening faster and more accurate at finding and organizing records. The adjudication — the judgment about relevance to a specific role — belongs to a documented, human-governed policy.'], true, '2026-03-26T18:30:00.000Z'),
+  ('mvr-fleet-compliance', 'Motor vehicle record compliance for fleet and gig operators', 'A state-by-state primer on MVR data, refresh cadence, and how to automate continuous monitoring.', 'Compliance', 'Atlas Compliance Team', '5 min read', '/assets/images/Motor-vehicle-records.webp', 'A commercial fleet driver behind the wheel, representing motor vehicle record monitoring.', ARRAY['A motor vehicle record (MVR) reports a driver''s license status, class, endorsements, violations, suspensions, and accidents. For any operation that puts people behind the wheel, a clean pre-hire MVR is table stakes — but a point-in-time check ages quickly.','The gap is between checks. A driver can accumulate a DUI or a suspension the day after you run their annual MVR, and you would not know until the next cycle. Continuous MVR monitoring closes that gap by alerting you when a new violation posts, letting you act before an incident becomes a liability.','Access to MVR data is governed by the federal Driver''s Privacy Protection Act (DPPA) plus each state''s DMV rules, and states differ sharply on lookback periods, how they code violations, and whether continuous monitoring is even offered. Employment purposes are a permissible use under the DPPA, but you still need a documented, consented basis for each pull.','The practical setup: run a full MVR at hire, enroll every active driver in continuous monitoring, and define written thresholds — which violations trigger review, retraining, or removal — applied uniformly across your fleet.'], true, '2026-03-17T18:30:00.000Z'),
+  ('hiring-velocity-without-risk', 'How to speed up hiring without cutting screening corners', 'Five concrete changes we''ve seen high-volume hiring teams make to reduce time-to-offer by 40%.', 'Hiring', 'Atlas Customer Success', '6 min read', '/assets/images/Employment-verification.webp', 'A recruiter conducting an employment verification call as part of a streamlined hiring workflow.', ARRAY['Most screening delays are not caused by the checks themselves — they are caused by the handoffs around them. The single biggest lever is ordering the report the moment a conditional offer is accepted, rather than waiting for a batch or a manual trigger.','Second, collect consent and applicant data through a mobile-friendly flow. Incomplete or mistyped identifiers are the leading cause of stalled reports, because a wrong SSN or date of birth sends a search down the wrong path and forces a re-run.','Third, decouple the fast checks from the slow ones. An SSN trace and national criminal search often return in hours, while a manual employment verification or an international check can take days. Let a candidate move through onboarding on the parts that have cleared, with clear gating on what still must resolve.','Fourth, adjudicate against a written matrix instead of case-by-case debate. When "what counts as disqualifying" is decided in advance, reviewers stop escalating routine reports and decisions become both faster and more consistent — which also strengthens your compliance posture.'], true, '2026-03-10T18:30:00.000Z'),
+  ('ssn-trace-explained', 'SSN trace, explained: what it tells you and what it doesn''t', 'The foundation check that anchors every background report — and why it''s often misunderstood.', 'Guides', 'Atlas Research', '4 min read', '/assets/images/SSN-trace-&-address-history.webp', 'A researcher cross-referencing address history records generated from a Social Security number trace.', ARRAY['An SSN trace is the scaffolding of a background check, not a verdict on it. It takes a Social Security number and returns the names and addresses associated with it over time, drawn from credit-header and other public data sources.','Its real job is to tell you where else to look. The addresses it surfaces determine which counties and states you search for criminal records. Miss a jurisdiction the applicant lived in, and you may miss the record that matters.','A common misconception is that an SSN trace verifies identity or confirms work authorization. It does neither. It does not validate that the number was legitimately issued to the applicant, and it is not an E-Verify substitute. It also will not, on its own, report criminal history.','Read the aliases and address variations it returns as leads, not conclusions. A maiden name or a prior state is exactly the kind of detail that expands your search and prevents a report that looks clean only because it was incomplete.'], true, '2026-03-03T18:30:00.000Z'),
+  ('ban-the-box-state-map', 'Ban-the-box in 2026: the state and city map employers need', 'Jurisdictions that restrict when and how you can consider criminal history — updated for 2026 legislation.', 'Compliance', 'Atlas Compliance Team', '9 min read', '/assets/images/Criminal-background-checks.webp', 'A compliance analyst mapping ban-the-box regulations across multiple states and cities.', ARRAY['"Ban-the-box" laws delay when an employer may ask about or consider criminal history — typically prohibiting the checkbox on the initial application and pushing the inquiry to after an interview or a conditional offer. More than a dozen states and dozens of cities now have some form of these rules covering private employers.','The details vary more than the label suggests. Some jurisdictions only bar the application-stage question; others, like California''s Fair Chance Act, require a full individualized assessment and a specific pre-adverse notice with a waiting period before you can rescind an offer over a record.','Multi-state employers face the hardest version of this problem, because the rule that applies is usually the one where the applicant will work, not where you are headquartered. A single national application form that asks about convictions can violate the law in several jurisdictions at once.','The maintainable approach is to strip criminal-history questions from applications everywhere, move the inquiry to post-offer, and layer the strictest applicable local process — individualized assessment plus fair-chance notices — on top. Treat this map as living: cities amend these ordinances almost every legislative session.'], true, '2026-02-24T18:30:00.000Z'),
+  ('onboarding-checklist-new-hires', 'The onboarding checklist that catches compliance gaps on day one', 'Seven items to verify between offer letter and first day — without slowing down the applicant experience.', 'Hiring', 'Atlas Customer Success', '5 min read', '/assets/images/Employment-verification.webp', 'An HR coordinator completing onboarding verification paperwork for a newly hired employee.', ARRAY['The window between offer acceptance and the first day is where compliance gaps hide. It is worth a short, explicit checklist because the cost of catching a problem here is trivial compared to catching it in an audit.','Start with the paper trail on the screening itself: a signed standalone disclosure and authorization (the FCRA requires the disclosure to stand alone, not buried in an application), the completed report, and — if any decision was affected — proof that adverse-action steps ran correctly.','Next, confirm the role-specific requirements actually cleared: employment and education verifications for the claims that matter, any license or certification the position legally requires, and the drug or MVR checks the role calls for. A conditional offer should not convert until these resolve.','Finally, verify work authorization through Form I-9 within the statutory deadline, and make sure your data-handling is squared away — where the report is stored, who can see it, and when it will be purged. Getting retention right on day one is far easier than reconstructing it later.'], true, '2026-02-17T18:30:00.000Z'),
+  ('data-retention-in-screening', 'Data retention for background reports: what the law requires', 'The minimum retention windows, purge cadence, and audit expectations for modern CRA workflows.', 'Guides', 'Atlas Research', '6 min read', '/assets/images/SSN-trace-&-address-history.webp', 'A secure records archive representing retention and purge policies for background screening data.', ARRAY['Retention of background reports is a balancing act: keep the data long enough to defend a decision, but not so long that you expand your breach surface and violate a privacy statute. There is no single federal number that covers every record.','The floor is set by anti-discrimination rules. EEOC regulations generally require employers to keep hiring records, including the basis for decisions, for at least one year — extended if a charge or lawsuit is pending. Federal contractors and certain regulated industries face longer mandates.','State privacy laws now push in the other direction. Frameworks like the CCPA and its successors require that you retain personal information only as long as reasonably necessary for the disclosed purpose, and that you honor deletion requests. Holding a five-year-old rejected applicant''s SSN "just in case" is increasingly a liability, not a safeguard.','The workable policy defines a retention window per record type, automates the purge on a fixed cadence rather than leaving it to memory, and logs each deletion. In an audit, a demonstrable, consistently executed schedule is worth more than any single retention length you might pick.'], true, '2026-02-10T18:30:00.000Z')
+on conflict (slug) do update set
+  title = excluded.title,
+  excerpt = excluded.excerpt,
+  category = excluded.category,
+  author = excluded.author,
+  read_time = excluded.read_time,
+  image = excluded.image,
+  image_alt = excluded.image_alt,
+  body = excluded.body,
+  published = excluded.published,
+  published_at = excluded.published_at;

@@ -202,7 +202,7 @@ export default function Industries() {
   const Visual = VISUALS[STAGES[active].key];
 
   return (
-    <section id="platform" className="relative overflow-hidden bg-white px-4 py-24 sm:px-6 sm:py-32">
+    <section id="platform" className="relative overflow-hidden bg-white px-4 pt-10 pb-24 sm:px-6 sm:pt-14 sm:pb-32">
       <div
         aria-hidden
         className="pointer-events-none absolute -right-40 top-24 h-[460px] w-[640px] rounded-full"

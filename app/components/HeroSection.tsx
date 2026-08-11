@@ -84,8 +84,8 @@ export default function HeroSection() {
     // finishes at full scale early (transform-only, GPU-cheap).
     const dev = 1 - Math.pow(1 - near, 3);
     if (mockupRef.current) {
-      const startY = isMobile ? 54 : 40; // sits lower so the centered copy + CTAs clear it
-      const endY = isMobile ? 46 : 32; // settles up a touch, still straddling
+      const startY = isMobile ? 54 : 46; // sits lower so the centered copy + CTAs clear it
+      const endY = isMobile ? 46 : 38; // settles up a touch, still straddling
       const ty = startY + (endY - startY) * dev;
       const scale = 0.97 + 0.03 * dev; // 0.97 → 1.0 (barely grows)
       mockupRef.current.style.transform = `translate3d(0, ${ty}%, 0) scale(${scale})`;
@@ -224,7 +224,7 @@ export default function HeroSection() {
           </div>
 
           {/* ── Content ── (centered titles) */}
-          <div ref={contentRef} className="relative z-10 flex h-auto w-full flex-col items-center justify-start px-5 pb-14 pt-24 text-center will-change-transform sm:h-full sm:justify-center sm:pb-[34vh] sm:px-6 xl:pb-[40vh]">
+          <div ref={contentRef} className="relative z-10 flex h-auto w-full flex-col items-center justify-start px-5 pb-14 pt-24 text-center will-change-transform sm:h-full sm:justify-center sm:pb-[36vh] sm:px-6 lg:pb-[38vh] xl:pb-[40vh]">
             <div className="mx-auto max-w-3xl">
               <h1
                 className="animate-hero-enter text-4xl font-medium leading-tight tracking-tight text-white [text-shadow:0_2px_24px_rgba(0,0,0,0.45)] sm:text-5xl md:text-6xl lg:text-[3.4rem] xl:text-[4rem]"
@@ -325,7 +325,7 @@ export default function HeroSection() {
         ref={mockupRef}
         aria-hidden={false}
         className="pointer-events-none absolute inset-x-0 bottom-0 z-20 hidden origin-bottom justify-center px-4 [will-change:transform] sm:flex sm:px-6"
-        style={{ transform: "translate3d(0, 40%, 0) scale(0.97)" }}
+        style={{ transform: "translate3d(0, 46%, 0) scale(0.97)" }}
       >
         <div className="animate-hero-enter relative w-full max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1560px]" style={{ animationDelay: "540ms" }}>
           {/* device: thin gradient edge + deep soft shadow, all corners rounded */}

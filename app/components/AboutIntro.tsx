@@ -52,7 +52,7 @@ export default function AboutIntro() {
 
   return (
     <section
-      className="relative z-0 bg-white px-4 pb-24 sm:px-6 sm:pb-32 pt-28 sm:pt-40 lg:pt-[300px]"
+      className="relative z-0 bg-white px-4 pb-24 sm:px-6 sm:pb-32 pt-24 sm:pt-36 lg:pt-[370px]"
       style={{ cursor: themedCursor }}
     >
       <div className="mx-auto max-w-6xl">

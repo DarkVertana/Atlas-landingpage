@@ -2,11 +2,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Reveal from "../../components/Reveal";
-import { getPost, posts } from "../../lib/posts";
+import { getPostBySlug } from "../../lib/blog";
 
-export function generateStaticParams() {
-  return posts.map((post) => ({ slug: post.slug }));
-}
+// Posts are edited in the admin panel; render on demand and revalidate.
+export const revalidate = 60;
+export const dynamicParams = true;
 
 export async function generateMetadata({
   params,
@@ -14,7 +14,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const post = getPost(slug);
+  const post = await getPostBySlug(slug);
 
   if (!post) {
     return { title: "Post not found — Atlas Screening" };
@@ -38,7 +38,7 @@ export default async function BlogPostPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = getPost(slug);
+  const post = await getPostBySlug(slug);
 
   if (!post) {
     notFound();

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Reveal from "../components/Reveal";
 import CTASection from "../components/CTASection";
+import { submitContact } from "../lib/actions";
 
 type FormErrors = {
   name?: string;
@@ -19,6 +20,8 @@ export default function ContactPage() {
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [serverError, setServerError] = useState("");
 
   const validate = (): FormErrors => {
     const next: FormErrors = {};
@@ -32,13 +35,20 @@ export default function ContactPage() {
     return next;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const next = validate();
     setErrors(next);
-    if (Object.keys(next).length === 0) {
-      // Fake submit — no backend.
+    if (Object.keys(next).length > 0) return;
+
+    setSending(true);
+    setServerError("");
+    const res = await submitContact(formData);
+    setSending(false);
+    if (res.ok) {
       setSubmitted(true);
+    } else {
+      setServerError(res.error ?? "Something went wrong. Please try again.");
     }
   };
 
@@ -173,11 +183,18 @@ export default function ContactPage() {
                     )}
                   </div>
 
+                  {serverError && (
+                    <p role="alert" className="text-xs text-red-600">
+                      {serverError}
+                    </p>
+                  )}
+
                   <button
                     type="submit"
-                    className={`w-full min-h-[44px] bg-[#01463A] text-white px-6 py-3.5 rounded-xl text-sm font-semibold hover:bg-[#058B74] transition-colors ${focusRing}`}
+                    disabled={sending}
+                    className={`w-full min-h-[44px] bg-[#01463A] text-white px-6 py-3.5 rounded-xl text-sm font-semibold hover:bg-[#058B74] transition-colors disabled:opacity-60 disabled:cursor-not-allowed ${focusRing}`}
                   >
-                    Send message
+                    {sending ? "Sending…" : "Send message"}
                   </button>
 
                   <p className="text-[11px] text-gray-400 text-center">

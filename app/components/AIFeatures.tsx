@@ -142,8 +142,9 @@ export default function AIFeatures() {
         </div>
 
         {/* ── Right: the rotating report deck ── */}
-        <Reveal variant="scale" delay={120} className="relative h-[520px] sm:h-[600px]">
+        <Reveal variant="scale" delay={120} className="relative h-[420px] sm:h-[600px]">
           <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,black_60%,transparent)]" />
+          <div className="absolute inset-0 origin-center scale-[0.62] min-[440px]:scale-[0.72] sm:scale-100">
           <CardSwap
             width={520}
             height={384}
@@ -256,6 +257,7 @@ export default function AIFeatures() {
               </CardShell>
             </Card>
           </CardSwap>
+          </div>
         </Reveal>
       </div>
     </section>

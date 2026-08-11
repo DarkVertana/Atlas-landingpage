@@ -3,6 +3,26 @@
 import { useEffect, useRef } from "react";
 import { Renderer, Program, Mesh, Color, Triangle } from "ogl";
 
+// Probe WebGL2 support exactly once per page load and cache the result.
+// Repeatedly attempting (and failing) to create a context — which happens on
+// every StrictMode double-mount and HMR remount — makes the browser log
+// "unable to create webgl context" natively, and that log can't be swallowed
+// by try/catch. Probing once avoids the noise; when unsupported we simply skip
+// the Aurora and the hero's gradient background shows through unchanged.
+let webglSupported: boolean | undefined;
+function supportsWebGL2(): boolean {
+  if (webglSupported !== undefined) return webglSupported;
+  try {
+    const canvas = document.createElement("canvas");
+    const gl = canvas.getContext("webgl2");
+    webglSupported = !!gl;
+    gl?.getExtension("WEBGL_lose_context")?.loseContext();
+  } catch {
+    webglSupported = false;
+  }
+  return webglSupported;
+}
+
 const VERT = `#version 300 es
 in vec2 position;
 void main() {
@@ -133,6 +153,10 @@ export default function Aurora(props: AuroraProps) {
   useEffect(() => {
     const ctn = ctnDom.current;
     if (!ctn) return;
+
+    // Skip entirely when WebGL2 isn't available — avoids a failed, noisy
+    // context-creation attempt. The gradient background remains as fallback.
+    if (!supportsWebGL2()) return;
 
     let renderer: Renderer;
     try {

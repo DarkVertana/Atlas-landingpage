@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Keep the dev overlay badge out from under the admin sidebar (dev-only).
+  devIndicators: { position: "bottom-right" },
   images: {
     remotePatterns: [
       {
