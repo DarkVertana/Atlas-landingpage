@@ -23,11 +23,23 @@ export async function generateMetadata({
   return {
     title: `${post.title} — Atlas Screening`,
     description: post.excerpt,
+    alternates: {
+      canonical: `/blog/${post.slug}`,
+    },
     openGraph: {
       title: post.title,
       description: post.excerpt,
       type: "article",
+      url: `https://atlasscreening.com/blog/${post.slug}`,
+      publishedTime: post.date,
+      authors: [post.author],
       images: [{ url: post.image, alt: post.imageAlt }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: [post.image],
     },
   };
 }
@@ -46,6 +58,29 @@ export default async function BlogPostPage({
 
   return (
     <main className="bg-white text-[#01463A]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: post.title,
+            description: post.excerpt,
+            image: post.image,
+            datePublished: post.date ? new Date(post.date).toISOString() : undefined,
+            author: { "@type": "Organization", name: post.author },
+            publisher: {
+              "@type": "Organization",
+              name: "Atlas Screening",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://atlasscreening.com/assets/atlas-logo.png",
+              },
+            },
+            mainEntityOfPage: `https://atlasscreening.com/blog/${post.slug}`,
+          }),
+        }}
+      />
       {/* Header hero — deep-green gradient to match landing/legal heroes */}
       <section className="relative overflow-hidden bg-gradient-to-b from-[#01463A] to-[#058B74] pt-36 pb-16 px-6">
         <div className="absolute -top-32 -right-32 w-[32rem] h-[32rem] rounded-full bg-[#0aa88a]/25 blur-3xl pointer-events-none" />

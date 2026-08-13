@@ -6,6 +6,7 @@ import FeatureGrid from "../../components/ui/FeatureGrid";
 import ServiceHero from "../../components/ui/ServiceHero";
 import Bento from "./Bento";
 import ProductShowcase from "../../components/ProductShowcase";
+import ServiceJsonLd from "../../components/ServiceJsonLd";
 
 export const metadata: Metadata = {
   title: "Employment Verification | Atlas Screening",
@@ -107,6 +108,12 @@ const faqs = [
 export default function EmploymentVerificationPage() {
   return (
     <main className="bg-white text-[#01463A]">
+      <ServiceJsonLd
+        name="Employment Verification"
+        description="Confirm titles, employment dates, and reason for separation directly with prior employers — documented, compliant, and audit-ready."
+        faqs={faqs}
+        path="/services/employment-verification"
+      />
       <ServiceHero
         eyebrow="Employment verification"
         title="Verified titles, dates, and separation reasons."

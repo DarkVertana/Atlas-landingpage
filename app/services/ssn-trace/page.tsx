@@ -6,6 +6,7 @@ import FeatureGrid from "../../components/ui/FeatureGrid";
 import ServiceHero from "../../components/ui/ServiceHero";
 import Bento from "./Bento";
 import ProductShowcase from "../../components/ProductShowcase";
+import ServiceJsonLd from "../../components/ServiceJsonLd";
 
 export const metadata: Metadata = {
   title: "SSN Trace & Address History | Atlas Screening",
@@ -64,8 +65,8 @@ const included = [
     ),
   },
   {
-    title: "Instant turnaround",
-    desc: "Traces return in under 60 seconds — the trigger that lets every other Atlas search fire off with confidence.",
+    title: "Fast turnaround",
+    desc: "Traces typically return in under 60 seconds — the trigger that lets every other Atlas search fire off with confidence.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
         <circle cx="12" cy="12" r="9" />
@@ -101,6 +102,12 @@ const faqs = [
 export default function SsnTracePage() {
   return (
     <main className="bg-white text-[#01463A]">
+      <ServiceJsonLd
+        name="SSN Trace & Address History"
+        description="Identity validation, residential history, alias discovery, and jurisdiction mapping — the anchor check every background report is built on."
+        faqs={faqs}
+        path="/services/ssn-trace"
+      />
       <ServiceHero
         eyebrow="SSN trace & address history"
         title="The identity anchor every report is built on."

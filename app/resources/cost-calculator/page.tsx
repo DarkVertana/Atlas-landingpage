@@ -113,6 +113,7 @@ export default function CostCalculatorPage() {
         <div className="relative mx-auto max-w-4xl">
           <SectionHeader
             tone="light"
+            as="h1"
             eyebrow="Interactive tool"
             title="Screening cost calculator."
             intro="Estimate your annual screening spend in seconds — pick a tier, add what you need, and see totals update live."

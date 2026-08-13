@@ -18,6 +18,7 @@ export default function CreditReportPage() {
     <ServiceDetail
       eyebrow="Add-on · $39.99"
       title="Credit reports for roles where it matters."
+      path="/services/credit-report"
       description="Employment-purpose credit data for financial, fiduciary, and executive hires — with permissible-purpose verification and state-law gating built in."
       price="$39.99"
       primaryCta={{ label: "Get started", href: "/contact" }}

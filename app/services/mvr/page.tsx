@@ -6,6 +6,7 @@ import FeatureGrid from "../../components/ui/FeatureGrid";
 import ServiceHero from "../../components/ui/ServiceHero";
 import Bento from "./Bento";
 import ProductShowcase from "../../components/ProductShowcase";
+import ServiceJsonLd from "../../components/ServiceJsonLd";
 
 export const metadata: Metadata = {
   title: "Motor Vehicle Records (MVR) | Atlas Screening",
@@ -104,6 +105,12 @@ const faqs = [
 export default function MvrPage() {
   return (
     <main className="bg-white text-[#01463A]">
+      <ServiceJsonLd
+        name="Motor Vehicle Records (MVR)"
+        description="State-by-state driving history for fleet, delivery, gig, and any role behind the wheel — with optional continuous monitoring and CDL support."
+        faqs={faqs}
+        path="/services/mvr"
+      />
       <ServiceHero
         eyebrow="Motor vehicle records"
         title="Driving records direct from the DMV."

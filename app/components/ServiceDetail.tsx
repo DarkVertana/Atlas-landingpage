@@ -4,6 +4,7 @@ import Reveal from "./Reveal";
 import CTASection from "./CTASection";
 import ServiceHero from "./ui/ServiceHero";
 import FeatureGrid from "./ui/FeatureGrid";
+import ServiceJsonLd from "./ServiceJsonLd";
 
 export type ServiceFeature = {
   title: string;
@@ -26,6 +27,7 @@ export type ServiceDetailProps = {
   eyebrow: string;
   title: string;
   description: string;
+  path: string; // canonical path, e.g. "/services/credit-report" (for structured data)
   price?: string;
   priceUnit?: string;
   primaryCta?: { label: string; href: string };
@@ -47,6 +49,7 @@ export default function ServiceDetail({
   eyebrow,
   title,
   description,
+  path,
   price,
   priceUnit = "per check",
   primaryCta = { label: "Start a check", href: "/signup" },
@@ -65,6 +68,12 @@ export default function ServiceDetail({
 }: ServiceDetailProps) {
   return (
     <main className="bg-white text-[#01463A]">
+      <ServiceJsonLd
+        name={title}
+        description={description}
+        faqs={faqs}
+        path={path}
+      />
       <ServiceHero eyebrow={eyebrow} title={title} description={description} steps={heroSteps}>
         {price && (
           <Reveal delay={220} variant="scale" className="mt-7 inline-flex items-baseline gap-2 bg-white/10 border border-white/20 backdrop-blur-md rounded-full px-5 py-2">

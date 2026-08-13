@@ -6,6 +6,7 @@ import FeatureGrid from "../../components/ui/FeatureGrid";
 import ServiceHero from "../../components/ui/ServiceHero";
 import Bento from "./Bento";
 import ProductShowcase from "../../components/ProductShowcase";
+import ServiceJsonLd from "../../components/ServiceJsonLd";
 
 export const metadata: Metadata = {
   title: "Social Media Inquiry | Atlas Screening",
@@ -104,6 +105,12 @@ const faqs = [
 export default function SocialMediaScreeningPage() {
   return (
     <main className="bg-white text-[#01463A]">
+      <ServiceJsonLd
+        name="Social Media Inquiry"
+        description="FCRA-compliant social media screening — public profiles only, protected-class signals redacted, every hit reviewed by a trained analyst."
+        faqs={faqs}
+        path="/services/social-media-screening"
+      />
       <ServiceHero
         eyebrow="Social media inquiry"
         title="Social screening, without the bias risk."

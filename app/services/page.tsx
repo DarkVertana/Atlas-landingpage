@@ -136,7 +136,7 @@ const services: Service[] = [
     included: [
       { title: "Identity anchor", desc: "Confirms the person is who they claim before anything else runs.", icon: iconUser },
       { title: "Alias discovery", desc: "Catches maiden names, spelling variations, and hyphenated surnames.", icon: iconSearch },
-      { title: "Instant turnaround", desc: "Results typically return in under 60 seconds.", icon: iconClock },
+      { title: "Fast database results", desc: "National database hits typically return in under a minute; most county searches complete the same day.", icon: iconClock },
     ],
     useCases: [
       "Every screening package (recommended baseline)",
@@ -314,6 +314,7 @@ export default function ServicesPage() {
           <SectionHeader
             align="center"
             tone="light"
+            as="h1"
             eyebrow="Services"
             title="Every background check, fully detailed."
             intro="From identity and criminal records to tenant screening, credit, and global watchlists — every Atlas service is FCRA-compliant, transparently priced, and built to work together."

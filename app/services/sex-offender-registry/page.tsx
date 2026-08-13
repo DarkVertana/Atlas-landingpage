@@ -6,6 +6,7 @@ import FeatureGrid from "../../components/ui/FeatureGrid";
 import ServiceHero from "../../components/ui/ServiceHero";
 import Bento from "./Bento";
 import ProductShowcase from "../../components/ProductShowcase";
+import ServiceJsonLd from "../../components/ServiceJsonLd";
 
 export const metadata: Metadata = {
   title: "Sex Offender Registry Search | Atlas Screening",
@@ -101,6 +102,12 @@ const faqs = [
 export default function SexOffenderRegistryPage() {
   return (
     <main className="bg-white text-[#01463A]">
+      <ServiceJsonLd
+        name="Sex Offender Registry Search"
+        description="National sex offender registry search across all 50 states, DC, Guam, and U.S. territories."
+        faqs={faqs}
+        path="/services/sex-offender-registry"
+      />
       <ServiceHero
         eyebrow="Sex offender registry"
         title="National registry search you can trust."
@@ -130,7 +137,7 @@ export default function SexOffenderRegistryPage() {
         description="Search sex offender registries across all 50 states and territories, with clear, documented results returned to your dashboard in minutes."
         bullets={[
           "All-state & territory registry coverage",
-          "Instant results with full match detail",
+          "Fast results with full match detail",
           "Documented, compliant records for every search",
         ]}
         image="/assets/app/screenings.png"

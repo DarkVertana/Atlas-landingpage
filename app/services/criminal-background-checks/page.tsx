@@ -5,6 +5,7 @@ import Reveal from "../../components/Reveal";
 import ServiceHero from "../../components/ui/ServiceHero";
 import ProductShowcase from "../../components/ProductShowcase";
 import CourtDepthStack from "./CourtDepthStack";
+import ServiceJsonLd from "../../components/ServiceJsonLd";
 
 export const metadata: Metadata = {
   title: "Criminal Background Checks | Atlas Screening",
@@ -38,6 +39,12 @@ const faqs = [
 export default function CriminalBackgroundChecksPage() {
   return (
     <main className="bg-white text-[#01463A]">
+      <ServiceJsonLd
+        name="Criminal Background Checks"
+        description="FCRA-compliant criminal background checks — national, county, state, and federal records in one report."
+        faqs={faqs}
+        path="/services/criminal-background-checks"
+      />
       <ServiceHero
         eyebrow="Criminal background"
         title="Criminal background checks that hold up in court."

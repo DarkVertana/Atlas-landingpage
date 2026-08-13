@@ -18,6 +18,7 @@ export default function GlobalWatchlistPage() {
     <ServiceDetail
       eyebrow="Add-on · $39.99"
       title="Global watchlist and sanctions screening."
+      path="/services/global-watchlist"
       description="OFAC, PEP, terror lists, and sanctions databases across 1,000+ global sources. Required for regulated industries, recommended for international or executive hires."
       price="$39.99"
       primaryCta={{ label: "Get started", href: "/contact" }}

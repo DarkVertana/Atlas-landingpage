@@ -11,6 +11,7 @@ type Props = {
   align?: "left" | "center";
   tone?: "dark" | "light"; // light = for dark backgrounds (white text)
   className?: string;
+  as?: "h1" | "h2"; // page heroes pass "h1" so every route has exactly one H1
 };
 
 export default function SectionHeader({
@@ -20,6 +21,7 @@ export default function SectionHeader({
   align = "left",
   tone = "dark",
   className = "",
+  as = "h2",
 }: Props) {
   const centered = align === "center";
   const heading = tone === "light" ? "text-white" : "text-[#01463A]";
@@ -38,7 +40,7 @@ export default function SectionHeader({
       </Reveal>
 
       <Reveal
-        as="h2"
+        as={as}
         delay={80}
         className={`mt-5 text-[2.25rem] font-semibold leading-[1.04] md:text-[3.25rem] ${heading}`}
       >

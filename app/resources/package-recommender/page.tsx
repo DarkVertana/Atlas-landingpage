@@ -176,6 +176,7 @@ export default function PackageRecommenderPage() {
         <div className="relative mx-auto max-w-4xl">
           <SectionHeader
             tone="light"
+            as="h1"
             eyebrow="Interactive tool"
             title="Package recommender."
             intro="Tell us about your industry, the roles you hire, and your volume — we'll point you to the Atlas package that fits best."

@@ -47,6 +47,7 @@ export default function LegalPage({
             title={title}
             intro={intro}
             tone="light"
+            as="h1"
           />
           {lastUpdated && (
             <Reveal

@@ -117,9 +117,17 @@ export default function Footer() {
             <p className="text-[#8A968F] text-xs leading-relaxed max-w-2xl">
               Atlas Screening is a Consumer Reporting Agency (CRA) under the FCRA. We provide screening services for lawful purposes only and do not make hiring decisions.
             </p>
-            <p className="text-[#8A968F] text-xs whitespace-nowrap">
-              &copy; {new Date().getFullYear()} <span className="text-[#01463A] font-medium">Atlas Screening</span>. All rights reserved.
-            </p>
+            <div className="flex items-center gap-4 whitespace-nowrap">
+              <a
+                href="/sitemap.xml"
+                className="text-[#8A968F] hover:text-[#01463A] text-xs transition-colors"
+              >
+                Sitemap
+              </a>
+              <p className="text-[#8A968F] text-xs">
+                &copy; {new Date().getFullYear()} <span className="text-[#01463A] font-medium">Atlas Screening</span>. All rights reserved.
+              </p>
+            </div>
           </div>
         </div>
       </div>

@@ -78,6 +78,8 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | undefined>
     .eq("published", true)
     .maybeSingle();
 
-  if (error || !data) return undefined;
+  // Supabase unreachable or the post is missing there — fall back to the
+  // static seed posts so published routes never 404 in production.
+  if (error || !data) return staticPosts.find((p) => p.slug === slug);
   return rowToPost(data as PostRow);
 }
