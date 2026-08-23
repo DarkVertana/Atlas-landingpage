@@ -2,13 +2,16 @@
 
 :root {
   --background: #FFFFFF;
-  --foreground: #01463A;
-  --primary: #01463A;
+  /* Neutral ink base — body copy and headings read near-black, not green.
+     Green is kept as an ACCENT only (CTAs, links, highlights, icons). */
+  --foreground: #14201C;
+  --ink: #14201C;
+  --primary: #01463A;        /* brand green — accent use only */
   --primary-light: #058B74;
   --accent: #058B74;
   --accent-light: #06a98d;
-  --muted: #4a7a72;
-  --surface: #f0faf8;
+  --muted: #5A6560;          /* neutral slate-gray for secondary text */
+  --surface: #F5F6F5;        /* neutral off-white panel, no green tint */
 
   /* Curated accent set — small pops only, never CTAs or backgrounds.
      Each hue carries a meaning so accents read as intentional. */
@@ -27,6 +30,7 @@
   --color-accent-light: var(--accent-light);
   --color-muted: var(--muted);
   --color-surface: var(--surface);
+  --color-ink: var(--ink);
   --color-amber: var(--amber);
   --color-coral: var(--coral);
   --color-sky: var(--sky);
@@ -53,7 +57,7 @@ body {
     font-family: var(--font-display), var(--font-geist-sans), system-ui, sans-serif;
     letter-spacing: -0.025em;
     text-wrap: balance;
-    color: var(--primary);
+    color: var(--ink);
   }
 }
 
@@ -90,7 +94,11 @@ body {
     opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
     transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
   transition-delay: var(--reveal-delay, 0ms);
-  will-change: opacity, transform;
+  /* No persistent will-change: reveals fire once, and pages like blog/pricing/
+     faq stack dozens of them — a permanent compositor-layer hint on every one
+     wastes GPU memory on weak machines. The one-shot transition is smooth
+     without it. Elements that animate continuously (hero layers) keep their
+     own will-change. */
 }
 
 .reveal.reveal-fade {
@@ -128,35 +136,45 @@ body {
   animation: floatSlow 6s ease-in-out infinite;
 }
 
-/* Flip word animation */
-@keyframes flipIn {
-  0% {
+/* Flip word crossfade. The incoming and outgoing words are stacked (incoming
+   in flow, outgoing absolutely positioned over it) and animate on the SAME
+   560ms curve, so the swap reads as one continuous transition rather than a
+   two-step flip: opacity crossfade + a minimal vertical drift (0.42em) + a
+   short blur-out / blur-in. No rotate, no clip-path — depth and air only.
+   Base opacity states double as the reduced-motion fallback (incoming shown,
+   outgoing hidden) once the animations are switched off. */
+@keyframes heroWordIn {
+  from {
     opacity: 0;
-    transform: translateY(100%) rotateX(-40deg);
+    transform: translate3d(0, 0.42em, 0);
+    filter: blur(8px);
   }
-  100% {
+  to {
     opacity: 1;
-    transform: translateY(0) rotateX(0deg);
+    transform: translate3d(0, 0, 0);
+    filter: blur(0);
   }
 }
 
-@keyframes flipOut {
-  0% {
+@keyframes heroWordOut {
+  from {
     opacity: 1;
-    transform: translateY(0) rotateX(0deg);
+    transform: translate3d(0, 0, 0);
+    filter: blur(0);
   }
-  100% {
+  to {
     opacity: 0;
-    transform: translateY(-100%) rotateX(40deg);
+    transform: translate3d(0, -0.42em, 0);
+    filter: blur(8px);
   }
 }
 
-.animate-flip-in {
-  animation: flipIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+.hero-word-in {
+  animation: heroWordIn 0.56s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-.animate-flip-out {
-  animation: flipOut 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+.hero-word-out {
+  animation: heroWordOut 0.56s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 /* Hero text enter */
@@ -228,13 +246,58 @@ body {
   .platform-visual-in { animation: none; }
 }
 
-/* Slow drifting mesh */
+/* Slow drifting mesh — reused for the hero's soft mint/teal orb glows. */
 @keyframes meshDrift {
   0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
   50% { transform: translate3d(4%, -3%, 0) scale(1.08); }
 }
-.hero-mesh-a { animation: meshDrift 16s ease-in-out infinite; }
+.hero-mesh-a { animation: meshDrift 18s ease-in-out infinite; }
 .hero-mesh-b { animation: meshDrift 22s ease-in-out infinite reverse; }
+
+/* Channel dialog (contact page modal) — a calm scale/fade in for the panel and
+   a soft fade for the backdrop. Held static under reduced-motion. */
+@keyframes dialogPanelIn {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes dialogBackdropIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.dialog-panel { animation: dialogPanelIn 0.28s cubic-bezier(0.16, 1, 0.3, 1); }
+.dialog-backdrop { animation: dialogBackdropIn 0.2s ease-out; }
+@media (prefers-reduced-motion: reduce) {
+  .dialog-panel, .dialog-backdrop { animation: none; }
+}
+
+/* CSS aurora wash — a pure-CSS replacement for the former WebGL (ogl) aurora.
+   Two overlapping conic/linear gradient bands slowly slide and breathe across
+   the top of the hero, screen-blended so they add light. Compositor-only
+   (transform + opacity), so it costs a fraction of a WebGL context and always
+   renders — no GPU/WebGL fallback gaps. */
+.hero-aurora {
+  background:
+    radial-gradient(60% 90% at 20% 0%, rgba(26, 212, 196, 0.55), transparent 60%),
+    radial-gradient(55% 85% at 55% 10%, rgba(56, 182, 255, 0.45), transparent 62%),
+    radial-gradient(60% 90% at 85% 0%, rgba(143, 123, 255, 0.4), transparent 60%);
+  background-size: 200% 200%;
+  filter: blur(24px);
+  animation: auroraDrift 26s ease-in-out infinite;
+}
+@keyframes auroraDrift {
+  0%, 100% { background-position: 0% 0%; transform: translate3d(0, 0, 0) scale(1.05); }
+  50% { background-position: 100% 30%; transform: translate3d(-3%, 2%, 0) scale(1.12); }
+}
+
+/* Hero orbital field — restored & refined from the pre-redesign design
+   (commit 237ac3d). The concentric cartographic rings behind the headline
+   breathe on a slow, transform-only loop (compositor-friendly), parallaxed
+   with the background layer. Held static under reduced-motion. */
+@keyframes heroOrbit {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-1.6%) scale(1.035); }
+}
+.hero-orbit { animation: heroOrbit 20s ease-in-out infinite; }
 
 /* Gradient text shimmer */
 @keyframes textShimmer {
@@ -300,7 +363,33 @@ body {
 @keyframes cdsTickPulse { 0%, 100% { transform: scale(1); opacity: 0.9; } 50% { transform: scale(1.35); opacity: 1; } }
 .cds-tick-pulse { animation: cdsTickPulse 2.4s ease-in-out infinite; }
 
+/* Tenant microsite — gentle "butter" float for the hero mockup + satellite
+   cards. Soft, low-amplitude drift with a staggered rise-in on mount. */
+@keyframes tenant-float {
+  0%, 100% { transform: translateY(0) rotate(var(--t-rot, 0deg)); }
+  50% { transform: translateY(-10px) rotate(var(--t-rot, 0deg)); }
+}
+@keyframes tenant-rise {
+  0% { opacity: 0; transform: translateY(24px) scale(0.96); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+.tenant-float {
+  animation: tenant-float 7s ease-in-out infinite;
+  will-change: transform;
+}
+.tenant-rise {
+  opacity: 0;
+  animation: tenant-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: var(--t-delay, 0ms);
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .tenant-float,
+  .tenant-rise {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
   .cds-scan,
   .cds-tick-pulse,
   .reveal,
@@ -315,12 +404,14 @@ body {
   .animate-float-slow,
   .animate-hero-enter,
   .animate-marquee,
-  .animate-flip-in,
-  .animate-flip-out,
+  .hero-word-in,
+  .hero-word-out,
+  .hero-orbit,
   .hero-word,
   .hero-sheen,
   .hero-mesh-a,
   .hero-mesh-b,
+  .hero-aurora,
   .hero-shimmer,
   .hero-cue-dot,
   .hero-marquee,
@@ -330,4 +421,7 @@ body {
     animation: none;
   }
   .hero-word { opacity: 1; clip-path: none; transform: none; }
+  /* Word swap without motion: incoming word stays visible, outgoing hidden. */
+  .hero-word-in { opacity: 1; filter: none; transform: none; }
+  .hero-word-out { opacity: 0; filter: none; transform: none; }
 }

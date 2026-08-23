@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import SectionHeader from "./ui/SectionHeader";
 
 /* The platform — built to screen at scale. Distinct from HowItWorks (the
@@ -167,8 +167,8 @@ function ApiVisual() {
       <div className="bg-[#02120d] px-5 py-4 font-mono text-[12px] leading-relaxed sm:px-6">
         <div className="text-[#5EE3C0]">POST <span className="text-white/85">/v1/checks</span></div>
         <div className="text-white/50">{"{"}</div>
-        <div className="pl-4 text-white/80">"package": <span className="text-[#bff7e8]">"standard"</span>,</div>
-        <div className="pl-4 text-white/80">"candidate": <span className="text-[#bff7e8]">"taylor@email.com"</span></div>
+        <div className="pl-4 text-white/80">{'"package": '}<span className="text-[#bff7e8]">{'"standard"'}</span>,</div>
+        <div className="pl-4 text-white/80">{'"candidate": '}<span className="text-[#bff7e8]">{'"taylor@email.com"'}</span></div>
         <div className="text-white/50">{"}"}</div>
         <div className="mt-2 text-white/40">→ 200 <span className="text-[#5EE3C0]">{"{ \"status\": \"processing\" }"}</span></div>
       </div>
@@ -202,7 +202,7 @@ export default function Industries() {
   const Visual = VISUALS[STAGES[active].key];
 
   return (
-    <section id="platform" className="relative overflow-hidden bg-white px-4 pt-10 pb-24 sm:px-6 sm:pt-14 sm:pb-32">
+    <section id="platform" className="relative overflow-hidden bg-white px-5 py-16 sm:px-6 sm:py-32">
       <div
         aria-hidden
         className="pointer-events-none absolute -right-40 top-24 h-[460px] w-[640px] rounded-full"

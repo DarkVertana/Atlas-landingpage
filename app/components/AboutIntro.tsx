@@ -16,31 +16,31 @@ const services: Service[] = [
     label: "Criminal Background Checks",
     desc: "Basic, standard, or premium tiers across county, state, and federal databases.",
     href: "/services/criminal-background-checks",
-    image: "/assets/services-hero/criminal.jpg",
+    image: "/assets/services-hero/criminal.webp",
   },
   {
     label: "SSN Trace & Address History",
     desc: "Establish a verified baseline identity for every report.",
     href: "/services/ssn-trace",
-    image: "/assets/services-hero/ssn-trace.jpg",
+    image: "/assets/services-hero/ssn-trace.webp",
   },
   {
     label: "Motor Vehicle Records",
     desc: "Detailed driving histories for transportation and fleet personnel.",
     href: "/services/mvr",
-    image: "/assets/services-hero/mvr.jpg",
+    image: "/assets/services-hero/mvr.webp",
   },
   {
     label: "Employment Verification",
     desc: "Validate past titles, dates, and workplace history with previous employers.",
     href: "/services/employment-verification",
-    image: "/assets/services-hero/employment.jpg",
+    image: "/assets/services-hero/employment.webp",
   },
   {
     label: "Transparent Add-On Services",
     desc: "Global Watchlist, Tenant Screening, and Credit Reports at a flat $39.99.",
     href: "/services/tenant-screening",
-    image: "/assets/services-hero/add-ons.jpg",
+    image: "/assets/services-hero/add-ons.webp",
   },
 ];
 
@@ -52,7 +52,7 @@ export default function AboutIntro() {
 
   return (
     <section
-      className="relative z-0 bg-white px-4 pb-24 sm:px-6 sm:pb-32 pt-24 sm:pt-36 lg:pt-[370px]"
+      className="relative z-0 bg-white px-5 py-16 sm:px-6 sm:py-32"
       style={{ cursor: themedCursor }}
     >
       <div className="mx-auto max-w-6xl">

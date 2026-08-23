@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Reveal from "../components/Reveal";
 import CTASection from "../components/CTASection";
+import ChannelDialog, { type Channel } from "../components/ChannelDialog";
 import { submitContact } from "../lib/actions";
 
 type FormErrors = {
@@ -10,6 +11,104 @@ type FormErrors = {
   email?: string;
   message?: string;
 };
+
+// Shared icon props for the channel glyphs.
+const ico = {
+  width: 24,
+  height: 24,
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 1.6,
+  strokeLinecap: "round" as const,
+  strokeLinejoin: "round" as const,
+  "aria-hidden": true,
+};
+
+// The three "other ways to reach us" channels. Each opens an on-page dialog
+// with an intent-specific form that posts through the same submitContact action.
+const CHANNELS: Channel[] = [
+  {
+    id: "demo",
+    eyebrow: "Enterprise sales inquiries",
+    title: "Request a platform demo",
+    intent:
+      "Tell us about your screening program and we'll tailor a walkthrough — bundles, API integration, and volume pricing for your team.",
+    icon: (
+      <svg {...ico}>
+        <path d="M3 21V5a2 2 0 012-2h14a2 2 0 012 2v16" />
+        <path d="M3 21h18" />
+        <path d="M9 9h1M9 13h1M14 9h1M14 13h1M9 17h6" />
+      </svg>
+    ),
+    fields: [
+      { key: "name", label: "Name", required: true, autoComplete: "name" },
+      { key: "email", label: "Work email", type: "email", required: true, autoComplete: "email" },
+      { key: "company", label: "Company", required: true, autoComplete: "organization" },
+      { key: "volume", label: "Est. monthly volume", placeholder: "e.g. 50–200 checks" },
+    ],
+    textarea: {
+      label: "What are you looking to screen?",
+      placeholder: "Roles, timelines, current tools, or anything else we should know…",
+    },
+    submitLabel: "Request demo",
+  },
+  {
+    id: "support",
+    eyebrow: "Employer support",
+    title: "Open a support ticket",
+    intent:
+      "Already a client? Get help with dashboard navigation, billing questions, or the status of a specific screening.",
+    icon: (
+      <svg {...ico}>
+        <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9" />
+        <path d="M13.73 21a2 2 0 01-3.46 0" />
+      </svg>
+    ),
+    fields: [
+      { key: "name", label: "Name", required: true, autoComplete: "name" },
+      { key: "email", label: "Work email", type: "email", required: true, autoComplete: "email" },
+      { key: "account", label: "Account or order ID", placeholder: "Optional — helps us find you faster" },
+    ],
+    textarea: {
+      label: "What do you need help with?",
+      placeholder: "Describe the issue or question…",
+    },
+    submitLabel: "Submit ticket",
+  },
+  {
+    id: "dispute",
+    eyebrow: "Applicant dispute resolution",
+    title: "Initiate the dispute process",
+    intent:
+      "If you need to challenge the accuracy of a completed report, our compliance team will review it under the FCRA and applicable state laws.",
+    icon: (
+      <svg {...ico}>
+        <path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z" />
+        <path d="M9 12l2 2 4-4" />
+      </svg>
+    ),
+    fields: [
+      { key: "name", label: "Full name", required: true, autoComplete: "name" },
+      { key: "email", label: "Email", type: "email", required: true, autoComplete: "email" },
+      { key: "reference", label: "Report reference number", placeholder: "Found on your report or notice, if available" },
+    ],
+    textarea: {
+      label: "What information is inaccurate?",
+      placeholder: "Describe the item(s) you believe are inaccurate or incomplete…",
+    },
+    submitLabel: "Submit dispute",
+    footnote: (
+      <>
+        Your dispute rights are preserved. You can also email{" "}
+        <a href="mailto:compliance@atlasscreening.com" className="underline hover:text-[#058B74]">
+          compliance@atlasscreening.com
+        </a>
+        . Atlas provides consumer reports; employers make hiring decisions.
+      </>
+    ),
+  },
+];
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -22,6 +121,7 @@ export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
   const [serverError, setServerError] = useState("");
+  const [openChannel, setOpenChannel] = useState<string | null>(null);
 
   const validate = (): FormErrors => {
     const next: FormErrors = {};
@@ -56,9 +156,9 @@ export default function ContactPage() {
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2";
 
   return (
-    <main className="bg-white text-[#01463A]">
+    <main id="main" className="bg-white text-[#01463A]">
       {/* Hero */}
-      <section className="relative pt-36 pb-20 px-6 overflow-hidden bg-gradient-to-b from-[#01463A] to-[#058B74]">
+      <section className="relative pt-28 pb-16 px-5 sm:pt-36 sm:pb-20 sm:px-6 overflow-hidden bg-gradient-to-b from-[#01463A] to-[#058B74]">
         <div className="absolute -top-32 -right-32 w-[32rem] h-[32rem] rounded-full bg-[#0aa88a]/25 blur-3xl pointer-events-none" />
 
         <div className="relative mx-auto max-w-4xl text-center">
@@ -90,7 +190,7 @@ export default function ContactPage() {
       </section>
 
       {/* Primary — form (left) + supporting details (right) */}
-      <section className="bg-white py-20 px-6">
+      <section className="bg-white py-14 sm:py-20 px-6">
         <div className="mx-auto max-w-6xl grid lg:grid-cols-2 gap-12 lg:gap-16">
           {/* Left — the primary action: the form */}
           <Reveal
@@ -120,12 +220,12 @@ export default function ContactPage() {
                   </div>
                   <h3 className="text-lg font-bold text-[#01463A]">Message received.</h3>
                   <p className="mt-2 text-sm text-gray-500 max-w-sm">
-                    Thanks for reaching out. We&apos;ll be in touch within one business
-                    day, usually sooner.
+                    Thanks for reaching out — the right person on our team will
+                    reach out to you soon.
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} noValidate className="space-y-5">
+                <form id="contact-form" onSubmit={handleSubmit} noValidate className="space-y-5">
                   <Field
                     id="contact-name"
                     label="Name"
@@ -172,7 +272,7 @@ export default function ContactPage() {
                         setFormData({ ...formData, message: e.target.value })
                       }
                       placeholder="Tell us about your workflow or timelines…"
-                      className={`w-full text-sm text-[#01463A] placeholder-gray-400 bg-gray-50 border rounded-xl px-4 py-3 outline-none focus:bg-white focus:border-[#058B74]/50 focus:ring-1 focus:ring-[#058B74]/20 transition-all resize-none ${
+                      className={`w-full text-[16px] text-[#01463A] placeholder-gray-400 bg-gray-50 border rounded-xl px-4 py-3 outline-none focus:bg-white focus:border-[#058B74]/50 focus:ring-1 focus:ring-[#058B74]/20 transition-all resize-none ${
                         errors.message ? "border-red-500" : "border-gray-200"
                       }`}
                     />
@@ -208,30 +308,33 @@ export default function ContactPage() {
             </div>
           </Reveal>
 
-          {/* Right — supporting copy + support hours */}
+          {/* Right — supporting copy + support hours (sticky: stays in view
+              while the form scrolls on tall screens) */}
           <div className="lg:pl-8 lg:pt-4">
-            <Reveal as="p" variant="fade" className="text-xs font-semibold tracking-[0.24em] uppercase text-[#058B74] mb-4">
-              Say hello
-            </Reveal>
+            <div className="lg:sticky lg:top-28">
+              <Reveal as="p" variant="fade" className="text-xs font-semibold tracking-[0.24em] uppercase text-[#058B74] mb-4">
+                Say hello
+              </Reveal>
             <Reveal as="h2" variant="left" delay={100} className="text-3xl md:text-4xl font-bold text-[#01463A] leading-[1.1]">
               Humans on <span className="text-[#058B74]">standby</span>.
             </Reveal>
             <Reveal as="p" variant="fade" delay={200} className="mt-5 text-sm text-gray-500 leading-relaxed max-w-md">
               No form letters, no ticket queues. Share a few details and the right
-              person on our team will pick it up — usually within the hour.
+              person on our team will reach out to you soon.
             </Reveal>
 
             <Reveal as="div" variant="fade" delay={300} className="mt-8 rounded-2xl border border-gray-200 bg-gray-50 px-6 py-5 max-w-md">
               <p className="text-[11px] font-semibold uppercase tracking-widest text-[#058B74]">
-                Support hours
+                Global support
               </p>
               <p className="mt-2 text-sm font-semibold text-[#01463A]">
-                Mon–Fri · 8am–6pm PT
+                We work across time zones
               </p>
               <p className="text-xs text-gray-500 mt-1">
-                Replies within the hour during business hours.
+                Wherever you are, send us a note and our team will reach out soon.
               </p>
             </Reveal>
+            </div>
           </div>
         </div>
       </section>
@@ -243,89 +346,48 @@ export default function ContactPage() {
             Other ways to reach us
           </p>
           <div className="grid md:grid-cols-3 gap-5">
-            <Reveal
-              as="a"
-              href="mailto:contact@atlasscreening.com"
-              variant="up"
-              delay={0}
-              className={`group relative overflow-hidden p-6 rounded-2xl border border-gray-200 bg-white hover:border-[#058B74]/40 hover:shadow-lg hover:shadow-[#058B74]/10 hover:-translate-y-1 transition-all duration-300 ${focusRing}`}
-            >
-              <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-[#058B74]/5 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="relative">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#058B74" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <path d="M3 21V5a2 2 0 012-2h14a2 2 0 012 2v16" />
-                  <path d="M3 21h18" />
-                  <path d="M9 9h1M9 13h1M14 9h1M14 13h1M9 17h6" />
-                </svg>
-                <p className="mt-5 text-xs font-semibold uppercase tracking-widest text-[#058B74]">
-                  Enterprise sales inquiries
-                </p>
-                <h3 className="mt-1 text-lg font-semibold text-[#01463A]">
-                  Request a platform demo
-                </h3>
-                <p className="mt-2 text-sm text-gray-500 leading-relaxed">
-                  Building a high-volume screening program requires strategic planning.
-                  Connect with our sales team to discuss custom-built bundles, API
-                  integrations, and volume pricing tailored to your organization.
-                </p>
-              </div>
-            </Reveal>
-
-            <Reveal
-              as="a"
-              href="mailto:support@atlasscreening.com"
-              variant="up"
-              delay={100}
-              className={`group text-left relative overflow-hidden p-6 rounded-2xl border border-gray-200 bg-white hover:border-[#058B74]/40 hover:shadow-lg hover:shadow-[#058B74]/10 hover:-translate-y-1 transition-all duration-300 ${focusRing}`}
-            >
-              <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-[#058B74]/5 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="relative">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#058B74" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9" />
-                  <path d="M13.73 21a2 2 0 01-3.46 0" />
-                </svg>
-                <p className="mt-5 text-xs font-semibold uppercase tracking-widest text-[#058B74]">
-                  Employer support
-                </p>
-                <h3 className="mt-1 text-lg font-semibold text-[#01463A]">
-                  Open a support ticket
-                </h3>
-                <p className="mt-2 text-sm text-gray-500 leading-relaxed">
-                  Existing clients can access immediate assistance for dashboard
-                  navigation, billing questions, or specific screening status updates.
-                </p>
-              </div>
-            </Reveal>
-
-            <Reveal
-              as="a"
-              href="/dispute-resolution"
-              variant="up"
-              delay={200}
-              className={`group relative overflow-hidden p-6 rounded-2xl border border-gray-200 bg-white hover:border-[#058B74]/40 hover:shadow-lg hover:shadow-[#058B74]/10 hover:-translate-y-1 transition-all duration-300 ${focusRing}`}
-            >
-              <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-[#058B74]/5 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="relative">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#058B74" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z" />
-                  <path d="M9 12l2 2 4-4" />
-                </svg>
-                <p className="mt-5 text-xs font-semibold uppercase tracking-widest text-[#058B74]">
-                  Applicant dispute resolution
-                </p>
-                <h3 className="mt-1 text-lg font-semibold text-[#01463A]">
-                  Initiate the dispute process
-                </h3>
-                <p className="mt-2 text-sm text-gray-500 leading-relaxed">
-                  We maintain strict adherence to all Fair Credit Reporting Act
-                  guidelines. If you need to challenge the accuracy of a completed
-                  report, our compliance team will investigate promptly.
-                </p>
-              </div>
-            </Reveal>
+            {CHANNELS.map((ch, i) => (
+              <Reveal
+                key={ch.id}
+                as="button"
+                variant="up"
+                delay={i * 100}
+                onClick={() => setOpenChannel(ch.id)}
+                aria-haspopup="dialog"
+                className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 text-left transition-all duration-300 hover:-translate-y-1 hover:border-[#058B74]/40 hover:shadow-lg hover:shadow-[#058B74]/10 ${focusRing}`}
+              >
+                <div className="pointer-events-none absolute -top-12 -right-12 h-32 w-32 rounded-full bg-[#058B74]/5 blur-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                <div className="relative flex flex-1 flex-col">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#058B74]/10 text-[#058B74] ring-1 ring-inset ring-[#058B74]/15 transition-colors group-hover:bg-[#058B74] group-hover:text-white">
+                    {ch.icon}
+                  </span>
+                  <p className="mt-5 text-xs font-semibold uppercase tracking-widest text-[#058B74]">
+                    {ch.eyebrow}
+                  </p>
+                  <h3 className="mt-1 text-lg font-semibold text-[#01463A]">{ch.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-gray-500">{ch.intent}</p>
+                  <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-[#01463A] transition-colors group-hover:text-[#058B74]">
+                    {ch.submitLabel}
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">
+                      <path d="M5 12h14M13 6l6 6-6 6" />
+                    </svg>
+                  </span>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
+
+      {/* On-page channel dialogs — one mounts at a time based on openChannel. */}
+      {CHANNELS.map((ch) => (
+        <ChannelDialog
+          key={ch.id}
+          channel={ch}
+          open={openChannel === ch.id}
+          onClose={() => setOpenChannel(null)}
+        />
+      ))}
 
       {/* Bottom CTA */}
       <CTASection
@@ -336,7 +398,7 @@ export default function ContactPage() {
           </>
         }
         description="Create an account and run your first check today. No contracts, no setup fees."
-        primary={{ label: "Create account", href: "/signup" }}
+        primary={{ label: "Start a conversation", href: "#contact-form" }}
         secondary={{ label: "Email sales", href: "mailto:contact@atlasscreening.com" }}
       />
 
@@ -383,7 +445,7 @@ function Field({
         aria-required={required ? "true" : undefined}
         aria-invalid={error ? "true" : undefined}
         aria-describedby={error ? errorId : undefined}
-        className={`w-full text-sm text-[#01463A] placeholder-gray-400 bg-gray-50 border rounded-xl px-4 py-3 outline-none focus:bg-white focus:border-[#058B74]/50 focus:ring-1 focus:ring-[#058B74]/20 transition-all ${
+        className={`w-full text-[16px] text-[#01463A] placeholder-gray-400 bg-gray-50 border rounded-xl px-4 py-3 outline-none focus:bg-white focus:border-[#058B74]/50 focus:ring-1 focus:ring-[#058B74]/20 transition-all ${
           error ? "border-red-500" : "border-gray-200"
         }`}
       />

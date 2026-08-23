@@ -96,9 +96,9 @@ export default function CostCalculatorPage() {
   };
 
   return (
-    <main className="bg-white text-[#01463A]">
+    <main id="main" className="bg-white text-[#01463A]">
       {/* Hero */}
-      <section className="relative pt-36 pb-20 px-6 overflow-hidden bg-gradient-to-b from-[#01463A] to-[#058B74]">
+      <section className="relative pt-28 pb-16 px-5 sm:pt-36 sm:pb-20 sm:px-6 overflow-hidden bg-gradient-to-b from-[#01463A] to-[#058B74]">
         <div className="absolute -top-32 -right-32 w-[32rem] h-[32rem] rounded-full bg-[#058B74]/30 blur-3xl pointer-events-none" />
         <div className="absolute -bottom-40 -left-24 w-[28rem] h-[28rem] rounded-full bg-white/5 blur-3xl pointer-events-none" />
         <div
@@ -122,7 +122,7 @@ export default function CostCalculatorPage() {
       </section>
 
       {/* Calculator */}
-      <section className="bg-gray-50/50 py-20 px-6">
+      <section className="bg-gray-50/50 py-14 sm:py-20 px-6">
         <div className="mx-auto max-w-6xl">
           <div className="grid lg:grid-cols-[1fr_400px] gap-8 items-start">
             {/* ─── Inputs ─── */}
@@ -513,7 +513,7 @@ export default function CostCalculatorPage() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-white py-20 px-6">
+      <section className="bg-white py-14 sm:py-20 px-6">
         <div className="mx-auto max-w-3xl">
           <SectionHeader
             className="mb-14"

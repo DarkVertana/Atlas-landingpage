@@ -64,7 +64,7 @@ export default function ClientCertificationPage() {
           <li>Providing final adverse action notice</li>
         </ul>
         <p>
-          Atlas Screening does not assume responsibility for Client's adverse
+          Atlas Screening does not assume responsibility for Client&apos;s adverse
           action compliance.
         </p>
       </LegalSection>
@@ -130,7 +130,7 @@ export default function ClientCertificationPage() {
       <LegalSection id="liability" title="10. Limitation of Liability">
         <p>To the fullest extent permitted by law:</p>
         <p>
-          Atlas Screening's liability shall not exceed the amount paid for the
+          Atlas Screening&apos;s liability shall not exceed the amount paid for the
           report in question.
         </p>
       </LegalSection>

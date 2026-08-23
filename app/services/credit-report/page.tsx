@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ServiceDetail from "../../components/ServiceDetail";
+import { startScreeningHref } from "../../lib/appUrl";
 
 export const metadata: Metadata = {
   title: "Credit Report | Atlas Screening",
@@ -19,9 +20,11 @@ export default function CreditReportPage() {
       eyebrow="Add-on · $39.99"
       title="Credit reports for roles where it matters."
       path="/services/credit-report"
+      image="/assets/services/credit-report.webp"
       description="Employment-purpose credit data for financial, fiduciary, and executive hires — with permissible-purpose verification and state-law gating built in."
       price="$39.99"
-      primaryCta={{ label: "Get started", href: "/contact" }}
+      primaryCta={{ label: "Start screening", href: startScreeningHref({ service: "credit-report" }) }}
+      secondaryCta={{ label: "Talk to sales", href: "/contact" }}
       heroSteps={["Permissible purpose", "Soft pull", "State gating", "Adverse action"]}
       includedHeading="Credit signals that fit the role."
       includedSubheading="Never used for entry-level hiring. Scoped tightly to roles where financial responsibility is a documented job requirement."

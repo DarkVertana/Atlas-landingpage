@@ -104,7 +104,7 @@ const faqs = [
 
 export default function MvrPage() {
   return (
-    <main className="bg-white text-[#01463A]">
+    <main id="main" className="bg-white text-[#01463A]">
       <ServiceJsonLd
         name="Motor Vehicle Records (MVR)"
         description="State-by-state driving history for fleet, delivery, gig, and any role behind the wheel — with optional continuous monitoring and CDL support."
@@ -116,6 +116,8 @@ export default function MvrPage() {
         title="Driving records direct from the DMV."
         description="License status, violations, accidents, CDL endorsements, and continuous monitoring — every detail your fleet, delivery, gig, or transportation team needs to hire behind the wheel with confidence."
         steps={["License", "Violations", "Accidents", "Monitoring"]}
+        image="/assets/services/mvr.webp"
+        start={{ service: "mvr" }}
       />
 
       <FeatureGrid
@@ -143,7 +145,7 @@ export default function MvrPage() {
           "License status, violations & endorsements",
           "Automatic alerts the moment a report lands",
         ]}
-        image="/assets/app/customer-dashboard.png"
+        image="/assets/app/customer-dashboard.webp"
         imageAlt="Atlas Screening MVR status dashboard"
         badges={[
           { label: "License valid", tone: "clear", position: "-top-4 -left-4" },
@@ -155,7 +157,7 @@ export default function MvrPage() {
       <ServicePricing />
 
       {/* FAQ */}
-      <section className="bg-white py-20 px-6">
+      <section className="bg-white py-14 sm:py-20 px-6">
         <div className="mx-auto max-w-3xl">
           <div className="text-center mb-14">
             <Reveal as="h2" className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">

@@ -137,7 +137,7 @@ export const posts: Post[] = [
     imageAlt:
       "A researcher cross-referencing address history records generated from a Social Security number trace.",
     body: [
-      "An SSN trace is the scaffolding of a background check, not a verdict on it. It takes a Social Security number and returns the names and addresses associated with it over time, drawn from credit-header and other public data sources.",
+      "An SSN trace is the scaffolding of a background check, not the final word on it. It takes a Social Security number and returns the names and addresses associated with it over time, drawn from credit-header and other public data sources.",
       "Its real job is to tell you where else to look. The addresses it surfaces determine which counties and states you search for criminal records. Miss a jurisdiction the applicant lived in, and you may miss the record that matters.",
       "A common misconception is that an SSN trace verifies identity or confirms work authorization. It does neither. It does not validate that the number was legitimately issued to the applicant, and it is not an E-Verify substitute. It also will not, on its own, report criminal history.",
       "Read the aliases and address variations it returns as leads, not conclusions. A maiden name or a prior state is exactly the kind of detail that expands your search and prevents a report that looks clean only because it was incomplete.",

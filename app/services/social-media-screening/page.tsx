@@ -48,7 +48,7 @@ const included = [
   },
   {
     title: "Human analyst review",
-    desc: "Every flagged post is reviewed for context and attribution by a trained analyst — no raw algorithmic verdicts in the report.",
+    desc: "Every flagged post is reviewed for context and attribution by a trained analyst — no raw algorithmic conclusions in the report.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
         <circle cx="12" cy="8" r="4" />
@@ -104,7 +104,7 @@ const faqs = [
 
 export default function SocialMediaScreeningPage() {
   return (
-    <main className="bg-white text-[#01463A]">
+    <main id="main" className="bg-white text-[#01463A]">
       <ServiceJsonLd
         name="Social Media Inquiry"
         description="FCRA-compliant social media screening — public profiles only, protected-class signals redacted, every hit reviewed by a trained analyst."
@@ -116,6 +116,8 @@ export default function SocialMediaScreeningPage() {
         title="Social screening, without the bias risk."
         description="Atlas reviews public social profiles against role-based risk criteria — protected-class signals are redacted before the report ever reaches your team, and every hit is signed off by a trained analyst."
         steps={["Public profiles", "Risk criteria", "Redaction", "Analyst sign-off"]}
+        image="/assets/services/social-media-screening.webp"
+        start={{ service: "social-media-screening" }}
       />
 
       <FeatureGrid
@@ -143,7 +145,7 @@ export default function SocialMediaScreeningPage() {
           "Protected characteristics auto-redacted",
           "Analyst-reviewed reports, ready to act on",
         ]}
-        image="/assets/app/reports.png"
+        image="/assets/app/reports.webp"
         imageAlt="Atlas Screening social media report"
         badges={[
           { label: "Reviewed & redacted", tone: "info", position: "-top-4 -left-4" },
@@ -155,7 +157,7 @@ export default function SocialMediaScreeningPage() {
       <ServicePricing />
 
       {/* FAQ */}
-      <section className="bg-white py-20 px-6">
+      <section className="bg-white py-14 sm:py-20 px-6">
         <div className="mx-auto max-w-3xl">
           <div className="text-center mb-14">
             <Reveal as="h2" className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">

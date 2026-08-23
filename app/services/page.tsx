@@ -1,274 +1,10 @@
 import Link from "next/link";
-import type { ReactNode } from "react";
+import Image from "next/image";
 import Reveal from "../components/Reveal";
 import SectionHeader from "../components/ui/SectionHeader";
 import CTASection from "../components/CTASection";
-
-type Service = {
-  slug: string;
-  name: string;
-  eyebrow: string;
-  category: "Core check" | "Add-on";
-  tagline: string;
-  intro: string;
-  features: string[];
-  included: { title: string; desc: string; icon: ReactNode }[];
-  useCases: string[];
-  turnaround: string;
-  priceFrom: string;
-  priceNote?: boolean;
-  detailHref: string;
-};
-
-const iconSearch = (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-    <circle cx="11" cy="11" r="7" />
-    <path d="M21 21l-4.35-4.35" />
-  </svg>
-);
-const iconShield = (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-    <path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z" />
-    <path d="M9 12l2 2 4-4" />
-  </svg>
-);
-const iconDoc = (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
-    <path d="M14 2v6h6" />
-    <path d="M9 13h6M9 17h4" />
-  </svg>
-);
-const iconBuilding = (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-    <path d="M3 10h18M5 10V7l7-4 7 4v3M5 21h14M7 10v11M17 10v11M10 14h4v7h-4z" />
-  </svg>
-);
-const iconCar = (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-    <path d="M3 13l2-5a2 2 0 012-1.5h10a2 2 0 012 1.5l2 5M3 13v5h2v-2h14v2h2v-5M3 13h18" />
-    <circle cx="7.5" cy="16" r="1.5" />
-    <circle cx="16.5" cy="16" r="1.5" />
-  </svg>
-);
-const iconUser = (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-    <circle cx="12" cy="8" r="4" />
-    <path d="M4 21v-2a6 6 0 016-6h4a6 6 0 016 6v2" />
-  </svg>
-);
-const iconGlobe = (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-    <circle cx="12" cy="12" r="9" />
-    <path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18" />
-  </svg>
-);
-const iconCredit = (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-    <rect x="3" y="6" width="18" height="12" rx="2" />
-    <path d="M3 10h18M7 15h4" />
-  </svg>
-);
-const iconHome = (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-    <path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-4v-6h-8v6H4a1 1 0 01-1-1v-9z" />
-  </svg>
-);
-const iconClock = (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-    <circle cx="12" cy="12" r="9" />
-    <path d="M12 7v5l3 2" />
-  </svg>
-);
-const iconChat = (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-    <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
-  </svg>
-);
-
-const services: Service[] = [
-  {
-    slug: "criminal-background-checks",
-    name: "Criminal background checks",
-    eyebrow: "Core check · Criminal",
-    category: "Core check",
-    tagline: "National, county, state, and federal records — in one compliant report.",
-    intro:
-      "Choose from Basic, Standard, or Premium tiers to evaluate candidate risk across every U.S. jurisdiction. We pull directly from the court of record, apply FCRA lookback rules automatically, and deliver a branded PDF that stands up to audit.",
-    features: [
-      "National criminal database (600M+ records)",
-      "County-level court searches (7-year lookback)",
-      "Statewide criminal repositories",
-      "Federal criminal records across all 94 districts",
-      "Sex offender registry — all 50 states + territories",
-      "Automatic FCRA and state-specific filtering",
-    ],
-    included: [
-      { title: "Court of record", desc: "Direct county and federal searches — no stale scraped data.", icon: iconBuilding },
-      { title: "Adjudication matrix", desc: "Rules engine flags hits for human review with full audit trail.", icon: iconShield },
-      { title: "Minutes, not days", desc: "National hits return instantly; most county searches same day.", icon: iconClock },
-    ],
-    useCases: [
-      "General employment screening",
-      "Roles requiring federal-level review",
-      "Regulated industries (healthcare, finance, transport)",
-    ],
-    turnaround: "15 min – 3 business days",
-    priceFrom: "$24.99",
-    detailHref: "/services/criminal-background-checks",
-  },
-  {
-    slug: "identity-verification",
-    name: "Identity verification",
-    eyebrow: "Core check · Identity",
-    category: "Core check",
-    tagline: "The identity foundation every background report is built on.",
-    intro:
-      "Validate the candidate's Social Security Number, surface all aliases and prior names, and pull a complete residential history. Identity verification is how we decide which counties to search — skipping it makes every downstream check less accurate.",
-    features: [
-      "SSN format, issuance state, and validity check",
-      "7-year address history from credit and public sources",
-      "Known aliases and name variations",
-      "Associated phone numbers and emails",
-      "Death Master File cross-check",
-      "Anchors county selection for criminal searches",
-    ],
-    included: [
-      { title: "Identity anchor", desc: "Confirms the person is who they claim before anything else runs.", icon: iconUser },
-      { title: "Alias discovery", desc: "Catches maiden names, spelling variations, and hyphenated surnames.", icon: iconSearch },
-      { title: "Fast database results", desc: "National database hits typically return in under a minute; most county searches complete the same day.", icon: iconClock },
-    ],
-    useCases: [
-      "Every screening package (recommended baseline)",
-      "Remote-hire verification",
-      "Tenant screening identity checks",
-    ],
-    turnaround: "Under 60 seconds",
-    priceFrom: "Included in all tiers",
-    priceNote: true,
-    detailHref: "/services/ssn-trace",
-  },
-  {
-    slug: "employment-verification",
-    name: "Employment verification",
-    eyebrow: "Core check · Verification",
-    category: "Core check",
-    tagline: "Confirm titles, dates, and separation reasons directly with prior employers.",
-    intro:
-      "We contact past employers by phone, email, or approved verification networks to confirm what a candidate claimed on their résumé. Every verification attempt is logged with timestamp, method, and outcome — so you have proof, not assumptions.",
-    features: [
-      "Job titles and employment dates verified",
-      "Reason for separation (where disclosable)",
-      "Rehire eligibility status",
-      "Compensation verification (permissible-purpose)",
-      "Contractor and gig-work coverage",
-      "International employer outreach",
-    ],
-    included: [
-      { title: "Verified touchpoints", desc: "Phone, email, or approved verification networks — logged end-to-end.", icon: iconChat },
-      { title: "Proof chain", desc: "Every contact attempt timestamped with method and outcome.", icon: iconDoc },
-      { title: "Dispute-ready", desc: "Applicants can initiate dispute directly from their completed report.", icon: iconShield },
-    ],
-    useCases: [
-      "Mid-senior professional hires",
-      "Regulated roles requiring history proof",
-      "Executive and fiduciary placements",
-    ],
-    turnaround: "1 – 3 business days",
-    priceFrom: "$14.99 per employer",
-    detailHref: "/services/employment-verification",
-  },
-  {
-    slug: "county-court-searches",
-    name: "County court searches",
-    eyebrow: "Core check · Court records",
-    category: "Core check",
-    tagline: "Direct county-level court record searches with FCRA-compliant lookback rules.",
-    intro:
-      "County courthouses remain the most authoritative and up-to-date source for criminal records. Our researchers access the court of record directly — searching every jurisdiction where your candidate has lived or worked — to deliver accurate, current results that national databases alone cannot match.",
-    features: [
-      "Direct access to county court records",
-      "7-year standard lookback (extended where permissible)",
-      "Alias and name variation searches included",
-      "Real-time researcher-verified results",
-      "FCRA and state-specific filtering applied",
-      "Covers all U.S. counties and jurisdictions",
-    ],
-    included: [
-      { title: "Court of record", desc: "Direct county searches — no stale scraped data or aggregators.", icon: iconBuilding },
-      { title: "FCRA filtering", desc: "Automatic application of lookback limits and state restrictions.", icon: iconShield },
-      { title: "Same-day results", desc: "Most county searches return within 1–3 business days.", icon: iconClock },
-    ],
-    useCases: [
-      "Employment screening requiring county-level detail",
-      "Roles in regulated industries",
-      "Thorough due diligence for sensitive positions",
-    ],
-    turnaround: "1 – 3 business days",
-    priceFrom: "$14.99 per county",
-    detailHref: "/services/criminal-background-checks",
-  },
-  {
-    slug: "tenant-screening",
-    name: "Tenant screening",
-    eyebrow: "Core check · Real estate",
-    category: "Core check",
-    tagline: "Criminal, credit, and eviction history — purpose-built for property managers.",
-    intro:
-      "Give your leasing team a single compliant report that covers everything a landlord needs: resident-grade criminal history, a soft-pull credit report, and a full eviction record search across nationwide databases.",
-    features: [
-      "Nationwide eviction history search",
-      "Resident-grade criminal background check",
-      "Soft-pull credit score and tradelines",
-      "Rental payment history where available",
-      "Landlord reference contact workflow",
-      "Applicant-friendly mobile submission",
-    ],
-    included: [
-      { title: "Landlord-ready", desc: "Every signal a leasing team needs on one compliant report.", icon: iconHome },
-      { title: "Soft-pull credit", desc: "No impact to the applicant's credit score.", icon: iconCredit },
-      { title: "Eviction coverage", desc: "Nationwide database of filings, judgments, and outcomes.", icon: iconBuilding },
-    ],
-    useCases: [
-      "Multi-family property management",
-      "Single-family rental portfolios",
-      "Student and short-term housing",
-    ],
-    turnaround: "Same day (most applicants)",
-    priceFrom: "$39.99",
-    detailHref: "/services/tenant-screening",
-  },
-  {
-    slug: "social-media-screening",
-    name: "Social media screening",
-    eyebrow: "Add-on · Behavioral",
-    category: "Add-on",
-    tagline: "FCRA-compliant review of public profiles — no protected-class data.",
-    intro:
-      "A trained analyst reviews only publicly visible profiles for content relevant to a permissible purpose — violent threats, drug-related posts, discriminatory content, or confidential-data leakage. Protected-class information is redacted before the report ever reaches you.",
-    features: [
-      "Public profiles only (LinkedIn, X, Facebook, Instagram, TikTok, Reddit)",
-      "Human analyst review — no automated scraping",
-      "Risk-relevant categories only",
-      "Protected-class redaction built in",
-      "Screenshot evidence with context",
-      "Tailored policy matrices per customer",
-    ],
-    included: [
-      { title: "Human analyst", desc: "FCRA-trained reviewer applies policy — no raw dumps.", icon: iconUser },
-      { title: "Redaction layer", desc: "Protected-class content is removed before you see the report.", icon: iconShield },
-      { title: "Evidence, not rumor", desc: "Every flag cites a specific public post with timestamp.", icon: iconDoc },
-    ],
-    useCases: [
-      "Executive and public-facing roles",
-      "Brand-sensitive positions",
-      "Customer-trust-critical functions",
-    ],
-    turnaround: "1 – 2 business days",
-    priceFrom: "$29.99",
-    detailHref: "/services/social-media-screening",
-  },
-];
+import { services, serviceGroups, type Service } from "../lib/services";
+import { startScreeningHref } from "../lib/appUrl";
 
 const faqs = [
   {
@@ -285,7 +21,7 @@ const faqs = [
   },
   {
     q: "How fast are results?",
-    a: "SSN trace, national criminal, MVR, and watchlist checks typically return in under a minute. County criminal searches usually clear the same business day. Employment and education verifications take 1–3 business days depending on source responsiveness.",
+    a: "SSN trace, national criminal, MVR, and watchlist checks typically return database results in minutes. County criminal searches usually clear the same business day. Employment and education verifications take 1–3 business days depending on source responsiveness.",
   },
   {
     q: "What does 'per check' pricing include?",
@@ -293,11 +29,19 @@ const faqs = [
   },
 ];
 
+function primaryCtaFor(s: Service): { label: string; href: string; external: boolean } {
+  if (s.start) {
+    return { label: "Start screening", href: startScreeningHref(s.start), external: true };
+  }
+  // Subscription / sales-only service.
+  return { label: "Talk to sales", href: `/contact?service=${s.slug}`, external: false };
+}
+
 export default function ServicesPage() {
   return (
-    <main className="bg-white text-[#01463A]">
+    <main id="main" className="bg-white text-[#01463A]">
       {/* Hero */}
-      <section className="relative pt-36 pb-20 px-6 overflow-hidden bg-gradient-to-b from-[#01463A] to-[#058B74]">
+      <section className="relative pt-28 pb-16 px-5 sm:pt-36 sm:pb-20 sm:px-6 overflow-hidden bg-gradient-to-b from-[#01463A] to-[#058B74]">
         <div className="absolute -top-32 -right-32 w-[32rem] h-[32rem] rounded-full bg-[#0aa88a]/25 blur-3xl pointer-events-none" />
         <div className="absolute -bottom-32 -left-32 w-[32rem] h-[32rem] rounded-full bg-[#058B74]/30 blur-3xl pointer-events-none" />
         <div
@@ -317,7 +61,7 @@ export default function ServicesPage() {
             as="h1"
             eyebrow="Services"
             title="Every background check, fully detailed."
-            intro="From identity and criminal records to tenant screening, credit, and global watchlists — every Atlas service is FCRA-compliant, transparently priced, and built to work together."
+            intro="From identity and criminal records to property-management tenant screening, credit, and global watchlists — every Atlas service is FCRA-compliant, transparently priced, and built to work together. Each has its own dedicated page below."
           />
         </div>
       </section>
@@ -333,212 +77,229 @@ export default function ServicesPage() {
                 href={`#${s.slug}`}
                 className="inline-flex items-center min-h-11 px-3 py-2.5 rounded-full border border-gray-200 hover:border-[#058B74] hover:text-[#058B74] hover:bg-[#058B74]/5 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2"
               >
-                {s.name.replace(" & ", " + ")}
+                {s.name}
               </a>
             ))}
           </nav>
         </div>
       </section>
 
-      {/* Service sections */}
+      {/* Service sections, grouped */}
       <section className="bg-white">
-        {services.map((s, i) => {
-          const reversed = i % 2 === 1;
+        {serviceGroups.map((group) => {
+          const groupServices = services.filter((s) => s.group === group.id);
+          if (groupServices.length === 0) return null;
           return (
-            <article
-              key={s.slug}
-              id={s.slug}
-              className={`scroll-mt-32 px-6 py-20 ${
-                i % 2 === 1 ? "bg-gradient-to-b from-white to-gray-50" : "bg-white"
-              }`}
-            >
-              <div className="mx-auto max-w-6xl">
-                <div
-                  className={`grid lg:grid-cols-2 gap-10 lg:gap-16 items-start ${
-                    reversed ? "lg:[&>div:first-child]:order-2" : ""
-                  }`}
-                >
-                  {/* Copy column */}
-                  <Reveal variant={reversed ? "right" : "left"}>
-                    <div className="flex flex-wrap items-center gap-2 mb-4">
-                      {(() => {
-                        const isAddOn = s.category === "Add-on";
-                        const badge = isAddOn
-                          ? "text-[#B26A00] bg-[#F5A524]/12 ring-[#F5A524]/25"
-                          : "text-[#058B74] bg-[#058B74]/10 ring-[#058B74]/15";
-                        return (
-                          <span
-                            className={`inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-widest ring-1 ring-inset px-2.5 py-1 rounded-full ${badge}`}
-                          >
-                            <span
-                              className="h-1.5 w-1.5 rounded-full"
-                              style={{ backgroundColor: isAddOn ? "#F5A524" : "#058B74" }}
-                            />
-                            {s.category}
-                          </span>
-                        );
-                      })()}
-                      <span className="text-[11px] text-gray-600">
-                        {s.eyebrow}
-                      </span>
-                    </div>
-
-                    <h2 className="text-3xl md:text-4xl font-bold text-[#01463A] leading-tight">
-                      {s.name}
-                    </h2>
-                    <p className="mt-3 text-base md:text-lg text-[#058B74] font-medium leading-snug">
-                      {s.tagline}
+            <div key={group.id}>
+              {/* Group band */}
+              <div className="mx-auto max-w-6xl px-5 sm:px-6 pt-14 sm:pt-20">
+                <Reveal>
+                  <div className="flex flex-col gap-1 border-b border-gray-100 pb-6">
+                    <p className="text-[11px] font-semibold uppercase tracking-widest text-[#058B74]">
+                      {group.label}
                     </p>
-                    <p className="mt-5 text-sm text-gray-500 leading-relaxed max-w-lg">
-                      {s.intro}
-                    </p>
+                    <p className="text-sm text-gray-500">{group.blurb}</p>
+                  </div>
+                </Reveal>
+              </div>
 
-                    {/* Meta strip */}
-                    <dl className="mt-7 grid grid-cols-2 gap-4 max-w-md">
-                      <div className="rounded-xl border border-gray-200 bg-white px-4 py-3">
-                        <dt className="text-[10px] font-semibold uppercase tracking-widest text-gray-600">
-                          Turnaround
-                        </dt>
-                        <dd className="mt-1 text-sm font-semibold text-[#01463A]">
-                          {s.turnaround}
-                        </dd>
-                      </div>
-                      <div className="rounded-xl border border-gray-200 bg-white px-4 py-3">
-                        <dt className="text-[10px] font-semibold uppercase tracking-widest text-gray-600">
-                          {s.priceNote ? "Pricing" : "Starts at"}
-                        </dt>
-                        {s.priceNote ? (
-                          <dd className="mt-1 inline-flex items-center gap-1.5 text-xs font-semibold text-[#058B74] bg-[#058B74]/10 ring-1 ring-inset ring-[#058B74]/15 px-2.5 py-1 rounded-full">
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                              <path d="M5 12l5 5 9-11" />
-                            </svg>
-                            {s.priceFrom}
-                          </dd>
-                        ) : (
-                          <dd className="mt-1 text-sm font-semibold text-[#01463A]">
-                            {s.priceFrom}
-                          </dd>
-                        )}
-                      </div>
-                    </dl>
-
-                    {/* Feature bullets */}
-                    <div className="mt-8">
-                      <p className="text-[11px] font-semibold uppercase tracking-widest text-[#058B74] mb-3">
-                        What&apos;s included
-                      </p>
-                      <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2.5">
-                        {s.features.map((f) => (
-                          <li
-                            key={f}
-                            className="flex items-start gap-2.5 text-sm text-[#01463A]"
-                          >
-                            <svg
-                              width="16"
-                              height="16"
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              stroke="#058B74"
-                              strokeWidth="2.5"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              className="flex-shrink-0 mt-0.5"
-                            >
-                              <path d="M5 12l5 5 9-11" />
-                            </svg>
-                            {f}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Use cases */}
-                    <div className="mt-8">
-                      <p className="text-[11px] font-semibold uppercase tracking-widest text-[#058B74] mb-3">
-                        Best for
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        {s.useCases.map((u) => (
-                          <span
-                            key={u}
-                            className="inline-flex items-center text-xs text-[#01463A] bg-white border border-gray-200 rounded-full px-3 py-1.5"
-                          >
-                            {u}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* CTAs */}
-                    <div className="mt-8 flex flex-wrap gap-3">
-                      <Link
-                        href={`/signup?service=${s.slug}`}
-                        className="inline-flex items-center gap-2 bg-[#01463A] text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-[#058B74] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2"
+              {groupServices.map((s, i) => {
+                const reversed = i % 2 === 1;
+                const cta = primaryCtaFor(s);
+                return (
+                  <article
+                    key={s.slug}
+                    id={s.slug}
+                    className={`scroll-mt-32 px-5 py-14 sm:px-6 sm:py-20 ${
+                      reversed ? "bg-gradient-to-b from-white to-gray-50" : "bg-white"
+                    }`}
+                  >
+                    <div className="mx-auto max-w-6xl">
+                      <div
+                        className={`grid lg:grid-cols-2 gap-10 lg:gap-16 items-start ${
+                          reversed ? "lg:[&>div:first-child]:order-2" : ""
+                        }`}
                       >
-                        Run this check
-                        <svg
-                          width="14"
-                          height="14"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2.2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <path d="M5 12h14M13 5l7 7-7 7" />
-                        </svg>
-                      </Link>
-                      <Link
-                        href={s.detailHref}
-                        className="inline-flex items-center gap-2 border border-gray-200 text-[#01463A] px-5 py-2.5 rounded-lg text-sm font-semibold hover:border-[#058B74] hover:text-[#058B74] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2"
-                      >
-                        {s.slug === "county-court-searches"
-                          ? "See criminal check details"
-                          : "Full details"}
-                      </Link>
-                    </div>
-                  </Reveal>
+                        {/* Copy column */}
+                        <Reveal variant={reversed ? "right" : "left"}>
+                          <div className="flex flex-wrap items-center gap-2 mb-4">
+                            {(() => {
+                              const isAddOn = s.category === "Add-on";
+                              const badge = isAddOn
+                                ? "text-[#B26A00] bg-[#F5A524]/12 ring-[#F5A524]/25"
+                                : "text-[#058B74] bg-[#058B74]/10 ring-[#058B74]/15";
+                              return (
+                                <span
+                                  className={`inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-widest ring-1 ring-inset px-2.5 py-1 rounded-full ${badge}`}
+                                >
+                                  <span
+                                    className="h-1.5 w-1.5 rounded-full"
+                                    style={{ backgroundColor: isAddOn ? "#F5A524" : "#058B74" }}
+                                  />
+                                  {s.category}
+                                </span>
+                              );
+                            })()}
+                            <span className="text-[11px] text-gray-600">{s.eyebrow}</span>
+                          </div>
 
-                  {/* Visual column — highlight cards carry the section */}
-                  <div className="lg:sticky lg:top-32">
-                    <Reveal
-                      as="p"
-                      variant={reversed ? "left" : "right"}
-                      className="text-[11px] font-semibold uppercase tracking-widest text-[#058B74] mb-3"
-                    >
-                      Why it stands up to audit
-                    </Reveal>
-                    {/* Included cards */}
-                    <div className="grid sm:grid-cols-3 gap-3">
-                      {s.included.map((b, bi) => (
-                        <Reveal key={b.title} delay={bi * 80}>
-                          <div
-                            className="h-full rounded-3xl border border-gray-200 bg-white p-4 hover:border-gray-300 hover:shadow-md hover:shadow-[#058B74]/5 transition-all"
-                          >
-                            <div className="w-9 h-9 rounded-lg bg-[#058B74]/10 text-[#058B74] flex items-center justify-center ring-1 ring-inset ring-[#058B74]/10">
-                              {b.icon}
+                          <h2 className="text-3xl md:text-4xl font-bold text-[#01463A] leading-tight">
+                            {s.name}
+                          </h2>
+                          <p className="mt-3 text-base md:text-lg text-[#058B74] font-medium leading-snug">
+                            {s.tagline}
+                          </p>
+                          <p className="mt-5 text-sm text-gray-500 leading-relaxed max-w-lg">
+                            {s.intro}
+                          </p>
+
+                          {/* Meta strip */}
+                          <dl className="mt-7 grid grid-cols-2 gap-4 max-w-md">
+                            <div className="rounded-xl border border-gray-200 bg-white px-4 py-3">
+                              <dt className="text-[10px] font-semibold uppercase tracking-widest text-gray-600">
+                                Turnaround
+                              </dt>
+                              <dd className="mt-1 text-sm font-semibold text-[#01463A]">
+                                {s.turnaround}
+                              </dd>
                             </div>
-                            <h3 className="mt-3 text-sm font-semibold text-[#01463A]">
-                              {b.title}
-                            </h3>
-                            <p className="mt-1 text-xs text-gray-500 leading-relaxed">
-                              {b.desc}
+                            <div className="rounded-xl border border-gray-200 bg-white px-4 py-3">
+                              <dt className="text-[10px] font-semibold uppercase tracking-widest text-gray-600">
+                                {s.priceNote ? "Pricing" : "Starts at"}
+                              </dt>
+                              {s.priceNote ? (
+                                <dd className="mt-1 inline-flex items-center gap-1.5 text-xs font-semibold text-[#058B74] bg-[#058B74]/10 ring-1 ring-inset ring-[#058B74]/15 px-2.5 py-1 rounded-full">
+                                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                    <path d="M5 12l5 5 9-11" />
+                                  </svg>
+                                  {s.priceFrom}
+                                </dd>
+                              ) : (
+                                <dd className="mt-1 text-sm font-semibold text-[#01463A]">
+                                  {s.priceFrom}
+                                </dd>
+                              )}
+                            </div>
+                          </dl>
+
+                          {/* Feature bullets */}
+                          <div className="mt-8">
+                            <p className="text-[11px] font-semibold uppercase tracking-widest text-[#058B74] mb-3">
+                              What&apos;s included
                             </p>
+                            <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2.5">
+                              {s.features.map((f) => (
+                                <li key={f} className="flex items-start gap-2.5 text-sm text-[#01463A]">
+                                  <svg
+                                    width="16"
+                                    height="16"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="#058B74"
+                                    strokeWidth="2.5"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    className="flex-shrink-0 mt-0.5"
+                                  >
+                                    <path d="M5 12l5 5 9-11" />
+                                  </svg>
+                                  {f}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+
+                          {/* Use cases */}
+                          <div className="mt-8">
+                            <p className="text-[11px] font-semibold uppercase tracking-widest text-[#058B74] mb-3">
+                              Best for
+                            </p>
+                            <div className="flex flex-wrap gap-2">
+                              {s.useCases.map((u) => (
+                                <span
+                                  key={u}
+                                  className="inline-flex items-center text-xs text-[#01463A] bg-white border border-gray-200 rounded-full px-3 py-1.5"
+                                >
+                                  {u}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+
+                          {/* CTAs */}
+                          <div className="mt-8 flex flex-wrap gap-3">
+                            <Link
+                              href={cta.href}
+                              {...(cta.external ? { target: "_blank", rel: "noopener" } : {})}
+                              className="inline-flex items-center gap-2 bg-[#01463A] text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-[#058B74] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2"
+                            >
+                              {cta.label}
+                              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M5 12h14M13 5l7 7-7 7" />
+                              </svg>
+                            </Link>
+                            <Link
+                              href={s.detailHref}
+                              className="inline-flex items-center gap-2 border border-gray-200 text-[#01463A] px-5 py-2.5 rounded-lg text-sm font-semibold hover:border-[#058B74] hover:text-[#058B74] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2"
+                            >
+                              Full details
+                            </Link>
                           </div>
                         </Reveal>
-                      ))}
+
+                        {/* Visual column — image + highlight cards */}
+                        <div className="lg:sticky lg:top-32">
+                          <Reveal variant={reversed ? "left" : "right"}>
+                            <div className="relative overflow-hidden rounded-3xl border border-gray-200 bg-[#01463A] aspect-[16/10]">
+                              <Image
+                                src={s.image}
+                                alt={`${s.name} — Atlas Screening`}
+                                fill
+                                sizes="(max-width: 1024px) 100vw, 40vw"
+                                className="object-cover"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-[#01463A]/40 to-transparent pointer-events-none" />
+                            </div>
+                          </Reveal>
+
+                          <Reveal
+                            as="p"
+                            variant={reversed ? "left" : "right"}
+                            className="text-[11px] font-semibold uppercase tracking-widest text-[#058B74] mt-6 mb-3"
+                          >
+                            Why it stands up to audit
+                          </Reveal>
+                          {/* Included cards */}
+                          <div className="grid sm:grid-cols-3 gap-3">
+                            {s.included.map((b, bi) => (
+                              <Reveal key={b.title} delay={bi * 80}>
+                                <div className="h-full rounded-3xl border border-gray-200 bg-white p-4 hover:border-gray-300 hover:shadow-md hover:shadow-[#058B74]/5 transition-all">
+                                  <div className="w-9 h-9 rounded-lg bg-[#058B74]/10 text-[#058B74] flex items-center justify-center ring-1 ring-inset ring-[#058B74]/10">
+                                    {b.icon}
+                                  </div>
+                                  <h3 className="mt-3 text-sm font-semibold text-[#01463A]">
+                                    {b.title}
+                                  </h3>
+                                  <p className="mt-1 text-xs text-gray-500 leading-relaxed">
+                                    {b.desc}
+                                  </p>
+                                </div>
+                              </Reveal>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </article>
+                  </article>
+                );
+              })}
+            </div>
           );
         })}
       </section>
 
       {/* Built-in benefits */}
-      <section className="bg-white py-20 px-6 border-t border-gray-100">
+      <section className="bg-white py-14 sm:py-20 px-6 border-t border-gray-100">
         <div className="mx-auto max-w-6xl">
           <SectionHeader
             className="mb-14"
@@ -567,20 +328,14 @@ export default function ServicesPage() {
               },
             ].map((b, i) => (
               <Reveal key={b.title} delay={i * 80}>
-                <div
-                  className="h-full rounded-3xl border border-gray-200 bg-white p-5 hover:border-gray-300 hover:shadow-md hover:shadow-[#058B74]/5 transition-all"
-                >
+                <div className="h-full rounded-3xl border border-gray-200 bg-white p-5 hover:border-gray-300 hover:shadow-md hover:shadow-[#058B74]/5 transition-all">
                   <div className="flex items-center gap-2">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#058B74" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M5 12l5 5 9-11" />
                     </svg>
-                    <h3 className="text-sm font-semibold text-[#01463A]">
-                      {b.title}
-                    </h3>
+                    <h3 className="text-sm font-semibold text-[#01463A]">{b.title}</h3>
                   </div>
-                  <p className="mt-2 text-xs text-gray-500 leading-relaxed">
-                    {b.desc}
-                  </p>
+                  <p className="mt-2 text-xs text-gray-500 leading-relaxed">{b.desc}</p>
                 </div>
               </Reveal>
             ))}
@@ -589,7 +344,7 @@ export default function ServicesPage() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-white py-20 px-6">
+      <section className="bg-white py-14 sm:py-20 px-6">
         <div className="mx-auto max-w-3xl">
           <SectionHeader
             className="mb-14"
@@ -634,7 +389,7 @@ export default function ServicesPage() {
           </>
         }
         description="Sign up today and run any Atlas service for your organization — with transparent pricing, no contracts, and no setup fees."
-        primary={{ label: "Get Started", href: "/signup" }}
+        primary={{ label: "Start screening", href: startScreeningHref() }}
         secondary={{ label: "Contact Sales", href: "/contact" }}
       />
     </main>

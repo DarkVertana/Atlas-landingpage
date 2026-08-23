@@ -23,7 +23,7 @@ type Props = {
 
 export default function FeatureGrid({ eyebrow = "What's included", title, intro, features }: Props) {
   return (
-    <section className="bg-white py-20 px-6">
+    <section className="bg-white py-14 sm:py-20 px-6">
       <div className="mx-auto max-w-6xl">
         <SectionHeader eyebrow={eyebrow} title={title} intro={intro} className="mb-12" />
 

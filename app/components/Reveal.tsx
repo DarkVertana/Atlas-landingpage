@@ -25,6 +25,8 @@ type Props = {
   id?: string;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
+  onClick?: () => void;
+  "aria-haspopup"?: boolean | "dialog" | "menu" | "listbox" | "tree" | "grid";
 };
 
 const variantClass: Record<Variant, string> = {

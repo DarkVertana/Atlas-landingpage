@@ -107,7 +107,7 @@ const faqs = [
 
 export default function EmploymentVerificationPage() {
   return (
-    <main className="bg-white text-[#01463A]">
+    <main id="main" className="bg-white text-[#01463A]">
       <ServiceJsonLd
         name="Employment Verification"
         description="Confirm titles, employment dates, and reason for separation directly with prior employers — documented, compliant, and audit-ready."
@@ -119,6 +119,8 @@ export default function EmploymentVerificationPage() {
         title="Verified titles, dates, and separation reasons."
         description="Atlas contacts prior employers directly — via automated networks, tracked email, or live phone — so every claim on a résumé is confirmed at the source, with a full audit trail."
         steps={["Automated network", "Tracked email", "Live phone"]}
+        image="/assets/services/employment-verification.webp"
+        start={{ service: "employment-verification" }}
       />
 
       <FeatureGrid
@@ -146,7 +148,7 @@ export default function EmploymentVerificationPage() {
           "Titles, dates & separation reasons confirmed",
           "Reports you can download and share in a click",
         ]}
-        image="/assets/app/reports.png"
+        image="/assets/app/reports.webp"
         imageAlt="Atlas Screening employment verification reports"
         reversed
         badges={[
@@ -159,7 +161,7 @@ export default function EmploymentVerificationPage() {
       <ServicePricing />
 
       {/* FAQ */}
-      <section className="bg-white py-20 px-6">
+      <section className="bg-white py-14 sm:py-20 px-6">
         <div className="mx-auto max-w-3xl">
           <div className="text-center mb-14">
             <Reveal as="h2" className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">

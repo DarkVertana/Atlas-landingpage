@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ServiceDetail from "../../components/ServiceDetail";
+import { startScreeningHref } from "../../lib/appUrl";
 
 export const metadata: Metadata = {
   title: "Global Watchlist Screening | Atlas Screening",
@@ -19,9 +20,11 @@ export default function GlobalWatchlistPage() {
       eyebrow="Add-on · $39.99"
       title="Global watchlist and sanctions screening."
       path="/services/global-watchlist"
+      image="/assets/services/global-watchlist.webp"
       description="OFAC, PEP, terror lists, and sanctions databases across 1,000+ global sources. Required for regulated industries, recommended for international or executive hires."
       price="$39.99"
-      primaryCta={{ label: "Get started", href: "/contact" }}
+      primaryCta={{ label: "Start screening", href: startScreeningHref({ service: "global-watchlist" }) }}
+      secondaryCta={{ label: "Talk to sales", href: "/contact" }}
       heroSteps={["OFAC & SDN", "Global sanctions", "PEP", "Adverse media"]}
       includedHeading="Worldwide coverage, one query."
       includedSubheading="Every major sanctions list, enforcement action, and politically-exposed-persons database — refreshed continuously."

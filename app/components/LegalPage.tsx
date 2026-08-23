@@ -26,7 +26,7 @@ export default function LegalPage({
   return (
     <main className="bg-white text-[#01463A]">
       {/* Hero — deep-green→teal gradient with layered depth */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#01463A] to-[#058B74] px-6 pt-36 pb-20">
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#01463A] to-[#058B74] px-5 pt-28 pb-16 sm:px-6 sm:pt-36 sm:pb-20">
         {/* Primary blur blob */}
         <div className="pointer-events-none absolute -top-32 -right-32 h-[32rem] w-[32rem] rounded-full bg-[#0aa88a]/20 blur-3xl" />
         {/* Second offset blob for extra depth */}
@@ -62,7 +62,7 @@ export default function LegalPage({
       </section>
 
       {/* Content + sticky sidebar TOC */}
-      <section className="bg-white px-6 py-20">
+      <section className="bg-white px-5 py-14 sm:px-6 sm:py-20">
         <div className="mx-auto grid max-w-6xl items-start gap-12 lg:grid-cols-[1fr_260px] lg:gap-16">
           <article className="min-w-0 space-y-12">{children}</article>
 

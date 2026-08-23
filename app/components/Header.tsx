@@ -5,6 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import MobileStaggeredMenu, { type StaggeredItem } from "./MobileStaggeredMenu";
+import { startScreeningHref } from "../lib/appUrl";
+
+const startHref = startScreeningHref();
 
 /* Flat top-level items for the mobile staggered menu */
 const mobileMenuItems: StaggeredItem[] = [
@@ -12,6 +15,7 @@ const mobileMenuItems: StaggeredItem[] = [
   { label: "Services", link: "/services" },
   { label: "How it works", link: "/how-it-works" },
   { label: "Pricing", link: "/pricing" },
+  { label: "Tenant", link: "/tenant" },
   { label: "About", link: "/about" },
   { label: "Contact", link: "/contact" },
 ];
@@ -19,22 +23,41 @@ const mobileMenuItems: StaggeredItem[] = [
 const servicesMenu = {
   sections: [
     {
-      title: "Core background check services",
+      title: "By use case",
       items: [
-        { label: "Criminal background checks", href: "/services/criminal-background-checks", desc: "Basic, Standard, and Premium tiers with comparison", icon: "criminal" },
-        { label: "SSN trace & address history", href: "/services/ssn-trace", desc: "The foundation check that anchors every screening", icon: "ssn" },
-        { label: "Sex offender registry", href: "/services/sex-offender-registry", desc: "National registry search for sensitive industries", icon: "registry" },
-        { label: "Motor vehicle records", href: "/services/mvr", desc: "Driving history for transportation and fleet roles", icon: "mvr" },
-        { label: "Employment verification", href: "/services/employment-verification", desc: "Confirm past employers, titles, and dates", icon: "employment" },
-        { label: "Social media inquiry", href: "/services/social-media-screening", desc: "FCRA-compliant social media screening", icon: "social" },
+        { label: "Employment screening", href: "/services", desc: "Background checks for hiring, at any volume" },
+        { label: "Tenant screening", href: "/services/tenant-screening", desc: "Criminal, credit, and eviction history for landlords" },
+        { label: "Continuous monitoring", href: "/services/continuous-checks", desc: "Ongoing checks on your existing workforce" },
+        { label: "Volunteer & nonprofit", href: "/resources/package-recommender?industry=nonprofit", desc: "Affordable screening for volunteer-driven orgs" },
+        { label: "Applicants & disputes", href: "/dispute-resolution", desc: "Check a report status or file a dispute" },
       ],
     },
     {
-      title: "Add-on services",
+      title: "Background checks",
+      compact: true,
       items: [
-        { label: "Global watchlist", href: "/services/global-watchlist", desc: "OFAC, terror lists, sanctions, and PEP screening", icon: "watchlist" },
-        { label: "Tenant screening", href: "/services/tenant-screening", desc: "Background checks for property managers", icon: "tenant" },
-        { label: "Credit report", href: "/services/credit-report", desc: "For financial, fiduciary, and executive roles", icon: "credit" },
+        { label: "Criminal background checks", href: "/services/criminal-background-checks" },
+        { label: "SSN trace & address history", href: "/services/ssn-trace" },
+        { label: "Sex offender registry", href: "/services/sex-offender-registry" },
+        { label: "Motor vehicle records", href: "/services/mvr" },
+        { label: "Employment verification", href: "/services/employment-verification" },
+        { label: "Global watchlist", href: "/services/global-watchlist" },
+        { label: "Credit report", href: "/services/credit-report" },
+        { label: "Social media screening", href: "/services/social-media-screening" },
+        { label: "See all services", href: "/services" },
+      ],
+    },
+    {
+      title: "By industry",
+      compact: true,
+      items: [
+        { label: "Staffing agencies", href: "/resources/package-recommender?industry=staffing" },
+        { label: "Healthcare", href: "/resources/package-recommender?industry=healthcare" },
+        { label: "Transportation & logistics", href: "/resources/package-recommender?industry=transportation" },
+        { label: "Financial services", href: "/resources/package-recommender?industry=financial" },
+        { label: "Retail & hospitality", href: "/resources/package-recommender?industry=retail" },
+        { label: "Education", href: "/resources/package-recommender?industry=education" },
+        { label: "Nonprofit & volunteer", href: "/resources/package-recommender?industry=nonprofit" },
       ],
     },
   ],
@@ -59,6 +82,12 @@ const howItWorksMenu = {
 
 const resourcesMenu = {
   sections: [
+    {
+      title: "Dedicated solutions",
+      items: [
+        { label: "Tenant screening", href: "/tenant", desc: "Screening built for landlords and property managers", icon: "tenant" },
+      ],
+    },
     {
       title: "Blog & educational content",
       items: [
@@ -101,7 +130,12 @@ const pricingMenu = {
   ],
 };
 
-const megaMenus: Record<string, { sections: { title: string; items: { label: string; href: string; desc: string; icon: string }[] }[] }> = {
+type MegaSection = {
+  title: string;
+  compact?: boolean;
+  items: { label: string; href: string; desc?: string; icon?: string }[];
+};
+const megaMenus: Record<string, { sections: MegaSection[] }> = {
   Services: servicesMenu,
   "How it works": howItWorksMenu,
   Resources: resourcesMenu,
@@ -113,6 +147,8 @@ const navLinks = [
   { label: "How it works", href: "#how-it-works", megaMenu: true },
   { label: "Resources", href: "#resources", megaMenu: true },
   { label: "Pricing", href: "#pricing", megaMenu: true },
+  { label: "Tenant", href: "/tenant" },
+  { label: "About", href: "/about" },
 ];
 
 export default function Header({ solid = false }: { solid?: boolean }) {
@@ -129,12 +165,23 @@ export default function Header({ solid = false }: { solid?: boolean }) {
       const threshold = isHome ? 10 : 80;
       setScrolled(solid || forced || window.scrollY > threshold);
     };
+    // Coalesce scroll events into one check per frame so the header state
+    // never recomputes more than once per paint on fast-scrolling devices.
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        ticking = false;
+        check();
+      });
+    };
     check();
-    window.addEventListener("scroll", check);
+    window.addEventListener("scroll", onScroll, { passive: true });
     const observer = new MutationObserver(check);
     observer.observe(document.body, { attributes: true, attributeFilter: ["class"] });
     return () => {
-      window.removeEventListener("scroll", check);
+      window.removeEventListener("scroll", onScroll);
       observer.disconnect();
     };
   }, [solid, isHome]);
@@ -181,7 +228,7 @@ export default function Header({ solid = false }: { solid?: boolean }) {
       >
         <div className="mx-auto max-w-7xl flex items-center justify-between py-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
+          <Link href="/" className="flex items-center -m-2 p-2">
             <Image
               src="/assets/atlas-logo.svg"
               alt="Atlas Screening"
@@ -250,8 +297,8 @@ export default function Header({ solid = false }: { solid?: boolean }) {
 
           {/* Get Started — Desktop */}
           <a
-            href="/contact"
-            className={`hidden md:flex items-center text-sm font-semibold tracking-wide px-6 py-2.5 rounded-lg transition-all duration-500 ease-in-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2 ${
+            href={startHref}
+            className={`hidden md:flex items-center text-sm font-semibold tracking-wide px-6 py-2.5 rounded-xl transition-all duration-500 ease-in-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2 ${
               scrolled
                 ? "bg-[#01463A] text-white hover:bg-[#01463A]/90 focus-visible:ring-offset-white"
                 : "bg-white text-[#01463A] hover:bg-white/90 focus-visible:ring-offset-transparent"
@@ -263,7 +310,9 @@ export default function Header({ solid = false }: { solid?: boolean }) {
           {/* Mobile menu button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className={`md:hidden relative z-50 transition-all duration-500 ease-in-out ${
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            className={`md:hidden relative z-50 -m-2.5 flex h-11 w-11 items-center justify-center transition-all duration-500 ease-in-out ${
               menuOpen ? "text-white" : scrolled ? "text-[#01463A]" : "text-white"
             }`}
           >
@@ -329,7 +378,9 @@ export default function Header({ solid = false }: { solid?: boolean }) {
                             <a
                               key={item.href}
                               href={item.href}
-                              className="group/item relative -mx-2 flex items-start gap-1 rounded-lg px-2 py-2.5 transition-colors duration-150 hover:bg-[#058B74]/[0.06]"
+                              className={`group/item relative -mx-2 flex items-start gap-1 rounded-lg px-2 transition-colors duration-150 hover:bg-[#058B74]/[0.06] ${
+                                section.compact ? "py-1.5" : "py-2.5"
+                              }`}
                             >
                               <div className="min-w-0 flex-1">
                                 <div className="flex items-center gap-1.5 text-[13px] font-semibold text-[#01463A] transition-colors group-hover/item:text-[#058B74]">
@@ -345,9 +396,11 @@ export default function Header({ solid = false }: { solid?: boolean }) {
                                     <path d="M2.5 6h6m0 0L6 3.5M8.5 6 6 8.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
                                   </svg>
                                 </div>
-                                <p className="mt-0.5 text-[12px] leading-snug text-gray-500">
-                                  {item.desc}
-                                </p>
+                                {item.desc && (
+                                  <p className="mt-0.5 text-[12px] leading-snug text-gray-500">
+                                    {item.desc}
+                                  </p>
+                                )}
                               </div>
                             </a>
                           ))}
@@ -391,6 +444,7 @@ export default function Header({ solid = false }: { solid?: boolean }) {
         open={menuOpen}
         onClose={() => setMenuOpen(false)}
         items={mobileMenuItems}
+        ctaHref={startHref}
         colors={["#0d8368", "#058B74", "#02543f"]}
         panelColor="#01463A"
         accentColor="#0aa88a"

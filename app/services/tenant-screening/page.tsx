@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ServiceDetail from "../../components/ServiceDetail";
+import { startScreeningHref } from "../../lib/appUrl";
 
 export const metadata: Metadata = {
   title: "Tenant Screening | Atlas Screening",
@@ -19,9 +20,11 @@ export default function TenantScreeningPage() {
       eyebrow="Add-on · $39.99"
       title="Tenant screening that respects the applicant."
       path="/services/tenant-screening"
+      image="/assets/services/tenant-screening.webp"
       description="Criminal, credit, and eviction history bundled for property managers. State-aware rules — including source-of-income and fair-chance housing — applied automatically."
       price="$39.99"
-      primaryCta={{ label: "Get started", href: "/contact" }}
+      primaryCta={{ label: "Start screening", href: startScreeningHref({ service: "tenant-screening", reason: "tenant" }) }}
+      secondaryCta={{ label: "Talk to sales", href: "/contact" }}
       heroSteps={["Eviction", "Credit", "Criminal", "Income"]}
       includedHeading="Everything a landlord actually needs."
       includedSubheading="Built specifically for residential leasing — not a rebranded employment check."

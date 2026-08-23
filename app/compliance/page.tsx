@@ -97,7 +97,7 @@ export default function CompliancePage() {
           <li>
             <strong>Final adverse action notice</strong> — Informing the
             consumer of the final decision, including contact information for
-            Atlas Screening and notice of the consumer's right to dispute
+            Atlas Screening and notice of the consumer&apos;s right to dispute
           </li>
         </ul>
         <p>
@@ -111,7 +111,7 @@ export default function CompliancePage() {
         <p>
           Consumers who believe information in a report is inaccurate or
           incomplete have the right to dispute that information. Atlas
-          Screening's dispute process includes:
+          Screening&apos;s dispute process includes:
         </p>
         <ul>
           <li>Initiating a reinvestigation of the disputed information</li>

@@ -101,7 +101,7 @@ const faqs = [
 
 export default function SsnTracePage() {
   return (
-    <main className="bg-white text-[#01463A]">
+    <main id="main" className="bg-white text-[#01463A]">
       <ServiceJsonLd
         name="SSN Trace & Address History"
         description="Identity validation, residential history, alias discovery, and jurisdiction mapping — the anchor check every background report is built on."
@@ -113,6 +113,8 @@ export default function SsnTracePage() {
         title="The identity anchor every report is built on."
         description="Validate the SSN, map seven years of address history, and surface every alias — so every downstream criminal and verification search hits the jurisdictions it needs to."
         steps={["Validate", "Address history", "Aliases", "Jurisdictions"]}
+        image="/assets/services/ssn-trace.webp"
+        start={{ service: "ssn-trace" }}
       />
 
       <FeatureGrid
@@ -140,7 +142,7 @@ export default function SsnTracePage() {
           "Full address & alias history surfaced",
           "Feeds county searches automatically",
         ]}
-        image="/assets/app/customer-dashboard.png"
+        image="/assets/app/customer-dashboard.webp"
         imageAlt="Atlas Screening SSN trace dashboard"
         reversed
         badges={[
@@ -153,7 +155,7 @@ export default function SsnTracePage() {
       <ServicePricing />
 
       {/* FAQ */}
-      <section className="bg-white py-20 px-6">
+      <section className="bg-white py-14 sm:py-20 px-6">
         <div className="mx-auto max-w-3xl">
           <div className="text-center mb-14">
             <Reveal as="h2" className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">

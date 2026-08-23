@@ -35,6 +35,7 @@ const columns: { title: string; links: FooterLink[] }[] = [
       { label: "Terms of Service", href: "/terms" },
       { label: "FAQ", href: "/faq" },
       { label: "Dispute Resolution", href: "/dispute-resolution" },
+      { label: "Cancellation & Refund Policy", href: "/cancellation-refund-policy" },
       { label: "Client Certification", href: "/client-certification" },
       { label: "Compliance", href: "/compliance" },
     ],
@@ -43,7 +44,6 @@ const columns: { title: string; links: FooterLink[] }[] = [
     title: "Connect",
     links: [
       { label: "LinkedIn", href: "https://www.linkedin.com/company/atlas-screening", external: true },
-      { label: "X (Twitter)", href: "https://twitter.com/atlasscreening", external: true },
       { label: "Facebook", href: "https://www.facebook.com/atlasscreening", external: true },
       { label: "Instagram", href: "https://www.instagram.com/atlasscreening", external: true },
     ],
@@ -72,7 +72,7 @@ export default function Footer() {
               <p className="text-[#5B6B64] text-sm">(917) 275-7712</p>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:w-2/3">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-8 md:gap-10 md:w-2/3">
               {columns.map((col) => (
                 <div key={col.title}>
                   <h4 className="text-[#01463A] font-semibold text-sm mb-5">{col.title}</h4>
@@ -117,7 +117,7 @@ export default function Footer() {
             <p className="text-[#8A968F] text-xs leading-relaxed max-w-2xl">
               Atlas Screening is a Consumer Reporting Agency (CRA) under the FCRA. We provide screening services for lawful purposes only and do not make hiring decisions.
             </p>
-            <div className="flex items-center gap-4 whitespace-nowrap">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
               <a
                 href="/sitemap.xml"
                 className="text-[#8A968F] hover:text-[#01463A] text-xs transition-colors"

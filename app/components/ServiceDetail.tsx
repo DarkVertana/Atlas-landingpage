@@ -5,6 +5,7 @@ import CTASection from "./CTASection";
 import ServiceHero from "./ui/ServiceHero";
 import FeatureGrid from "./ui/FeatureGrid";
 import ServiceJsonLd from "./ServiceJsonLd";
+import FcraComplianceNote from "./FcraComplianceNote";
 
 export type ServiceFeature = {
   title: string;
@@ -28,6 +29,7 @@ export type ServiceDetailProps = {
   title: string;
   description: string;
   path: string; // canonical path, e.g. "/services/credit-report" (for structured data)
+  image?: string; // optional hero backdrop image
   price?: string;
   priceUnit?: string;
   primaryCta?: { label: string; href: string };
@@ -50,9 +52,10 @@ export default function ServiceDetail({
   title,
   description,
   path,
+  image,
   price,
   priceUnit = "per check",
-  primaryCta = { label: "Start a check", href: "/signup" },
+  primaryCta = { label: "Start a check", href: "/contact" },
   secondaryCta = { label: "Talk to sales", href: "/contact" },
   heroSteps,
   includedHeading,
@@ -67,14 +70,14 @@ export default function ServiceDetail({
   ctaDescription,
 }: ServiceDetailProps) {
   return (
-    <main className="bg-white text-[#01463A]">
+    <main id="main" className="bg-white text-[#01463A]">
       <ServiceJsonLd
         name={title}
         description={description}
         faqs={faqs}
         path={path}
       />
-      <ServiceHero eyebrow={eyebrow} title={title} description={description} steps={heroSteps}>
+      <ServiceHero eyebrow={eyebrow} title={title} description={description} steps={heroSteps} image={image}>
         {price && (
           <Reveal delay={220} variant="scale" className="mt-7 inline-flex items-baseline gap-2 bg-white/10 border border-white/20 backdrop-blur-md rounded-full px-5 py-2">
             <span className="text-2xl font-extrabold text-white">{price}</span>
@@ -85,7 +88,7 @@ export default function ServiceDetail({
         <Reveal delay={280} className="mt-8 flex flex-wrap items-center justify-center gap-3">
           <Link
             href={primaryCta.href}
-            className="inline-flex items-center gap-2 bg-white text-[#01463A] px-5 py-3 min-h-[44px] rounded-lg text-sm font-semibold hover:bg-white/90 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#01463A]"
+            className="inline-flex items-center gap-2 bg-white text-[#01463A] px-5 py-3 min-h-[44px] rounded-xl text-sm font-semibold hover:bg-white/90 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#01463A]"
           >
             {primaryCta.label}
             <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
@@ -94,7 +97,7 @@ export default function ServiceDetail({
           </Link>
           <Link
             href={secondaryCta.href}
-            className="inline-flex items-center gap-2 border border-white/30 text-white px-5 py-3 min-h-[44px] rounded-lg text-sm font-semibold hover:bg-white/10 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#01463A]"
+            className="inline-flex items-center gap-2 border border-white/30 text-white px-5 py-3 min-h-[44px] rounded-xl text-sm font-semibold hover:bg-white/10 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#01463A]"
           >
             {secondaryCta.label}
           </Link>
@@ -105,7 +108,7 @@ export default function ServiceDetail({
 
       {/* How it runs */}
       {steps && steps.length > 0 && (
-        <section className="bg-white py-20 px-6">
+        <section className="bg-white py-14 sm:py-20 px-6">
           <div className="mx-auto max-w-5xl">
             <div className="max-w-2xl mb-14">
               <p className="text-xs font-semibold tracking-widest uppercase text-[#058B74] mb-3">
@@ -139,7 +142,7 @@ export default function ServiceDetail({
       )}
 
       {/* FAQ */}
-      <section className="bg-white py-20 px-6">
+      <section className="bg-white py-14 sm:py-20 px-6">
         <div className="mx-auto max-w-3xl">
           <div className="mb-14">
             <h2 className="text-3xl md:text-4xl font-bold text-[#01463A] leading-tight">
@@ -177,13 +180,16 @@ export default function ServiceDetail({
         </div>
       </section>
 
+      {/* FCRA compliance framing */}
+      <FcraComplianceNote />
+
       {/* CTA */}
       <CTASection
         eyebrow="Get started today"
         title={ctaHeading}
         description={ctaDescription}
-        primary={{ label: "Create your account", href: "/signup" }}
-        secondary={{ label: "Talk to sales", href: "/contact" }}
+        primary={primaryCta}
+        secondary={secondaryCta}
       />
     </main>
   );

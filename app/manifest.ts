@@ -17,7 +17,7 @@ export default function manifest(): MetadataRoute.Manifest {
         type: "image/svg+xml",
       },
       {
-        src: "/assets/atlas-logo.png",
+        src: "/assets/atlas-logo.webp",
         sizes: "512x512",
         type: "image/png",
       },

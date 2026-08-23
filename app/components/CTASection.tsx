@@ -45,8 +45,8 @@ export default function CTASection({
   }, []);
 
   return (
-    <section className="px-4 sm:px-6 py-20 sm:py-28 bg-white">
-      <div className="mx-auto max-w-7xl">
+    <section className="px-5 sm:px-6 py-16 sm:py-32 bg-white">
+      <div className="mx-auto max-w-6xl">
         <div
           ref={cardRef}
           onMouseMove={handleMouseMove}
@@ -88,13 +88,13 @@ export default function CTASection({
             <Reveal delay={240} className="mt-6 flex flex-wrap gap-3">
               <a
                 href={primary.href}
-                className="inline-flex items-center gap-2 min-h-[44px] bg-white text-[#01463A] px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-white/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#01463A]"
+                className="inline-flex items-center gap-2 min-h-[44px] bg-white text-[#01463A] px-6 py-2.5 rounded-xl text-sm font-semibold hover:bg-white/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#01463A]"
               >
                 {primary.label}
               </a>
               <a
                 href={secondary.href}
-                className="inline-flex items-center min-h-[44px] border border-white/30 text-white px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#01463A]"
+                className="inline-flex items-center min-h-[44px] border border-white/30 text-white px-6 py-2.5 rounded-xl text-sm font-semibold hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#01463A]"
               >
                 {secondary.label}
               </a>

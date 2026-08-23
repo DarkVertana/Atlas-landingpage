@@ -101,7 +101,7 @@ const faqs = [
 
 export default function SexOffenderRegistryPage() {
   return (
-    <main className="bg-white text-[#01463A]">
+    <main id="main" className="bg-white text-[#01463A]">
       <ServiceJsonLd
         name="Sex Offender Registry Search"
         description="National sex offender registry search across all 50 states, DC, Guam, and U.S. territories."
@@ -113,6 +113,8 @@ export default function SexOffenderRegistryPage() {
         title="National registry search you can trust."
         description="Every state registry, the NSOPW federal database, and every U.S. territory — searched in parallel and refreshed daily. Purpose-built for roles where the stakes are highest."
         steps={["50 states", "NSOPW federal", "Territories", "Daily refresh"]}
+        image="/assets/services/sex-offender-registry.webp"
+        start={{ service: "sex-offender-registry" }}
       />
 
       <FeatureGrid
@@ -140,7 +142,7 @@ export default function SexOffenderRegistryPage() {
           "Fast results with full match detail",
           "Documented, compliant records for every search",
         ]}
-        image="/assets/app/screenings.png"
+        image="/assets/app/screenings.webp"
         imageAlt="Atlas Screening registry search results"
         reversed
         badges={[
@@ -153,7 +155,7 @@ export default function SexOffenderRegistryPage() {
       <ServicePricing />
 
       {/* FAQ */}
-      <section className="bg-white py-20 px-6">
+      <section className="bg-white py-14 sm:py-20 px-6">
         <div className="mx-auto max-w-3xl">
           <div className="text-center mb-14">
             <Reveal as="h2" className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">

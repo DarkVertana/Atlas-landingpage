@@ -60,7 +60,7 @@ export default function BlogList({ posts }: { posts: BlogPost[] }) {
       </section>
 
       {/* Blog grid */}
-      <section className="bg-white py-20 px-6">
+      <section className="bg-white py-14 sm:py-20 px-6">
         <div className="mx-auto max-w-6xl">
           {visiblePosts.length === 0 ? (
             <p className="text-center text-gray-500">No posts in this category yet.</p>
@@ -112,7 +112,7 @@ export default function BlogList({ posts }: { posts: BlogPost[] }) {
       </section>
 
       {/* CTA */}
-      <section className="px-6 py-20 bg-white">
+      <section className="px-6 py-14 sm:py-20 bg-white">
         <div className="mx-auto max-w-7xl">
           <Reveal
             variant="scale"
@@ -140,7 +140,7 @@ export default function BlogList({ posts }: { posts: BlogPost[] }) {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@company.com"
-                  className="flex-1 min-w-[220px] bg-white/95 text-[#01463A] placeholder-gray-500 border border-white/10 rounded-lg px-4 py-2.5 text-sm outline-none focus-visible:ring-2 focus-visible:ring-white/60 transition-all"
+                  className="flex-1 min-w-[220px] bg-white/95 text-[#01463A] placeholder-gray-500 border border-white/10 rounded-lg px-4 py-2.5 text-[16px] outline-none focus-visible:ring-2 focus-visible:ring-white/60 transition-all"
                 />
                 <button
                   type="submit"

@@ -150,9 +150,9 @@ const faqs = [
 
 export default function PricingPage() {
   return (
-    <main className="bg-white text-[#01463A]">
+    <main id="main" className="bg-white text-[#01463A]">
       {/* Hero */}
-      <section className="relative pt-36 pb-20 px-6 overflow-hidden bg-gradient-to-b from-[#01463A] to-[#058B74]">
+      <section className="relative pt-28 pb-16 px-5 sm:pt-36 sm:pb-20 sm:px-6 overflow-hidden bg-gradient-to-b from-[#01463A] to-[#058B74]">
         <div className="absolute -top-32 -right-32 w-[32rem] h-[32rem] rounded-full bg-[#0aa88a]/25 blur-3xl pointer-events-none" />
 
         <div className="relative mx-auto max-w-4xl text-center">
@@ -184,7 +184,7 @@ export default function PricingPage() {
       </section>
 
       {/* Tier cards */}
-      <section className="bg-white py-20 px-6">
+      <section className="bg-white py-14 sm:py-20 px-6">
         <div className="mx-auto max-w-6xl">
           <div className="grid md:grid-cols-3 gap-6">
             {tiers.map((t, i) => (
@@ -196,7 +196,7 @@ export default function PricingPage() {
                 className={`relative rounded-3xl p-8 flex flex-col transition-all duration-300 ${
                   t.highlight
                     ? "bg-[#01463A] text-white shadow-xl shadow-[#058B74]/25 border border-[#058B74]/50"
-                    : "bg-white border border-gray-200 hover:border-[#058B74]/40 hover:shadow-lg hover:shadow-[#058B74]/10"
+                    : "bg-white border border-gray-300 shadow-[0_1px_2px_rgba(15,42,36,0.05),0_10px_28px_-14px_rgba(15,42,36,0.14)] hover:border-[#058B74]/40 hover:shadow-lg hover:shadow-[#058B74]/10"
                 }`}
               >
                 {t.highlight && (
@@ -287,7 +287,7 @@ export default function PricingPage() {
       </section>
 
       {/* Add-ons */}
-      <section className="bg-gradient-to-b from-white to-gray-50 py-20 px-6">
+      <section className="bg-gradient-to-b from-white to-gray-50 py-14 sm:py-20 px-6">
         <div className="mx-auto max-w-6xl">
           <div className="mb-14 max-w-2xl">
             <Reveal as="h2" variant="up" className="text-3xl md:text-4xl font-bold text-[#01463A] leading-tight">
@@ -329,7 +329,7 @@ export default function PricingPage() {
       </section>
 
       {/* What's included section */}
-      <section id="whats-included" className="bg-white py-20 px-6">
+      <section id="whats-included" className="bg-white py-14 sm:py-20 px-6">
         <div className="mx-auto max-w-6xl">
           <div className="mb-14 max-w-2xl">
             <Reveal as="h2" variant="up" className="text-3xl md:text-4xl font-bold text-[#01463A] leading-tight">
@@ -376,7 +376,7 @@ export default function PricingPage() {
       </section>
 
       {/* Comparison table */}
-      <section id="comparison" className="bg-white py-20 px-6">
+      <section id="comparison" className="bg-white py-14 sm:py-20 px-6">
         <div className="mx-auto max-w-5xl">
           <div className="mb-14 max-w-2xl">
             <Reveal as="h2" variant="up" className="text-3xl md:text-4xl font-bold text-[#01463A] leading-tight">
@@ -388,8 +388,8 @@ export default function PricingPage() {
             </Reveal>
           </div>
 
-          <Reveal as="div" variant="scale" delay={200} className="overflow-hidden rounded-2xl border border-gray-200">
-            <table className="w-full text-sm">
+          <Reveal as="div" variant="scale" delay={200} className="overflow-x-auto rounded-2xl border border-gray-200">
+            <table className="w-full min-w-[560px] text-sm">
               <thead>
                 <tr className="bg-gray-50/60 text-[11px] font-semibold uppercase tracking-widest text-gray-500">
                   <th scope="col" className="text-left px-6 py-4 font-semibold">Feature</th>

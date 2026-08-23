@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import HoverVideo from "./HoverVideo";
+import OrderDetailsMockup from "./OrderDetailsMockup";
 import Reveal from "./Reveal";
 import SectionHeader from "./ui/SectionHeader";
 
@@ -14,6 +15,7 @@ type Step = {
   bullets: string[];
   image: string;
   video?: string;
+  mockup?: boolean;
 };
 
 const deepDive: Step[] = [
@@ -28,7 +30,7 @@ const deepDive: Step[] = [
       "Predefined or custom-built bundles",
       "Name and email are the only inputs needed",
     ],
-    image: "/assets/soft-capture/Home-img.png",
+    image: "/assets/soft-capture/Home-img.webp",
     video: "/assets/soft-capture/Home-vdo.mov",
   },
   {
@@ -42,7 +44,7 @@ const deepDive: Step[] = [
       "Secure, time-limited access link",
       "No manual follow-up required",
     ],
-    image: "/assets/soft-capture/Step%202.png",
+    image: "/assets/soft-capture/Step%202.webp",
     video: "/assets/soft-capture/Step%202%20vdo.mov",
   },
   {
@@ -56,7 +58,8 @@ const deepDive: Step[] = [
       "FCRA consent, SSN, and address history",
       "Government ID upload and selfie verification",
     ],
-    image: "/assets/soft-capture/step%203.png",
+    image: "/assets/soft-capture/step%203.webp",
+    mockup: true,
   },
   {
     num: "04",
@@ -69,7 +72,7 @@ const deepDive: Step[] = [
       "No charges for incomplete invitations",
       "Investigations begin immediately after consent",
     ],
-    image: "/assets/soft-capture/step%204.png",
+    image: "/assets/soft-capture/step%204.webp",
   },
   {
     num: "05",
@@ -82,7 +85,7 @@ const deepDive: Step[] = [
       "Instant email and dashboard alerts",
       "Real-time status visibility throughout",
     ],
-    image: "/assets/soft-capture/step%205.png",
+    image: "/assets/soft-capture/step%205.webp",
   },
 ];
 
@@ -109,7 +112,7 @@ export default function WorkflowSteps() {
   }, []);
 
   return (
-    <section id="workflow" className="scroll-mt-40 bg-white px-4 py-24 sm:px-6 sm:py-32">
+    <section id="workflow" className="scroll-mt-40 bg-white px-5 py-16 sm:px-6 sm:py-32">
       <div className="mx-auto max-w-6xl">
         <SectionHeader
           align="center"
@@ -210,7 +213,9 @@ export default function WorkflowSteps() {
 
                   <div className={`group relative ${reversed ? "lg:order-1" : ""}`}>
                     <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-[#E1E6E2] bg-[#01463A] shadow-[0_28px_56px_-24px_rgba(4,20,14,0.45)]">
-                      {step.video ? (
+                      {step.mockup ? (
+                        <OrderDetailsMockup />
+                      ) : step.video ? (
                         <HoverVideo poster={step.image} video={step.video} alt={step.title} />
                       ) : (
                         /* eslint-disable-next-line @next/next/no-img-element */

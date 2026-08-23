@@ -56,7 +56,7 @@ export default function ProductShowcase({
   reversed = false,
 }: Props) {
   return (
-    <section className="bg-white py-14 sm:py-20 px-4 sm:px-6 border-t border-gray-100 overflow-hidden">
+    <section className="bg-white py-14 sm:py-20 px-5 sm:px-6 border-t border-gray-100 overflow-hidden">
       <div className="mx-auto max-w-6xl">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Copy */}
@@ -64,7 +64,7 @@ export default function ProductShowcase({
             <Reveal as="p" className="text-xs font-semibold tracking-widest uppercase text-[#058B74] mb-3">
               {eyebrow}
             </Reveal>
-            <Reveal as="h2" delay={80} className="text-3xl md:text-4xl font-bold text-[#01463A] leading-tight">
+            <Reveal as="h2" delay={80} className="text-[1.75rem] sm:text-3xl md:text-4xl font-bold text-[#01463A] leading-tight">
               {title}
               {highlight ? <span className="text-[#058B74]"> {highlight}</span> : null}
             </Reveal>

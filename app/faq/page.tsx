@@ -77,13 +77,13 @@ const faqJsonLd = {
 
 export default function FAQPage() {
   return (
-    <main className="bg-white text-[#01463A]">
+    <main id="main" className="bg-white text-[#01463A]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       {/* Hero */}
-      <section className="relative pt-36 pb-20 px-6 overflow-hidden bg-gradient-to-b from-[#01463A] to-[#058B74]">
+      <section className="relative pt-28 pb-16 px-5 sm:pt-36 sm:pb-20 sm:px-6 overflow-hidden bg-gradient-to-b from-[#01463A] to-[#058B74]">
         <div className="absolute -top-32 -right-32 w-[32rem] h-[32rem] rounded-full bg-[#0aa88a]/25 blur-3xl pointer-events-none" />
 
         <div className="relative mx-auto max-w-4xl text-center">
@@ -115,10 +115,10 @@ export default function FAQPage() {
       </section>
 
       {/* Categories + Sidebar */}
-      <section className="bg-white py-20 px-6">
+      <section className="bg-white py-14 sm:py-20 px-6">
         <div className="mx-auto max-w-6xl grid lg:grid-cols-[1fr_280px] gap-12 lg:gap-16 items-start">
           {/* Main column — categories */}
-          <div className="space-y-20 min-w-0">
+          <div className="space-y-14 sm:space-y-20 min-w-0">
             {categories.map((cat, catIndex) => (
               <Reveal
                 as="div"

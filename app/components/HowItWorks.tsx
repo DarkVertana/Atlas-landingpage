@@ -110,8 +110,8 @@ function Row({ step }: { step: Step }) {
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="relative bg-[#F7F8F6] px-4 py-24 sm:px-6 sm:py-32">
-      <div className="mx-auto max-w-5xl">
+    <section id="how-it-works" className="relative bg-[#F7F8F6] px-5 py-16 sm:px-6 sm:py-32">
+      <div className="mx-auto max-w-6xl">
         <SectionHeader
           eyebrow="How it works"
           title="Five steps, one seamless route."

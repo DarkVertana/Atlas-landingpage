@@ -19,9 +19,9 @@ const values = [
 
 export default function AboutPage() {
   return (
-    <main className="bg-white text-[#01463A]">
+    <main id="main" className="bg-white text-[#01463A]">
       {/* Hero */}
-      <section className="relative pt-36 pb-20 px-6 overflow-hidden bg-gradient-to-b from-[#01463A] to-[#058B74]">
+      <section className="relative pt-28 pb-16 px-5 sm:pt-36 sm:pb-20 sm:px-6 overflow-hidden bg-gradient-to-b from-[#01463A] to-[#058B74]">
         <div className="absolute -top-32 -right-32 w-[32rem] h-[32rem] rounded-full bg-[#0aa88a]/25 blur-3xl pointer-events-none" />
 
         <div className="relative mx-auto max-w-4xl text-center">
@@ -55,7 +55,7 @@ export default function AboutPage() {
       </section>
 
       {/* Our Story — split */}
-      <section className="bg-white py-20 px-6">
+      <section className="bg-white py-14 sm:py-20 px-6">
         <div className="mx-auto max-w-6xl">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
@@ -120,7 +120,7 @@ export default function AboutPage() {
       </section>
 
       {/* Mission pull-quote */}
-      <section className="bg-white py-20 px-6">
+      <section className="bg-white py-14 sm:py-20 px-6">
         <div className="mx-auto max-w-4xl">
           <Reveal
             as="p"
@@ -147,7 +147,7 @@ export default function AboutPage() {
       <NumbersStrip />
 
       {/* What you can count on */}
-      <section className="bg-gray-50 py-20 px-6">
+      <section className="bg-gray-50 py-14 sm:py-20 px-6">
         <div className="mx-auto max-w-6xl">
           <div className="mb-14">
             <Reveal

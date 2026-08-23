@@ -91,9 +91,9 @@ const faqs = [
 
 export default function HowItWorksPage() {
   return (
-    <main className="bg-white text-[#0F1B17]">
+    <main id="main" className="bg-white text-[#0F1B17]">
       {/* ── Hero — the site's signature dark, cartographic backdrop ── */}
-      <section className="relative overflow-hidden px-4 pb-24 pt-32 sm:px-6 sm:pb-28 sm:pt-40">
+      <section className="relative overflow-hidden px-5 pb-16 pt-28 sm:px-6 sm:pb-28 sm:pt-40">
         {/* base + brand gradient */}
         <div className="absolute inset-0 bg-[#02120d]" />
         <div className="absolute inset-0 bg-[radial-gradient(125%_95%_at_50%_-10%,#0a6b54_0%,#023528_42%,#01180f_78%,#020c08_100%)]" />
@@ -189,7 +189,7 @@ export default function HowItWorksPage() {
       <WorkflowSteps />
 
       {/* ── Proof band — why the workflow is fast and defensible ── */}
-      <section className="border-y border-[#E1E6E2] bg-[#F7F8F6] px-4 py-16 sm:px-6 sm:py-20">
+      <section className="border-y border-[#E1E6E2] bg-[#F7F8F6] px-5 py-16 sm:px-6 sm:py-20">
         <div className="mx-auto max-w-6xl">
           <Reveal className="mx-auto mb-12 max-w-2xl text-center">
             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#058B74]">
@@ -204,8 +204,8 @@ export default function HowItWorksPage() {
             {[
               { stat: "< 1 min", label: "Your admin time per order", sub: "Just a name and an email" },
               { stat: "~24 hrs", label: "Typical turnaround", sub: "For standard criminal & SSN checks" },
-              { stat: "50 states", label: "County, state & federal", sub: "Nationwide records coverage" },
-              { stat: "100%", label: "FCRA-compliant by design", sub: "Consent & disclosures automated" },
+              { stat: "50 states", label: "County, state & federal", sub: "Multi-jurisdiction record coverage" },
+              { stat: "FCRA", label: "Compliant by design", sub: "Consent & disclosures automated" },
             ].map((m, i) => (
               <Reveal
                 key={m.label}
@@ -224,7 +224,7 @@ export default function HowItWorksPage() {
       </section>
 
       {/* ── Who it's for ── */}
-      <section className="bg-[#F7F8F6] px-4 py-24 sm:px-6 sm:py-32">
+      <section className="bg-[#F7F8F6] px-5 py-16 sm:px-6 sm:py-32">
         <div className="mx-auto max-w-6xl">
           <SectionHeader
             eyebrow="Who it's for"
@@ -281,7 +281,7 @@ export default function HowItWorksPage() {
       <NumbersStrip />
 
       {/* ── Workflow FAQ ── */}
-      <section className="bg-white px-4 py-24 sm:px-6 sm:py-32">
+      <section className="bg-white px-5 py-16 sm:px-6 sm:py-32">
         <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
           <div className="lg:sticky lg:top-28 lg:self-start">
             <SectionHeader

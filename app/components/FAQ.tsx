@@ -30,7 +30,7 @@ const faqs = [
 
 export default function FAQ() {
   return (
-    <section id="faq" className="bg-white py-24 sm:py-32 px-4 sm:px-6">
+    <section id="faq" className="bg-white py-16 sm:py-32 px-5 sm:px-6">
       <div className="mx-auto max-w-6xl grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
         <div className="lg:sticky lg:top-28 lg:self-start">
           <SectionHeader

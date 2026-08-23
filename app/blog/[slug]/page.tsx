@@ -57,7 +57,7 @@ export default async function BlogPostPage({
   }
 
   return (
-    <main className="bg-white text-[#01463A]">
+    <main id="main" className="bg-white text-[#01463A]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -74,7 +74,7 @@ export default async function BlogPostPage({
               name: "Atlas Screening",
               logo: {
                 "@type": "ImageObject",
-                url: "https://atlasscreening.com/assets/atlas-logo.png",
+                url: "https://atlasscreening.com/assets/atlas-logo.webp",
               },
             },
             mainEntityOfPage: `https://atlasscreening.com/blog/${post.slug}`,
@@ -82,7 +82,7 @@ export default async function BlogPostPage({
         }}
       />
       {/* Header hero — deep-green gradient to match landing/legal heroes */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#01463A] to-[#058B74] pt-36 pb-16 px-6">
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#01463A] to-[#058B74] pt-28 pb-12 px-5 sm:pt-36 sm:pb-16 sm:px-6">
         <div className="absolute -top-32 -right-32 w-[32rem] h-[32rem] rounded-full bg-[#0aa88a]/25 blur-3xl pointer-events-none" />
         <div className="absolute -bottom-40 -left-24 w-[30rem] h-[30rem] rounded-full bg-[#058B74]/30 blur-3xl pointer-events-none" />
 
@@ -142,7 +142,7 @@ export default async function BlogPostPage({
       </section>
 
       {/* Body */}
-      <article className="px-6 py-16">
+      <article className="px-5 sm:px-6 py-12 sm:py-16">
         <div className="mx-auto max-w-2xl space-y-6">
           {post.body.map((paragraph, i) => (
             <Reveal

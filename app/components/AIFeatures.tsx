@@ -16,7 +16,7 @@ const MINT = "94,227,192";
 const parts = [
   {
     n: "01",
-    title: "A verdict, up top",
+    title: "A summary, up top",
     body: "Every report opens with one clear eligibility call, so there's no scrolling to find where the candidate landed.",
   },
   {
@@ -74,7 +74,7 @@ export default function AIFeatures() {
   const [front, setFront] = useState(0);
 
   return (
-    <section id="security" className="relative overflow-hidden bg-[#04140E] px-4 py-24 text-white sm:px-6 sm:py-32">
+    <section id="security" className="relative overflow-hidden bg-[#04140E] px-5 py-16 text-white sm:px-6 sm:py-32">
       <DotField
         className="pointer-events-none absolute inset-0 opacity-50"
         color="255,255,255"
@@ -97,7 +97,7 @@ export default function AIFeatures() {
             <span className="h-1.5 w-1.5 rounded-full bg-[#5EE3C0] shadow-[0_0_10px_2px_rgba(94,227,192,0.6)]" />
             Anatomy of a report
           </Reveal>
-          <Reveal as="h2" delay={80} className="mt-5 text-[2.4rem] font-semibold leading-[1.04] tracking-[-0.02em] text-white md:text-[3.1rem] [text-wrap:balance]">
+          <Reveal as="h2" delay={80} className="mt-5 text-[2rem] font-semibold leading-[1.04] tracking-[-0.02em] text-white md:text-[3.1rem] [text-wrap:balance]">
             Everything a hiring decision needs, on one page.
           </Reveal>
           <Reveal as="p" delay={150} className="mt-5 max-w-md text-[15.5px] leading-relaxed text-white/55">
@@ -155,9 +155,9 @@ export default function AIFeatures() {
             onFront={setFront}
             className="!bottom-1/2 !right-1/2 translate-x-1/2 translate-y-[calc(50%+34px)]"
           >
-            {/* 01 · Verdict */}
+            {/* 01 · Summary */}
             <Card>
-              <CardShell n="01" label="Verdict">
+              <CardShell n="01" label="Summary">
                 <div className="flex flex-1 flex-col justify-center">
                   <div className="flex items-center gap-3">
                     <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#0C3A2C] text-[14px] font-semibold text-white">

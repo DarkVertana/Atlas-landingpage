@@ -164,7 +164,7 @@ export default function CourtDepthStack() {
   const fillWidth = active * 25;
 
   return (
-    <section className="bg-white py-20 px-6 sm:py-24">
+    <section className="bg-white py-14 px-5 sm:py-24 sm:px-6">
       <div className="mx-auto max-w-6xl">
         {/* Header */}
         <div className="grid gap-6 md:grid-cols-[1.1fr_1fr] md:items-end mb-14">

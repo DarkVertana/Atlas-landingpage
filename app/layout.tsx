@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     url: "https://atlasscreening.com",
     images: [
       {
-        url: "/assets/og-image.png",
+        url: "/assets/og-image.webp",
         width: 1200,
         height: 630,
         alt: "Atlas Screening — Trust Fast. Hire to Last.",
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     title: "Atlas Screening — Trust Fast. Hire to Last.",
     description:
       "FCRA-compliant employment background checks — criminal records, identity verification, employment verification, and tenant screening.",
-    images: ["/assets/og-image.png"],
+    images: ["/assets/og-image.webp"],
   },
   robots: {
     index: true,
@@ -76,14 +76,13 @@ const organizationJsonLd = {
   "@type": "Organization",
   name: "Atlas Screening",
   url: "https://atlasscreening.com",
-  logo: "https://atlasscreening.com/assets/atlas-logo.png",
+  logo: "https://atlasscreening.com/assets/atlas-logo.webp",
   description:
     "Atlas Screening is a Consumer Reporting Agency (CRA) providing background screening services in accordance with the Fair Credit Reporting Act (FCRA) and applicable state laws.",
   email: "contact@atlasscreening.com",
   telephone: "+1-917-275-7712",
   sameAs: [
     "https://www.linkedin.com/company/atlas-screening",
-    "https://twitter.com/atlasscreening",
     "https://www.facebook.com/atlasscreening",
     "https://www.instagram.com/atlasscreening",
   ],
@@ -114,7 +113,7 @@ const websiteJsonLd = {
   publisher: {
     "@type": "Organization",
     name: "Atlas Screening",
-    logo: "https://atlasscreening.com/assets/atlas-logo.png",
+    logo: "https://atlasscreening.com/assets/atlas-logo.webp",
   },
 };
 

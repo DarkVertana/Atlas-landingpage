@@ -27,7 +27,7 @@ export default function ChatWidget() {
           <div className="flex items-center gap-3 bg-gradient-to-br from-[#01463A] to-[#058B74] px-5 py-4">
             <span className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-white ring-1 ring-inset ring-white/25">
               <Image
-                src="/assets/atlas-assistant.png"
+                src="/assets/atlas-assistant.webp"
                 alt="Atlas Assistant"
                 width={36}
                 height={36}
@@ -72,7 +72,7 @@ export default function ChatWidget() {
               name="q"
               placeholder="Ask a question…"
               aria-label="Ask a question"
-              className="min-w-0 flex-1 rounded-md bg-transparent px-1 text-sm text-[#01463A] placeholder:text-gray-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74]"
+              className="min-w-0 flex-1 rounded-md bg-transparent px-1 text-[16px] text-[#01463A] placeholder:text-gray-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74]"
             />
             <button
               type="submit"
@@ -108,7 +108,7 @@ export default function ChatWidget() {
           </span>
         )}
         <Image
-          src="/assets/atlas-assistant.png"
+          src="/assets/atlas-assistant.webp"
           alt="Open assistant"
           width={44}
           height={44}

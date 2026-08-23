@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Reveal from "../../components/Reveal";
 import SectionHeader from "../../components/ui/SectionHeader";
 import CTASection from "../../components/CTASection";
@@ -156,12 +156,20 @@ export default function PackageRecommenderPage() {
   const [role, setRole] = useState<Role>("professional");
   const [volume, setVolume] = useState<Volume>("medium");
 
+  // Preselect the industry from a ?industry= query param (used by the header's
+  // "By industry" mega-menu links). Done after mount so server and first client
+  // render match — no hydration mismatch on the controlled <select>.
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search).get("industry");
+    if (q && industryOptions.some((o) => o.value === q)) setIndustry(q as Industry);
+  }, []);
+
   const rec = recommendPackage(industry, role, volume);
 
   return (
-    <main className="bg-white text-[#01463A]">
+    <main id="main" className="bg-white text-[#01463A]">
       {/* Hero */}
-      <section className="relative pt-36 pb-20 px-6 overflow-hidden bg-gradient-to-b from-[#01463A] to-[#058B74]">
+      <section className="relative pt-28 pb-16 px-5 sm:pt-36 sm:pb-20 sm:px-6 overflow-hidden bg-gradient-to-b from-[#01463A] to-[#058B74]">
         <div className="absolute -top-32 -right-32 w-[32rem] h-[32rem] rounded-full bg-[#058B74]/30 blur-3xl pointer-events-none" />
         <div className="absolute -bottom-40 -left-24 w-[28rem] h-[28rem] rounded-full bg-white/5 blur-3xl pointer-events-none" />
         <div
@@ -185,7 +193,7 @@ export default function PackageRecommenderPage() {
       </section>
 
       {/* Recommender tool */}
-      <section className="bg-white py-20 px-6">
+      <section className="bg-white py-14 sm:py-20 px-6">
         <div className="mx-auto max-w-5xl">
           <div className="grid lg:grid-cols-5 gap-6">
             {/* Inputs — 2/5 */}
@@ -317,7 +325,7 @@ export default function PackageRecommenderPage() {
       </section>
 
       {/* Reassurance */}
-      <section className="bg-gradient-to-b from-white to-gray-50 py-20 px-6">
+      <section className="bg-gradient-to-b from-white to-gray-50 py-14 sm:py-20 px-6">
         <div className="mx-auto max-w-5xl text-center">
           <SectionHeader
             align="center"

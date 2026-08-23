@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Reveal from "./Reveal";
+import FcraComplianceNote from "./FcraComplianceNote";
 
 export type ServiceTier = {
   name: string;
@@ -26,7 +27,7 @@ export const defaultTiers: ServiceTier[] = [
       "Branded PDF report",
       "Standard support",
     ],
-    href: "/signup?plan=basic",
+    href: "/contact?plan=basic",
     cta: "Get started",
   },
   {
@@ -43,7 +44,7 @@ export const defaultTiers: ServiceTier[] = [
       "Audit log exports",
     ],
     highlight: true,
-    href: "/signup?plan=standard",
+    href: "/contact?plan=standard",
     cta: "Get started",
   },
   {
@@ -59,7 +60,7 @@ export const defaultTiers: ServiceTier[] = [
       "Dedicated account manager",
       "Custom adjudication rules",
     ],
-    href: "/signup?plan=premium",
+    href: "/contact?plan=premium",
     cta: "Get started",
   },
 ];
@@ -80,7 +81,7 @@ export default function ServicePricing({
   footnote = "All prices in USD. Applicants pay nothing — charges apply to the requesting customer only.",
 }: Props) {
   return (
-    <section className="bg-white py-20 px-6">
+    <section className="bg-white py-14 sm:py-20 px-6">
       <div className="mx-auto max-w-6xl">
         <div className="max-w-2xl mb-14">
           <Reveal as="p" className="text-xs font-semibold tracking-widest uppercase text-[#058B74] mb-3">
@@ -100,7 +101,7 @@ export default function ServicePricing({
               key={t.name}
               delay={i * 100}
               variant="up"
-              className={`relative rounded-3xl p-8 flex flex-col transition-all duration-300 ${
+              className={`relative rounded-3xl p-6 sm:p-8 flex flex-col transition-all duration-300 ${
                 t.highlight
                   ? "bg-[#01463A] text-white shadow-xl shadow-[#058B74]/25 border border-[#058B74]/50"
                   : "bg-white border border-gray-200 hover:border-[#058B74]/40 hover:shadow-lg hover:shadow-[#058B74]/10"
@@ -174,7 +175,7 @@ export default function ServicePricing({
               </ul>
 
               <Link
-                href={t.href ?? `/signup?plan=${t.name.toLowerCase()}`}
+                href={t.href ?? `/contact?plan=${t.name.toLowerCase()}`}
                 className={`mt-8 inline-flex items-center justify-center w-full px-6 py-3 min-h-[44px] rounded-xl text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${
                   t.highlight
                     ? "bg-white text-[#01463A] hover:bg-white/90 focus-visible:ring-white focus-visible:ring-offset-[#01463A]"
@@ -191,6 +192,8 @@ export default function ServicePricing({
           <p className="mt-8 text-xs text-gray-600">{footnote}</p>
         )}
       </div>
+      {/* FCRA compliance framing */}
+      <FcraComplianceNote />
     </section>
   );
 }

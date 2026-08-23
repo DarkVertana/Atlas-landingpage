@@ -12,7 +12,7 @@ export default function NotFound() {
   return (
     <div className="min-h-screen bg-white flex flex-col">
       {/* Main content */}
-      <main className="relative z-10 flex-1 flex items-center justify-center px-6 pt-56 pb-40">
+      <main className="relative z-10 flex-1 flex items-center justify-center px-5 sm:px-6 pt-40 pb-28 sm:pt-56 sm:pb-40">
         <div className="max-w-lg w-full text-center">
           <p
             aria-hidden="true"

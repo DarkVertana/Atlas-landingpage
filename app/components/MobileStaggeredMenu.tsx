@@ -38,14 +38,18 @@ export default function MobileStaggeredMenu({
   const ctaRef = useRef<HTMLDivElement>(null);
   const tlRef = useRef<gsap.core.Timeline | null>(null);
 
-  layersRef.current = [];
-  itemsRef.current = [];
-
   // Build the timeline once the elements are mounted.
   useEffect(() => {
     const root = rootRef.current;
     const panel = panelRef.current;
     if (!root || !panel) return;
+
+    // The ref arrays are populated by the JSX callback refs during commit.
+    // Truncate to the current list sizes — a shrink would otherwise leave
+    // stale (detached) elements from a previous render at higher indices
+    // (refs may not be written during render per react-hooks/refs).
+    layersRef.current = layersRef.current.slice(0, colors.length);
+    itemsRef.current = itemsRef.current.slice(0, items.length);
 
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const layers = layersRef.current;
@@ -87,7 +91,7 @@ export default function MobileStaggeredMenu({
     }, root);
 
     return () => ctx.revert();
-  }, [items]);
+  }, [items, colors.length]);
 
   // Play / reverse on open change.
   useEffect(() => {
@@ -137,7 +141,7 @@ export default function MobileStaggeredMenu({
           </svg>
         </button>
 
-        <nav className="flex flex-1 flex-col justify-center px-8 pt-24">
+        <nav className="flex flex-1 flex-col justify-center overflow-y-auto px-6 pt-24 pb-6">
           <ul className="flex flex-col gap-1">
             {items.map((item, i) => (
               <li
@@ -150,7 +154,7 @@ export default function MobileStaggeredMenu({
                 <Link
                   href={item.link}
                   onClick={onClose}
-                  className="group flex items-baseline gap-4 py-2.5"
+                  className="group flex items-baseline gap-4 py-3"
                 >
                   <span
                     className="w-7 text-sm font-semibold tabular-nums"
@@ -158,7 +162,7 @@ export default function MobileStaggeredMenu({
                   >
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="text-4xl font-bold tracking-tight text-white transition-colors group-hover:text-white/70">
+                  <span className="text-[2rem] min-[380px]:text-4xl font-bold tracking-tight text-white transition-colors group-hover:text-white/70">
                     {item.label}
                   </span>
                 </Link>
@@ -168,7 +172,7 @@ export default function MobileStaggeredMenu({
         </nav>
 
         {/* CTA + footer */}
-        <div ref={ctaRef} className="px-8 pb-12" style={{ opacity: 0 }}>
+        <div ref={ctaRef} className="px-6 pb-12" style={{ opacity: 0 }}>
           <Link
             href={ctaHref}
             onClick={onClose}

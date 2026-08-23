@@ -38,7 +38,7 @@ const faqs = [
 
 export default function CriminalBackgroundChecksPage() {
   return (
-    <main className="bg-white text-[#01463A]">
+    <main id="main" className="bg-white text-[#01463A]">
       <ServiceJsonLd
         name="Criminal Background Checks"
         description="FCRA-compliant criminal background checks — national, county, state, and federal records in one report."
@@ -50,6 +50,8 @@ export default function CriminalBackgroundChecksPage() {
         title="Criminal background checks that hold up in court."
         description="National, county, state, and federal records in one FCRA-compliant report. Choose the tier that fits your role — upgrade later without re-onboarding candidates."
         steps={["National", "State", "County", "Federal"]}
+        image="/assets/services/criminal-background-checks.webp"
+        start={{ service: "criminal-background-checks" }}
       />
 
       {/* What's included — court-depth stack */}
@@ -65,7 +67,7 @@ export default function CriminalBackgroundChecksPage() {
           "FCRA & EEOC filters applied automatically",
           "Downloadable, adjudication-ready reports",
         ]}
-        image="/assets/app/screenings.png"
+        image="/assets/app/screenings.webp"
         imageAlt="Atlas Screening criminal check dashboard"
         badges={[
           { label: "Criminal record — Clear", tone: "clear", position: "-top-4 -left-4" },
@@ -77,7 +79,7 @@ export default function CriminalBackgroundChecksPage() {
       <ServicePricing />
 
       {/* FAQ */}
-      <section className="bg-white py-20 px-6">
+      <section className="bg-white py-14 sm:py-20 px-6">
         <div className="mx-auto max-w-3xl">
           <div className="text-center mb-14">
             <Reveal as="h2" className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">

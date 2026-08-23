@@ -28,13 +28,16 @@ export default function CountUp({
   const ref = useRef<HTMLSpanElement | null>(null);
   const started = useRef(false);
 
+  // Reduced-motion check is derived at render (not synced in an effect — the
+  // react-hooks/set-state-in-effect rule forbids setState directly in an effect
+  // body). Under reduced motion we render the target value directly.
+  const reduceMotion =
+    typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setValue(to);
-      return;
-    }
+    if (reduceMotion) return; // no animation — render `to` directly
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
@@ -56,14 +59,15 @@ export default function CountUp({
     );
     io.observe(el);
     return () => io.disconnect();
-  }, [to, duration]);
+  }, [to, duration, reduceMotion]);
 
-  const shown = separator ? value.toLocaleString("en-US") : String(value);
+  const shown = reduceMotion ? to : value;
+  const display = separator ? shown.toLocaleString("en-US") : String(shown);
 
   return (
     <span ref={ref} className={className}>
       {prefix}
-      {shown}
+      {display}
       {suffix}
     </span>
   );
