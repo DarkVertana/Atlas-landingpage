@@ -58,6 +58,9 @@ export default function ChannelDialog({
   // shows stale input from a previous one.
   useEffect(() => {
     if (open) {
+      // Intentional: reset all form state when the dialog (re)opens so a new
+      // channel never inherits stale input from the previous one.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setValues({});
       setMessage("");
       setErrors({});

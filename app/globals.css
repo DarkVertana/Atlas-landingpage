@@ -283,10 +283,45 @@ body {
   background-size: 200% 200%;
   filter: blur(24px);
   animation: auroraDrift 26s ease-in-out infinite;
+  isolation: isolate;
+}
+/* Flowing aurora curtains — soft, near-vertical light-bands that sway across
+   the top of the hero like the northern lights, screen-blended over the color
+   wash above. Two offset layers (different speed/blur/hue) give the ribbons
+   depth. Transform-only sway = compositor-friendly, no reflow. */
+.hero-aurora::before,
+.hero-aurora::after {
+  content: "";
+  position: absolute;
+  inset: -25% -40% 0;
+  background: repeating-linear-gradient(
+    105deg,
+    transparent 0%, transparent 6%,
+    rgba(62, 232, 190, 0.30) 9%,
+    rgba(56, 182, 255, 0.24) 13%,
+    rgba(143, 123, 255, 0.20) 16%,
+    transparent 20%, transparent 30%
+  );
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 32%, transparent 82%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 32%, transparent 82%);
+  filter: blur(34px);
+  mix-blend-mode: screen;
+  transform-origin: top center;
+  animation: auroraCurtain 19s ease-in-out infinite;
+}
+.hero-aurora::after {
+  animation-duration: 28s;
+  animation-direction: reverse;
+  opacity: 0.7;
+  filter: blur(52px) hue-rotate(20deg);
 }
 @keyframes auroraDrift {
   0%, 100% { background-position: 0% 0%; transform: translate3d(0, 0, 0) scale(1.05); }
   50% { background-position: 100% 30%; transform: translate3d(-3%, 2%, 0) scale(1.12); }
+}
+@keyframes auroraCurtain {
+  0%, 100% { transform: translateX(-8%) skewX(-7deg) scaleY(1); }
+  50% { transform: translateX(8%) skewX(7deg) scaleY(1.14); }
 }
 
 /* Hero orbital field — restored & refined from the pre-redesign design
@@ -420,6 +455,8 @@ body {
   .hiw-drop {
     animation: none;
   }
+  .hero-aurora::before,
+  .hero-aurora::after { animation: none; transform: none; }
   .hero-word { opacity: 1; clip-path: none; transform: none; }
   /* Word swap without motion: incoming word stays visible, outgoing hidden. */
   .hero-word-in { opacity: 1; filter: none; transform: none; }

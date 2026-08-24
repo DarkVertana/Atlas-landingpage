@@ -67,6 +67,9 @@ export default function OrderMockup() {
   useEffect(() => {
     reduced.current = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduced.current) {
+      // Intentional post-mount setState: matchMedia is client-only, so this
+      // must run after hydration rather than during render.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setE(T.done + 400);
       return;
     }

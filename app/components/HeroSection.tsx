@@ -165,7 +165,7 @@ export default function HeroSection() {
             devices. Confined to the top band where the former shader glowed. */}
         <div
           aria-hidden
-          className="hero-aurora pointer-events-none absolute inset-x-0 top-0 h-[65%] opacity-[0.4] mix-blend-screen"
+          className="hero-aurora pointer-events-none absolute inset-x-0 top-0 h-[72%] opacity-[0.55] mix-blend-screen"
         />
 
         {/* Precision dot grid — faint technical texture (SPEC-approved hero

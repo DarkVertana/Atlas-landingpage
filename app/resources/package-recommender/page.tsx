@@ -161,6 +161,9 @@ export default function PackageRecommenderPage() {
   // render match — no hydration mismatch on the controlled <select>.
   useEffect(() => {
     const q = new URLSearchParams(window.location.search).get("industry");
+    // Intentional post-mount setState: reading the URL during render would
+    // desync SSR/first-client render and trigger a hydration mismatch.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (q && industryOptions.some((o) => o.value === q)) setIndustry(q as Industry);
   }, []);
 
