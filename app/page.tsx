@@ -13,7 +13,7 @@ const AIFeatures = dynamic(() => import("./components/AIFeatures"));
 
 export default function Home() {
   return (
-    <div>
+    <main id="main">
       <HeroSection />
       {/* <TrustedBySection /> */}
       <AboutIntro />
@@ -23,6 +23,6 @@ export default function Home() {
       <NumbersStrip />
 
       <CTASection />
-    </div>
+    </main>
   );
 }

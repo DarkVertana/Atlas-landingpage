@@ -165,7 +165,7 @@ export default function ContactPage() {
           <Reveal
             as="p"
             variant="fade"
-            className="text-xs font-semibold tracking-widest uppercase text-white/70 mb-4"
+            className="text-xs font-semibold tracking-widest uppercase text-white/90 mb-4"
           >
             Contact Atlas
           </Reveal>
@@ -181,7 +181,7 @@ export default function ContactPage() {
             as="p"
             variant="fade"
             delay={200}
-            className="mt-5 text-white/70 max-w-xl mx-auto text-sm leading-relaxed"
+            className="mt-5 text-white/90 max-w-xl mx-auto text-sm leading-relaxed"
           >
             Whether you need a custom enterprise screening package or require technical
             support for an ongoing order, our team is ready to assist.

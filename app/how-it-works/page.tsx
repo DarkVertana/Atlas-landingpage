@@ -137,7 +137,7 @@ export default function HowItWorksPage() {
           <Reveal
             as="p"
             delay={160}
-            className="mx-auto mt-6 max-w-xl text-[15.5px] leading-relaxed text-white/60"
+            className="mx-auto mt-6 max-w-xl text-[15.5px] leading-relaxed text-white/85"
           >
             We engineered our platform to demand minimal client effort while delivering
             maximum visibility. Discover how we process complex background investigations

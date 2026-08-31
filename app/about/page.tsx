@@ -28,7 +28,7 @@ export default function AboutPage() {
           <Reveal
             as="p"
             variant="fade"
-            className="text-xs font-semibold tracking-widest uppercase text-white/70 mb-4"
+            className="text-xs font-semibold tracking-widest uppercase text-white/90 mb-4"
           >
             About Atlas
           </Reveal>
@@ -44,7 +44,7 @@ export default function AboutPage() {
             as="p"
             variant="fade"
             delay={200}
-            className="mt-5 text-white/70 max-w-xl mx-auto text-sm leading-relaxed"
+            className="mt-5 text-white/90 max-w-xl mx-auto text-sm leading-relaxed"
           >
             Atlas Screening helps HR teams and property managers make faster,
             more confident decisions. We run background investigations with

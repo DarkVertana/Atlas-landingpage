@@ -1,5 +1,40 @@
 # Changelog — 2026-08-31
 
+## Lighthouse: raise mobile perf (LCP) + accessibility to ~100
+
+Follow-up to the freeze fix, targeting the Lighthouse scores (mobile Perf 78,
+Accessibility 90). Gates: `tsc` clean, `build` passes, `lint` unchanged.
+
+### Performance — LCP was the whole problem (5.1s mobile)
+- **`app/components/Reveal.tsx`** — the root cause. Every `<Reveal>` started at
+  `opacity:0` and only became visible after JS downloaded → hydrated → an
+  IntersectionObserver fired. On Slow 4G that delayed the largest content ~5s.
+  Now Reveal renders **visible by default** (SSR + first paint show content)
+  and only arms the hide→animate-on-scroll behavior for elements still **below
+  the fold** at mount — above-the-fold content (LCP) is never JS-gated.
+- **`app/components/AboutIntro.tsx`** — the 5 service images (the "Improve image
+  delivery ~817 KiB" flag on mobile) converted from raw `<img>` to `next/image`
+  with `fill` + `sizes`, so they serve AVIF/WebP at display size.
+- **`package.json`** — added a modern `browserslist` to drop legacy-JS
+  transpilation/polyfills; removed dead `@types/three`.
+- **`next.config.ts`** — (already added) AVIF/WebP formats.
+
+### Accessibility — targeted the 4 Lighthouse failures
+- **Skip link focusable** — `app/page.tsx` now wraps content in
+  `<main id="main">` (the skip link's `#main` target was missing on the home
+  page only).
+- **Heading order** — `app/faq/page.tsx` "Didn't find…" `h3` → `h2`.
+- **Contrast (AA)** — bumped low-opacity/gray text across CTASection, HeroSection,
+  AIFeatures, SectionHeader, ServiceHero, Header mega-menu, ChatWidget, Footer,
+  Industries, HowItWorks, and the pricing/faq/about/contact/how-it-works page
+  heroes (e.g. `text-white/50–70` → `/80–/90`, footer `#8A968F` → `#5B6B64`,
+  `text-gray-400` → `gray-600`).
+- **Touch targets** — enlarged the mobile hamburger (44→48px), ChatWidget send
+  button (44→48px) and quick-reply chips, and gave Footer link lists ≥40px
+  tap height.
+
+---
+
 ## Performance: fix site freezing on low-end laptops
 
 Client laptops were freezing on the site. A four-part audit (animations,

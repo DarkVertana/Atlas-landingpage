@@ -58,7 +58,7 @@ export default function ServiceHero({ eyebrow, title, description, steps, image,
       <div className="relative mx-auto max-w-3xl text-center">
         <Reveal
           as="p"
-          className="inline-flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/60 mb-5"
+          className="inline-flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/85 mb-5"
         >
           <span className="h-px w-6 bg-white/30" />
           {eyebrow}
@@ -76,7 +76,7 @@ export default function ServiceHero({ eyebrow, title, description, steps, image,
         <Reveal
           as="p"
           delay={160}
-          className="mt-6 text-white/70 max-w-2xl mx-auto text-[15px] leading-relaxed"
+          className="mt-6 text-white/90 max-w-2xl mx-auto text-[15px] leading-relaxed"
         >
           {description}
         </Reveal>
@@ -84,7 +84,7 @@ export default function ServiceHero({ eyebrow, title, description, steps, image,
         {steps && steps.length > 0 && (
           <Reveal
             delay={240}
-            className="mt-9 flex flex-wrap items-center justify-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-white/75"
+            className="mt-9 flex flex-wrap items-center justify-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-white/90"
           >
             {steps.map((step, i) => (
               <span key={step} className="inline-flex items-center gap-2">

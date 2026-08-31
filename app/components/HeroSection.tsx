@@ -247,7 +247,7 @@ export default function HeroSection() {
           {/* Subtitle: bridges the title and CTAs; optical width matches the
               headline block above (centered, balanced). */}
           <p
-            className="animate-hero-enter mx-auto mt-6 max-w-2xl text-sm leading-relaxed text-balance text-white/70 sm:text-base md:max-w-3xl md:text-lg"
+            className="animate-hero-enter mx-auto mt-6 max-w-2xl text-sm leading-relaxed text-balance text-white/85 sm:text-base md:max-w-3xl md:text-lg"
             style={{ animationDelay: "140ms" }}
           >
             Built for employers, property managers, and partners requiring

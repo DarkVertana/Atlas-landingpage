@@ -90,7 +90,7 @@ export default function FAQPage() {
           <Reveal
             as="p"
             variant="fade"
-            className="text-xs font-semibold tracking-widest uppercase text-white/70 mb-4"
+            className="text-xs font-semibold tracking-widest uppercase text-white/90 mb-4"
           >
             Help Center
           </Reveal>
@@ -106,7 +106,7 @@ export default function FAQPage() {
             as="p"
             variant="fade"
             delay={200}
-            className="mt-5 text-white/70 max-w-xl mx-auto text-sm leading-relaxed"
+            className="mt-5 text-white/90 max-w-xl mx-auto text-sm leading-relaxed"
           >
             Find answers about our screening services, turnaround times, compliance
             practices, and how we protect your information.
@@ -247,7 +247,7 @@ export default function FAQPage() {
       <section className="bg-white pb-20 px-6">
         <div className="mx-auto max-w-3xl">
           <Reveal as="div" variant="scale" delay={100} className="rounded-2xl border border-gray-200 bg-gray-50/60 p-8 md:p-10 text-center">
-            <Reveal as="h3" variant="up" className="text-xl md:text-2xl font-bold text-[#01463A]">
+            <Reveal as="h2" variant="up" className="text-xl md:text-2xl font-bold text-[#01463A]">
               Didn&apos;t find what you were looking for?
             </Reveal>
             <Reveal as="p" variant="fade" delay={100} className="mt-3 text-sm text-gray-600 max-w-lg mx-auto leading-relaxed">

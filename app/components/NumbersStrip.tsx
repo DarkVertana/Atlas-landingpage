@@ -58,7 +58,7 @@ function Chip({ p }: { p: Pillar }) {
         {p.icon}
       </span>
       <span className="text-sm font-semibold text-[#01463A]">{p.title}</span>
-      <span className="hidden text-sm text-[#7B8983] sm:inline">{p.detail}</span>
+      <span className="hidden text-sm text-[#5B6B64] sm:inline">{p.detail}</span>
       <span className="ml-2 h-1 w-1 rounded-full bg-[#058B74]/25" />
     </div>
   );

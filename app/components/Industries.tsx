@@ -63,7 +63,7 @@ function BulkVisual() {
   return (
     <div className={`${CARD} p-5 sm:p-6`}>
       <div className="flex items-center justify-between">
-        <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#8A968F]">Bulk order</span>
+        <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#5B6B64]">Bulk order</span>
         <span className="inline-flex items-center gap-1.5 rounded-full bg-[#EAF3EF] px-2.5 py-1 text-[11px] font-semibold text-[#0B7A4B]">
           Standard × 24
         </span>
@@ -76,7 +76,7 @@ function BulkVisual() {
             </span>
             <div className="min-w-0 flex-1">
               <div className="text-[13px] font-medium text-[#122019]">{p.n}</div>
-              <div className="truncate font-mono text-[11px] text-[#9AA7A0]">{p.e}</div>
+              <div className="truncate font-mono text-[11px] text-[#6B7A73]">{p.e}</div>
             </div>
             <span className="flex h-4 w-4 items-center justify-center rounded-full bg-[#058B74]/10 text-[#058B74]">
               <svg width="10" height="10" viewBox="0 0 16 16" fill="none">
@@ -85,7 +85,7 @@ function BulkVisual() {
             </span>
           </div>
         ))}
-        <div className="px-3 py-1 text-center font-mono text-[11px] text-[#9AA7A0]">+ 20 more candidates</div>
+        <div className="px-3 py-1 text-center font-mono text-[11px] text-[#6B7A73]">+ 20 more candidates</div>
       </div>
       <button className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#01463A] px-4 py-2.5 text-[13px] font-semibold text-white">
         Send 24 secure invites
@@ -106,13 +106,13 @@ function AutoVisual() {
   ];
   const pill = {
     done: { t: "text-[#0B7A4B]", b: "bg-[#E4F5EC]", d: "#12A365", label: "Completed" },
-    remind: { t: "text-[#9A6B12]", b: "bg-[#FBF2E0]", d: "#E9A23B", label: "Reminded" },
+    remind: { t: "text-[#875D0F]", b: "bg-[#FBF2E0]", d: "#E9A23B", label: "Reminded" },
     invited: { t: "text-[#1E5A8A]", b: "bg-[#E6F0F8]", d: "#3E92CC", label: "Invited" },
   };
   return (
     <div className={`${CARD} p-5 sm:p-6`}>
       <div className="flex items-center justify-between">
-        <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#8A968F]">Automations</span>
+        <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#5B6B64]">Automations</span>
         <span className="inline-flex items-center gap-2 rounded-full bg-[#EAF3EF] px-2.5 py-1 text-[11px] font-semibold text-[#0B7A4B]">
           Auto-remind
           <span className="relative inline-flex h-3.5 w-6 items-center rounded-full bg-[#058B74]">
@@ -130,7 +130,7 @@ function AutoVisual() {
               </span>
               <div className="min-w-0 flex-1">
                 <div className="text-[13px] font-medium text-[#122019]">{r.n}</div>
-                <div className="font-mono text-[11px] text-[#9AA7A0]">{r.meta}</div>
+                <div className="font-mono text-[11px] text-[#6B7A73]">{r.meta}</div>
               </div>
               <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-semibold ${p.b} ${p.t}`}>
                 <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: p.d }} />
@@ -161,7 +161,7 @@ function ApiVisual() {
             {c}
           </span>
         ))}
-        <span className="ml-auto font-mono text-[11px] text-[#9AA7A0]">Connected</span>
+        <span className="ml-auto font-mono text-[11px] text-[#6B7A73]">Connected</span>
       </div>
       {/* API snippet */}
       <div className="bg-[#02120d] px-5 py-4 font-mono text-[12px] leading-relaxed sm:px-6">
@@ -173,7 +173,7 @@ function ApiVisual() {
         <div className="mt-2 text-white/40">→ 200 <span className="text-[#5EE3C0]">{"{ \"status\": \"processing\" }"}</span></div>
       </div>
       <div className="flex items-center justify-between border-t border-[#EEF2EF] bg-[#FBFCFB] px-5 py-4 sm:px-6">
-        <span className="font-mono text-[11px] text-[#9AA7A0]">Results by webhook the moment they clear</span>
+        <span className="font-mono text-[11px] text-[#6B7A73]">Results by webhook the moment they clear</span>
         <span className="inline-flex items-center gap-1.5 rounded-full bg-[#E4F5EC] px-3 py-1.5 text-[12px] font-bold text-[#0B7A4B]">
           Most clear &lt;24h
         </span>
@@ -243,7 +243,7 @@ export default function Industries() {
                     style={{ transformOrigin: "top" }}
                   />
                   <div className="flex items-start gap-4 pl-5">
-                    <span className={`mt-0.5 font-mono text-[13px] font-semibold tabular-nums transition-colors ${on ? "text-[#058B74]" : "text-[#B7C1BB]"}`}>
+                    <span className={`mt-0.5 font-mono text-[13px] font-semibold tabular-nums transition-colors ${on ? "text-[#058B74]" : "text-[#6B7A73]"}`}>
                       {s.num}
                     </span>
                     <div className="flex-1">
@@ -287,16 +287,20 @@ export default function Industries() {
             <div key={active} className="platform-visual-in">
               <Visual />
             </div>
-            {/* progress dots */}
-            <div className="mt-6 flex justify-center gap-2">
+            {/* progress dots — small visual bar inside a ≥24px tap target */}
+            <div className="mt-6 flex justify-center gap-1">
               {STAGES.map((s, i) => (
                 <button
                   key={s.key}
                   type="button"
                   onClick={() => setActive(i)}
                   aria-label={`Show ${s.title}`}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${i === active ? "w-6 bg-[#058B74]" : "w-1.5 bg-[#CBD4CF] hover:bg-[#058B74]/50"}`}
-                />
+                  className="group flex h-6 min-w-[24px] items-center justify-center px-1"
+                >
+                  <span
+                    className={`h-1.5 rounded-full transition-all duration-300 ${i === active ? "w-6 bg-[#058B74]" : "w-1.5 bg-[#CBD4CF] group-hover:bg-[#058B74]/50"}`}
+                  />
+                </button>
               ))}
             </div>
           </div>

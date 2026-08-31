@@ -63,7 +63,7 @@ function CardShell({ n, label, children }: { n: string; label: string; children:
           </span>
           <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#5B6E67]">{label}</span>
         </div>
-        <span className="font-mono text-[10.5px] tracking-wide text-[#AAB6B0]">BGC-2026-4042</span>
+        <span className="font-mono text-[10.5px] tracking-wide text-[#5B6E67]">BGC-2026-4042</span>
       </div>
       <div className="flex flex-1 flex-col bg-[#FBFCFB] px-5 py-4">{children}</div>
     </div>
@@ -117,17 +117,17 @@ export default function AIFeatures() {
                   >
                     <span
                       className={`mt-0.5 font-mono text-[12px] font-medium tabular-nums transition-colors duration-500 ${
-                        on ? "text-[#5EE3C0]" : "text-white/30"
+                        on ? "text-[#5EE3C0]" : "text-white/55"
                       }`}
                     >
                       {p.n}
                     </span>
                     <div>
-                      <h3 className={`text-[15.5px] font-semibold transition-colors duration-500 ${on ? "text-white" : "text-white/55"}`}>
+                      <h3 className={`text-[15.5px] font-semibold transition-colors duration-500 ${on ? "text-white" : "text-white/75"}`}>
                         {p.title}
                       </h3>
                       <p
-                        className={`grid overflow-hidden text-[13.5px] leading-relaxed text-white/50 transition-all duration-500 ${
+                        className={`grid overflow-hidden text-[13.5px] leading-relaxed text-white/80 transition-all duration-500 ${
                           on ? "mt-1.5 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
                         }`}
                       >
@@ -179,7 +179,7 @@ export default function AIFeatures() {
                     ].map((s) => (
                       <div key={s.l} className="bg-white px-3 py-2.5">
                         <p className="text-[16px] font-semibold tracking-tight text-[#12211B]">{s.v}</p>
-                        <p className="mt-0.5 text-[10.5px] font-medium uppercase tracking-[0.08em] text-[#83948C]">{s.l}</p>
+                        <p className="mt-0.5 text-[10.5px] font-medium uppercase tracking-[0.08em] text-[#5B6E67]">{s.l}</p>
                       </div>
                     ))}
                   </div>
@@ -195,7 +195,7 @@ export default function AIFeatures() {
                     <li key={c.label} className={`flex items-center gap-3 py-2 ${i > 0 ? "border-t border-black/[0.05]" : ""}`}>
                       <TickGreen />
                       <span className="text-[13.5px] font-medium text-[#1B2C25]">{c.label}</span>
-                      <span className="text-[12px] text-[#83948C]">{c.meta}</span>
+                      <span className="text-[12px] text-[#5B6E67]">{c.meta}</span>
                       <span className="ml-auto inline-flex items-center gap-1.5 rounded-md bg-[#E8F4EE] px-2 py-0.5 text-[10.5px] font-semibold uppercase tracking-[0.1em] text-[#0E7A50]">Clear</span>
                     </li>
                   ))}
@@ -219,12 +219,12 @@ export default function AIFeatures() {
                       </svg>
                       <div>
                         <p className="text-[13.5px] font-semibold text-[#7A5410]">1 item to review: Motor vehicle record</p>
-                        <p className="mt-0.5 text-[12.5px] text-[#987A3E]">Source · State DMV · minor infraction, 2023</p>
+                        <p className="mt-0.5 text-[12.5px] text-[#7A5E1F]">Source · State DMV · minor infraction, 2023</p>
                       </div>
                     </div>
                     <div className="mt-3 flex items-center gap-2 border-t border-[#E7C583]/70 pt-3">
                       <button className="rounded-lg bg-[#0C3A2C] px-3 py-1.5 text-[11.5px] font-semibold text-white">Review record</button>
-                      <span className="text-[11.5px] text-[#987A3E]">Awaiting adjudicator sign-off</span>
+                      <span className="text-[11.5px] text-[#7A5E1F]">Awaiting adjudicator sign-off</span>
                     </div>
                   </div>
                 </div>
@@ -247,7 +247,7 @@ export default function AIFeatures() {
                   <div className="mt-2 flex items-center justify-between border-t border-black/[0.06] pt-3">
                     <div>
                       <p className="text-[12.5px] font-semibold text-[#12211B]">Atlas Screening, Inc.</p>
-                      <p className="text-[11px] text-[#83948C]">Adjudicator · e-signed Jul 30, 2026</p>
+                      <p className="text-[11px] text-[#5B6E67]">Adjudicator · e-signed Jul 30, 2026</p>
                     </div>
                     <span className="inline-flex items-center gap-1.5 rounded-md bg-[#E8F4EE] px-2.5 py-1 text-[11px] font-semibold text-[#0E7A50]">
                       <TickGreen /> Verified

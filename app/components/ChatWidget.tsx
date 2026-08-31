@@ -55,7 +55,7 @@ export default function ChatWidget() {
                 <a
                   key={q}
                   href={`/contact?q=${encodeURIComponent(q)}`}
-                  className="rounded-full border border-gray-200 px-4 py-2 text-left text-sm text-[#01463A] transition-colors hover:border-[#058B74]/50 hover:bg-[#058B74]/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74]"
+                  className="rounded-full border border-gray-200 px-4 py-3 text-left text-sm text-[#01463A] transition-colors hover:border-[#058B74]/50 hover:bg-[#058B74]/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74]"
                 >
                   {q}
                 </a>
@@ -72,12 +72,12 @@ export default function ChatWidget() {
               name="q"
               placeholder="Ask a question…"
               aria-label="Ask a question"
-              className="min-w-0 flex-1 rounded-md bg-transparent px-1 text-[16px] text-[#01463A] placeholder:text-gray-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74]"
+              className="min-w-0 flex-1 rounded-md bg-transparent px-1 text-[16px] text-[#01463A] placeholder:text-gray-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74]"
             />
             <button
               type="submit"
               aria-label="Send"
-              className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-[#058B74] text-white transition-colors hover:bg-[#01463A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2"
+              className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-[#058B74] text-white transition-colors hover:bg-[#01463A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2"
             >
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
                 <path

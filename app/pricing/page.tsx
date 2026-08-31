@@ -152,7 +152,7 @@ export default function PricingPage() {
           <Reveal
             as="p"
             variant="fade"
-            className="text-xs font-semibold tracking-widest uppercase text-white/70 mb-4"
+            className="text-xs font-semibold tracking-widest uppercase text-white/90 mb-4"
           >
             Pricing
           </Reveal>
@@ -168,7 +168,7 @@ export default function PricingPage() {
             as="p"
             variant="fade"
             delay={200}
-            className="mt-5 text-white/70 max-w-xl mx-auto text-sm leading-relaxed"
+            className="mt-5 text-white/90 max-w-xl mx-auto text-sm leading-relaxed"
           >
             Pick a tier, add what you need. No contracts, no setup fees — billed
             only when applicants complete a check.
@@ -225,7 +225,7 @@ export default function PricingPage() {
                   </span>
                   <span
                     className={`text-xs ${
-                      t.highlight ? "text-white/60" : "text-gray-500"
+                      t.highlight ? "text-white/85" : "text-gray-500"
                     }`}
                   >
                     {t.unit}
@@ -349,7 +349,7 @@ export default function PricingPage() {
                 <h3 className={`text-lg font-bold ${tier.highlight ? "text-white" : "text-[#01463A]"}`}>
                   {tier.name}
                 </h3>
-                <p className={`mt-1 text-sm ${tier.highlight ? "text-white/70" : "text-gray-600"}`}>
+                <p className={`mt-1 text-sm ${tier.highlight ? "text-white/90" : "text-gray-600"}`}>
                   {tier.tagline}
                 </p>
                 <ul className="mt-6 space-y-3">

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Reveal from "./Reveal";
 import SectionHeader from "./ui/SectionHeader";
 
@@ -84,12 +85,12 @@ export default function AboutIntro() {
               >
                 {/* Photography over a neutral charcoal base */}
                 <div className="absolute inset-0 bg-[#12100f]">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <Image
                     src={service.image}
                     alt={service.label}
-                    loading="lazy"
-                    className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ${
+                    fill
+                    sizes="(max-width: 1024px) 90vw, 40vw"
+                    className={`object-cover transition-all duration-700 ${
                       isActive
                         ? "scale-100 opacity-100 saturate-100"
                         : "scale-105 opacity-70 saturate-[0.6]"
@@ -168,12 +169,12 @@ export default function AboutIntro() {
                 className="group relative flex h-56 flex-col justify-end overflow-hidden rounded-3xl border border-gray-200 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2"
               >
                 <div className="absolute inset-0 bg-[#12100f]">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <Image
                     src={service.image}
                     alt={service.label}
-                    loading="lazy"
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    fill
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent" />
                 </div>

@@ -76,13 +76,13 @@ export default function CTASection({
 
           {/* Content */}
           <div className="relative z-10 max-w-xl">
-            <Reveal as="p" className="text-sm font-semibold tracking-widest uppercase text-white/50 mb-3">
+            <Reveal as="p" className="text-sm font-semibold tracking-widest uppercase text-white/80 mb-3">
               {eyebrow}
             </Reveal>
             <Reveal as="h2" delay={80} className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight">
               {title}
             </Reveal>
-            <Reveal as="p" delay={160} className="mt-4 text-white/60 text-base leading-relaxed max-w-md">
+            <Reveal as="p" delay={160} className="mt-4 text-white/85 text-base leading-relaxed max-w-md">
               {description}
             </Reveal>
             <Reveal delay={240} className="mt-6 flex flex-wrap gap-3">

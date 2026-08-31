@@ -177,20 +177,21 @@ body {
   animation: heroWordOut 0.56s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-/* Hero text enter */
+/* Hero text enter — transform-only so the text is PAINTED immediately (opacity
+   stays 1). A fade-from-0 here would gate the largest contentful paint behind
+   the animation's start, which the main thread can delay during hydration and
+   balloon LCP. The subtle upward slide is a pure enhancement. */
 @keyframes heroFadeUp {
   from {
-    opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(14px);
   }
   to {
-    opacity: 1;
     transform: translateY(0);
   }
 }
 
 .animate-hero-enter {
-  animation: heroFadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: heroFadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 /* ── Hero: advanced motion ── */
@@ -315,9 +316,12 @@ body {
   opacity: 0.7;
   filter: blur(26px) hue-rotate(20deg);
 }
+/* Transform-only (compositor) drift — no background-position, which is not
+   composited and janks the paint. The scale + translate give the same breathing
+   motion on the GPU. */
 @keyframes auroraDrift {
-  0%, 100% { background-position: 0% 0%; transform: translate3d(0, 0, 0) scale(1.05); }
-  50% { background-position: 100% 30%; transform: translate3d(-3%, 2%, 0) scale(1.12); }
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1.05); }
+  50% { transform: translate3d(-3%, 2%, 0) scale(1.12); }
 }
 @keyframes auroraCurtain {
   0%, 100% { transform: translateX(-8%) skewX(-7deg) scaleY(1); }

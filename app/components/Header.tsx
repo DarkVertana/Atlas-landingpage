@@ -309,7 +309,7 @@ export default function Header({ solid = false }: { solid?: boolean }) {
             }}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
-            className={`md:hidden relative z-50 -m-2.5 flex h-11 w-11 items-center justify-center transition-all duration-500 ease-in-out ${
+            className={`md:hidden relative z-50 -m-2 flex h-12 w-12 items-center justify-center transition-all duration-500 ease-in-out ${
               menuOpen ? "text-white" : scrolled ? "text-[#01463A]" : "text-white"
             }`}
           >
@@ -367,7 +367,7 @@ export default function Header({ solid = false }: { solid?: boolean }) {
                   >
                     {activeMenuData.sections.map((section) => (
                       <div key={section.title}>
-                        <h4 className="text-[11px] font-semibold uppercase tracking-[0.12em] text-gray-400 mb-3">
+                        <h4 className="text-[11px] font-semibold uppercase tracking-[0.12em] text-gray-600 mb-3">
                           {section.title}
                         </h4>
                         <div className="flex flex-col">

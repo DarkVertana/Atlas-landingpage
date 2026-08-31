@@ -26,7 +26,7 @@ export default function SectionHeader({
   const centered = align === "center";
   // Neutral ink titles on light backgrounds; green stays only in the eyebrow.
   const heading = tone === "light" ? "text-white" : "text-[#14201C]";
-  const body = tone === "light" ? "text-white/60" : "text-[#5A6560]";
+  const body = tone === "light" ? "text-white/85" : "text-[#5A6560]";
 
   return (
     <div className={`${centered ? "mx-auto max-w-2xl text-center" : "max-w-2xl"} ${className}`}>

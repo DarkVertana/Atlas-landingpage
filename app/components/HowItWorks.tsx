@@ -95,7 +95,7 @@ function Row({ step }: { step: Step }) {
       {/* Copy */}
       <div className="transition-transform duration-300 group-hover:translate-x-1">
         <div className="flex items-center gap-2.5 text-[#0F1B17]">
-          <span className="text-[#94A29B] transition-colors duration-300 group-hover:text-[#058B74]">
+          <span className="text-[#5B6B64] transition-colors duration-300 group-hover:text-[#058B74]">
             {step.icon}
           </span>
           <h3 className="text-[17px] font-semibold sm:text-[19px]">{step.title}</h3>
@@ -127,7 +127,7 @@ export default function HowItWorks() {
           ))}
         </div>
 
-        <p className="mt-16 max-w-3xl text-[11px] leading-relaxed text-[#8A968F]">
+        <p className="mt-16 max-w-3xl text-[11px] leading-relaxed text-[#5B6B64]">
           All screenings are conducted in accordance with the Fair Credit Reporting Act (FCRA), EEOC, and applicable state laws.
           By using Atlas Screening you agree to our{" "}
           <a href="/terms" className="text-[#5B6B64] underline underline-offset-2 transition-colors hover:text-[#058B74]">Terms of Service</a>{" "}

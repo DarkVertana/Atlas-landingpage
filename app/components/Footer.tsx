@@ -75,11 +75,11 @@ export default function Footer() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-8 md:gap-10 md:w-2/3">
               {columns.map((col) => (
                 <div key={col.title}>
-                  <h4 className="text-[#01463A] font-semibold text-sm mb-5">{col.title}</h4>
-                  <ul className="space-y-3">
+                  <h3 className="text-[#01463A] font-semibold text-sm mb-5">{col.title}</h3>
+                  <ul className="space-y-0.5">
                     {col.links.map((link) => {
                       const isActive = !link.external && pathname === link.href;
-                      const className = `text-sm transition-colors ${
+                      const className = `inline-flex items-center min-h-[40px] text-sm transition-colors ${
                         isActive
                           ? "text-[#01463A] font-semibold"
                           : "text-[#5B6B64] hover:text-[#01463A]"
@@ -114,17 +114,17 @@ export default function Footer() {
           </div>
 
           <div className="pt-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <p className="text-[#8A968F] text-xs leading-relaxed max-w-2xl">
+            <p className="text-[#5B6B64] text-xs leading-relaxed max-w-2xl">
               Atlas Screening is a Consumer Reporting Agency (CRA) under the FCRA. We provide screening services for lawful purposes only and do not make hiring decisions.
             </p>
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
               <a
                 href="/sitemap.xml"
-                className="text-[#8A968F] hover:text-[#01463A] text-xs transition-colors"
+                className="inline-flex items-center min-h-[40px] py-2 text-[#5B6B64] hover:text-[#01463A] text-xs transition-colors"
               >
                 Sitemap
               </a>
-              <p className="text-[#8A968F] text-xs">
+              <p className="text-[#5B6B64] text-xs">
                 &copy; {new Date().getFullYear()} <span className="text-[#01463A] font-medium">Atlas Screening</span>. All rights reserved.
               </p>
             </div>
