@@ -8,6 +8,8 @@ const nextConfig: NextConfig = {
   // Keep the dev overlay badge out from under the admin sidebar (dev-only).
   devIndicators: { position: "bottom-right" },
   images: {
+    // Serve modern formats (AVIF first, WebP fallback) for next/image assets.
+    formats: ["image/avif", "image/webp"],
     remotePatterns: [
       {
         protocol: "https",

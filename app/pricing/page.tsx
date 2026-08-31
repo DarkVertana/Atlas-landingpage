@@ -66,6 +66,22 @@ const tiers: Tier[] = [
   },
 ];
 
+const enterpriseTier: Tier = {
+  name: "Enterprise",
+  tagline: "Screening at scale.",
+  price: "Custom",
+  unit: "volume pricing",
+  features: [
+    "Everything in Premium",
+    "Volume-based pricing",
+    "Custom packages by role",
+    "ATS & API integration",
+    "Dedicated account & compliance team",
+  ],
+  cta: "Talk to sales",
+  href: "/contact?plan=enterprise",
+};
+
 const addOns = [
   {
     name: "Motor vehicle records",
@@ -125,29 +141,6 @@ const comparisonRows = [
   { label: "Dedicated account manager", basic: false, standard: false, premium: true },
 ];
 
-const faqs = [
-  {
-    q: "When do I get charged?",
-    a: "You're only billed after the applicant submits their information. No upfront costs, no charges for drop-offs.",
-  },
-  {
-    q: "Can I change plans later?",
-    a: "Yes. Pricing is per check — switch tiers or add services at any time without a contract change.",
-  },
-  {
-    q: "Do you offer volume discounts?",
-    a: "Enterprise plans and custom volume pricing are available. Reach out to Contact@Atlasscreening.com for a tailored quote.",
-  },
-  {
-    q: "Are there setup fees?",
-    a: "No. There are no setup fees, annual fees, or per-seat charges. You only pay for checks your applicants complete.",
-  },
-  {
-    q: "What about add-ons?",
-    a: "Add-ons stack on top of any tier. You can mix and match — we'll bill each one only when an applicant completes it.",
-  },
-];
-
 export default function PricingPage() {
   return (
     <main id="main" className="bg-white text-[#01463A]">
@@ -185,15 +178,15 @@ export default function PricingPage() {
 
       {/* Tier cards */}
       <section className="bg-white py-14 sm:py-20 px-6">
-        <div className="mx-auto max-w-6xl">
-          <div className="grid md:grid-cols-3 gap-6">
-            {tiers.map((t, i) => (
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {[...tiers, enterpriseTier].map((t, i) => (
               <Reveal
                 as="div"
                 variant="up"
                 delay={i * 100}
                 key={t.name}
-                className={`relative rounded-3xl p-8 flex flex-col transition-all duration-300 ${
+                className={`relative rounded-3xl p-6 lg:p-7 flex flex-col transition-all duration-300 ${
                   t.highlight
                     ? "bg-[#01463A] text-white shadow-xl shadow-[#058B74]/25 border border-[#058B74]/50"
                     : "bg-white border border-gray-300 shadow-[0_1px_2px_rgba(15,42,36,0.05),0_10px_28px_-14px_rgba(15,42,36,0.14)] hover:border-[#058B74]/40 hover:shadow-lg hover:shadow-[#058B74]/10"
@@ -215,16 +208,16 @@ export default function PricingPage() {
                   {t.name}
                 </p>
                 <h3
-                  className={`mt-2 text-xl font-bold leading-tight ${
+                  className={`mt-2 text-lg font-bold leading-snug min-h-[3.25rem] ${
                     t.highlight ? "text-white" : "text-[#01463A]"
                   }`}
                 >
                   {t.tagline}
                 </h3>
 
-                <div className="mt-6 flex items-baseline gap-2">
+                <div className="mt-5 flex items-baseline gap-1.5">
                   <span
-                    className={`text-4xl font-extrabold ${
+                    className={`text-[2rem] leading-none font-extrabold ${
                       t.highlight ? "text-white" : "text-[#01463A]"
                     }`}
                   >
@@ -239,7 +232,7 @@ export default function PricingPage() {
                   </span>
                 </div>
 
-                <ul className="mt-8 space-y-3 flex-1">
+                <ul className="mt-7 space-y-2.5 flex-1">
                   {t.features.map((f) => (
                     <li
                       key={f}
@@ -267,7 +260,7 @@ export default function PricingPage() {
 
                 <a
                   href={t.href}
-                  className={`mt-8 inline-flex items-center justify-center w-full min-h-[44px] px-6 py-3 rounded-xl text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${
+                  className={`mt-7 inline-flex items-center justify-center w-full min-h-[44px] px-6 py-3 rounded-xl text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${
                     t.highlight
                       ? "bg-white text-[#01463A] hover:bg-white/90 focus-visible:ring-white focus-visible:ring-offset-[#01463A]"
                       : "bg-[#01463A] text-white hover:bg-[#058B74] focus-visible:ring-[#058B74]"
@@ -421,43 +414,62 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* FAQ */}
+      {/* Enterprise / talk to sales */}
       <section className="bg-white pb-20 px-6">
-        <div className="mx-auto max-w-3xl">
-          <div className="mb-14 max-w-2xl">
-            <Reveal as="h2" variant="up" className="text-3xl md:text-4xl font-bold text-[#01463A] leading-tight">
-              Pricing questions.
-            </Reveal>
-            <Reveal as="p" variant="fade" delay={100} className="mt-4 text-gray-600 text-sm leading-relaxed">
-              Common questions about how billing and tiers work at Atlas.
-            </Reveal>
-          </div>
+        <div className="mx-auto max-w-6xl">
+          <Reveal
+            as="div"
+            variant="up"
+            className="overflow-hidden rounded-3xl border border-[#058B74]/30 bg-[#01463A] text-white"
+          >
+            <div className="flex flex-col gap-8 p-8 sm:p-10 md:flex-row md:items-center md:justify-between">
+              <div className="max-w-2xl">
+                <p className="text-xs font-semibold tracking-widest uppercase text-[#0aa88a]">
+                  Enterprise
+                </p>
+                <h2 className="mt-2 text-2xl md:text-3xl font-bold leading-tight text-white">
+                  High volume or complex screening programs?
+                </h2>
+                <p className="mt-3 text-sm leading-relaxed text-white/80">
+                  For teams running checks at scale, we tailor a program to your
+                  needs — volume-based pricing, custom packages by role, ATS/API
+                  integration, and a dedicated compliance and account team. Every
+                  program is conducted in accordance with the FCRA and applicable
+                  state laws.
+                </p>
+                <ul className="mt-6 grid gap-x-6 gap-y-3 sm:grid-cols-2">
+                  {[
+                    "Volume-based pricing",
+                    "Custom check packages by role",
+                    "ATS & API integration",
+                    "Dedicated account & compliance team",
+                  ].map((f) => (
+                    <li key={f} className="flex items-start gap-3 text-sm text-white/90">
+                      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0aa88a" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0 mt-0.5">
+                        <path d="M5 12l5 5 9-11" />
+                      </svg>
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-          <div className="space-y-3">
-            {faqs.map((faq, i) => (
-              <Reveal
-                as="details"
-                key={faq.q}
-                variant="up"
-                delay={i * 80}
-                className="group rounded-2xl border border-gray-200 bg-white hover:border-[#058B74]/40 hover:shadow-md hover:shadow-[#058B74]/5 open:border-[#058B74]/40 open:shadow-md open:shadow-[#058B74]/5 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden"
-              >
-                <summary className="flex items-center justify-between gap-4 cursor-pointer list-none px-6 py-5 min-h-[44px] rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2">
-                  <span className="text-sm md:text-base font-semibold text-[#01463A] group-hover:text-[#058B74] group-open:text-[#058B74] transition-colors">
-                    {faq.q}
-                  </span>
-                  <span className="flex-shrink-0 w-9 h-9 rounded-xl bg-[#058B74]/10 text-[#058B74] flex items-center justify-center ring-1 ring-inset ring-[#058B74]/10 transition-all duration-300 group-open:rotate-45 group-open:bg-[#058B74] group-open:text-white group-open:ring-[#058B74]">
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                      <path d="M8 3v10M3 8h10" />
-                    </svg>
-                  </span>
-                </summary>
-                <div className="px-6 pb-5 -mt-1 text-sm text-gray-500 leading-relaxed">
-                  {faq.a}
-                </div>
-              </Reveal>
-            ))}
-          </div>
+              <div className="flex flex-col gap-3 md:w-56 md:flex-shrink-0">
+                <a
+                  href="/contact?plan=enterprise"
+                  className="inline-flex items-center justify-center w-full px-6 py-3 min-h-[44px] rounded-xl text-sm font-semibold bg-white text-[#01463A] transition-colors hover:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#01463A]"
+                >
+                  Talk to sales
+                </a>
+                <a
+                  href="/contact?topic=enterprise"
+                  className="inline-flex items-center justify-center w-full px-6 py-3 min-h-[44px] rounded-xl text-sm font-semibold border border-white/30 text-white transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#01463A]"
+                >
+                  Contact us
+                </a>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 

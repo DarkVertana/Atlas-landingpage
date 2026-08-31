@@ -122,8 +122,8 @@ export default function HeroSection() {
             gives the field depth. Deliberately soft and low-opacity so they
             never read as an AI gradient blob; they only warm the corners. */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
-          <div className="hero-mesh-a absolute -left-24 top-10 h-80 w-80 rounded-full bg-[#0aa88a]/10 blur-[150px]" />
-          <div className="hero-mesh-b absolute -right-20 top-4 h-80 w-80 rounded-full bg-[#3E92CC]/10 blur-[150px]" />
+          <div className="hero-mesh-a absolute -left-24 top-10 h-80 w-80 rounded-full bg-[#0aa88a]/10 blur-[80px]" />
+          <div className="hero-mesh-b absolute -right-20 top-4 h-80 w-80 rounded-full bg-[#3E92CC]/10 blur-[80px]" />
         </div>
 
         {/* Restored orbital rings — the cartographic "Atlas" circle motif that

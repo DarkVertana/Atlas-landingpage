@@ -70,25 +70,6 @@ const audiences: Audience[] = [
   },
 ];
 
-const faqs = [
-  {
-    q: "How long does the entire process take?",
-    a: "Your administrative work takes less than a minute. Once you submit the candidate details, the platform immediately sends the invitation. After the applicant completes their secure submission, most standard criminal checks and SSN traces return results within 24 hours. Complex county court searches or employment verifications may require up to three business days.",
-  },
-  {
-    q: "What exactly does the applicant see?",
-    a: "Candidates receive a secure access link via email. Clicking the link opens a mobile-optimized portal that guides them through reviewing the legally required disclosure forms, providing electronic consent, and entering their address history. Finally, they authenticate their identity by uploading a government-issued ID and taking a live selfie.",
-  },
-  {
-    q: "Who has access to the final report?",
-    a: "Only authorized personnel within your organization can view the completed background report. We protect all data using strict role-based access controls and enterprise-grade encryption. Atlas Screening never sells applicant data or shares it with unauthorized third parties.",
-  },
-  {
-    q: "What happens if a candidate disputes a finding?",
-    a: "We maintain a transparent, applicant-friendly dispute workflow. If a candidate believes a public record on their report is inaccurate, they can initiate a formal review directly with our compliance team. We investigate the claim promptly according to strict Fair Credit Reporting Act guidelines.",
-  },
-];
-
 export default function HowItWorksPage() {
   return (
     <main id="main" className="bg-white text-[#0F1B17]">
@@ -279,50 +260,6 @@ export default function HowItWorksPage() {
 
       {/* ── Numbers strip ── */}
       <NumbersStrip />
-
-      {/* ── Workflow FAQ ── */}
-      <section className="bg-white px-5 py-16 sm:px-6 sm:py-32">
-        <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
-          <div className="lg:sticky lg:top-28 lg:self-start">
-            <SectionHeader
-              eyebrow="Answers"
-              title="Questions about the flow."
-              intro={
-                <>
-                  The most common things hiring and leasing teams want to know before
-                  running their first check. Still stuck?{" "}
-                  <a href="/contact" className="font-semibold text-[#058B74] hover:underline">
-                    Get in touch
-                  </a>
-                  .
-                </>
-              }
-            />
-          </div>
-
-          <div className="space-y-3">
-            {faqs.map((faq, i) => (
-              <Reveal key={faq.q} delay={i * 60}>
-                <details className="group rounded-2xl border border-[#E4E9E6] bg-white transition-all duration-300 open:border-[#058B74]/40 open:shadow-md open:shadow-[#058B74]/5 hover:border-[#058B74]/40 hover:shadow-md hover:shadow-[#058B74]/5 [&_summary::-webkit-details-marker]:hidden">
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-2xl px-6 py-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2">
-                    <span className="text-sm font-semibold text-[#01463A] transition-colors group-hover:text-[#058B74] group-open:text-[#058B74] md:text-base">
-                      {faq.q}
-                    </span>
-                    <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-[#058B74]/10 text-[#058B74] ring-1 ring-inset ring-[#058B74]/10 transition-all duration-300 group-open:rotate-45 group-open:bg-[#058B74] group-open:text-white group-open:ring-[#058B74]">
-                      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                        <path d="M8 3v10M3 8h10" />
-                      </svg>
-                    </span>
-                  </summary>
-                  <div className="-mt-1 px-6 pb-5 text-sm leading-relaxed text-[#5B6B64]">
-                    {faq.a}
-                  </div>
-                </details>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ── Bottom CTA ── */}
       <CTASection

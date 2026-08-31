@@ -4,8 +4,13 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import MobileStaggeredMenu, { type StaggeredItem } from "./MobileStaggeredMenu";
+import dynamic from "next/dynamic";
+import { type StaggeredItem } from "./MobileStaggeredMenu";
 import { startScreeningHref } from "../lib/appUrl";
+
+// GSAP-powered mobile menu — only pulled in after the user opens the menu,
+// so GSAP never ships in the initial JS for every page.
+const MobileStaggeredMenu = dynamic(() => import("./MobileStaggeredMenu"), { ssr: false });
 
 const startHref = startScreeningHref();
 
@@ -15,7 +20,6 @@ const mobileMenuItems: StaggeredItem[] = [
   { label: "Services", link: "/services" },
   { label: "How it works", link: "/how-it-works" },
   { label: "Pricing", link: "/pricing" },
-  { label: "Tenant", link: "/tenant" },
   { label: "About", link: "/about" },
   { label: "Contact", link: "/contact" },
 ];
@@ -43,7 +47,6 @@ const servicesMenu = {
         { label: "Employment verification", href: "/services/employment-verification" },
         { label: "Global watchlist", href: "/services/global-watchlist" },
         { label: "Credit report", href: "/services/credit-report" },
-        { label: "Social media screening", href: "/services/social-media-screening" },
         { label: "See all services", href: "/services" },
       ],
     },
@@ -69,11 +72,6 @@ const howItWorksMenu = {
       title: "Platform walkthrough",
       items: [
         { label: "How Atlas Screening works", href: "/how-it-works", desc: "Your 11-step workflow as an interactive visual", icon: "workflow" },
-      ],
-    },
-    {
-      title: "Trust & compliance",
-      items: [
         { label: "Trust & compliance", href: "/trust", desc: "FCRA compliance, encrypted storage, audit logging", icon: "trust" },
       ],
     },
@@ -82,12 +80,6 @@ const howItWorksMenu = {
 
 const resourcesMenu = {
   sections: [
-    {
-      title: "Dedicated solutions",
-      items: [
-        { label: "Tenant screening", href: "/tenant", desc: "Screening built for landlords and property managers", icon: "tenant" },
-      ],
-    },
     {
       title: "Blog & educational content",
       items: [
@@ -147,7 +139,6 @@ const navLinks = [
   { label: "How it works", href: "#how-it-works", megaMenu: true },
   { label: "Resources", href: "#resources", megaMenu: true },
   { label: "Pricing", href: "#pricing", megaMenu: true },
-  { label: "Tenant", href: "/tenant" },
   { label: "About", href: "/about" },
 ];
 
@@ -156,6 +147,9 @@ export default function Header({ solid = false }: { solid?: boolean }) {
   const isHome = pathname === "/";
   const [scrolled, setScrolled] = useState(solid);
   const [menuOpen, setMenuOpen] = useState(false);
+  // Latches true on first open so the menu (and GSAP) mount lazily, but stay
+  // mounted afterwards so the close animation can play.
+  const [menuMounted, setMenuMounted] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const menuTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -309,7 +303,10 @@ export default function Header({ solid = false }: { solid?: boolean }) {
 
           {/* Mobile menu button */}
           <button
-            onClick={() => setMenuOpen(!menuOpen)}
+            onClick={() => {
+              setMenuMounted(true);
+              setMenuOpen((v) => !v);
+            }}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
             className={`md:hidden relative z-50 -m-2.5 flex h-11 w-11 items-center justify-center transition-all duration-500 ease-in-out ${
@@ -385,16 +382,6 @@ export default function Header({ solid = false }: { solid?: boolean }) {
                               <div className="min-w-0 flex-1">
                                 <div className="flex items-center gap-1.5 text-[13px] font-semibold text-[#01463A] transition-colors group-hover/item:text-[#058B74]">
                                   {item.label}
-                                  <svg
-                                    className="opacity-0 -translate-x-1 transition-all duration-150 group-hover/item:translate-x-0 group-hover/item:opacity-100"
-                                    width="12"
-                                    height="12"
-                                    viewBox="0 0 12 12"
-                                    fill="none"
-                                    aria-hidden
-                                  >
-                                    <path d="M2.5 6h6m0 0L6 3.5M8.5 6 6 8.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-                                  </svg>
                                 </div>
                                 {item.desc && (
                                   <p className="mt-0.5 text-[12px] leading-snug text-gray-500">
@@ -439,16 +426,18 @@ export default function Header({ solid = false }: { solid?: boolean }) {
         );
       })()}
 
-      {/* Mobile Menu — staggered reveal (mobile only) */}
-      <MobileStaggeredMenu
-        open={menuOpen}
-        onClose={() => setMenuOpen(false)}
-        items={mobileMenuItems}
-        ctaHref={startHref}
-        colors={["#0d8368", "#058B74", "#02543f"]}
-        panelColor="#01463A"
-        accentColor="#0aa88a"
-      />
+      {/* Mobile Menu — staggered reveal (mobile only), mounted on first open */}
+      {menuMounted && (
+        <MobileStaggeredMenu
+          open={menuOpen}
+          onClose={() => setMenuOpen(false)}
+          items={mobileMenuItems}
+          ctaHref={startHref}
+          colors={["#0d8368", "#058B74", "#02543f"]}
+          panelColor="#01463A"
+          accentColor="#0aa88a"
+        />
+      )}
     </>
   );
 }

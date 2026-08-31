@@ -45,24 +45,34 @@ export default function DotField({
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    // Hard cap on dot count: thousands of per-frame canvas fills freeze weak
+    // GPUs. If the requested spacing would exceed this, we widen the spacing.
+    const MAX_DOTS = 2600;
 
     let w = 0;
     let h = 0;
+    let step = dotSpacing;
     let dots: { x: number; y: number; tw: number }[] = [];
     const pointer = { x: -9999, y: -9999, active: false };
+    let rect = canvas.getBoundingClientRect(); // cached; refreshed on scroll/resize
     let raf = 0;
+    let running = false;
+    let visible = true;
     let t = 0;
 
     const build = () => {
-      const rect = canvas.getBoundingClientRect();
+      rect = canvas.getBoundingClientRect();
       w = rect.width;
       h = rect.height;
       canvas.width = Math.round(w * dpr);
       canvas.height = Math.round(h * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      // Widen spacing until the grid fits under the dot cap.
+      step = dotSpacing;
+      while (w > 0 && h > 0 && (w / step) * (h / step) > MAX_DOTS) step += 2;
       dots = [];
-      for (let y = dotSpacing / 2; y < h; y += dotSpacing) {
-        for (let x = dotSpacing / 2; x < w; x += dotSpacing) {
+      for (let y = step / 2; y < h; y += step) {
+        for (let x = step / 2; x < w; x += step) {
           dots.push({ x, y, tw: Math.random() * Math.PI * 2 });
         }
       }
@@ -112,11 +122,23 @@ export default function DotField({
         ctx.fillStyle = `rgba(${rgb},${alpha})`;
         ctx.fill();
       }
-      raf = requestAnimationFrame(draw);
+    };
+
+    const frame = () => {
+      draw();
+      raf = requestAnimationFrame(frame);
+    };
+    const start = () => {
+      if (running || reduced) return;
+      running = true;
+      raf = requestAnimationFrame(frame);
+    };
+    const stop = () => {
+      running = false;
+      cancelAnimationFrame(raf);
     };
 
     const onMove = (e: PointerEvent) => {
-      const rect = canvas.getBoundingClientRect();
       pointer.x = e.clientX - rect.left;
       pointer.y = e.clientY - rect.top;
       pointer.active =
@@ -128,24 +150,44 @@ export default function DotField({
     const onLeave = () => {
       pointer.active = false;
     };
+    // Keep the cached rect fresh as the page scrolls (cheap, passive).
+    const onScroll = () => {
+      rect = canvas.getBoundingClientRect();
+    };
 
     build();
     if (reduced) {
-      draw();
-      cancelAnimationFrame(raf); // one static frame
-    } else {
-      draw();
-      window.addEventListener("pointermove", onMove, { passive: true });
-      window.addEventListener("pointerleave", onLeave);
+      draw(); // one static frame, no loop
+      return () => {};
     }
 
-    const ro = new ResizeObserver(() => build());
+    window.addEventListener("pointermove", onMove, { passive: true });
+    window.addEventListener("pointerleave", onLeave);
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    // Only animate while the canvas is actually on screen.
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        visible = entry.isIntersecting;
+        if (visible) start();
+        else stop();
+      },
+      { rootMargin: "120px" }
+    );
+    io.observe(canvas);
+
+    const ro = new ResizeObserver(() => {
+      build();
+      if (visible) start();
+    });
     ro.observe(canvas);
 
     return () => {
-      cancelAnimationFrame(raf);
+      stop();
       window.removeEventListener("pointermove", onMove);
       window.removeEventListener("pointerleave", onLeave);
+      window.removeEventListener("scroll", onScroll);
+      io.disconnect();
       ro.disconnect();
     };
   }, [

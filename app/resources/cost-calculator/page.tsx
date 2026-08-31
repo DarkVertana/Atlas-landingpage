@@ -512,62 +512,6 @@ export default function CostCalculatorPage() {
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="bg-white py-14 sm:py-20 px-6">
-        <div className="mx-auto max-w-3xl">
-          <SectionHeader
-            className="mb-14"
-            eyebrow="Estimate questions"
-            title="Estimate questions."
-            intro="How the numbers are built, when discounts kick in, and what happens when applicants drop off."
-          />
-          <div className="space-y-3">
-            {[
-              {
-                q: "Is the estimate accurate?",
-                a: "Estimates assume every applicant completes their check. Since we only bill on completion, real-world spend is usually 5–15% lower than the number shown here.",
-              },
-              {
-                q: "Do I pay before the applicant finishes?",
-                a: "No. You&apos;re only billed after an applicant submits their information and the report is generated. Drop-offs cost you nothing.",
-              },
-              {
-                q: "When do volume discounts kick in?",
-                a: "Tiered discounts apply automatically around 200 checks/month. For enterprise volume or custom pricing, our sales team will put together a tailored quote.",
-              },
-              {
-                q: "Can I change tiers or add-ons later?",
-                a: "Yes. Pricing is per check — switch tiers or toggle add-ons at any time. No contract amendment required.",
-              },
-              {
-                q: "Do add-ons stack on any tier?",
-                a: "Yes. Every add-on works with Basic, Standard, or Premium. Mix and match freely, and each add-on is billed only when an applicant completes it.",
-              },
-            ].map((faq, i) => (
-              <Reveal key={faq.q} delay={i * 80}>
-              <details
-                className="group rounded-3xl border border-gray-200 bg-white hover:border-[#058B74]/40 hover:shadow-md hover:shadow-[#058B74]/5 open:border-[#058B74]/40 open:shadow-md open:shadow-[#058B74]/5 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden"
-              >
-                <summary className="flex items-center justify-between gap-4 cursor-pointer list-none px-6 py-5">
-                  <span className="text-sm md:text-base font-semibold text-[#01463A] group-hover:text-[#058B74] group-open:text-[#058B74] transition-colors">
-                    {faq.q}
-                  </span>
-                  <span className="flex-shrink-0 w-9 h-9 rounded-xl bg-[#058B74]/10 text-[#058B74] flex items-center justify-center ring-1 ring-inset ring-[#058B74]/10 transition-all duration-300 group-open:rotate-45 group-open:bg-[#058B74] group-open:text-white group-open:ring-[#058B74]">
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                      <path d="M8 3v10M3 8h10" />
-                    </svg>
-                  </span>
-                </summary>
-                <div className="px-6 pb-5 -mt-1 text-sm text-gray-500 leading-relaxed">
-                  {faq.a.replace(/&apos;/g, "'")}
-                </div>
-              </details>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Bottom CTA */}
       <CTASection
         title={

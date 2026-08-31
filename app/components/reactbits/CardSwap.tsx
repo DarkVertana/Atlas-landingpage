@@ -135,28 +135,57 @@ export default function CardSwap({
       });
     };
 
-    intervalRef.current = window.setInterval(swap, delay);
-
-    let el: HTMLDivElement | null = null;
+    let onScreen = true;
+    let hovering = false;
+    const startInterval = () => {
+      clearInterval(intervalRef.current);
+      intervalRef.current = window.setInterval(swap, delay);
+    };
     const pause = () => {
       tlRef.current?.pause();
       clearInterval(intervalRef.current);
     };
     const resume = () => {
+      // Only resume when the deck is both hovered-off and on screen.
+      if (hovering || !onScreen) return;
       tlRef.current?.play();
-      intervalRef.current = window.setInterval(swap, delay);
+      startInterval();
+    };
+
+    startInterval();
+
+    let el: HTMLDivElement | null = null;
+    const onEnter = () => {
+      hovering = true;
+      pause();
+    };
+    const onLeave = () => {
+      hovering = false;
+      resume();
     };
     if (pauseOnHover && container.current) {
       el = container.current;
-      el.addEventListener("mouseenter", pause);
-      el.addEventListener("mouseleave", resume);
+      el.addEventListener("mouseenter", onEnter);
+      el.addEventListener("mouseleave", onLeave);
     }
+
+    // Stop the interval + timeline entirely when scrolled out of view.
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        onScreen = entry.isIntersecting;
+        if (onScreen) resume();
+        else pause();
+      },
+      { rootMargin: "120px" }
+    );
+    if (container.current) io.observe(container.current);
 
     return () => {
       clearInterval(intervalRef.current);
+      io.disconnect();
       if (el) {
-        el.removeEventListener("mouseenter", pause);
-        el.removeEventListener("mouseleave", resume);
+        el.removeEventListener("mouseenter", onEnter);
+        el.removeEventListener("mouseleave", onLeave);
       }
     };
   }, [cardDistance, verticalDistance, delay, pauseOnHover, skewAmount, refs, onFront, cfg.durDrop, cfg.durMove, cfg.durReturn, cfg.ease, cfg.promoteOverlap, cfg.returnDelay]);

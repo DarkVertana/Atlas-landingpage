@@ -6,29 +6,6 @@ import CTASection from "../components/CTASection";
 import { services, serviceGroups, type Service } from "../lib/services";
 import { startScreeningHref } from "../lib/appUrl";
 
-const faqs = [
-  {
-    q: "Which service should I start with?",
-    a: "Most teams begin with the Standard criminal tier (which bundles SSN trace, national criminal, sex offender registry, and county search) plus employment verification. Use our cost calculator if you'd like a tailored recommendation.",
-  },
-  {
-    q: "Can I mix and match services?",
-    a: "Yes. Every core tier pairs with any combination of add-ons. You only pay per add-on when an applicant completes the check — no subscription, no commitment.",
-  },
-  {
-    q: "Are all services FCRA compliant?",
-    a: "Yes. Every Atlas service — including social media inquiry — enforces FCRA consent, disclosures, and adverse action workflows by default. Non-compliant use is not possible through the platform.",
-  },
-  {
-    q: "How fast are results?",
-    a: "SSN trace, national criminal, MVR, and watchlist checks typically return database results in minutes. County criminal searches usually clear the same business day. Employment and education verifications take 1–3 business days depending on source responsiveness.",
-  },
-  {
-    q: "What does 'per check' pricing include?",
-    a: "The listed price covers a single applicant running a single check. Bundle pricing drops the effective per-check cost and is available at any volume — talk to sales for a tailored quote.",
-  },
-];
-
 function primaryCtaFor(s: Service): { label: string; href: string; external: boolean } {
   if (s.start) {
     return { label: "Start screening", href: startScreeningHref(s.start), external: true };
@@ -336,43 +313,6 @@ export default function ServicesPage() {
                     <h3 className="text-sm font-semibold text-[#01463A]">{b.title}</h3>
                   </div>
                   <p className="mt-2 text-xs text-gray-500 leading-relaxed">{b.desc}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="bg-white py-14 sm:py-20 px-6">
-        <div className="mx-auto max-w-3xl">
-          <SectionHeader
-            className="mb-14"
-            eyebrow="FAQ"
-            title="Service questions"
-            intro="What teams ask most before running their first check or adding an add-on to an existing package."
-          />
-
-          <div className="space-y-3">
-            {faqs.map((faq, i) => (
-              <Reveal
-                as="details"
-                key={faq.q}
-                delay={i * 80}
-                className="group block rounded-3xl border border-gray-200 bg-white hover:border-gray-300 hover:shadow-md hover:shadow-[#058B74]/5 open:border-[#058B74]/40 open:shadow-md open:shadow-[#058B74]/5 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden"
-              >
-                <summary className="flex items-center justify-between gap-4 cursor-pointer list-none px-6 py-5 rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2">
-                  <span className="text-sm md:text-base font-semibold text-[#01463A] group-hover:text-[#058B74] group-open:text-[#058B74] transition-colors">
-                    {faq.q}
-                  </span>
-                  <span className="flex-shrink-0 w-9 h-9 rounded-xl bg-[#058B74]/10 text-[#058B74] flex items-center justify-center ring-1 ring-inset ring-[#058B74]/10 transition-all duration-300 group-open:rotate-45 group-open:bg-[#058B74] group-open:text-white group-open:ring-[#058B74]">
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                      <path d="M8 3v10M3 8h10" />
-                    </svg>
-                  </span>
-                </summary>
-                <div className="px-6 pb-5 -mt-1 text-sm text-gray-500 leading-relaxed">
-                  {faq.a}
                 </div>
               </Reveal>
             ))}

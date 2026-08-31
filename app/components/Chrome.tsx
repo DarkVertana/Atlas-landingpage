@@ -1,9 +1,13 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import dynamic from "next/dynamic";
 import Header from "./Header";
 import Footer from "./Footer";
-import ChatWidget from "./ChatWidget";
+
+// The chat widget is interaction-only and below the fold — defer it so it
+// never blocks first paint or hydration on low-end devices.
+const ChatWidget = dynamic(() => import("./ChatWidget"), { ssr: false });
 
 // Wraps the marketing site chrome (header, footer, chat) around page content,
 // but hides all of it inside the admin panel, which has its own shell.

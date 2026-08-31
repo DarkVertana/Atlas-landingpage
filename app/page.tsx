@@ -1,12 +1,15 @@
+import dynamic from "next/dynamic";
 import HeroSection from "./components/HeroSection";
 // import TrustedBySection from "./components/TrustedBySection";
 import AboutIntro from "./components/AboutIntro";
 import HowItWorks from "./components/HowItWorks";
 import Industries from "./components/Industries";
-import AIFeatures from "./components/AIFeatures";
 import NumbersStrip from "./components/NumbersStrip";
-import FAQ from "./components/FAQ";
 import CTASection from "./components/CTASection";
+
+// Below-the-fold and animation-heavy (GSAP + canvas) — code-split so it
+// stays out of the initial page bundle.
+const AIFeatures = dynamic(() => import("./components/AIFeatures"));
 
 export default function Home() {
   return (
@@ -19,7 +22,6 @@ export default function Home() {
       <AIFeatures />
       <NumbersStrip />
 
-      <FAQ />
       <CTASection />
     </div>
   );

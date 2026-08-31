@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import Reveal from "../components/Reveal";
 import CTASection from "../components/CTASection";
@@ -98,6 +98,29 @@ export default function TenantPage() {
     selected.size ? `&addons=${[...selected].join(",")}` : ""
   }`;
 
+  // Full-bleed hero video: pause it whenever it scrolls out of view (or under
+  // reduced-motion) so it isn't decoding continuously and taxing weak GPUs.
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) {
+      v.removeAttribute("autoplay");
+      v.pause();
+      return;
+    }
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) v.play().catch(() => {});
+        else v.pause();
+      },
+      { threshold: 0.05 }
+    );
+    io.observe(v);
+    return () => io.disconnect();
+  }, []);
+
   return (
     <div className="min-h-screen scroll-smooth bg-[#F3F4EC] text-[#2b352f]">
       <TenantHeader startHref={startHref} />
@@ -106,12 +129,13 @@ export default function TenantPage() {
       <section className="relative w-full overflow-hidden">
         {/* Full-bleed video */}
         <video
+          ref={videoRef}
           className="absolute inset-0 h-full w-full object-cover"
           autoPlay
           muted
           loop
           playsInline
-          preload="auto"
+          preload="metadata"
           poster="/assets/images/Tenant-screening.webp"
         >
           <source src="/assets/nature_mp4.mp4" type="video/mp4" />

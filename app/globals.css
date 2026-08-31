@@ -281,7 +281,7 @@ body {
     radial-gradient(55% 85% at 55% 10%, rgba(56, 182, 255, 0.45), transparent 62%),
     radial-gradient(60% 90% at 85% 0%, rgba(143, 123, 255, 0.4), transparent 60%);
   background-size: 200% 200%;
-  filter: blur(24px);
+  filter: blur(16px);
   animation: auroraDrift 26s ease-in-out infinite;
   isolation: isolate;
 }
@@ -304,7 +304,7 @@ body {
   );
   -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 32%, transparent 82%);
   mask-image: linear-gradient(to bottom, #000 0%, #000 32%, transparent 82%);
-  filter: blur(34px);
+  filter: blur(20px);
   mix-blend-mode: screen;
   transform-origin: top center;
   animation: auroraCurtain 19s ease-in-out infinite;
@@ -313,7 +313,7 @@ body {
   animation-duration: 28s;
   animation-direction: reverse;
   opacity: 0.7;
-  filter: blur(52px) hue-rotate(20deg);
+  filter: blur(26px) hue-rotate(20deg);
 }
 @keyframes auroraDrift {
   0%, 100% { background-position: 0% 0%; transform: translate3d(0, 0, 0) scale(1.05); }
