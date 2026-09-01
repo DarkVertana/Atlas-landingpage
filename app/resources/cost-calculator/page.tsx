@@ -116,7 +116,7 @@ export default function CostCalculatorPage() {
             as="h1"
             eyebrow="Interactive tool"
             title="Screening cost calculator."
-            intro="Estimate your annual screening spend in seconds — pick a tier, add what you need, and see totals update live."
+            intro="Estimate your annual screening spend in seconds: pick a tier, add what you need, and see totals update live."
           />
         </div>
       </section>

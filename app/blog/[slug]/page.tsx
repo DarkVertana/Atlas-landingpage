@@ -17,11 +17,11 @@ export async function generateMetadata({
   const post = await getPostBySlug(slug);
 
   if (!post) {
-    return { title: "Post not found — Atlas Screening" };
+    return { title: "Post not found | Atlas Screening" };
   }
 
   return {
-    title: `${post.title} — Atlas Screening`,
+    title: `${post.title} | Atlas Screening`,
     description: post.excerpt,
     alternates: {
       canonical: `/blog/${post.slug}`,
@@ -99,9 +99,8 @@ export default async function BlogPostPage({
           <Reveal
             as="span"
             delay={80}
-            className="mt-8 inline-flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[0.24em] text-white/70"
+            className="mt-8 inline-flex items-center text-[11px] font-semibold uppercase tracking-[0.24em] text-white/70"
           >
-            <span className="h-px w-8 bg-white/30" />
             {post.category}
           </Reveal>
 

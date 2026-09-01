@@ -11,6 +11,9 @@ type Props = {
   align?: "left" | "center";
   tone?: "dark" | "light"; // light = for dark backgrounds (white text)
   className?: string;
+  /** Extra classes appended to the intro paragraph (e.g. to widen/enlarge it
+      for a specific section). Use `!` utilities to override the defaults. */
+  introClassName?: string;
   as?: "h1" | "h2"; // page heroes pass "h1" so every route has exactly one H1
 };
 
@@ -21,6 +24,7 @@ export default function SectionHeader({
   align = "left",
   tone = "dark",
   className = "",
+  introClassName = "",
   as = "h2",
 }: Props) {
   const centered = align === "center";
@@ -36,14 +40,13 @@ export default function SectionHeader({
           centered ? "justify-center" : ""
         }`}
       >
-        {!centered && <span className="h-px w-8 bg-[#058B74]/40" />}
         {eyebrow}
       </Reveal>
 
       <Reveal
         as={as}
         delay={80}
-        className={`mt-5 text-[2.25rem] font-semibold leading-[1.04] md:text-[3.25rem] ${heading}`}
+        className={`mt-5 text-balance text-[2.25rem] font-semibold leading-[1.04] md:text-[3.25rem] ${heading}`}
       >
         {title}
       </Reveal>
@@ -52,7 +55,7 @@ export default function SectionHeader({
         <Reveal
           as="p"
           delay={160}
-          className={`mt-6 text-[16px] leading-relaxed ${body} ${centered ? "mx-auto max-w-xl" : "max-w-xl"}`}
+          className={`mt-6 text-balance text-lg leading-relaxed sm:text-xl md:text-[1.375rem] ${body} ${centered ? "mx-auto max-w-2xl" : "max-w-2xl"} ${introClassName}`}
         >
           {intro}
         </Reveal>

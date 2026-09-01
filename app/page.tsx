@@ -4,7 +4,6 @@ import HeroSection from "./components/HeroSection";
 import AboutIntro from "./components/AboutIntro";
 import HowItWorks from "./components/HowItWorks";
 import Industries from "./components/Industries";
-import NumbersStrip from "./components/NumbersStrip";
 import CTASection from "./components/CTASection";
 
 // Below-the-fold and animation-heavy (GSAP + canvas) — code-split so it
@@ -20,7 +19,6 @@ export default function Home() {
       <Industries />
       <HowItWorks />
       <AIFeatures />
-      <NumbersStrip />
 
       <CTASection />
     </main>

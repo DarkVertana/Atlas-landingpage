@@ -66,7 +66,7 @@ type AddOn = { id: string; name: string; price: number; desc: string };
 
 const ADDONS: AddOn[] = [
   { id: "identity-protect", name: "Identity Protection", price: 2.95, desc: "Extra applicant-identity assurance for the screening." },
-  { id: "mvr", name: "Motor vehicle record", price: 9.99, desc: "State driving history — useful for on-site or fleet roles." },
+  { id: "mvr", name: "Motor vehicle record", price: 9.99, desc: "State driving history, useful for on-site or fleet roles." },
   { id: "rental-history", name: "Rental history verification", price: 9.99, desc: "Confirm prior landlord references and payment history." },
   { id: "co-applicant", name: "Additional co-applicant", price: 19.99, desc: "Screen a roommate, spouse, or guarantor on the same lease." },
 ];
@@ -155,7 +155,7 @@ export default function TenantPage() {
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-[#4a564e] md:text-lg">
             Smarter tenant screening for landlords and property managers.
-            Criminal, credit, eviction, identity, and income — one
+            Criminal, credit, eviction, identity, and income: one
             applicant-guided report, built for residential leasing.
           </p>
 
@@ -175,7 +175,7 @@ export default function TenantPage() {
           </div>
 
           <p className="mt-7 text-sm text-[#5c675f]">
-            Pay as you go from <span className="font-semibold text-[#01463A]">$24.99</span> per screening — no
+            Pay as you go from <span className="font-semibold text-[#01463A]">$24.99</span> per screening. No
             subscriptions, billed only when an applicant completes.
           </p>
         </div>
@@ -212,7 +212,7 @@ export default function TenantPage() {
             </Reveal>
             <Reveal as="p" variant="fade" delay={160} className="mt-4 text-sm leading-relaxed text-[#5c675f]">
               Choose a base package, then stack optional add-ons. Your running
-              total updates live — you&apos;re only billed when an applicant
+              total updates live. You&apos;re only billed when an applicant
               completes the screening.
             </Reveal>
           </div>
@@ -358,7 +358,7 @@ export default function TenantPage() {
       <CTASection
         eyebrow="Get started today"
         title={<>Lease with<br className="hidden lg:block" /> confidence.</>}
-        description="Criminal, credit, eviction, identity, and income — one compliant report, with fair-housing rules built in."
+        description="Criminal, credit, eviction, identity, and income in one compliant report, with fair-housing rules baked in."
         primary={{ label: "Start a screening", href: startHref }}
         secondary={{ label: "Talk to us", href: "/contact?topic=sales&product=tenant" }}
       />
@@ -416,8 +416,8 @@ function TenantFooter() {
         Atlas Screening is a Consumer Reporting Agency. Tenant reports are furnished in
         accordance with the Fair Credit Reporting Act (FCRA) and applicable state and
         local housing laws. Database results can return quickly; the full verified
-        report may take longer. Housing decisions are made by the landlord, not Atlas —
-        pre-adverse and adverse-action notices, and the dispute process
+        report may take longer. Housing decisions are made by the landlord, not Atlas.
+        Pre-adverse and adverse-action notices, and the dispute process
         (compliance@atlasscreening.com), apply. Screening requires a permissible purpose,
         applicant disclosure, and written authorization.
       </p>

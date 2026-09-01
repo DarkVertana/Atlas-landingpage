@@ -44,6 +44,10 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
+  /* Prevent typographic orphans site-wide: a lone last word never wraps onto
+     its own line. Inherits to all body copy; headings keep `text-wrap: balance`
+     via their own rule below, which wins as it sits directly on h1/h2/h3. */
+  text-wrap: pretty;
 }
 
 /* Headings use the Bricolage display face with tightened tracking + balanced

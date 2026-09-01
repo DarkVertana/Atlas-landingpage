@@ -5,18 +5,19 @@ import Reveal from "../../components/Reveal";
 import ServiceHero from "../../components/ui/ServiceHero";
 import ProductShowcase from "../../components/ProductShowcase";
 import CourtDepthStack from "./CourtDepthStack";
+import ScreeningsMockup from "./ScreeningsMockup";
 import ServiceJsonLd from "../../components/ServiceJsonLd";
 
 export const metadata: Metadata = {
   title: "Criminal Background Checks | Atlas Screening",
   description:
-    "FCRA-compliant criminal background checks — national, county, state, and federal records in one report. Basic, Standard, and Premium tiers with transparent pricing.",
+    "FCRA-compliant criminal background checks covering national, county, state, and federal records in one report. Basic, Standard, and Premium tiers with transparent pricing.",
 };
 
 const faqs = [
   {
     q: "How far back do criminal checks go?",
-    a: "The FCRA caps most non-conviction reporting at seven years. Convictions can be reported for longer depending on state law and the role's salary threshold — Atlas applies the correct lookback automatically.",
+    a: "The FCRA caps most non-conviction reporting at seven years. Convictions can be reported for longer depending on state law and the role's salary threshold. Atlas applies the correct lookback automatically.",
   },
   {
     q: "What's the difference between national and county search?",
@@ -24,7 +25,7 @@ const faqs = [
   },
   {
     q: "Do you cover federal criminal records?",
-    a: "Yes. Premium tier includes all 94 U.S. federal district courts — important for fraud, trafficking, and white-collar roles where state courts won't have the record.",
+    a: "Yes. Premium tier includes all 94 U.S. federal district courts, important for fraud, trafficking, and white-collar roles where state courts won't have the record.",
   },
   {
     q: "How are disputes handled?",
@@ -32,7 +33,7 @@ const faqs = [
   },
   {
     q: "Can I run a check without applicant consent?",
-    a: "No — and you shouldn't. FCRA requires written consent before any consumer report is ordered. Atlas collects and stores signed consent as part of the intake flow.",
+    a: "No, and you shouldn't. FCRA requires written consent before any consumer report is ordered. Atlas collects and stores signed consent as part of the intake flow.",
   },
 ];
 
@@ -41,17 +42,15 @@ export default function CriminalBackgroundChecksPage() {
     <main id="main" className="bg-white text-[#01463A]">
       <ServiceJsonLd
         name="Criminal Background Checks"
-        description="FCRA-compliant criminal background checks — national, county, state, and federal records in one report."
+        description="FCRA-compliant criminal background checks covering national, county, state, and federal records in one report."
         faqs={faqs}
         path="/services/criminal-background-checks"
       />
       <ServiceHero
         eyebrow="Criminal background"
         title="Criminal background checks that hold up in court."
-        description="National, county, state, and federal records in one FCRA-compliant report. Choose the tier that fits your role — upgrade later without re-onboarding candidates."
-        steps={["National", "State", "County", "Federal"]}
+        description="National, county, state, and federal records in one FCRA-compliant report. Choose the tier that fits your role, then upgrade later without re-onboarding candidates."
         image="/assets/services/criminal-background-checks.webp"
-        start={{ service: "criminal-background-checks" }}
       />
 
       {/* What's included — court-depth stack */}
@@ -61,19 +60,17 @@ export default function CriminalBackgroundChecksPage() {
         eyebrow="In the product"
         title="Every search,"
         highlight="tracked to disposition."
-        description="Order county, state, and federal searches in one flow, then watch each jurisdiction clear in real time — no phone calls, no chasing courts."
+        description="Order county, state, and federal searches in one flow, then watch each jurisdiction clear in real time. No phone calls, no chasing courts."
         bullets={[
           "Live status for every court searched",
           "FCRA & EEOC filters applied automatically",
+          "County, state, and federal searches in one order",
+          "Automatic alerts the moment a report is ready",
           "Downloadable, adjudication-ready reports",
+          "Full audit trail for every dispute and correction",
         ]}
-        image="/assets/app/screenings.webp"
-        imageAlt="Atlas Screening criminal check dashboard"
-        badges={[
-          { label: "Criminal record — Clear", tone: "clear", position: "-top-4 -left-4" },
-          { label: "County court verified", tone: "info", position: "top-1/2 -right-5" },
-          { label: "Report ready", tone: "clear", position: "-bottom-4 left-10" },
-        ]}
+        mockup={<ScreeningsMockup />}
+        wideMedia
       />
 
       <ServicePricing />

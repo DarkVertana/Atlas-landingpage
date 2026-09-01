@@ -1,4 +1,3 @@
-import Link from "next/link";
 import type { ReactNode } from "react";
 import Reveal from "./Reveal";
 import CTASection from "./CTASection";
@@ -84,24 +83,6 @@ export default function ServiceDetail({
             <span className="text-xs text-white/70">{priceUnit}</span>
           </Reveal>
         )}
-
-        <Reveal delay={280} className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <Link
-            href={primaryCta.href}
-            className="inline-flex items-center gap-2 bg-white text-[#01463A] px-5 py-3 min-h-[44px] rounded-xl text-sm font-semibold hover:bg-white/90 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#01463A]"
-          >
-            {primaryCta.label}
-            <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M5 12h14M13 5l7 7-7 7" />
-            </svg>
-          </Link>
-          <Link
-            href={secondaryCta.href}
-            className="inline-flex items-center gap-2 border border-white/30 text-white px-5 py-3 min-h-[44px] rounded-xl text-sm font-semibold hover:bg-white/10 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#01463A]"
-          >
-            {secondaryCta.label}
-          </Link>
-        </Reveal>
       </ServiceHero>
 
       <FeatureGrid title={includedHeading} intro={includedSubheading} features={features} />
@@ -119,21 +100,35 @@ export default function ServiceDetail({
               </h2>
             </div>
 
-            <ol className="divide-y divide-gray-200 border-y border-gray-200">
+            {/* Horizontal, map-style route: numbered stops joined by a
+                connector line with a direction arrow, label + copy beneath each.
+                Stacks vertically on small screens. */}
+            <ol className="flex flex-col gap-10 md:flex-row md:items-start md:gap-0">
               {steps.map((s, i) => (
                 <Reveal
                   as="li"
                   key={s.n}
                   delay={i * 90}
-                  className="flex items-start gap-5 py-6"
+                  className="relative flex flex-1 flex-col items-center px-2 text-center"
                 >
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[#058B74] text-white text-sm font-bold flex items-center justify-center">
+                  {i < steps.length - 1 && (
+                    <span
+                      aria-hidden="true"
+                      className="pointer-events-none absolute left-1/2 top-7 hidden h-[2px] w-full bg-[#058B74]/25 md:block"
+                    >
+                      <span className="absolute left-1/2 top-1/2 flex h-5 w-5 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-[#058B74]">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M5 12h14M13 5l7 7-7 7" />
+                        </svg>
+                      </span>
+                    </span>
+                  )}
+
+                  <span className="relative z-10 flex h-14 w-14 items-center justify-center rounded-full border-2 border-[#058B74] bg-white text-lg font-bold text-[#058B74] shadow-sm">
                     {s.n}
                   </span>
-                  <div>
-                    <h3 className="text-base font-semibold text-[#01463A]">{s.t}</h3>
-                    <p className="mt-1 text-sm text-gray-600 leading-relaxed">{s.d}</p>
-                  </div>
+                  <h3 className="mt-5 text-base font-semibold text-[#01463A]">{s.t}</h3>
+                  <p className="mt-1.5 max-w-[15rem] text-sm leading-relaxed text-gray-600">{s.d}</p>
                 </Reveal>
               ))}
             </ol>

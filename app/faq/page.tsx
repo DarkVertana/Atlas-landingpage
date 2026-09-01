@@ -243,34 +243,6 @@ export default function FAQPage() {
         </div>
       </section>
 
-      {/* Contact callout */}
-      <section className="bg-white pb-20 px-6">
-        <div className="mx-auto max-w-3xl">
-          <Reveal as="div" variant="scale" delay={100} className="rounded-2xl border border-gray-200 bg-gray-50/60 p-8 md:p-10 text-center">
-            <Reveal as="h2" variant="up" className="text-xl md:text-2xl font-bold text-[#01463A]">
-              Didn&apos;t find what you were looking for?
-            </Reveal>
-            <Reveal as="p" variant="fade" delay={100} className="mt-3 text-sm text-gray-600 max-w-lg mx-auto leading-relaxed">
-              Reach out to our team and we&apos;ll get back to you as soon as possible.
-            </Reveal>
-            <Reveal as="div" variant="fade" delay={200} className="mt-6 flex flex-wrap justify-center gap-3">
-              <a
-                href="/contact"
-                className="inline-flex items-center gap-2 bg-[#01463A] text-white px-6 py-3 rounded-xl text-sm font-semibold hover:bg-[#058B74] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2"
-              >
-                Contact support
-              </a>
-              <a
-                href="mailto:contact@atlasscreening.com"
-                className="inline-flex items-center border border-gray-200 text-[#01463A] px-6 py-3 rounded-xl text-sm font-semibold hover:bg-white hover:border-[#058B74]/40 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2"
-              >
-                contact@atlasscreening.com
-              </a>
-            </Reveal>
-          </Reveal>
-        </div>
-      </section>
-
     </main>
   );
 }

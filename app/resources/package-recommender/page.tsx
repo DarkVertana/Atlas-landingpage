@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import Reveal from "../../components/Reveal";
 import SectionHeader from "../../components/ui/SectionHeader";
 import CTASection from "../../components/CTASection";
@@ -26,6 +27,26 @@ const tierIncludes: Record<string, string[]> = {
   ],
 };
 
+// A distinct line icon per included item (no surrounding circle).
+const iconSvg = (paths: React.ReactNode) => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+    {paths}
+  </svg>
+);
+
+const includeIcons: Record<string, React.ReactNode> = {
+  "SSN trace & identity verification": iconSvg(<><rect x="3" y="5" width="18" height="14" rx="2" /><circle cx="9" cy="12" r="2" /><path d="M14 10h4M14 14h4" /></>),
+  "National criminal database search": iconSvg(<><ellipse cx="12" cy="6" rx="8" ry="3" /><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6" /></>),
+  "Sex offender registry check": iconSvg(<><path d="M12 3l9 4v5c0 5-3.5 8-9 9-5.5-1-9-4-9-9V7l9-4z" /><path d="M12 8v4M12 16h.01" /></>),
+  "County criminal court search": iconSvg(<><path d="M3 21h18M5 21V10M19 21V10M4 10l8-5 8 5M9 21v-6h6v6" /></>),
+  "Motor vehicle records (MVR)": iconSvg(<><path d="M5 13l1.5-4.5A2 2 0 018.4 7h7.2a2 2 0 011.9 1.5L19 13M5 13h14v4H5zM7 17v2M17 17v2" /><circle cx="7.5" cy="15" r=".8" /><circle cx="16.5" cy="15" r=".8" /></>),
+  "Federal criminal search": iconSvg(<><path d="M3 21h18M4 21V10h16v11M12 3L4 8h16l-8-5zM8 21v-7M12 21v-7M16 21v-7" /></>),
+  "Employment & education verification": iconSvg(<><rect x="3" y="7" width="18" height="13" rx="2" /><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2M3 12h18" /></>),
+  "Global watchlist screening": iconSvg(<><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18" /></>),
+  "Everything in Basic": iconSvg(<><path d="M12 3l9 5-9 5-9-5 9-5z" /><path d="M3 13l9 5 9-5" /></>),
+  "Everything in Standard": iconSvg(<><path d="M12 3l9 5-9 5-9-5 9-5z" /><path d="M3 13l9 5 9-5" /></>),
+};
+
 const addOnLabels: Record<string, string> = {
   mvr: "Motor vehicle records",
   drug: "Drug screening",
@@ -35,6 +56,17 @@ const addOnLabels: Record<string, string> = {
   tenant: "Tenant screening",
   watchlist: "Global watchlist",
   social: "Social media inquiry",
+};
+
+const addOnIcons: Record<string, React.ReactNode> = {
+  mvr: iconSvg(<><path d="M5 13l1.5-4.5A2 2 0 018.4 7h7.2a2 2 0 011.9 1.5L19 13M5 13h14v4H5zM7 17v2M17 17v2" /><circle cx="7.5" cy="15" r=".8" /><circle cx="16.5" cy="15" r=".8" /></>),
+  drug: iconSvg(<><path d="M9 3h6M10 3v4l-5 9a3 3 0 002.7 4.3h8.6A3 3 0 0019 16l-5-9V3" /><path d="M6.5 14h11" /></>),
+  employment: iconSvg(<><rect x="3" y="7" width="18" height="13" rx="2" /><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2M3 12h18" /></>),
+  education: iconSvg(<><path d="M12 4L2 9l10 5 10-5-10-5z" /><path d="M6 11v5c0 1 3 2.5 6 2.5s6-1.5 6-2.5v-5" /></>),
+  credit: iconSvg(<><rect x="2" y="5" width="20" height="14" rx="2" /><path d="M2 10h20M6 15h4" /></>),
+  tenant: iconSvg(<><path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-4v-6H8v6H4a1 1 0 01-1-1v-9z" /></>),
+  watchlist: iconSvg(<><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18" /></>),
+  social: iconSvg(<><circle cx="18" cy="5" r="3" /><circle cx="6" cy="12" r="3" /><circle cx="18" cy="19" r="3" /><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4" /></>),
 };
 
 type Industry =
@@ -102,7 +134,7 @@ function recommendPackage(industry: Industry, role: Role, volume: Volume) {
       tier: "Premium",
       badge: "Compliance-heavy roles",
       reason:
-        "Regulated industries and fiduciary roles benefit from Premium — federal criminal, employment + education verification, and watchlist screening by default.",
+        "Regulated industries and fiduciary roles benefit from Premium: federal criminal, employment + education verification, and watchlist screening by default.",
       addOns: ["credit", "watchlist"],
     };
   }
@@ -120,7 +152,7 @@ function recommendPackage(industry: Industry, role: Role, volume: Volume) {
       tier: "Premium",
       badge: "Built for credentialed roles",
       reason:
-        "Education roles pair Premium's education verification with federal criminal searches — ideal for instructors and credentialed staff.",
+        "Education roles pair Premium's education verification with federal criminal searches, ideal for instructors and credentialed staff.",
       addOns: ["education"],
     };
   }
@@ -138,7 +170,7 @@ function recommendPackage(industry: Industry, role: Role, volume: Volume) {
       tier: "Basic",
       badge: "Great starting point",
       reason:
-        "Basic covers identity and national criminal databases at the lowest per-report cost — a fit for most entry-level hiring.",
+        "Basic covers identity and national criminal databases at the lowest per-report cost, a fit for most entry-level hiring.",
       addOns: [],
     };
   }
@@ -146,7 +178,7 @@ function recommendPackage(industry: Industry, role: Role, volume: Volume) {
     tier: "Standard",
     badge: "Most teams start here",
     reason:
-      "Standard balances county criminal searches with identity and MVR coverage — a fit for most professional hires.",
+      "Standard balances county criminal searches with identity and MVR coverage, a fit for most professional hires.",
     addOns: ["social"],
   };
 }
@@ -190,7 +222,7 @@ export default function PackageRecommenderPage() {
             as="h1"
             eyebrow="Interactive tool"
             title="Package recommender."
-            intro="Tell us about your industry, the roles you hire, and your volume — we'll point you to the Atlas package that fits best."
+            intro="Tell us about your industry, the roles you hire, and your volume. We'll point you to the Atlas package that fits best."
           />
         </div>
       </section>
@@ -241,14 +273,7 @@ export default function PackageRecommenderPage() {
               <div className="absolute -top-24 -right-24 w-64 h-64 rounded-full bg-[#058B74]/30 blur-3xl pointer-events-none" />
 
               <div aria-live="polite" className="relative">
-                <div className="flex items-center justify-between gap-3">
-                  <p className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-widest text-white/50">
-                    <span className="relative flex h-1.5 w-1.5">
-                      <span className="absolute inline-flex h-full w-full rounded-full bg-[#0aa88a] opacity-75 animate-ping" />
-                      <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#0aa88a]" />
-                    </span>
-                    Updates as you choose
-                  </p>
+                <div className="flex items-center justify-start gap-3">
                   <div className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-white/90">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="#0aa88a">
                       <path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2L12 2z" />
@@ -257,7 +282,7 @@ export default function PackageRecommenderPage() {
                   </div>
                 </div>
 
-                <h3 className="mt-6 flex items-baseline gap-2 text-4xl font-extrabold leading-none text-white">
+                <h3 className="mt-6 flex items-baseline gap-2 text-5xl font-extrabold leading-none text-white sm:text-6xl">
                   {rec.tier}
                   <span className="text-lg font-semibold uppercase tracking-[0.2em] text-white/45">
                     plan
@@ -272,13 +297,11 @@ export default function PackageRecommenderPage() {
                   <p className="mb-3 text-[10px] font-semibold uppercase tracking-widest text-white/50">
                     Included in this plan
                   </p>
-                  <ul className="grid gap-2.5 sm:grid-cols-2">
+                  <ul className="flex flex-col gap-2.5">
                     {(tierIncludes[rec.tier] ?? []).map((item) => (
                       <li key={item} className="flex items-start gap-2.5 text-sm text-white/85">
-                        <span className="mt-0.5 flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full bg-[#0aa88a]/20">
-                          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#3EE8BE" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M5 12l5 5 9-11" />
-                          </svg>
+                        <span className="mt-0.5 flex-shrink-0 text-[#3EE8BE]">
+                          {includeIcons[item] ?? iconSvg(<path d="M5 12l5 5 9-11" />)}
                         </span>
                         {item}
                       </li>
@@ -297,9 +320,9 @@ export default function PackageRecommenderPage() {
                           key={a}
                           className="inline-flex items-center rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-medium text-white"
                         >
-                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#3EE8BE" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="mr-1.5">
-                            <path d="M5 12l5 5 9-11" />
-                          </svg>
+                          <span className="mr-1.5 text-[#3EE8BE]">
+                            {addOnIcons[a] ?? iconSvg(<path d="M5 12l5 5 9-11" />)}
+                          </span>
                           {addOnLabels[a]}
                         </span>
                       ))}
@@ -333,22 +356,43 @@ export default function PackageRecommenderPage() {
           <SectionHeader
             align="center"
             eyebrow="No commitment"
-            title="Not sure? Neither are we — at first."
-            intro="This recommender is a starting point, not a contract. You can switch tiers or add services at any time, and our team is happy to tailor a package to your exact hiring or leasing workflow."
+            title="Not sure? Neither are we, at first."
+            intro="This recommender is a starting point, not a contract. Switch tiers anytime, or let our team tailor a package to your workflow."
           />
-          <Reveal delay={200} className="mt-8 flex flex-wrap justify-center gap-3">
-            <a
-              href="/resources/cost-calculator"
-              className="inline-flex items-center gap-2 bg-[#01463A] text-white px-6 py-3 rounded-xl text-sm font-semibold hover:bg-[#058B74] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2"
-            >
-              Estimate your cost
-            </a>
-            <a
-              href="/contact"
-              className="inline-flex items-center gap-2 border border-gray-200 text-[#01463A] px-6 py-3 rounded-xl text-sm font-semibold hover:border-[#058B74]/40 hover:text-[#058B74] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2"
-            >
-              Talk to sales
-            </a>
+
+          {/* Image card with the two actions overlaid */}
+          <Reveal delay={200} className="mt-10">
+            <div className="relative overflow-hidden rounded-3xl shadow-lg">
+              <Image
+                src="/assets/images/call-center-agent-office-helping-customers-by-answering-questions.webp"
+                alt="An Atlas specialist ready to tailor a package to your workflow"
+                width={1600}
+                height={900}
+                className="h-[280px] w-full object-cover sm:h-[340px]"
+              />
+              {/* Green gradient overlay for contrast */}
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "linear-gradient(to top, #01463A 0%, rgba(1,70,58,0.45) 55%, rgba(1,70,58,0.15) 100%)",
+                }}
+              />
+              <div className="absolute inset-0 flex flex-col items-center justify-end gap-3 p-6 sm:flex-row sm:justify-center sm:p-8">
+                <a
+                  href="/resources/cost-calculator"
+                  className="inline-flex items-center justify-center gap-2 min-h-[44px] bg-white text-[#01463A] px-6 py-3 rounded-xl text-sm font-semibold hover:bg-white/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#01463A]"
+                >
+                  Estimate your cost
+                </a>
+                <a
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 min-h-[44px] border border-white/40 text-white px-6 py-3 rounded-xl text-sm font-semibold hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#01463A]"
+                >
+                  Talk to sales
+                </a>
+              </div>
+            </div>
           </Reveal>
         </div>
       </section>

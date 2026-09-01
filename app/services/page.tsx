@@ -38,26 +38,8 @@ export default function ServicesPage() {
             as="h1"
             eyebrow="Services"
             title="Every background check, fully detailed."
-            intro="From identity and criminal records to property-management tenant screening, credit, and global watchlists — every Atlas service is FCRA-compliant, transparently priced, and built to work together. Each has its own dedicated page below."
+            intro="Every Atlas service is FCRA-compliant, transparently priced, and built to work together. Each has its own dedicated page below."
           />
-        </div>
-      </section>
-
-      {/* Quick nav */}
-      <section className="sticky top-[64px] z-30 bg-white/80 backdrop-blur-md border-b border-gray-100">
-        <div className="mx-auto max-w-6xl px-6 py-3 overflow-x-auto">
-          <nav className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#01463A] whitespace-nowrap">
-            <span className="text-gray-600 pr-2">Jump to</span>
-            {services.map((s) => (
-              <a
-                key={s.slug}
-                href={`#${s.slug}`}
-                className="inline-flex items-center min-h-11 px-3 py-2.5 rounded-full border border-gray-200 hover:border-[#058B74] hover:text-[#058B74] hover:bg-[#058B74]/5 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2"
-              >
-                {s.name}
-              </a>
-            ))}
-          </nav>
         </div>
       </section>
 
@@ -68,18 +50,6 @@ export default function ServicesPage() {
           if (groupServices.length === 0) return null;
           return (
             <div key={group.id}>
-              {/* Group band */}
-              <div className="mx-auto max-w-6xl px-5 sm:px-6 pt-14 sm:pt-20">
-                <Reveal>
-                  <div className="flex flex-col gap-1 border-b border-gray-100 pb-6">
-                    <p className="text-[11px] font-semibold uppercase tracking-widest text-[#058B74]">
-                      {group.label}
-                    </p>
-                    <p className="text-sm text-gray-500">{group.blurb}</p>
-                  </div>
-                </Reveal>
-              </div>
-
               {groupServices.map((s, i) => {
                 const reversed = i % 2 === 1;
                 const cta = primaryCtaFor(s);
@@ -99,24 +69,7 @@ export default function ServicesPage() {
                       >
                         {/* Copy column */}
                         <Reveal variant={reversed ? "right" : "left"}>
-                          <div className="flex flex-wrap items-center gap-2 mb-4">
-                            {(() => {
-                              const isAddOn = s.category === "Add-on";
-                              const badge = isAddOn
-                                ? "text-[#B26A00] bg-[#F5A524]/12 ring-[#F5A524]/25"
-                                : "text-[#058B74] bg-[#058B74]/10 ring-[#058B74]/15";
-                              return (
-                                <span
-                                  className={`inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-widest ring-1 ring-inset px-2.5 py-1 rounded-full ${badge}`}
-                                >
-                                  <span
-                                    className="h-1.5 w-1.5 rounded-full"
-                                    style={{ backgroundColor: isAddOn ? "#F5A524" : "#058B74" }}
-                                  />
-                                  {s.category}
-                                </span>
-                              );
-                            })()}
+                          <div className="mb-4">
                             <span className="text-[11px] text-gray-600">{s.eyebrow}</span>
                           </div>
 
@@ -131,13 +84,17 @@ export default function ServicesPage() {
                           </p>
 
                           {/* Meta strip */}
-                          <dl className="mt-7 grid grid-cols-2 gap-4 max-w-md">
+                          <dl className="mt-7 grid grid-cols-2 gap-4">
                             <div className="rounded-xl border border-gray-200 bg-white px-4 py-3">
                               <dt className="text-[10px] font-semibold uppercase tracking-widest text-gray-600">
                                 Turnaround
                               </dt>
                               <dd className="mt-1 text-sm font-semibold text-[#01463A]">
-                                {s.turnaround}
+                                {s.turnaround.split(";").map((part, pi) => (
+                                  <span key={pi} className="block">
+                                    {part.trim()}
+                                  </span>
+                                ))}
                               </dd>
                             </div>
                             <div className="rounded-xl border border-gray-200 bg-white px-4 py-3">
@@ -230,7 +187,7 @@ export default function ServicesPage() {
                             <div className="relative overflow-hidden rounded-3xl border border-gray-200 bg-[#01463A] aspect-[16/10]">
                               <Image
                                 src={s.image}
-                                alt={`${s.name} — Atlas Screening`}
+                                alt={`${s.name}, Atlas Screening`}
                                 fill
                                 sizes="(max-width: 1024px) 100vw, 40vw"
                                 className="object-cover"
@@ -281,7 +238,7 @@ export default function ServicesPage() {
           <SectionHeader
             className="mb-14"
             eyebrow="Shipped with every service"
-            title="Compliance, security, and applicant tooling — included"
+            title="Compliance, security, and applicant tooling, included"
             intro="Every Atlas service inherits the same platform defaults. You never bolt on compliance or security as an afterthought."
           />
 
@@ -289,7 +246,7 @@ export default function ServicesPage() {
             {[
               {
                 title: "FCRA workflow",
-                desc: "Timestamped consent, standalone disclosures, two-step adverse action — automated.",
+                desc: "Timestamped consent, standalone disclosures, two-step adverse action, all automated.",
               },
               {
                 title: "Encrypted storage",
@@ -328,7 +285,7 @@ export default function ServicesPage() {
             Ready to start<br className="hidden lg:block" /> screening?
           </>
         }
-        description="Sign up today and run any Atlas service for your organization — with transparent pricing, no contracts, and no setup fees."
+        description="Sign up today and run any Atlas service for your organization, with transparent pricing, no contracts, and no setup fees."
         primary={{ label: "Start screening", href: startScreeningHref() }}
         secondary={{ label: "Contact Sales", href: "/contact" }}
       />

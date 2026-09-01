@@ -24,13 +24,13 @@ const bricolage = Bricolage_Grotesque({
 export const metadata: Metadata = {
   metadataBase: new URL("https://atlasscreening.com"),
   title: {
-    default: "Atlas Screening — Trust Fast. Hire to Last.",
+    default: "Atlas Screening: Trust Fast. Hire to Last.",
     // Pages that set their own title keep it verbatim; the template only
     // applies to pages that set a bare title string via `title`.
     template: "%s",
   },
   description:
-    "Atlas Screening is a Consumer Reporting Agency providing FCRA-compliant employment background checks — criminal records, identity verification (SSN trace), employment verification, and tenant screening.",
+    "Atlas Screening is a Consumer Reporting Agency providing FCRA-compliant employment background checks: criminal records, identity verification (SSN trace), employment verification, and tenant screening.",
   applicationName: "Atlas Screening",
   icons: {
     icon: "/assets/atlas-favicon.svg",
@@ -40,24 +40,24 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "Atlas Screening",
-    title: "Atlas Screening — Trust Fast. Hire to Last.",
+    title: "Atlas Screening: Trust Fast. Hire to Last.",
     description:
-      "FCRA-compliant employment background checks — criminal records, identity verification, employment verification, and tenant screening.",
+      "FCRA-compliant employment background checks: criminal records, identity verification, employment verification, and tenant screening.",
     url: "https://atlasscreening.com",
     images: [
       {
         url: "/assets/og-image.webp",
         width: 1200,
         height: 630,
-        alt: "Atlas Screening — Trust Fast. Hire to Last.",
+        alt: "Atlas Screening: Trust Fast. Hire to Last.",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Atlas Screening — Trust Fast. Hire to Last.",
+    title: "Atlas Screening: Trust Fast. Hire to Last.",
     description:
-      "FCRA-compliant employment background checks — criminal records, identity verification, employment verification, and tenant screening.",
+      "FCRA-compliant employment background checks: criminal records, identity verification, employment verification, and tenant screening.",
     images: ["/assets/og-image.webp"],
   },
   robots: {
@@ -109,7 +109,7 @@ const websiteJsonLd = {
   name: "Atlas Screening",
   url: "https://atlasscreening.com",
   description:
-    "FCRA-compliant employment background checks — criminal records, identity verification, employment verification, and tenant screening.",
+    "FCRA-compliant employment background checks: criminal records, identity verification, employment verification, and tenant screening.",
   publisher: {
     "@type": "Organization",
     name: "Atlas Screening",

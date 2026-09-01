@@ -17,11 +17,12 @@ export const metadata: Metadata = {
 const included = [
   {
     title: "All 50 states + DC",
-    desc: "Every public state sex offender registry searched in parallel — no skipped jurisdictions, no coverage gaps.",
+    desc: "Every public state sex offender registry searched in parallel, with no skipped jurisdictions and no coverage gaps.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
         <circle cx="12" cy="12" r="9" />
-        <path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18" />
+        <ellipse cx="12" cy="12" rx="4" ry="9" />
+        <path d="M12 3c3.5 2.5 3.5 15.5 0 18M12 3c-3.5 2.5-3.5 15.5 0 18" />
       </svg>
     ),
   },
@@ -36,7 +37,7 @@ const included = [
   },
   {
     title: "Territories covered",
-    desc: "Guam, Puerto Rico, U.S. Virgin Islands, American Samoa, and Northern Marianas — included by default, not an upsell.",
+    desc: "Guam, Puerto Rico, U.S. Virgin Islands, American Samoa, and Northern Marianas, included by default, not an upsell.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
         <path d="M12 21s-7-5.5-7-11a7 7 0 1114 0c0 5.5-7 11-7 11z" />
@@ -46,7 +47,7 @@ const included = [
   },
   {
     title: "Daily refresh",
-    desc: "Registries re-crawled every 24 hours — so a new listing in any jurisdiction is reflected in your next report.",
+    desc: "Registries re-crawled every 24 hours, so a new listing in any jurisdiction is reflected in your next report.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
         <path d="M21 12a9 9 0 11-3.5-7.1" />
@@ -66,7 +67,7 @@ const included = [
   },
   {
     title: "Sensitive-role ready",
-    desc: "Purpose-built for childcare, K-12, elder-care, home services, and tenant screening — every report defensible under federal and state law.",
+    desc: "Purpose-built for childcare, K-12, elder-care, home services, and tenant screening, with every report defensible under federal and state law.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
         <path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z" />
@@ -83,7 +84,7 @@ const faqs = [
   },
   {
     q: "How often is the data refreshed?",
-    a: "Atlas re-crawls every public state registry and the NSOPW database on a 24-hour cycle. Any new listing in any jurisdiction is reflected in your next run — no stale data.",
+    a: "Atlas re-crawls every public state registry and the NSOPW database on a 24-hour cycle. Any new listing in any jurisdiction is reflected in your next run, with no stale data.",
   },
   {
     q: "What does Atlas match against?",
@@ -91,7 +92,7 @@ const faqs = [
   },
   {
     q: "Are U.S. territories covered?",
-    a: "Yes. DC, Puerto Rico, Guam, the U.S. Virgin Islands, American Samoa, and the Northern Mariana Islands are all included by default — not a paid add-on.",
+    a: "Yes. DC, Puerto Rico, Guam, the U.S. Virgin Islands, American Samoa, and the Northern Mariana Islands are all included by default, not a paid add-on.",
   },
   {
     q: "What if a candidate disputes a registry hit?",
@@ -111,15 +112,13 @@ export default function SexOffenderRegistryPage() {
       <ServiceHero
         eyebrow="Sex offender registry"
         title="National registry search you can trust."
-        description="Every state registry, the NSOPW federal database, and every U.S. territory — searched in parallel and refreshed daily. Purpose-built for roles where the stakes are highest."
-        steps={["50 states", "NSOPW federal", "Territories", "Daily refresh"]}
+        description="Every state registry, the NSOPW federal database, and every U.S. territory, searched in parallel and refreshed daily. Purpose-built for roles where the stakes are highest."
         image="/assets/services/sex-offender-registry.webp"
-        start={{ service: "sex-offender-registry" }}
       />
 
       <FeatureGrid
         title="A nationwide registry sweep, every time."
-        intro="All 50 states, DC, and the U.S. territories checked against public registries and refreshed daily — resolved to a clear, defensible result."
+        intro="All 50 states, DC, and the U.S. territories checked against public registries and refreshed daily, resolved to a clear, defensible result."
         features={included}
       />
 
@@ -146,7 +145,7 @@ export default function SexOffenderRegistryPage() {
         imageAlt="Atlas Screening registry search results"
         reversed
         badges={[
-          { label: "Registry — Clear", tone: "clear", position: "-top-4 -right-4" },
+          { label: "Registry: Clear", tone: "clear", position: "-top-4 -right-4" },
           { label: "50-state search", tone: "info", position: "top-1/2 -left-5" },
           { label: "Instant result", tone: "clear", position: "-bottom-4 right-10" },
         ]}

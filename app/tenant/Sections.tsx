@@ -35,16 +35,16 @@ const I = ({ d, className = "h-6 w-6" }: { d: string; className?: string }) => (
 
 export function TenantShowcase() {
   const bullets = [
-    "One unit or a small portfolio — no minimums",
+    "One unit or a small portfolio, no minimums",
     "No business license required to get started",
-    "Applicant-guided — nothing to collect or upload",
+    "Applicant-guided, nothing to collect or upload",
     "Fair-housing rules applied automatically",
   ];
   return (
     <section className="overflow-hidden px-5 py-16 sm:px-6 sm:py-24">
       <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <div>
-          <Header eyebrow="Made for you" title={<>Built for independent <span className="text-[#058B74]">landlords.</span></>} intro="Whether you own one unit or a small portfolio, Atlas Tenant keeps screening simple — no enterprise onboarding, no business certification. Start a screening and let the applicant do the rest." />
+          <Header eyebrow="Made for you" title={<>Built for independent <span className="text-[#058B74]">landlords.</span></>} intro="Whether you own one unit or a small portfolio, Atlas Tenant keeps screening simple: no enterprise onboarding, no business certification. Start a screening and let the applicant do the rest." />
           <ul className="mt-6 space-y-3">
             {bullets.map((b, i) => (
               <Reveal as="li" key={b} variant="up" delay={200 + i * 70} className="flex items-start gap-3 text-sm text-[#3c4c47]">
@@ -93,7 +93,7 @@ const CHECKS: Check[] = [
   { label: "Credit & ResidentScore", desc: "TransUnion report, scored for rental-payment prediction.", accent: "#8B7DE0", d: "M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15A2.25 2.25 0 002.25 6.75v10.5A2.25 2.25 0 004.5 19.5z" },
   { label: "Eviction records", desc: "Court filings and judgments where they're reported.", accent: "#F5A524", d: "M3 10h18M5 10V7l7-4 7 4v3M5 21h14M10 14h4v7h-4z" },
   { label: "Identity verification", desc: "SSN trace, address history, applicant-guided.", accent: "#058B74", d: "M12 11a4 4 0 100-8 4 4 0 000 8zM6 21v-1a6 6 0 0112 0v1" },
-  { label: "Income verification", desc: "Bank-linked via Plaid — no paystubs to collect.", accent: "#F2694E", d: "M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182" },
+  { label: "Income verification", desc: "Bank-linked via Plaid, no paystubs to collect.", accent: "#F2694E", d: "M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182" },
 ];
 
 function CheckTile({ c, delay }: { c: Check; delay: number }) {
@@ -112,7 +112,7 @@ export function TenantChecks() {
   return (
     <section id="checks" className="scroll-mt-24 px-5 py-16 sm:px-6 sm:py-24">
       <div className="mx-auto max-w-6xl">
-        <Header eyebrow="What you get" title="Five checks. One clean report." intro="Every component of a lease decision, bundled together — not five separate orders to chase down." />
+        <Header eyebrow="What you get" title="Five checks. One clean report." intro="Every component of a lease decision, bundled together, not five separate orders to chase down." />
 
         <div className="mt-14 grid gap-4 md:grid-cols-4">
           {/* Green summary tile */}
@@ -143,7 +143,7 @@ export function TenantChecks() {
           <Reveal as="div" variant="up" delay={260} className="flex flex-col justify-between rounded-2xl border border-dashed border-[#058B74]/40 bg-[#058B74]/[0.05] p-6">
             <div>
               <p className="text-sm font-semibold text-[#01463A]">Build your check</p>
-              <p className="mt-1.5 text-[13px] leading-relaxed text-[#5c675f]">Pick a package and add-ons — see the price live.</p>
+              <p className="mt-1.5 text-[13px] leading-relaxed text-[#5c675f]">Pick a package and add-ons to see the price live.</p>
             </div>
             <a href="#plans" className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-[#058B74] transition-colors hover:text-[#01463A]">
               See packages
@@ -162,7 +162,7 @@ export function TenantChecks() {
 type Industry = { title: string; desc: string; accent: string; d: string };
 
 const INDUSTRIES: Industry[] = [
-  { title: "Independent landlords", desc: "One unit or a small portfolio — screen without enterprise onboarding.", accent: "#058B74", d: "M3 10l9-7 9 7M5 9v11h5v-6h4v6h5V9" },
+  { title: "Independent landlords", desc: "One unit or a small portfolio, screen without enterprise onboarding.", accent: "#058B74", d: "M3 10l9-7 9 7M5 9v11h5v-6h4v6h5V9" },
   { title: "Property management companies", desc: "Consistent, compliant screening across every property you manage.", accent: "#3E92CC", d: "M3 21h18M6 21V7l6-4 6 4v14M10 10h.01M14 10h.01M10 14h.01M14 14h.01" },
   { title: "Student housing", desc: "Screen students, roommates, and guarantors on the same lease.", accent: "#8B7DE0", d: "M22 10L12 5 2 10l10 5 10-5zM6 12v5c0 1 2.7 2 6 2s6-1 6-2v-5" },
   { title: "Corporate relocation", desc: "Faster placement for relocating employees and their households.", accent: "#F5A524", d: "M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" },
@@ -222,9 +222,9 @@ export function TenantStats() {
 // A clean, connected horizontal timeline.
 
 const STEPS: { n: string; title: string; desc: string; d: string }[] = [
-  { n: "1", title: "Start the screening", desc: "Enter your applicant's name and email — no documents to collect.", d: "M12 4v16m8-8H4" },
+  { n: "1", title: "Start the screening", desc: "Enter your applicant's name and email, no documents to collect.", d: "M12 4v16m8-8H4" },
   { n: "2", title: "Applicant completes it", desc: "A secure, mobile-first link to consent and confirm identity. Co-applicants captured too.", d: "M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" },
-  { n: "3", title: "Checks run in parallel", desc: "Criminal, credit, eviction, identity, and income run together — database results first.", d: "M12 6v6l4 2M12 22a10 10 0 100-20 10 10 0 000 20z" },
+  { n: "3", title: "Checks run in parallel", desc: "Criminal, credit, eviction, identity, and income run together, database results first.", d: "M12 6v6l4 2M12 22a10 10 0 100-20 10 10 0 000 20z" },
   { n: "4", title: "Review one clean report", desc: "Pass / flag indicators in a single report, with a pre-filled adverse-action flow if needed.", d: "M9 12l2 2 4-4M12 22a10 10 0 100-20 10 10 0 000 20z" },
 ];
 
@@ -232,7 +232,7 @@ export function TenantSteps() {
   return (
     <section id="how" className="scroll-mt-24 px-5 py-16 sm:px-6 sm:py-24">
       <div className="mx-auto max-w-6xl">
-        <Header align="center" eyebrow="How it works" title="Four steps. No paperwork chase." intro="From invitation to cleared report — automated, tracked, and mobile-first the whole way." />
+        <Header align="center" eyebrow="How it works" title="Four steps. No paperwork chase." intro="From invitation to cleared report: automated, tracked, and mobile-first the whole way." />
 
         <div className="relative mt-16 grid gap-10 md:grid-cols-4 md:gap-6">
           {/* Connecting line (desktop) */}
@@ -256,9 +256,9 @@ export function TenantSteps() {
 /* ---------------------------------------------------------------- FAQ --- */
 
 const FAQS = [
-  { q: "How is Atlas Tenant different from a generic background check?", a: "It's built specifically for residential leasing — eviction records, ResidentScore, and fair-housing rules are first-class, not bolted on. Atlas is a Consumer Reporting Agency; reports are furnished in accordance with the FCRA and applicable state and local housing laws." },
-  { q: "Who pays — the landlord or the applicant?", a: "Your choice. The default is landlord-paid, and an applicant-paid flow is available if that fits your leasing model. You're only billed after the applicant submits their information." },
-  { q: "How fast will I get results?", a: "Database results can return quickly, often the same day. The verified report — county records, verifications — may take longer depending on the jurisdictions involved. We separate the two so you always know what's confirmed." },
+  { q: "How is Atlas Tenant different from a generic background check?", a: "It's built specifically for residential leasing: eviction records, ResidentScore, and fair-housing rules are first-class, not bolted on. Atlas is a Consumer Reporting Agency; reports are furnished in accordance with the FCRA and applicable state and local housing laws." },
+  { q: "Who pays, the landlord or the applicant?", a: "Your choice. The default is landlord-paid, and an applicant-paid flow is available if that fits your leasing model. You're only billed after the applicant submits their information." },
+  { q: "How fast will I get results?", a: "Database results can return quickly, often the same day. The verified report, including county records and verifications, may take longer depending on the jurisdictions involved. We separate the two so you always know what's confirmed." },
   { q: "Does this handle fair-housing compliance?", a: "Atlas applies state-specific rules automatically, including source-of-income protections and fair-chance housing ordinances where they apply. If you decline an applicant based on a report, the pre-adverse and adverse-action notices and the dispute path are built in." },
   { q: "Can I screen more than one applicant on a lease?", a: "Yes. Add co-applicants or guarantors and they're screened in parallel. You receive one combined report with individual sub-reports." },
   { q: "Are applicant details secure?", a: "All applicant information is protected with advanced encryption and stored on encrypted servers, with strict role-based access so only authorized people can view completed reports." },
@@ -269,7 +269,7 @@ export function TenantFAQ() {
     <section id="faq" className="scroll-mt-24 px-5 py-16 sm:px-6 sm:py-24">
       <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
         <div className="lg:sticky lg:top-28 lg:self-start">
-          <Header eyebrow="Answers" title="Tenant screening, answered." intro="Compliance, turnaround, and multi-applicant leases — the things landlords ask before their first check." />
+          <Header eyebrow="Answers" title="Tenant screening, answered." intro="Compliance, turnaround, and multi-applicant leases: the things landlords ask before their first check." />
           <Reveal as="p" variant="fade" delay={200} className="mt-4 text-sm text-[#5c675f]">
             Still stuck? <a href="/contact" className="font-semibold text-[#058B74] hover:underline">Get in touch</a>.
           </Reveal>

@@ -178,7 +178,7 @@ function Identity({ e }: { e: number }) {
 function Contact({ e }: { e: number }) {
   return (
     <div>
-      <Head eyebrow="The applicant" title="Phone & date of birth" hint="Date of birth is required — it's how records are matched to the right person." />
+      <Head eyebrow="The applicant" title="Phone & date of birth" hint="Date of birth is required. It's how records are matched to the right person." />
       <div className="space-y-4">
         <Field id="ph" labelText="Phone" opt value={typed(PHONE, T.phoneS, T.phoneE, e)} typing={between(e, T.phoneS, T.phoneE)} />
         <Field id="db" labelText="Date of birth" value={typed(DOB, T.dobS, T.dobE, e)} typing={between(e, T.dobS, T.dobE)} />

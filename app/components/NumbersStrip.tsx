@@ -53,33 +53,23 @@ const pillars: Pillar[] = [
 
 function Chip({ p }: { p: Pillar }) {
   return (
-    <div className="mx-4 flex shrink-0 items-center gap-2.5">
+    <div className="flex items-center gap-2.5">
       <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-[#058B74]/10 text-[#058B74] ring-1 ring-inset ring-[#058B74]/10">
         {p.icon}
       </span>
       <span className="text-sm font-semibold text-[#01463A]">{p.title}</span>
       <span className="hidden text-sm text-[#5B6B64] sm:inline">{p.detail}</span>
-      <span className="ml-2 h-1 w-1 rounded-full bg-[#058B74]/25" />
     </div>
   );
 }
 
 export default function NumbersStrip() {
-  // Duplicated track → the marquee keyframe shifts by -50% for a seamless loop.
-  const track = [...pillars, ...pillars];
-
   return (
     <section className="border-y border-[#E4E9E6] bg-[#F7F8F6] py-7 sm:py-8">
-      <div className="group relative overflow-hidden">
-        {/* fade edges */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-[#F7F8F6] to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-[#F7F8F6] to-transparent" />
-
-        <div className="animate-marquee flex w-max group-hover:[animation-play-state:paused]">
-          {track.map((p, i) => (
-            <Chip key={i} p={p} />
-          ))}
-        </div>
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-10 gap-y-4 px-5 sm:px-6">
+        {pillars.map((p, i) => (
+          <Chip key={i} p={p} />
+        ))}
       </div>
     </section>
   );

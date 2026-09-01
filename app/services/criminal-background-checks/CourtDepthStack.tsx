@@ -38,7 +38,7 @@ const stops: Stop[] = [
     to: 600,
     suffix: "M+",
     unit: "records",
-    desc: "A broad first pass across all 50 states, territories, and federal courts — refreshed continuously.",
+    desc: "A broad first pass across all 50 states and territories, refreshed continuously.",
     authority: "Broad lead",
     accent: GREEN,
     soft: "rgba(5,139,116,0.08)",
@@ -50,7 +50,7 @@ const stops: Stop[] = [
     title: "Statewide repositories",
     to: 50,
     unit: "state databases",
-    desc: "Central state databases queried for a wider view across every county in the state.",
+    desc: "Central state databases for a wider view across every county.",
     authority: "Wider net",
     accent: GREEN,
     soft: "rgba(5,139,116,0.08)",
@@ -64,11 +64,11 @@ const stops: Stop[] = [
     suffix: "+",
     separator: true,
     unit: "clerk offices",
-    desc: "Straight to the county court where the record actually lives — the gold standard, never scraped.",
+    desc: "Straight to the county court where the record lives. Never scraped.",
     authority: "Authoritative",
     accent: AMBER,
     soft: "rgba(245,165,36,0.1)",
-    icon: "M3 10h18M5 10V7l7-4 7 4v3M5 21h14M7 10v11M17 10v11M10 14h4v7h-4z",
+    icon: "M12 3l8 5H4l8-5zM6 8v9M12 8v9M18 8v9M4 21h16",
   },
   {
     n: "04",
@@ -76,7 +76,7 @@ const stops: Stop[] = [
     title: "Federal district courts",
     to: 94,
     unit: "U.S. districts",
-    desc: "Every federal district searched in parallel for fraud, trafficking, and white-collar offenses.",
+    desc: "Every federal district searched for fraud, trafficking, and white-collar offenses.",
     authority: "Federal-only",
     accent: GREEN,
     soft: "rgba(5,139,116,0.08)",
@@ -171,9 +171,8 @@ export default function CourtDepthStack() {
           <div>
             <Reveal
               as="span"
-              className="inline-flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#058B74]"
+              className="inline-flex items-center text-[11px] font-semibold uppercase tracking-[0.24em] text-[#058B74]"
             >
-              <span className="h-px w-8 bg-[#058B74]/40" />
               What&apos;s included
             </Reveal>
             <Reveal as="h2" delay={80} className="mt-5 text-[2.25rem] font-semibold leading-[1.04] text-[#01463A] md:text-[3.25rem]">
@@ -181,9 +180,8 @@ export default function CourtDepthStack() {
             </Reveal>
           </div>
           <Reveal as="p" delay={140} className="text-[16px] leading-relaxed text-[#5B6B64] md:pb-2">
-            The search travels from a broad national sweep all the way to the
-            authoritative county court — every stop on one identity, in one
-            FCRA-compliant report.
+            From a broad national sweep to the authoritative county court, every
+            stop on one identity, in one FCRA-compliant report.
           </Reveal>
         </div>
 

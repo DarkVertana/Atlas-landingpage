@@ -32,7 +32,6 @@ const servicesMenu = {
         { label: "Employment screening", href: "/services", desc: "Background checks for hiring, at any volume" },
         { label: "Tenant screening", href: "/services/tenant-screening", desc: "Criminal, credit, and eviction history for landlords" },
         { label: "Continuous monitoring", href: "/services/continuous-checks", desc: "Ongoing checks on your existing workforce" },
-        { label: "Volunteer & nonprofit", href: "/resources/package-recommender?industry=nonprofit", desc: "Affordable screening for volunteer-driven orgs" },
         { label: "Applicants & disputes", href: "/dispute-resolution", desc: "Check a report status or file a dispute" },
       ],
     },
@@ -54,13 +53,13 @@ const servicesMenu = {
       title: "By industry",
       compact: true,
       items: [
-        { label: "Staffing agencies", href: "/resources/package-recommender?industry=staffing" },
-        { label: "Healthcare", href: "/resources/package-recommender?industry=healthcare" },
-        { label: "Transportation & logistics", href: "/resources/package-recommender?industry=transportation" },
-        { label: "Financial services", href: "/resources/package-recommender?industry=financial" },
-        { label: "Retail & hospitality", href: "/resources/package-recommender?industry=retail" },
-        { label: "Education", href: "/resources/package-recommender?industry=education" },
-        { label: "Nonprofit & volunteer", href: "/resources/package-recommender?industry=nonprofit" },
+        { label: "Staffing agencies", href: "/industries/staffing-agencies" },
+        { label: "Healthcare", href: "/industries/healthcare" },
+        { label: "Transportation & logistics", href: "/industries/transportation-logistics" },
+        { label: "Financial services", href: "/industries/financial-services" },
+        { label: "Retail & hospitality", href: "/industries/retail-hospitality" },
+        { label: "Education", href: "/industries/education" },
+        { label: "Nonprofit & volunteer", href: "/industries/nonprofit-volunteer" },
       ],
     },
   ],
@@ -73,6 +72,22 @@ const howItWorksMenu = {
       items: [
         { label: "How Atlas Screening works", href: "/how-it-works", desc: "Your 11-step workflow as an interactive visual", icon: "workflow" },
         { label: "Trust & compliance", href: "/trust", desc: "FCRA compliance, encrypted storage, audit logging", icon: "trust" },
+      ],
+    },
+    {
+      title: "Compliance & consumer rights",
+      items: [
+        { label: "Compliance & consumer protection", href: "/compliance", desc: "How we stay FCRA-compliant at every step", icon: "compliance" },
+        { label: "Dispute resolution", href: "/dispute-resolution", desc: "Check a report status or file a dispute", icon: "dispute" },
+        { label: "Client certification", href: "/client-certification", desc: "Permissible purpose and consent requirements", icon: "certification" },
+      ],
+    },
+    {
+      title: "Get started",
+      items: [
+        { label: "Pricing & packages", href: "/pricing", desc: "Criminal check tiers and every add-on priced", icon: "pricing" },
+        { label: "Package recommender", href: "/resources/package-recommender", desc: "Find the right tier for your industry in 60 seconds", icon: "recommender" },
+        { label: "Talk to sales", href: "/contact", desc: "Questions about onboarding or volume pricing", icon: "contact" },
       ],
     },
   ],
@@ -145,6 +160,18 @@ const navLinks = [
 export default function Header({ solid = false }: { solid?: boolean }) {
   const pathname = usePathname();
   const isHome = pathname === "/";
+
+  // Active-page detection for menu highlighting. Compare only the path portion
+  // of each href (ignore ?query / #hash) against the current route.
+  const hrefPath = (href: string) => href.split(/[?#]/)[0];
+  const isItemActive = (href: string) => {
+    const p = hrefPath(href);
+    return p.length > 1 && pathname === p;
+  };
+  const isMenuActive = (label: string) => {
+    const m = megaMenus[label];
+    return m ? m.sections.some((s) => s.items.some((it) => isItemActive(it.href))) : false;
+  };
   const [scrolled, setScrolled] = useState(solid);
   const [menuOpen, setMenuOpen] = useState(false);
   // Latches true on first open so the menu (and GSAP) mount lazily, but stay
@@ -230,7 +257,7 @@ export default function Header({ solid = false }: { solid?: boolean }) {
               height={25}
               priority
               className={`w-[80px] md:w-[100px] h-auto transition-all duration-500 ease-in-out ${
-                menuOpen || !scrolled ? "brightness-0 invert hover:brightness-100 hover:invert-0" : ""
+                menuOpen || !scrolled ? "brightness-0 invert" : ""
               }`}
             />
           </Link>
@@ -240,6 +267,7 @@ export default function Header({ solid = false }: { solid?: boolean }) {
             {navLinks.map((link) => {
               const menu = link.megaMenu ? megaMenus[link.label] : null;
               const isOpen = activeMenu === link.label;
+              const active = link.megaMenu ? isMenuActive(link.label) : isItemActive(link.href);
 
               return menu ? (
                 <div
@@ -253,10 +281,11 @@ export default function Header({ solid = false }: { solid?: boolean }) {
                     onFocus={() => handleMenuEnter(link.label)}
                     aria-haspopup="true"
                     aria-expanded={isOpen}
-                    className={`text-base font-medium transition-all duration-500 ease-in-out flex items-center gap-1 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${
+                    aria-current={active ? "page" : undefined}
+                    className={`text-base font-medium transition-all duration-500 ease-in-out flex items-center gap-1 rounded-full px-3.5 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${
                       scrolled
-                        ? "text-black hover:text-[#01463A] focus-visible:ring-[#058B74] focus-visible:ring-offset-white"
-                        : "text-white/80 hover:text-white focus-visible:ring-white focus-visible:ring-offset-transparent"
+                        ? `hover:text-[#01463A] focus-visible:ring-[#058B74] focus-visible:ring-offset-white ${active ? "bg-[#058B74]/12 text-[#01463A]" : "text-black"}`
+                        : `hover:text-white focus-visible:ring-white focus-visible:ring-offset-transparent ${active ? "bg-white/15 text-white" : "text-white/80"}`
                     }`}
                   >
                     {link.label}
@@ -277,10 +306,11 @@ export default function Header({ solid = false }: { solid?: boolean }) {
                 <a
                   key={link.label}
                   href={link.href}
-                  className={`text-base font-medium transition-all duration-500 ease-in-out ${
+                  aria-current={active ? "page" : undefined}
+                  className={`text-base font-medium transition-all duration-500 ease-in-out rounded-full px-3.5 py-2 ${
                     scrolled
-                      ? "text-black hover:text-[#01463A]"
-                      : "text-white/80 hover:text-white"
+                      ? `hover:text-[#01463A] ${active ? "bg-[#058B74]/12 text-[#01463A]" : "text-black"}`
+                      : `hover:text-white ${active ? "bg-white/15 text-white" : "text-white/80"}`
                   }`}
                 >
                   {link.label}
@@ -292,7 +322,7 @@ export default function Header({ solid = false }: { solid?: boolean }) {
           {/* Get Started — Desktop */}
           <a
             href={startHref}
-            className={`hidden md:flex items-center text-sm font-semibold tracking-wide px-6 py-2.5 rounded-xl transition-all duration-500 ease-in-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2 ${
+            className={`hidden md:flex items-center text-sm font-semibold tracking-wide px-6 py-3 rounded-xl transition-all duration-500 ease-in-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2 ${
               scrolled
                 ? "bg-[#01463A] text-white hover:bg-[#01463A]/90 focus-visible:ring-offset-white"
                 : "bg-white text-[#01463A] hover:bg-white/90 focus-visible:ring-offset-transparent"
@@ -371,16 +401,19 @@ export default function Header({ solid = false }: { solid?: boolean }) {
                           {section.title}
                         </h4>
                         <div className="flex flex-col">
-                          {section.items.map((item) => (
+                          {section.items.map((item) => {
+                            const itemActive = isItemActive(item.href);
+                            return (
                             <a
                               key={item.href}
                               href={item.href}
-                              className={`group/item relative -mx-2 flex items-start gap-1 rounded-lg px-2 transition-colors duration-150 hover:bg-[#058B74]/[0.06] ${
-                                section.compact ? "py-1.5" : "py-2.5"
-                              }`}
+                              aria-current={itemActive ? "page" : undefined}
+                              className={`group/item relative -mx-2 flex items-start gap-1 rounded-lg px-2 transition-colors duration-150 ${
+                                itemActive ? "bg-[#058B74]/[0.10]" : "hover:bg-[#058B74]/[0.06]"
+                              } ${section.compact ? "py-1.5" : "py-2.5"}`}
                             >
                               <div className="min-w-0 flex-1">
-                                <div className="flex items-center gap-1.5 text-[13px] font-semibold text-[#01463A] transition-colors group-hover/item:text-[#058B74]">
+                                <div className={`flex items-center gap-1.5 text-[13px] font-semibold transition-colors group-hover/item:text-[#058B74] ${itemActive ? "text-[#058B74]" : "text-[#01463A]"}`}>
                                   {item.label}
                                 </div>
                                 {item.desc && (
@@ -390,7 +423,8 @@ export default function Header({ solid = false }: { solid?: boolean }) {
                                 )}
                               </div>
                             </a>
-                          ))}
+                            );
+                          })}
                         </div>
                       </div>
                     ))}

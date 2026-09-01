@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Reveal from "./Reveal";
 import FcraComplianceNote from "./FcraComplianceNote";
+import { featureIcon } from "../lib/featureIcon";
 
 export type ServiceTier = {
   name: string;
@@ -76,9 +77,9 @@ type Props = {
 export default function ServicePricing({
   eyebrow = "Pricing tiers",
   heading = "Plans and pricing",
-  subheading = "Every tier is pay-as-you-go. Switch at any time — the applicant flow stays the same.",
+  subheading = "Every tier is pay-as-you-go. Switch at any time; the applicant flow stays the same.",
   tiers = defaultTiers,
-  footnote = "All prices in USD. Applicants pay nothing — charges apply to the requesting customer only.",
+  footnote = "All prices in USD. Applicants pay nothing; charges apply to the requesting customer only.",
 }: Props) {
   return (
     <section className="bg-white py-14 sm:py-20 px-6">
@@ -95,7 +96,7 @@ export default function ServicePricing({
           </Reveal>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {tiers.map((t, i) => (
             <Reveal
               key={t.name}
@@ -123,31 +124,37 @@ export default function ServicePricing({
                 {t.name}
               </p>
               <h3
-                className={`mt-2 text-xl font-bold leading-tight ${
+                className={`mt-2 flex min-h-[3.25rem] items-start text-xl font-bold leading-tight ${
                   t.highlight ? "text-white" : "text-[#01463A]"
                 }`}
               >
                 {t.tagline}
               </h3>
 
-              <div className="mt-6 flex items-baseline gap-2">
-                <span
-                  className={`text-4xl font-extrabold ${
-                    t.highlight ? "text-white" : "text-[#01463A]"
-                  }`}
-                >
-                  {t.price}
-                </span>
-                <span
-                  className={`text-xs ${
-                    t.highlight ? "text-white/70" : "text-gray-600"
-                  }`}
-                >
-                  {t.unit ?? "per check"}
-                </span>
+              <div className="mt-6 flex min-h-[4.25rem] flex-col justify-start">
+                <div className="flex items-baseline gap-2">
+                  <span
+                    className={`text-4xl font-extrabold ${
+                      t.highlight ? "text-white" : "text-[#01463A]"
+                    }`}
+                  >
+                    {t.price}
+                  </span>
+                  <span
+                    className={`text-xs ${
+                      t.highlight ? "text-white/70" : "text-gray-600"
+                    }`}
+                  >
+                    {t.unit ?? "per check"}
+                  </span>
+                </div>
               </div>
 
-              <ul className="mt-8 space-y-3 flex-1">
+              <ul
+                className={`mt-2 space-y-3.5 flex-1 border-t pt-6 ${
+                  t.highlight ? "border-white/15" : "border-gray-100"
+                }`}
+              >
                 {t.features.map((f) => (
                   <li
                     key={f}
@@ -155,20 +162,9 @@ export default function ServicePricing({
                       t.highlight ? "text-white/90" : "text-[#01463A]"
                     }`}
                   >
-                    <svg
-                      aria-hidden="true"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke={t.highlight ? "#0aa88a" : "#058B74"}
-                      strokeWidth="2.2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="flex-shrink-0 mt-0.5"
-                    >
-                      <path d="M5 12l5 5 9-11" />
-                    </svg>
+                    <span className={`mt-0.5 flex-shrink-0 ${t.highlight ? "text-[#0aa88a]" : "text-[#058B74]"}`}>
+                      {featureIcon(f, "h-4 w-4")}
+                    </span>
                     {f}
                   </li>
                 ))}
@@ -191,70 +187,6 @@ export default function ServicePricing({
         {footnote && (
           <p className="mt-8 text-xs text-gray-600">{footnote}</p>
         )}
-
-        {/* Enterprise / talk to sales band */}
-        <Reveal
-          variant="up"
-          className="mt-6 overflow-hidden rounded-3xl border border-[#058B74]/30 bg-[#01463A] text-white"
-        >
-          <div className="flex flex-col gap-8 p-8 sm:p-10 md:flex-row md:items-center md:justify-between">
-            <div className="max-w-2xl">
-              <p className="text-xs font-semibold tracking-widest uppercase text-[#0aa88a]">
-                Enterprise
-              </p>
-              <h3 className="mt-2 text-2xl font-bold leading-tight text-white">
-                High volume or complex screening programs?
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-white/80">
-                For teams running checks at scale, we tailor a program to your needs —
-                volume-based pricing, custom packages by role, ATS/API integration, and a
-                dedicated compliance and account team. Every program is conducted in
-                accordance with the FCRA and applicable state laws.
-              </p>
-              <ul className="mt-6 grid gap-x-6 gap-y-3 sm:grid-cols-2">
-                {[
-                  "Volume-based pricing",
-                  "Custom check packages by role",
-                  "ATS & API integration",
-                  "Dedicated account & compliance team",
-                ].map((f) => (
-                  <li key={f} className="flex items-start gap-3 text-sm text-white/90">
-                    <svg
-                      aria-hidden="true"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="#0aa88a"
-                      strokeWidth="2.2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="flex-shrink-0 mt-0.5"
-                    >
-                      <path d="M5 12l5 5 9-11" />
-                    </svg>
-                    <span>{f}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="flex flex-col gap-3 md:w-56 md:flex-shrink-0">
-              <Link
-                href="/contact?plan=enterprise"
-                className="inline-flex items-center justify-center w-full px-6 py-3 min-h-[44px] rounded-xl text-sm font-semibold bg-white text-[#01463A] transition-colors hover:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#01463A]"
-              >
-                Talk to sales
-              </Link>
-              <Link
-                href="/contact?topic=enterprise"
-                className="inline-flex items-center justify-center w-full px-6 py-3 min-h-[44px] rounded-xl text-sm font-semibold border border-white/30 text-white transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#01463A]"
-              >
-                Contact us
-              </Link>
-            </div>
-          </div>
-        </Reveal>
       </div>
       {/* FCRA compliance framing */}
       <FcraComplianceNote />

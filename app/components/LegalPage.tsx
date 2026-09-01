@@ -1,6 +1,7 @@
 "use client";
 
 import { ReactNode } from "react";
+import Image from "next/image";
 import Reveal from "./Reveal";
 import SectionHeader from "./ui/SectionHeader";
 
@@ -12,6 +13,8 @@ type LegalPageProps = {
   intro?: ReactNode;
   lastUpdated?: string;
   sections: Section[];
+  /** Optional hero image, rendered as a subtle textured backdrop behind the gradient. */
+  image?: string;
   children: ReactNode;
 };
 
@@ -21,33 +24,47 @@ export default function LegalPage({
   intro,
   lastUpdated,
   sections,
+  image,
   children,
 }: LegalPageProps) {
   return (
     <main className="bg-white text-[#01463A]">
-      {/* Hero — deep-green→teal gradient with layered depth */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#01463A] to-[#058B74] px-5 pt-28 pb-16 sm:px-6 sm:pt-36 sm:pb-20">
-        {/* Primary blur blob */}
-        <div className="pointer-events-none absolute -top-32 -right-32 h-[32rem] w-[32rem] rounded-full bg-[#0aa88a]/20 blur-3xl" />
-        {/* Second offset blob for extra depth */}
-        <div className="pointer-events-none absolute -bottom-40 -left-24 h-[28rem] w-[28rem] rounded-full bg-[#058B74]/25 blur-3xl" />
-        {/* Faint dot texture */}
+      {/* Hero — matches the service pages' dark radial hero for a consistent look */}
+      <section className="relative overflow-hidden bg-[radial-gradient(125%_95%_at_50%_-10%,#0f5646_0%,#0a2c26_40%,#06171a_74%,#040d10_100%)] px-5 pt-28 pb-16 sm:px-6 sm:pt-36 sm:pb-20">
+        {image && (
+          <>
+            <Image
+              src={image}
+              alt=""
+              aria-hidden
+              fill
+              priority
+              sizes="100vw"
+              className="pointer-events-none object-cover opacity-25 mix-blend-luminosity"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(125%_95%_at_50%_-10%,rgba(15,86,70,0.55)_0%,rgba(6,23,26,0.9)_74%,rgba(4,13,16,0.96)_100%)]" />
+          </>
+        )}
+        <div className="pointer-events-none absolute -top-32 -right-32 h-[32rem] w-[32rem] rounded-full bg-[#0aa88a]/12 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-32 -left-32 h-[32rem] w-[32rem] rounded-full bg-[#3E92CC]/10 blur-3xl" />
+        {/* faint depth grid — the same quiet texture the service heroes use */}
         <div
-          className="pointer-events-none absolute inset-0 opacity-[0.06]"
+          className="pointer-events-none absolute inset-0 opacity-[0.05]"
           style={{
             backgroundImage:
-              "radial-gradient(circle, #ffffff 1px, transparent 1px)",
-            backgroundSize: "22px 22px",
+              "linear-gradient(to bottom, rgba(255,255,255,0.6) 1px, transparent 1px)",
+            backgroundSize: "100% 44px",
           }}
         />
 
-        <div className="relative mx-auto max-w-6xl">
+        <div className="relative mx-auto max-w-3xl text-center">
           <SectionHeader
             eyebrow={eyebrow}
             title={title}
             intro={intro}
             tone="light"
             as="h1"
+            align="center"
           />
           {lastUpdated && (
             <Reveal

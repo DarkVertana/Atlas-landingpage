@@ -21,14 +21,8 @@ export default function ClientCertificationPage() {
     <LegalPage
       eyebrow="Legal"
       title="Client certification & user agreement."
-      intro={
-        <>
-          This Client Certification & Permissible Use Agreement is entered
-          into between Atlas Screening (&ldquo;Company&rdquo;) and the Client
-          (&ldquo;User&rdquo;). By requesting or using background screening
-          services, the Client agrees to the following.
-        </>
-      }
+      intro="The permissible-use terms every client agrees to when requesting background screening from Atlas."
+      image="/assets/images/call-center-agent-office-helping-customers-by-answering-questions.webp"
       lastUpdated="April 1, 2026"
       sections={sections}
     >

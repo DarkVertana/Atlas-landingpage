@@ -24,7 +24,7 @@ const deepDive: Step[] = [
     short: "Place the order",
     title: "Rapid account creation and order placement.",
     eyebrow: "Client setup",
-    desc: "Create an account, access your centralized dashboard, and select a predefined package or custom-built bundle. You only need to input the applicant's name and email — the platform handles everything that follows.",
+    desc: "Create an account, access your centralized dashboard, and select a predefined package or custom-built bundle. You only need to input the applicant's name and email, and the platform handles everything that follows.",
     bullets: [
       "Centralized dashboard access",
       "Predefined or custom-built bundles",
@@ -38,7 +38,7 @@ const deepDive: Step[] = [
     short: "Applicant invited",
     title: "Automated candidate invitation.",
     eyebrow: "Secure dispatch",
-    desc: "The platform immediately dispatches a secure, time-limited automated invitation to your candidate — no manual outreach or coordination required from your team.",
+    desc: "The platform immediately dispatches a secure, time-limited automated invitation to your candidate, with no manual outreach or coordination required from your team.",
     bullets: [
       "Instant automated dispatch",
       "Secure, time-limited access link",
@@ -66,7 +66,7 @@ const deepDive: Step[] = [
     short: "Payment & checks",
     title: "Smart payment and investigation processing.",
     eyebrow: "Billing & checks",
-    desc: "Automated billing triggers only upon the applicant's submission — you never pay for drop-offs. The background checks and investigative verifications begin immediately after authorization.",
+    desc: "Automated billing triggers only upon the applicant's submission, so you never pay for drop-offs. The background checks and investigative verifications begin immediately after authorization.",
     bullets: [
       "Billing triggers only on submission",
       "No charges for incomplete invitations",
@@ -118,37 +118,11 @@ export default function WorkflowSteps() {
           align="center"
           eyebrow="The workflow"
           title="Five steps, start to cleared report."
-          intro="Automated, tracked, and mobile-first the whole way — from the moment you place an order to the branded PDF landing in your dashboard."
+          intro="Automated, tracked, and mobile-first the whole way, from the moment you place an order to the branded PDF landing in your dashboard."
         />
 
-        {/* ── At a glance: the whole route before the deep-dive ── */}
-        <Reveal delay={120} className="mt-14 sm:mt-16">
-          <ol className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 md:grid-cols-5 md:gap-x-0">
-            {deepDive.map((step, i) => (
-              <li key={step.num} className="relative flex flex-col items-center px-2 text-center">
-                {/* connector into the next chip (desktop row only) */}
-                {i < deepDive.length - 1 && (
-                  <span
-                    aria-hidden
-                    className="absolute left-1/2 top-5 hidden h-px w-full bg-[#E1E6E2] md:block"
-                  />
-                )}
-                <span className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full bg-[#F7F8F6] font-mono text-[13px] font-semibold text-[#058B74] ring-1 ring-[#E1E6E2]">
-                  {step.num}
-                </span>
-                <p className="mt-3 text-[13px] font-semibold leading-snug text-[#01463A]">
-                  {step.short}
-                </p>
-                <p className="mt-1 text-[11px] font-medium uppercase tracking-[0.14em] text-[#9AA8A1]">
-                  {step.eyebrow}
-                </p>
-              </li>
-            ))}
-          </ol>
-        </Reveal>
-
-        {/* ── Deep-dive steps, threaded onto a connected spine ── */}
-        <div className="mt-20 sm:mt-24">
+        {/* Deep-dive steps, threaded onto a connected spine */}
+        <div className="mt-16 sm:mt-20">
           {deepDive.map((step, i) => {
             const reversed = i % 2 === 1;
             const nodeOn = i <= active;

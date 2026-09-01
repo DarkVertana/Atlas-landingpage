@@ -62,6 +62,7 @@ export default function AboutIntro() {
           eyebrow="Our Services"
           title="A unified platform for comprehensive screening."
           intro="Every verification you need for hiring or property management, in one dashboard."
+          introClassName="md:!text-[1.5rem] !max-w-2xl"
         />
 
         {/* Expanding panels — desktop */}
@@ -146,7 +147,7 @@ export default function AboutIntro() {
                       className="transition-transform group-hover:translate-x-0.5"
                     >
                       <path
-                        d="M5 12h14M13 6l6 6-6 6"
+                        d="M9 6l6 6-6 6"
                         stroke="currentColor"
                         strokeWidth="2"
                         strokeLinecap="round"

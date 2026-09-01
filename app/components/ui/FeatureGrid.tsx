@@ -34,10 +34,7 @@ export default function FeatureGrid({ eyebrow = "What's included", title, intro,
               delay={(i % 2) * 60 + Math.floor(i / 2) * 40}
               className="group relative flex items-start gap-5 border-t border-gray-200 py-7 first:border-t-0 md:[&:nth-child(2)]:border-t-0"
             >
-              {/* left accent rule slides in on hover */}
-              <span className="absolute left-0 top-7 h-9 w-[3px] origin-top scale-y-0 rounded-full bg-[#058B74] transition-transform duration-300 group-hover:scale-y-100" />
-
-              <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-[#058B74]/8 text-[#058B74] ring-1 ring-inset ring-[#058B74]/10 transition-all duration-300 group-hover:bg-[#058B74] group-hover:text-white group-hover:ring-[#058B74]">
+              <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-[#058B74]/8 text-[#058B74] ring-1 ring-inset ring-[#058B74]/10 transition-all duration-300 group-hover:bg-[#058B74] group-hover:text-white group-hover:ring-[#058B74] [&_svg]:h-[18px] [&_svg]:w-[18px]">
                 {f.icon}
               </span>
 

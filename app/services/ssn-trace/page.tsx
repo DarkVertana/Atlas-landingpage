@@ -6,28 +6,30 @@ import FeatureGrid from "../../components/ui/FeatureGrid";
 import ServiceHero from "../../components/ui/ServiceHero";
 import Bento from "./Bento";
 import ProductShowcase from "../../components/ProductShowcase";
+import CustomerDashboardMockup from "../../components/CustomerDashboardMockup";
 import ServiceJsonLd from "../../components/ServiceJsonLd";
 
 export const metadata: Metadata = {
   title: "SSN Trace & Address History | Atlas Screening",
   description:
-    "Identity validation, seven-year residential history, alias discovery, and jurisdiction mapping — the anchor check every background report is built on.",
+    "Identity validation, seven-year residential history, alias discovery, and jurisdiction mapping: the anchor check every background report is built on.",
 };
 
 const included = [
   {
     title: "SSN validation",
-    desc: "Issued-to, issuance year, and SSN format verified against the SSA database — catches invalid or fabricated numbers instantly.",
+    desc: "Issued-to, issuance year, and SSN format verified against the SSA database, catching invalid or fabricated numbers instantly.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
         <rect x="3" y="5" width="18" height="14" rx="2" />
-        <path d="M3 10h18M7 15h6" />
+        <circle cx="8" cy="11" r="2" />
+        <path d="M5.5 16c0-1.4 1.1-2.5 2.5-2.5s2.5 1.1 2.5 2.5" />
       </svg>
     ),
   },
   {
     title: "7-year address history",
-    desc: "Residential history assembled from credit headers, public records, and utility footprints — the deepest available view.",
+    desc: "Residential history assembled from credit headers, public records, and utility footprints, for the deepest available view.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
         <path d="M3 12l9-9 9 9M5 10v10h14V10" />
@@ -39,15 +41,16 @@ const included = [
     desc: "Maiden names, prior legal names, hyphenated variants, and common misspellings surfaced automatically so nothing is missed.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-        <path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2" />
-        <circle cx="9" cy="7" r="4" />
-        <path d="M19 8v6M22 11h-6" />
+        <path d="M14 20v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2" />
+        <circle cx="8" cy="7" r="4" />
+        <circle cx="17" cy="9" r="3" />
+        <path d="M19.2 11.2L22 14" />
       </svg>
     ),
   },
   {
     title: "Jurisdiction mapping",
-    desc: "Each prior address maps to the correct county and state court — so downstream criminal searches hit every relevant jurisdiction.",
+    desc: "Each prior address maps to the correct county and state court, so downstream criminal searches hit every relevant jurisdiction.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
         <path d="M12 21s-7-5.5-7-11a7 7 0 1114 0c0 5.5-7 11-7 11zM12 12a2 2 0 100-4 2 2 0 000 4z" />
@@ -66,7 +69,7 @@ const included = [
   },
   {
     title: "Fast turnaround",
-    desc: "Traces typically return in under 60 seconds — the trigger that lets every other Atlas search fire off with confidence.",
+    desc: "Traces typically return in under 60 seconds, the trigger that lets every other Atlas search fire off with confidence.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
         <circle cx="12" cy="12" r="9" />
@@ -83,7 +86,7 @@ const faqs = [
   },
   {
     q: "How far back does the address history go?",
-    a: "Atlas returns a full seven years of residential history by default — the FCRA reporting window. Where earlier history is available from public records, it's surfaced as context without being reportable.",
+    a: "Atlas returns a full seven years of residential history by default, the FCRA reporting window. Where earlier history is available from public records, it's surfaced as context without being reportable.",
   },
   {
     q: "What if the SSN doesn't match the candidate?",
@@ -95,7 +98,7 @@ const faqs = [
   },
   {
     q: "Is applicant consent required for an SSN trace?",
-    a: "Yes. An SSN trace is a consumer report under the FCRA — explicit, written consent is required. Atlas collects and stores timestamped consent as part of the applicant intake flow automatically.",
+    a: "Yes. An SSN trace is a consumer report under the FCRA, so explicit, written consent is required. Atlas collects and stores timestamped consent as part of the applicant intake flow automatically.",
   },
 ];
 
@@ -104,22 +107,20 @@ export default function SsnTracePage() {
     <main id="main" className="bg-white text-[#01463A]">
       <ServiceJsonLd
         name="SSN Trace & Address History"
-        description="Identity validation, residential history, alias discovery, and jurisdiction mapping — the anchor check every background report is built on."
+        description="Identity validation, residential history, alias discovery, and jurisdiction mapping: the anchor check every background report is built on."
         faqs={faqs}
         path="/services/ssn-trace"
       />
       <ServiceHero
         eyebrow="SSN trace & address history"
         title="The identity anchor every report is built on."
-        description="Validate the SSN, map seven years of address history, and surface every alias — so every downstream criminal and verification search hits the jurisdictions it needs to."
-        steps={["Validate", "Address history", "Aliases", "Jurisdictions"]}
+        description="Validate the SSN, map seven years of address history, and surface every alias, so every downstream criminal and verification search hits the jurisdictions it needs to."
         image="/assets/services/ssn-trace.webp"
-        start={{ service: "ssn-trace" }}
       />
 
       <FeatureGrid
         title="Everything the identity anchor surfaces."
-        intro="Validate the SSN, map seven years of address history, and surface every alias — the groundwork every downstream search is built on."
+        intro="Validate the SSN, map seven years of address history, and surface every alias: the groundwork every downstream search is built on."
         features={included}
       />
 
@@ -136,14 +137,13 @@ export default function SsnTracePage() {
         eyebrow="In the product"
         title="SSN trace & address history,"
         highlight="in minutes."
-        description="Validate identity and uncover the addresses and aliases that tell you exactly where to search next — the foundation of an accurate report."
+        description="Validate identity and uncover the addresses and aliases that tell you exactly where to search next: the foundation of an accurate report."
         bullets={[
           "SSN validity & issuance verified",
           "Full address & alias history surfaced",
           "Feeds county searches automatically",
         ]}
-        image="/assets/app/customer-dashboard.webp"
-        imageAlt="Atlas Screening SSN trace dashboard"
+        mockup={<CustomerDashboardMockup />}
         reversed
         badges={[
           { label: "Identity verified", tone: "clear", position: "-top-4 -right-4" },

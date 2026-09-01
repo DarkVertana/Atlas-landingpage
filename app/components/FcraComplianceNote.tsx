@@ -16,46 +16,52 @@
  * the right) reads as an intentional, professional part of the page. Green is
  * used only as a small accent (eyebrow, tick marks, link).
  */
-const POINTS: { title: string; body: React.ReactNode }[] = [
+import Image from "next/image";
+
+const Ico = ({ d }: { d: string }) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
+    <path d={d} />
+  </svg>
+);
+
+const POINTS: { title: string; body: React.ReactNode; icon: React.ReactNode }[] = [
   {
-    title: "Atlas is the reporting agency — you decide",
+    title: "Atlas is the reporting agency; you decide",
+    icon: <Ico d="M3 21h18M5 21V7l7-4 7 4v14M9 10h.01M15 10h.01M9 14h.01M15 14h.01M10 21v-3h4v3" />,
     body: (
       <>
-        Atlas is a Consumer Reporting Agency (CRA). We provide consumer reports
-        under the Fair Credit Reporting Act (FCRA); your organization makes the
-        hiring decision.
+        Atlas is a Consumer Reporting Agency that furnishes reports under the
+        FCRA. Your organization makes the hiring decision.
       </>
     ),
   },
   {
     title: "Consent before every check",
+    icon: <Ico d="M8 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2h-2M9 3a1 1 0 011-1h4a1 1 0 011 1v1a1 1 0 01-1 1h-4a1 1 0 01-1-1V3zM9 13l2 2 4-4" />,
     body: (
       <>
-        Every check runs only for a lawful permissible purpose, after a
-        standalone disclosure and the applicant&apos;s written authorization are
-        collected and stored as part of the intake flow.
+        Every check needs a lawful permissible purpose, a standalone disclosure,
+        and the applicant&apos;s written authorization.
       </>
     ),
   },
   {
     title: "A supported, two-step adverse action",
+    icon: <Ico d="M12 3v18M5 21h14M7 7l-3 6a3 3 0 006 0l-3-6zM17 7l-3 6a3 3 0 006 0l-3-6zM7 7h10M12 4l5 3M12 4L7 7" />,
     body: (
       <>
-        If an adverse action is being considered, the FCRA requires a two-step
-        process: a pre-adverse notice with a copy of the report and a summary of
-        the applicant&apos;s rights, a reasonable waiting period, and then the
-        final adverse-action notice. Atlas provides the documents and workflow to
-        support each step.
+        Pre-adverse notice with the report and a summary of rights, a waiting
+        period, then a final notice. Atlas supports each step.
       </>
     ),
   },
   {
     title: "Disputes are reinvestigated",
+    icon: <Ico d="M3 12a9 9 0 0115.5-6.3L21 8M21 3v5h-5M21 12a9 9 0 01-15.5 6.3L3 16M3 21v-5h5" />,
     body: (
       <>
-        Applicants may dispute report contents. Atlas reinvestigates disputes,
-        and corrections flow back to your dashboard. Disputes can be opened from
-        the report or by emailing{" "}
+        Applicants may dispute a report; Atlas reinvestigates and corrections
+        reach your dashboard. Email{" "}
         <a
           href="mailto:compliance@atlasscreening.com"
           className="font-medium text-[#01463A] underline decoration-[#058B74]/40 underline-offset-2 hover:text-[#058B74]"
@@ -68,11 +74,11 @@ const POINTS: { title: string; body: React.ReactNode }[] = [
   },
   {
     title: "Sourced with reasonable procedures",
+    icon: <Ico d="M11 4a7 7 0 100 14 7 7 0 000-14zM21 21l-4.35-4.35M9 11h4M11 9v4" />,
     body: (
       <>
-        Report contents come from third-party and public-record sources. Atlas
-        follows reasonable procedures for accuracy but does not guarantee that
-        every record is complete, current, or error-free.
+        Contents come from third-party and public records. Atlas uses reasonable
+        procedures for accuracy but cannot guarantee every record is current.
       </>
     ),
   },
@@ -94,10 +100,30 @@ export default function FcraComplianceNote() {
             How this check stays compliant.
           </h2>
           <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-[#5A6560]">
-            Every Atlas report is built to keep you defensible — consent up
-            front, a supported adverse-action process, and open dispute rights
-            for applicants.
+            Built to be defensible: upfront consent, adverse-action support,
+            and open dispute rights.
           </p>
+
+          {/* Supporting image, faded into green at the top and bottom edges,
+              no border, so it blends into the section rather than sitting as a
+              boxed card. */}
+          <div className="relative mt-8 max-w-sm overflow-hidden rounded-2xl">
+            <Image
+              src="/assets/images/call-center-agent-office-helping-customers-by-answering-questions.webp"
+              alt=""
+              aria-hidden
+              width={640}
+              height={420}
+              className="h-52 w-full object-cover sm:h-56"
+            />
+            <div
+              className="pointer-events-none absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(to bottom, #01463A 0%, rgba(1,70,58,0) 35%, rgba(1,70,58,0) 65%, #01463A 100%)",
+              }}
+            />
+          </div>
         </div>
 
         {/* Right: the points, separated by hairlines so they read as one
@@ -107,17 +133,9 @@ export default function FcraComplianceNote() {
             <li key={p.title} className="flex gap-4 py-5 first:pt-6">
               <span
                 aria-hidden="true"
-                className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-[#058B74]/10 text-[#058B74]"
+                className="mt-0.5 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-[#058B74]/8 text-[#058B74] ring-1 ring-inset ring-[#058B74]/10"
               >
-                <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
-                  <path
-                    d="M3.5 8.5l2.6 2.6L12.5 5"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+                {p.icon}
               </span>
               <div>
                 <h3 className="text-[15px] font-semibold text-[#14201C]">

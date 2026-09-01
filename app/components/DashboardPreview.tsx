@@ -90,7 +90,7 @@ export default function DashboardPreview() {
             <span className="text-[#058B74]">One dashboard.</span>
           </h2>
           <p className="mt-5 text-gray-500 max-w-lg mx-auto text-sm leading-relaxed">
-            Track every background check end-to-end — status, results, and flags
+            Track every background check end-to-end: status, results, and flags
             at a glance, from the moment you order to the final report.
           </p>
         </div>

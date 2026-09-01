@@ -11,24 +11,23 @@ import ServiceJsonLd from "../../components/ServiceJsonLd";
 export const metadata: Metadata = {
   title: "Employment Verification | Atlas Screening",
   description:
-    "Confirm titles, employment dates, and reason for separation directly with prior employers — documented, compliant, and audit-ready.",
+    "Confirm titles, employment dates, and reason for separation directly with prior employers, documented, compliant, and audit-ready.",
 };
 
 const included = [
   {
     title: "Titles and dates",
-    desc: "Confirmed job titles, start and end dates for each prior employer — pulled straight from HR or authorized verification networks.",
+    desc: "Confirmed job titles, start and end dates for each prior employer, pulled straight from HR or authorized verification networks.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
         <rect x="3" y="7" width="18" height="13" rx="2" />
         <path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2" />
-        <path d="M3 12h18" />
       </svg>
     ),
   },
   {
     title: "Reason for separation",
-    desc: "Where the employer is authorized to disclose it, we surface the reason for leaving — voluntary, involuntary, or layoff.",
+    desc: "Where the employer is authorized to disclose it, we surface the reason for leaving: voluntary, involuntary, or layoff.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
         <path d="M10 17l-5-5 5-5" />
@@ -57,7 +56,7 @@ const included = [
   },
   {
     title: "Verification networks",
-    desc: "Automated data pulls from The Work Number, Equifax Workforce, and authorized HRIS integrations — instant where available.",
+    desc: "Automated data pulls from The Work Number, Equifax Workforce, and authorized HRIS integrations, instant where available.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
         <circle cx="12" cy="12" r="3" />
@@ -71,12 +70,12 @@ const included = [
   },
   {
     title: "Audit trail",
-    desc: "Every contact attempt is logged with timestamp, method, and outcome — so your hiring decisions stay defensible and FCRA-compliant.",
+    desc: "Every contact attempt is logged with timestamp, method, and outcome, so your hiring decisions stay defensible and FCRA-compliant.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
         <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
         <path d="M14 2v6h6" />
-        <path d="M9 13h6M9 17h4" />
+        <path d="M9.5 15l1.5 1.5 3-3.5" />
       </svg>
     ),
   },
@@ -101,7 +100,7 @@ const faqs = [
   },
   {
     q: "Is compensation verification always available?",
-    a: "Compensation disclosure depends on employer policy and state law. Where disclosed, we report it — otherwise the field is marked 'not disclosed' with the method and source on record.",
+    a: "Compensation disclosure depends on employer policy and state law. Where disclosed, we report it; otherwise the field is marked 'not disclosed' with the method and source on record.",
   },
 ];
 
@@ -110,21 +109,19 @@ export default function EmploymentVerificationPage() {
     <main id="main" className="bg-white text-[#01463A]">
       <ServiceJsonLd
         name="Employment Verification"
-        description="Confirm titles, employment dates, and reason for separation directly with prior employers — documented, compliant, and audit-ready."
+        description="Confirm titles, employment dates, and reason for separation directly with prior employers, documented, compliant, and audit-ready."
         faqs={faqs}
         path="/services/employment-verification"
       />
       <ServiceHero
         eyebrow="Employment verification"
         title="Verified titles, dates, and separation reasons."
-        description="Atlas contacts prior employers directly — via automated networks, tracked email, or live phone — so every claim on a résumé is confirmed at the source, with a full audit trail."
-        steps={["Automated network", "Tracked email", "Live phone"]}
+        description="Atlas contacts prior employers directly, via automated networks, tracked email, or live phone, so every claim on a résumé is confirmed at the source, with a full audit trail."
         image="/assets/services/employment-verification.webp"
-        start={{ service: "employment-verification" }}
       />
 
       <FeatureGrid
-        title="Every title, date, and employer — confirmed."
+        title="Every title, date, and employer, confirmed."
         intro="We contact past employers directly to validate what candidates claim, and flag the discrepancies that matter before you hire."
         features={included}
       />
@@ -142,7 +139,7 @@ export default function EmploymentVerificationPage() {
         eyebrow="In the product"
         title="Verified work history,"
         highlight="delivered fast."
-        description="Atlas contacts past employers directly to confirm titles, dates, and eligibility — then drops a clean report straight into your dashboard."
+        description="Atlas contacts past employers directly to confirm titles, dates, and eligibility, then drops a clean report straight into your dashboard."
         bullets={[
           "Direct employer outreach, tracked end-to-end",
           "Titles, dates & separation reasons confirmed",

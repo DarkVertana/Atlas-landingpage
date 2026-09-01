@@ -45,8 +45,8 @@ export default function CTASection({
   }, []);
 
   return (
-    <section className="px-5 sm:px-6 py-16 sm:py-32 bg-white">
-      <div className="mx-auto max-w-6xl">
+    <section className="px-5 sm:px-6 py-12 sm:py-16 bg-white">
+      <div className="mx-auto max-w-7xl">
         <div
           ref={cardRef}
           onMouseMove={handleMouseMove}
@@ -82,7 +82,7 @@ export default function CTASection({
             <Reveal as="h2" delay={80} className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight">
               {title}
             </Reveal>
-            <Reveal as="p" delay={160} className="mt-4 text-white/85 text-base leading-relaxed max-w-md">
+            <Reveal as="p" delay={160} className="mt-4 text-white/85 text-lg leading-relaxed max-w-md">
               {description}
             </Reveal>
             <Reveal delay={240} className="mt-6 flex flex-wrap gap-3">

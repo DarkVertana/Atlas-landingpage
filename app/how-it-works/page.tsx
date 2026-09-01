@@ -1,16 +1,37 @@
-import NumbersStrip from "../components/NumbersStrip";
 import Reveal from "../components/Reveal";
 import SectionHeader from "../components/ui/SectionHeader";
+import ServiceHero from "../components/ui/ServiceHero";
 import WorkflowSteps from "../components/WorkflowSteps";
 import CTASection from "../components/CTASection";
+
+type Bullet = { text: string; icon: React.ReactNode };
 
 type Audience = {
   id: string;
   eyebrow: string;
   title: string;
   desc: string;
-  bullets: string[];
+  bullets: Bullet[];
   icon: React.ReactNode;
+};
+
+// Small, consistent line icons used per feature bullet.
+const bulletSvg = (paths: React.ReactNode) => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+    {paths}
+  </svg>
+);
+
+const ic = {
+  clock: bulletSvg(<><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></>),
+  layers: bulletSvg(<><path d="M12 3l9 5-9 5-9-5 9-5z" /><path d="M3 13l9 5 9-5" /></>),
+  plug: bulletSvg(<><path d="M9 7V3M15 7V3M7 7h10v4a5 5 0 01-10 0V7zM12 16v5" /></>),
+  shield: bulletSvg(<><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" /><path d="M9 12l2 2 4-4" /></>),
+  link: bulletSvg(<><path d="M10 13a5 5 0 007 0l2-2a5 5 0 00-7-7l-1 1" /><path d="M14 11a5 5 0 00-7 0l-2 2a5 5 0 007 7l1-1" /></>),
+  chat: bulletSvg(<><path d="M21 12a8 8 0 01-11.5 7.2L3 21l1.8-6.5A8 8 0 1121 12z" /></>),
+  eye: bulletSvg(<><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z" /><circle cx="12" cy="12" r="3" /></>),
+  phone: bulletSvg(<><rect x="7" y="2" width="10" height="20" rx="2" /><path d="M11 18h2" /></>),
+  edit: bulletSvg(<><path d="M12 20h9" /><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4 12.5-12.5z" /></>),
 };
 
 const audiences: Audience[] = [
@@ -18,12 +39,11 @@ const audiences: Audience[] = [
     id: "for-employers",
     eyebrow: "Employers",
     title: "For hiring teams.",
-    desc: "Accelerate your talent acquisition with seamless pre-employment screening. Manage bulk orders and integrate with your ATS in minutes.",
+    desc: "Seamless pre-employment screening with bulk ordering and ATS integration in minutes.",
     bullets: [
-      "Pre-employment background checks within 24 hours",
-      "Scalable bulk ordering for high-volume recruitment",
-      "Native ATS integrations and robust REST API access",
-      "Automated adverse action workflows built directly in",
+      { text: "Pre-employment background checks with fast turnaround", icon: ic.clock },
+      { text: "Scalable bulk ordering for high-volume recruitment", icon: ic.layers },
+      { text: "Native ATS integrations and robust REST API access", icon: ic.plug },
     ],
     icon: (
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
@@ -37,12 +57,11 @@ const audiences: Audience[] = [
     id: "for-property-managers",
     eyebrow: "Property managers",
     title: "For leasing teams.",
-    desc: "Secure comprehensive tenant screening data to protect your real estate portfolio — all through one unified, compliant dashboard.",
+    desc: "Tenant screening to protect your portfolio, through one unified, compliant dashboard.",
     bullets: [
-      "Complete criminal, credit, and eviction history checks",
-      "Seamless integration with property management software",
-      "Transparent, applicant-friendly dispute resolution",
-      "Fully branded background reports for your portfolio",
+      { text: "Criminal, credit, and eviction history checks", icon: ic.shield },
+      { text: "Seamless integration with property management software", icon: ic.link },
+      { text: "Transparent, applicant-friendly dispute resolution", icon: ic.chat },
     ],
     icon: (
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
@@ -54,12 +73,11 @@ const audiences: Audience[] = [
     id: "for-applicants",
     eyebrow: "Applicants",
     title: "For the person being screened.",
-    desc: "Understand your legal rights under the FCRA, track your background check status, and maintain complete control over your personal data.",
+    desc: "Understand your FCRA rights, track your screening status, and stay in control of your data.",
     bullets: [
-      "Complete transparency into your personal screening file",
-      "Real-time status tracking from your mobile device",
-      "Straightforward workflow to dispute inaccurate findings",
-      "Clear, accessible explanations of your FCRA rights",
+      { text: "Full transparency into your personal screening file", icon: ic.eye },
+      { text: "Real-time status tracking from your mobile device", icon: ic.phone },
+      { text: "Straightforward workflow to dispute inaccurate findings", icon: ic.edit },
     ],
     icon: (
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
@@ -73,98 +91,34 @@ const audiences: Audience[] = [
 export default function HowItWorksPage() {
   return (
     <main id="main" className="bg-white text-[#0F1B17]">
-      {/* ── Hero — the site's signature dark, cartographic backdrop ── */}
-      <section className="relative overflow-hidden px-5 pb-16 pt-28 sm:px-6 sm:pb-28 sm:pt-40">
-        {/* base + brand gradient */}
-        <div className="absolute inset-0 bg-[#02120d]" />
-        <div className="absolute inset-0 bg-[radial-gradient(125%_95%_at_50%_-10%,#0a6b54_0%,#023528_42%,#01180f_78%,#020c08_100%)]" />
-
-        {/* graticule rings — the "Atlas" coordinate motif */}
-        <div className="pointer-events-none absolute inset-x-0 -top-24 flex justify-center">
-          <div
-            className="relative h-[520px] w-[520px] sm:h-[760px] sm:w-[760px]"
-            style={{
-              maskImage: "radial-gradient(circle, black 48%, transparent 78%)",
-              WebkitMaskImage: "radial-gradient(circle, black 48%, transparent 78%)",
-            }}
+      {/* Hero: shared services-style gradient backdrop */}
+      <ServiceHero
+        eyebrow="How it works"
+        title="The end-to-end background screening workflow."
+        description="Minimal client effort, maximum visibility, from consent to a defensible report."
+        image="/assets/how-it-works-hero.jpg"
+      >
+        <Reveal
+          delay={240}
+          className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row"
+        >
+          <a
+            href="/contact"
+            className="group inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-semibold text-[#01463A] shadow-lg shadow-black/20 transition-all hover:-translate-y-0.5 hover:bg-white/95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#040d10]"
           >
-            <div
-              className="absolute left-1/2 top-1/2 h-1/2 w-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full"
-              style={{ background: "radial-gradient(closest-side, rgba(62,232,190,0.10), transparent)" }}
-            />
-            {[0, 1, 2, 3, 4].map((i) => (
-              <div
-                key={i}
-                className="absolute rounded-full border border-white"
-                style={{ inset: `${i * 10}%`, opacity: 0.06 - i * 0.009 }}
-              />
-            ))}
-            <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-white/[0.05] to-transparent" />
-            <div className="absolute left-0 top-1/2 h-px w-full -translate-y-1/2 bg-gradient-to-r from-transparent via-white/[0.05] to-transparent" />
-          </div>
-        </div>
-
-        {/* tonal glows for depth */}
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute -left-24 top-10 h-80 w-80 rounded-full bg-[#0aa88a]/20 blur-[130px]" />
-          <div className="absolute -right-16 top-4 h-80 w-80 rounded-full bg-[#3E92CC]/15 blur-[140px]" />
-        </div>
-
-        {/* grain */}
-        <div
-          className="pointer-events-none absolute inset-0 opacity-[0.15] mix-blend-overlay"
-          style={{
-            backgroundImage:
-              "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
-          }}
-        />
-
-        <div className="relative mx-auto max-w-3xl text-center">
-          <Reveal
-            as="span"
-            className="inline-flex items-center justify-center gap-2 font-mono text-[11px] uppercase tracking-[0.28em] text-[#5EE3C0]"
+            Get Started
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-0.5">
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </a>
+          <a
+            href="#workflow"
+            className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/5 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#040d10]"
           >
-            <span className="h-1.5 w-1.5 rounded-full bg-[#5EE3C0] shadow-[0_0_10px_2px_rgba(94,227,192,0.6)]" />
-            How it works
-          </Reveal>
-          <Reveal
-            as="h1"
-            delay={80}
-            className="mt-6 text-4xl font-semibold leading-[1.04] tracking-[-0.02em] text-white [text-wrap:balance] md:text-[3.4rem]"
-          >
-            The end-to-end background screening workflow.
-          </Reveal>
-          <Reveal
-            as="p"
-            delay={160}
-            className="mx-auto mt-6 max-w-xl text-[15.5px] leading-relaxed text-white/85"
-          >
-            We engineered our platform to demand minimal client effort while delivering
-            maximum visibility. Discover how we process complex background investigations
-            efficiently and securely.
-          </Reveal>
-          <Reveal
-            delay={240}
-            className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row"
-          >
-            <a
-              href="/contact"
-              className="group inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-semibold text-[#01463A] shadow-lg shadow-black/20 transition-all hover:-translate-y-0.5 hover:bg-white/95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#02120d]"
-            >
-              Get Started
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-0.5">
-                <path d="M5 12h14M13 6l6 6-6 6" />
-              </svg>
-            </a>
-            <a
-              href="#workflow"
-              className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/5 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#02120d]"
-            >
-              Walk through the steps
-            </a>
-          </Reveal>
-        </div>
-      </section>
+            Walk through the steps
+          </a>
+        </Reveal>
+      </ServiceHero>
 
       {/* ── Deep-dive steps on a connected spine ── */}
       <WorkflowSteps />
@@ -210,7 +164,7 @@ export default function HowItWorksPage() {
           <SectionHeader
             eyebrow="Who it's for"
             title="One platform, three perspectives."
-            intro="However you meet Atlas — hiring, leasing, or being screened — the workflow is built around your role."
+            intro="However you meet Atlas, whether hiring, leasing, or being screened, the workflow is built around your role."
           />
 
           <div className="mt-16 grid gap-5 md:grid-cols-3">
@@ -235,11 +189,9 @@ export default function HowItWorksPage() {
                 </p>
                 <ul className="mt-5 space-y-2.5">
                   {a.bullets.map((b) => (
-                    <li key={b} className="flex items-start gap-2.5 text-sm text-[#1B2C25]">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#058B74" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mt-0.5 flex-shrink-0">
-                        <path d="M5 12l5 5 9-11" />
-                      </svg>
-                      {b}
+                    <li key={b.text} className="flex items-start gap-2.5 text-sm text-[#1B2C25]">
+                      <span className="mt-0.5 flex-shrink-0 text-[#058B74]">{b.icon}</span>
+                      {b.text}
                     </li>
                   ))}
                 </ul>
@@ -257,9 +209,6 @@ export default function HowItWorksPage() {
           </div>
         </div>
       </section>
-
-      {/* ── Numbers strip ── */}
-      <NumbersStrip />
 
       {/* ── Bottom CTA ── */}
       <CTASection

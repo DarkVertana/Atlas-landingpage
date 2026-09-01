@@ -27,7 +27,7 @@ export const posts: Post[] = [
     slug: "fcra-adverse-action-checklist-2026",
     title: "The 2026 FCRA adverse-action checklist for hiring teams",
     excerpt:
-      "A practical walkthrough of pre-adverse and adverse-action requirements — with the exact letters, timelines, and applicant rights you need.",
+      "A practical walkthrough of pre-adverse and adverse-action requirements, with the exact letters, timelines, and applicant rights you need.",
     category: "Compliance",
     date: "Apr 10, 2026",
     readTime: "8 min read",
@@ -36,17 +36,17 @@ export const posts: Post[] = [
     imageAlt:
       "A hiring manager reviewing a criminal background check report before making an adverse-action decision.",
     body: [
-      "Under the Fair Credit Reporting Act (FCRA), any time you plan to reject an applicant based even partly on a background report, you must run a two-step adverse-action process. Skipping either step is one of the most common — and most expensive — mistakes in screening, with statutory damages of $100 to $1,000 per violation before class-action exposure.",
-      "Step one is the pre-adverse action notice. Before you make a final decision, you must send the candidate a copy of the report you relied on and the CFPB's \"A Summary of Your Rights Under the FCRA.\" This gives the applicant a chance to dispute inaccuracies or explain context — for example, a record that belongs to someone with a similar name, or a charge that was later dismissed.",
+      "Under the Fair Credit Reporting Act (FCRA), any time you plan to reject an applicant based even partly on a background report, you must run a two-step adverse-action process. Skipping either step is one of the most common, and most expensive, mistakes in screening, with statutory damages of $100 to $1,000 per violation before class-action exposure.",
+      "Step one is the pre-adverse action notice. Before you make a final decision, you must send the candidate a copy of the report you relied on and the CFPB's \"A Summary of Your Rights Under the FCRA.\" This gives the applicant a chance to dispute inaccuracies or explain context, for example, a record that belongs to someone with a similar name, or a charge that was later dismissed.",
       "Then you must wait a reasonable period before finalizing. Courts and the FTC have not fixed an exact number, but five business days has become the defensible industry standard. Waiting only a day or two invites a claim that you never gave the applicant a real opportunity to respond.",
       "Step two is the adverse-action notice itself. Once the waiting period passes and you proceed, send a second notice stating the decision, the name and contact details of the consumer reporting agency (and a statement that the CRA did not make the decision), the applicant's right to a free report within 60 days, and their right to dispute the accuracy of the information.",
-      "Document every step with timestamps. In an audit or lawsuit, your ability to prove exactly when each notice went out — and that the report and summary of rights were included — is usually what separates a dismissed claim from a settlement.",
+      "Document every step with timestamps. In an audit or lawsuit, your ability to prove exactly when each notice went out, and that the report and summary of rights were included, is usually what separates a dismissed claim from a settlement.",
     ],
   },
   {
     id: 2,
     slug: "tenant-screening-best-practices",
-    title: "Tenant screening that respects applicants — and protects your portfolio",
+    title: "Tenant screening that respects applicants, and protects your portfolio",
     excerpt:
       "How property managers can balance thorough vetting with a candidate-friendly experience in 2026.",
     category: "Industry",
@@ -77,10 +77,10 @@ export const posts: Post[] = [
     imageAlt:
       "An abstract visualization of an automated data-matching pipeline used to process screening records.",
     body: [
-      "The most valuable use of machine learning in screening is not making decisions — it is matching identities. Court and county records are notoriously messy: inconsistent name formats, missing middle initials, transposed dates of birth. Models that resolve whether two records describe the same person, and flag near-matches for human review, measurably reduce both false positives and missed records.",
+      "The most valuable use of machine learning in screening is not making decisions, it is matching identities. Court and county records are notoriously messy: inconsistent name formats, missing middle initials, transposed dates of birth. Models that resolve whether two records describe the same person, and flag near-matches for human review, measurably reduce both false positives and missed records.",
       "AI is also good at classification and extraction: reading an unstructured disposition line and identifying whether a charge was a felony or misdemeanor, dismissed or convicted. This speeds up review, but it should surface the source text alongside the label so a human can verify it.",
-      "What AI should not do is decide who gets hired or housed. An opaque score that rejects applicants is a compliance liability — it is hard to explain in an adverse-action notice and nearly impossible to defend against a disparate-impact challenge. Regulators have signaled that \"the algorithm did it\" is not a defense.",
-      "The honest framing is this: AI makes screening faster and more accurate at finding and organizing records. The adjudication — the judgment about relevance to a specific role — belongs to a documented, human-governed policy.",
+      "What AI should not do is decide who gets hired or housed. An opaque score that rejects applicants is a compliance liability, it is hard to explain in an adverse-action notice and nearly impossible to defend against a disparate-impact challenge. Regulators have signaled that \"the algorithm did it\" is not a defense.",
+      "The honest framing is this: AI makes screening faster and more accurate at finding and organizing records. The adjudication, the judgment about relevance to a specific role, belongs to a documented, human-governed policy.",
     ],
   },
   {
@@ -97,10 +97,10 @@ export const posts: Post[] = [
     imageAlt:
       "A commercial fleet driver behind the wheel, representing motor vehicle record monitoring.",
     body: [
-      "A motor vehicle record (MVR) reports a driver's license status, class, endorsements, violations, suspensions, and accidents. For any operation that puts people behind the wheel, a clean pre-hire MVR is table stakes — but a point-in-time check ages quickly.",
+      "A motor vehicle record (MVR) reports a driver's license status, class, endorsements, violations, suspensions, and accidents. For any operation that puts people behind the wheel, a clean pre-hire MVR is table stakes, but a point-in-time check ages quickly.",
       "The gap is between checks. A driver can accumulate a DUI or a suspension the day after you run their annual MVR, and you would not know until the next cycle. Continuous MVR monitoring closes that gap by alerting you when a new violation posts, letting you act before an incident becomes a liability.",
       "Access to MVR data is governed by the federal Driver's Privacy Protection Act (DPPA) plus each state's DMV rules, and states differ sharply on lookback periods, how they code violations, and whether continuous monitoring is even offered. Employment purposes are a permissible use under the DPPA, but you still need a documented, consented basis for each pull.",
-      "The practical setup: run a full MVR at hire, enroll every active driver in continuous monitoring, and define written thresholds — which violations trigger review, retraining, or removal — applied uniformly across your fleet.",
+      "The practical setup: run a full MVR at hire, enroll every active driver in continuous monitoring, and define written thresholds, which violations trigger review, retraining, or removal, applied uniformly across your fleet.",
     ],
   },
   {
@@ -117,10 +117,10 @@ export const posts: Post[] = [
     imageAlt:
       "A recruiter conducting an employment verification call as part of a streamlined hiring workflow.",
     body: [
-      "Most screening delays are not caused by the checks themselves — they are caused by the handoffs around them. The single biggest lever is ordering the report the moment a conditional offer is accepted, rather than waiting for a batch or a manual trigger.",
+      "Most screening delays are not caused by the checks themselves, they are caused by the handoffs around them. The single biggest lever is ordering the report the moment a conditional offer is accepted, rather than waiting for a batch or a manual trigger.",
       "Second, collect consent and applicant data through a mobile-friendly flow. Incomplete or mistyped identifiers are the leading cause of stalled reports, because a wrong SSN or date of birth sends a search down the wrong path and forces a re-run.",
       "Third, decouple the fast checks from the slow ones. An SSN trace and national criminal search often return in hours, while a manual employment verification or an international check can take days. Let a candidate move through onboarding on the parts that have cleared, with clear gating on what still must resolve.",
-      "Fourth, adjudicate against a written matrix instead of case-by-case debate. When \"what counts as disqualifying\" is decided in advance, reviewers stop escalating routine reports and decisions become both faster and more consistent — which also strengthens your compliance posture.",
+      "Fourth, adjudicate against a written matrix instead of case-by-case debate. When \"what counts as disqualifying\" is decided in advance, reviewers stop escalating routine reports and decisions become both faster and more consistent, which also strengthens your compliance posture.",
     ],
   },
   {
@@ -128,7 +128,7 @@ export const posts: Post[] = [
     slug: "ssn-trace-explained",
     title: "SSN trace, explained: what it tells you and what it doesn't",
     excerpt:
-      "The foundation check that anchors every background report — and why it's often misunderstood.",
+      "The foundation check that anchors every background report, and why it's often misunderstood.",
     category: "Guides",
     date: "Mar 4, 2026",
     readTime: "4 min read",
@@ -148,7 +148,7 @@ export const posts: Post[] = [
     slug: "ban-the-box-state-map",
     title: "Ban-the-box in 2026: the state and city map employers need",
     excerpt:
-      "Jurisdictions that restrict when and how you can consider criminal history — updated for 2026 legislation.",
+      "Jurisdictions that restrict when and how you can consider criminal history, updated for 2026 legislation.",
     category: "Compliance",
     date: "Feb 25, 2026",
     readTime: "9 min read",
@@ -157,10 +157,10 @@ export const posts: Post[] = [
     imageAlt:
       "A compliance analyst mapping ban-the-box regulations across multiple states and cities.",
     body: [
-      "\"Ban-the-box\" laws delay when an employer may ask about or consider criminal history — typically prohibiting the checkbox on the initial application and pushing the inquiry to after an interview or a conditional offer. More than a dozen states and dozens of cities now have some form of these rules covering private employers.",
+      "\"Ban-the-box\" laws delay when an employer may ask about or consider criminal history, typically prohibiting the checkbox on the initial application and pushing the inquiry to after an interview or a conditional offer. More than a dozen states and dozens of cities now have some form of these rules covering private employers.",
       "The details vary more than the label suggests. Some jurisdictions only bar the application-stage question; others, like California's Fair Chance Act, require a full individualized assessment and a specific pre-adverse notice with a waiting period before you can rescind an offer over a record.",
       "Multi-state employers face the hardest version of this problem, because the rule that applies is usually the one where the applicant will work, not where you are headquartered. A single national application form that asks about convictions can violate the law in several jurisdictions at once.",
-      "The maintainable approach is to strip criminal-history questions from applications everywhere, move the inquiry to post-offer, and layer the strictest applicable local process — individualized assessment plus fair-chance notices — on top. Treat this map as living: cities amend these ordinances almost every legislative session.",
+      "The maintainable approach is to strip criminal-history questions from applications everywhere, move the inquiry to post-offer, and layer the strictest applicable local process, individualized assessment plus fair-chance notices, on top. Treat this map as living: cities amend these ordinances almost every legislative session.",
     ],
   },
   {
@@ -168,7 +168,7 @@ export const posts: Post[] = [
     slug: "onboarding-checklist-new-hires",
     title: "The onboarding checklist that catches compliance gaps on day one",
     excerpt:
-      "Seven items to verify between offer letter and first day — without slowing down the applicant experience.",
+      "Seven items to verify between offer letter and first day, without slowing down the applicant experience.",
     category: "Hiring",
     date: "Feb 18, 2026",
     readTime: "5 min read",
@@ -178,9 +178,9 @@ export const posts: Post[] = [
       "An HR coordinator completing onboarding verification paperwork for a newly hired employee.",
     body: [
       "The window between offer acceptance and the first day is where compliance gaps hide. It is worth a short, explicit checklist because the cost of catching a problem here is trivial compared to catching it in an audit.",
-      "Start with the paper trail on the screening itself: a signed standalone disclosure and authorization (the FCRA requires the disclosure to stand alone, not buried in an application), the completed report, and — if any decision was affected — proof that adverse-action steps ran correctly.",
+      "Start with the paper trail on the screening itself: a signed standalone disclosure and authorization (the FCRA requires the disclosure to stand alone, not buried in an application), the completed report, and, if any decision was affected, proof that adverse-action steps ran correctly.",
       "Next, confirm the role-specific requirements actually cleared: employment and education verifications for the claims that matter, any license or certification the position legally requires, and the drug or MVR checks the role calls for. A conditional offer should not convert until these resolve.",
-      "Finally, verify work authorization through Form I-9 within the statutory deadline, and make sure your data-handling is squared away — where the report is stored, who can see it, and when it will be purged. Getting retention right on day one is far easier than reconstructing it later.",
+      "Finally, verify work authorization through Form I-9 within the statutory deadline, and make sure your data-handling is squared away, where the report is stored, who can see it, and when it will be purged. Getting retention right on day one is far easier than reconstructing it later.",
     ],
   },
   {
@@ -198,7 +198,7 @@ export const posts: Post[] = [
       "A secure records archive representing retention and purge policies for background screening data.",
     body: [
       "Retention of background reports is a balancing act: keep the data long enough to defend a decision, but not so long that you expand your breach surface and violate a privacy statute. There is no single federal number that covers every record.",
-      "The floor is set by anti-discrimination rules. EEOC regulations generally require employers to keep hiring records, including the basis for decisions, for at least one year — extended if a charge or lawsuit is pending. Federal contractors and certain regulated industries face longer mandates.",
+      "The floor is set by anti-discrimination rules. EEOC regulations generally require employers to keep hiring records, including the basis for decisions, for at least one year, extended if a charge or lawsuit is pending. Federal contractors and certain regulated industries face longer mandates.",
       "State privacy laws now push in the other direction. Frameworks like the CCPA and its successors require that you retain personal information only as long as reasonably necessary for the disclosed purpose, and that you honor deletion requests. Holding a five-year-old rejected applicant's SSN \"just in case\" is increasingly a liability, not a safeguard.",
       "The workable policy defines a retention window per record type, automates the purge on a fixed cadence rather than leaving it to memory, and logs each deletion. In an audit, a demonstrable, consistently executed schedule is worth more than any single retention length you might pick.",
     ],

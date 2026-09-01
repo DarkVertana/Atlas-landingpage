@@ -13,7 +13,7 @@ export default function Bento() {
       supportStyle="chips"
       eyebrow="Compliant public-content review"
       title="AI surfaces it. A human decides."
-      intro="Public posts are classified by category, then every flag is confirmed by a trained analyst — with no protected-class data ever considered."
+      intro="Public posts are classified by category, then every flag is confirmed by a trained analyst, with no protected-class data ever considered."
       metrics={[
         { to: 4, unit: "Platforms scanned", note: "Public activity reviewed across LinkedIn, X, Facebook, and Instagram.", icon: <I d="M4 5h16v11H4zM4 20h16M9 16v4M15 16v4" /> },
         { to: 7, unit: "Year lookback", note: "Public posts reviewed within the FCRA reporting window, newest first.", icon: <I d="M12 7v5l3 2M12 3a9 9 0 100 18 9 9 0 000-18z" /> },

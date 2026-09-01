@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Reveal from "../components/Reveal";
 import CTASection from "../components/CTASection";
 import ChannelDialog, { type Channel } from "../components/ChannelDialog";
@@ -33,7 +34,7 @@ const CHANNELS: Channel[] = [
     eyebrow: "Enterprise sales inquiries",
     title: "Request a platform demo",
     intent:
-      "Tell us about your screening program and we'll tailor a walkthrough — bundles, API integration, and volume pricing for your team.",
+      "Tell us about your program and we'll tailor a walkthrough of bundles, API, and volume pricing.",
     icon: (
       <svg {...ico}>
         <path d="M3 21V5a2 2 0 012-2h14a2 2 0 012 2v16" />
@@ -58,7 +59,7 @@ const CHANNELS: Channel[] = [
     eyebrow: "Employer support",
     title: "Open a support ticket",
     intent:
-      "Already a client? Get help with dashboard navigation, billing questions, or the status of a specific screening.",
+      "Already a client? Get help with your dashboard, billing, or the status of a screening.",
     icon: (
       <svg {...ico}>
         <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9" />
@@ -68,7 +69,7 @@ const CHANNELS: Channel[] = [
     fields: [
       { key: "name", label: "Name", required: true, autoComplete: "name" },
       { key: "email", label: "Work email", type: "email", required: true, autoComplete: "email" },
-      { key: "account", label: "Account or order ID", placeholder: "Optional — helps us find you faster" },
+      { key: "account", label: "Account or order ID", placeholder: "Optional. Helps us find you faster" },
     ],
     textarea: {
       label: "What do you need help with?",
@@ -81,7 +82,7 @@ const CHANNELS: Channel[] = [
     eyebrow: "Applicant dispute resolution",
     title: "Initiate the dispute process",
     intent:
-      "If you need to challenge the accuracy of a completed report, our compliance team will review it under the FCRA and applicable state laws.",
+      "Challenge the accuracy of a completed report. Our compliance team reviews it under the FCRA and state law.",
     icon: (
       <svg {...ico}>
         <path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z" />
@@ -220,7 +221,7 @@ export default function ContactPage() {
                   </div>
                   <h3 className="text-lg font-bold text-[#01463A]">Message received.</h3>
                   <p className="mt-2 text-sm text-gray-500 max-w-sm">
-                    Thanks for reaching out — the right person on our team will
+                    Thanks for reaching out. The right person on our team will
                     reach out to you soon.
                   </p>
                 </div>
@@ -323,16 +324,32 @@ export default function ContactPage() {
               person on our team will reach out to you soon.
             </Reveal>
 
-            <Reveal as="div" variant="fade" delay={300} className="mt-8 rounded-2xl border border-gray-200 bg-gray-50 px-6 py-5 max-w-md">
-              <p className="text-[11px] font-semibold uppercase tracking-widest text-[#058B74]">
-                Global support
-              </p>
-              <p className="mt-2 text-sm font-semibold text-[#01463A]">
-                We work across time zones
-              </p>
-              <p className="text-xs text-gray-500 mt-1">
-                Wherever you are, send us a note and our team will reach out soon.
-              </p>
+            <Reveal
+              as="div"
+              variant="fade"
+              delay={300}
+              className="relative mt-8 aspect-[4/3] w-full overflow-hidden rounded-2xl ring-1 ring-black/10 shadow-[0_28px_56px_-30px_rgba(4,20,14,0.6)]"
+            >
+              <Image
+                src="/assets/images/global-support-globe.jpg"
+                alt="Atlas Screening supports clients across the globe"
+                fill
+                sizes="(max-width: 1024px) 92vw, 540px"
+                className="object-cover"
+              />
+              {/* readability scrim so the copy always reads over the globe */}
+              <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-[#02120d] via-[#02120d]/55 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 p-6">
+                <p className="text-[11px] font-semibold uppercase tracking-widest text-[#5EE3C0]">
+                  Global support
+                </p>
+                <p className="mt-2 text-base font-semibold text-white">
+                  We work across time zones
+                </p>
+                <p className="mt-1 text-xs leading-relaxed text-white/70">
+                  Wherever you are, send us a note and our team will reach out soon.
+                </p>
+              </div>
             </Reveal>
             </div>
           </div>
@@ -365,7 +382,7 @@ export default function ContactPage() {
                     {ch.eyebrow}
                   </p>
                   <h3 className="mt-1 text-lg font-semibold text-[#01463A]">{ch.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-gray-500">{ch.intent}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-gray-500 line-clamp-2">{ch.intent}</p>
                   <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-[#01463A] transition-colors group-hover:text-[#058B74]">
                     {ch.submitLabel}
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">

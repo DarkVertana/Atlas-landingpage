@@ -2,10 +2,10 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Atlas Screening — Trust Fast. Hire to Last.",
+    name: "Atlas Screening: Trust Fast. Hire to Last.",
     short_name: "Atlas Screening",
     description:
-      "FCRA-compliant employment background checks — criminal records, identity verification, employment verification, and tenant screening.",
+      "FCRA-compliant employment background checks: criminal records, identity verification, employment verification, and tenant screening.",
     start_url: "/",
     display: "standalone",
     background_color: "#FFFFFF",

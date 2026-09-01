@@ -13,7 +13,7 @@ export default function Bento() {
       supportStyle="chips"
       eyebrow="The full driving record"
       title="Straight from every state DMV."
-      intro="License status, violations, points, and endorsements pulled directly from the source — the signal fleet, delivery, and field roles depend on."
+      intro="License status, violations, points, and endorsements pulled directly from the source: the signal fleet, delivery, and field roles depend on."
       metrics={[
         { to: 50, unit: "State DMVs", note: "Records pulled directly from every U.S. department of motor vehicles.", icon: <I d="M5 16l1-5a2 2 0 012-1.5h8a2 2 0 012 1.5l1 5M5 16h14M5 16v2M19 16v2M8 16v-1M16 16v-1" /> },
         { to: 5, unit: "Year lookback", note: "Violations, suspensions, and endorsements across a full five-year driving history.", icon: <I d="M12 7v5l3 2M12 3a9 9 0 100 18 9 9 0 000-18z" /> },

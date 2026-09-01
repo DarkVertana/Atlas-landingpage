@@ -170,7 +170,7 @@ export default function PricingPage() {
             delay={200}
             className="mt-5 text-white/90 max-w-xl mx-auto text-sm leading-relaxed"
           >
-            Pick a tier, add what you need. No contracts, no setup fees — billed
+            Pick a tier, add what you need. No contracts, no setup fees, billed
             only when applicants complete a check.
           </Reveal>
         </div>
@@ -275,7 +275,7 @@ export default function PricingPage() {
           </div>
 
           <p className="mt-8 text-center text-xs text-gray-600">
-            All prices in USD. Applicants pay nothing — charges apply to the
+            All prices in USD. Applicants pay nothing. Charges apply to the
             requesting customer only.
           </p>
         </div>
@@ -289,7 +289,7 @@ export default function PricingPage() {
               Add exactly what you need.
             </Reveal>
             <Reveal as="p" variant="fade" delay={100} className="mt-4 text-gray-600 text-sm leading-relaxed">
-              Every add-on stacks on top of any tier. Mix and match — you&apos;re
+              Every add-on stacks on top of any tier. Mix and match. You&apos;re
               billed per add-on, only when an applicant completes it.
             </Reveal>
           </div>
@@ -432,7 +432,7 @@ export default function PricingPage() {
                 </h2>
                 <p className="mt-3 text-sm leading-relaxed text-white/80">
                   For teams running checks at scale, we tailor a program to your
-                  needs — volume-based pricing, custom packages by role, ATS/API
+                  needs: volume-based pricing, custom packages by role, ATS/API
                   integration, and a dedicated compliance and account team. Every
                   program is conducted in accordance with the FCRA and applicable
                   state laws.

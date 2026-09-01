@@ -204,7 +204,7 @@ export default function ChannelDialog({
               </div>
               <h3 className="text-lg font-bold text-[#01463A]">Request received.</h3>
               <p className="mt-2 max-w-sm text-sm text-gray-500">
-                Thanks — the right person on our team will reach out to you soon.
+                Thanks. The right person on our team will reach out to you soon.
               </p>
               <button
                 onClick={onClose}

@@ -16,7 +16,8 @@ export default function CompliancePage() {
     <LegalPage
       eyebrow="Compliance"
       title="Compliance & Consumer Protection"
-      intro="Atlas Screening operates in accordance with the Fair Credit Reporting Act (FCRA) and applicable state laws. Every step of our process is designed to protect consumers and ensure lawful, accurate screening."
+      intro="Screening conducted under the FCRA and state laws, built to protect consumers."
+      image="/assets/images/call-center-agent-office-helping-customers-by-answering-questions.webp"
       sections={sections}
     >
       <LegalSection id="overview" title="FCRA Compliance">
@@ -28,7 +29,7 @@ export default function CompliancePage() {
         <p>
           Our processes are built to ensure that every report is produced,
           delivered, and used within the bounds of federal and state
-          regulations — protecting both the clients who request reports and
+          regulations, protecting both the clients who request reports and
           the consumers who are the subjects of those reports.
         </p>
       </LegalSection>
@@ -86,16 +87,16 @@ export default function CompliancePage() {
         </p>
         <ul>
           <li>
-            <strong>Pre-adverse action notice</strong> — Providing the
+            <strong>Pre-adverse action notice:</strong> Providing the
             consumer with a copy of the report and a summary of their rights
             before a final decision is made
           </li>
           <li>
-            <strong>Waiting period</strong> — Allowing the consumer reasonable
+            <strong>Waiting period:</strong> Allowing the consumer reasonable
             time to review and dispute the information
           </li>
           <li>
-            <strong>Final adverse action notice</strong> — Informing the
+            <strong>Final adverse action notice:</strong> Informing the
             consumer of the final decision, including contact information for
             Atlas Screening and notice of the consumer&apos;s right to dispute
           </li>

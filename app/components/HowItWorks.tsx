@@ -68,9 +68,8 @@ const steps: Step[] = [
     desc: "Email and dashboard alerts fire the moment the branded PDF is ready.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
-        <path d="M14 2v6h6" />
-        <path d="M9 13l2 2 4-4" />
+        <path d="M18 8a6 6 0 00-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
+        <path d="M13.73 21a2 2 0 01-3.46 0" />
       </svg>
     ),
   },
@@ -78,7 +77,7 @@ const steps: Step[] = [
 
 function Row({ step }: { step: Step }) {
   return (
-    <div className="group relative grid cursor-default grid-cols-[auto_1fr] items-center gap-6 border-t border-[#E1E6E2] py-7 transition-colors duration-300 hover:border-[#058B74]/40 sm:gap-10 sm:py-9">
+    <div className="group relative grid cursor-default grid-cols-[auto_1fr] items-center gap-6 border-t border-[#E1E6E2] py-7 transition-colors duration-300 hover:border-[#058B74]/40 sm:gap-10 sm:py-9 lg:grid-cols-[auto_1fr_auto]">
       {/* Oversized numeral — outline base + green fill that wipes up on hover */}
       <span className="relative block select-none text-[56px] font-extrabold leading-none tracking-tight sm:text-[84px] md:text-[104px]">
         <span className="block [-webkit-text-stroke:1.5px_#CDD4CF] [color:transparent] transition-all duration-300 group-hover:[-webkit-text-stroke-color:#058B74]">
@@ -103,6 +102,23 @@ function Row({ step }: { step: Step }) {
         <p className="mt-2 max-w-md text-[13.5px] leading-relaxed text-[#5B6B64] sm:text-sm">
           {step.desc}
         </p>
+      </div>
+
+      {/* Hover-only reveal — fills the empty right side of the hovered row with a
+          soft brand tile (enlarged step icon + forward chevron). Decorative;
+          hidden until hover so the row stays clean at rest. */}
+      <div
+        aria-hidden
+        className="hidden translate-x-6 items-center gap-4 justify-self-end pr-2 opacity-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0 group-hover:opacity-100 lg:flex"
+      >
+        <span className="flex h-20 w-28 items-center justify-center rounded-2xl bg-[#058B74]/[0.07] text-[#058B74] ring-1 ring-inset ring-[#058B74]/15 [&>svg]:h-9 [&>svg]:w-9">
+          {step.icon}
+        </span>
+        <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#058B74] text-white">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M9 6l6 6-6 6" />
+          </svg>
+        </span>
       </div>
     </div>
   );

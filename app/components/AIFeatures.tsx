@@ -167,8 +167,8 @@ export default function AIFeatures() {
                       <p className="truncate text-[20px] font-semibold tracking-[-0.01em] text-[#12211B]">Alex Morgan</p>
                       <p className="mt-0.5 text-[12.5px] text-[#5B6E67]">Standard package · Jul 30, 2026</p>
                     </div>
-                    <span className="ml-auto inline-flex shrink-0 items-center gap-1.5 rounded-full bg-[#E4F4EC] px-3 py-1.5 text-[12px] font-semibold text-[#0E7A50] ring-1 ring-inset ring-[#0E7A50]/15">
-                      <span className="h-1.5 w-1.5 rounded-full bg-[#12A365]" /> Eligible
+                    <span className="ml-auto inline-flex shrink-0 items-center gap-1.5 text-[14px] font-semibold text-[#0E7A50]">
+                      <TickGreen /> Eligible
                     </span>
                   </div>
                   <div className="mt-4 grid grid-cols-3 gap-px overflow-hidden rounded-xl border border-black/[0.06] bg-black/[0.06]">
@@ -196,7 +196,7 @@ export default function AIFeatures() {
                       <TickGreen />
                       <span className="text-[13.5px] font-medium text-[#1B2C25]">{c.label}</span>
                       <span className="text-[12px] text-[#5B6E67]">{c.meta}</span>
-                      <span className="ml-auto inline-flex items-center gap-1.5 rounded-md bg-[#E8F4EE] px-2 py-0.5 text-[10.5px] font-semibold uppercase tracking-[0.1em] text-[#0E7A50]">Clear</span>
+                      <span className="ml-auto text-[10.5px] font-semibold uppercase tracking-[0.12em] text-[#0E7A50]">Clear</span>
                     </li>
                   ))}
                 </ul>
@@ -249,7 +249,7 @@ export default function AIFeatures() {
                       <p className="text-[12.5px] font-semibold text-[#12211B]">Atlas Screening, Inc.</p>
                       <p className="text-[11px] text-[#5B6E67]">Adjudicator · e-signed Jul 30, 2026</p>
                     </div>
-                    <span className="inline-flex items-center gap-1.5 rounded-md bg-[#E8F4EE] px-2.5 py-1 text-[11px] font-semibold text-[#0E7A50]">
+                    <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-[#0E7A50]">
                       <TickGreen /> Verified
                     </span>
                   </div>

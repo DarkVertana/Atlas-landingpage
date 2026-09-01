@@ -58,11 +58,9 @@ export default function ServiceHero({ eyebrow, title, description, steps, image,
       <div className="relative mx-auto max-w-3xl text-center">
         <Reveal
           as="p"
-          className="inline-flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/85 mb-5"
+          className="inline-flex items-center text-[11px] font-semibold uppercase tracking-[0.22em] text-white/85 mb-5"
         >
-          <span className="h-px w-6 bg-white/30" />
           {eyebrow}
-          <span className="h-px w-6 bg-white/30" />
         </Reveal>
 
         <Reveal
@@ -76,7 +74,7 @@ export default function ServiceHero({ eyebrow, title, description, steps, image,
         <Reveal
           as="p"
           delay={160}
-          className="mt-6 text-white/90 max-w-2xl mx-auto text-[15px] leading-relaxed"
+          className="mt-6 text-white/90 max-w-2xl mx-auto text-lg leading-relaxed sm:text-xl"
         >
           {description}
         </Reveal>

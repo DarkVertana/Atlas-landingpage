@@ -202,7 +202,7 @@ export default function HeroSection() {
            as a single block rather than parts arriving separately. ── */}
       <div
         ref={contentRef}
-        className="relative z-10 flex w-full flex-col items-center justify-center px-5 py-24 text-center will-change-transform sm:px-6 sm:py-28"
+        className="relative z-10 flex w-full flex-col items-center justify-center px-5 pb-24 pt-40 text-center will-change-transform sm:px-6 sm:pb-28 sm:pt-44"
       >
         <div className="mx-auto max-w-4xl">
           {/* Eyebrow: plain uppercase label — feeds directly into the title. */}
@@ -221,33 +221,38 @@ export default function HeroSection() {
             className="animate-hero-enter text-4xl font-medium leading-[1.06] tracking-tight text-white [text-shadow:0_2px_24px_rgba(0,0,0,0.5)] sm:text-5xl md:text-[3.5rem] lg:text-6xl"
             style={{ animationDelay: "60ms" }}
           >
-            Background Screening, Defined by
-            {/* Own-line flip slot. Incoming word is in flow (defines the line
-                height); the outgoing word is layered absolutely on top and both
-                crossfade on the same curve — one continuous, buttery swap. */}
-            <span className="relative mt-1 block">
-              <span
-                key={`in-${index}`}
-                className="hero-word-in inline-block whitespace-nowrap font-semibold text-[#3EE8BE] [text-shadow:0_0_14px_rgba(62,232,190,0.28)]"
-              >
-                {FLIP_WORDS[index]}
-              </span>
-              {outgoing !== null && outgoing !== index && (
+            Background Screening,
+            {/* Second line: "Defined by" + the flip word, kept together so the
+                headline reads as one sentence across exactly two lines. The flip
+                word sits in its own relative wrapper: the incoming word is in
+                flow (defines the line height); the outgoing word is layered
+                absolutely on top and both crossfade on the same curve. */}
+            <span className="mt-1 block">
+              Defined by{" "}
+              <span className="relative inline-block align-baseline">
                 <span
-                  key={`out-${outgoing}`}
-                  aria-hidden
-                  className="hero-word-out absolute left-1/2 top-0 -translate-x-1/2 inline-block whitespace-nowrap font-semibold text-[#3EE8BE] [text-shadow:0_0_14px_rgba(62,232,190,0.28)]"
+                  key={`in-${index}`}
+                  className="hero-word-in inline-block whitespace-nowrap font-semibold text-[#3EE8BE] [text-shadow:0_0_14px_rgba(62,232,190,0.28)]"
                 >
-                  {FLIP_WORDS[outgoing]}
+                  {FLIP_WORDS[index]}
                 </span>
-              )}
+                {outgoing !== null && outgoing !== index && (
+                  <span
+                    key={`out-${outgoing}`}
+                    aria-hidden
+                    className="hero-word-out absolute left-0 top-0 inline-block whitespace-nowrap font-semibold text-[#3EE8BE] [text-shadow:0_0_14px_rgba(62,232,190,0.28)]"
+                  >
+                    {FLIP_WORDS[outgoing]}
+                  </span>
+                )}
+              </span>
             </span>
           </h1>
 
           {/* Subtitle: bridges the title and CTAs; optical width matches the
               headline block above (centered, balanced). */}
           <p
-            className="animate-hero-enter mx-auto mt-6 max-w-2xl text-sm leading-relaxed text-balance text-white/85 sm:text-base md:max-w-3xl md:text-lg"
+            className="animate-hero-enter mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-balance text-white/85 sm:text-xl md:max-w-3xl md:text-[1.375rem]"
             style={{ animationDelay: "140ms" }}
           >
             Built for employers, property managers, and partners requiring
@@ -261,7 +266,7 @@ export default function HeroSection() {
           >
             <a
               href="/contact"
-              className="group inline-flex items-center justify-center gap-2 rounded-xl border border-transparent bg-white px-8 py-3.5 text-sm font-semibold text-[#01463A] shadow-lg shadow-black/20 transition-all hover:-translate-y-0.5 hover:bg-white/95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#02120d]"
+              className="group inline-flex items-center justify-center gap-2 rounded-xl border border-transparent bg-[#3EE8BE] px-6 py-3 text-sm font-semibold text-[#01463A] shadow-lg shadow-[#3EE8BE]/25 transition-all hover:-translate-y-0.5 hover:bg-[#5cf0cc] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3EE8BE] focus-visible:ring-offset-2 focus-visible:ring-offset-[#02120d]"
             >
               Get Started
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-0.5">
@@ -270,7 +275,7 @@ export default function HeroSection() {
             </a>
             <a
               href="/how-it-works"
-              className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/40 bg-white/10 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#02120d]"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/40 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#02120d]"
             >
               See how it works
             </a>

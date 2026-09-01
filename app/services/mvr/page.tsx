@@ -11,7 +11,7 @@ import ServiceJsonLd from "../../components/ServiceJsonLd";
 export const metadata: Metadata = {
   title: "Motor Vehicle Records (MVR) | Atlas Screening",
   description:
-    "State-by-state driving history for fleet, delivery, gig, and any role behind the wheel — with optional continuous monitoring and CDL support.",
+    "State-by-state driving history for fleet, delivery, gig, and any role behind the wheel, with optional continuous monitoring and CDL support.",
 };
 
 const included = [
@@ -20,15 +20,13 @@ const included = [
     desc: "Current license status, issue date, expiration, and class pulled directly from the issuing state DMV.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-        <rect x="3" y="5" width="18" height="14" rx="2" />
-        <circle cx="8" cy="12" r="2" />
-        <path d="M14 10h4M14 13h3M14 16h4" />
+        <path d="M4 6h16a1 1 0 011 1v10a1 1 0 01-1 1H4a1 1 0 01-1-1V7a1 1 0 011-1zM8 12a2 2 0 100-4 2 2 0 000 4zM6 16c0-1.7 1.3-3 3-3s3 1.3 3 3" />
       </svg>
     ),
   },
   {
     title: "Violations and citations",
-    desc: "Speeding, reckless driving, DUI/DWI, and every other moving violation reported to the state — with date and disposition.",
+    desc: "Speeding, reckless driving, DUI/DWI, and every other moving violation reported to the state, with date and disposition.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
         <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
@@ -41,7 +39,7 @@ const included = [
     desc: "Reportable collisions, at-fault determinations, and claim history where the state maintains an accident record.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-        <path d="M3 13l2-5a2 2 0 012-1.5h10a2 2 0 012 1.5l2 5M3 13v5h2v-2h14v2h2v-5M3 13h18" />
+        <path d="M3 13l2-5a2 2 0 012-1.5h10a2 2 0 012 1.5l2 5v5h-2v-2H5v2H3v-5z" />
         <circle cx="7.5" cy="16" r="1.5" />
         <circle cx="16.5" cy="16" r="1.5" />
       </svg>
@@ -49,7 +47,7 @@ const included = [
   },
   {
     title: "Suspensions & restrictions",
-    desc: "Active suspensions, revocations, conditional licenses, and restriction codes — essential for compliant hiring.",
+    desc: "Active suspensions, revocations, conditional licenses, and restriction codes, essential for compliant hiring.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
         <circle cx="12" cy="12" r="9" />
@@ -59,7 +57,7 @@ const included = [
   },
   {
     title: "CDL endorsements",
-    desc: "Hazmat, tanker, doubles/triples, passenger, school bus — plus medical certifications required for DOT-regulated roles.",
+    desc: "Hazmat, tanker, doubles/triples, passenger, and school bus, plus medical certifications required for DOT-regulated roles.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
         <path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z" />
@@ -82,7 +80,7 @@ const included = [
 const faqs = [
   {
     q: "Which states are covered?",
-    a: "All 50 state DMVs plus DC are covered. Return time varies by state — most are instant, and the handful of manual-request states typically return within 24 hours.",
+    a: "All 50 state DMVs plus DC are covered. Return time varies by state. Most are instant, and the handful of manual-request states typically return within 24 hours.",
   },
   {
     q: "How far back does the driving record go?",
@@ -98,7 +96,7 @@ const faqs = [
   },
   {
     q: "Is applicant consent required?",
-    a: "Yes. Pulling a motor vehicle record is a consumer report under the FCRA — explicit, written consent is required. Atlas collects and stores timestamped consent as part of the applicant flow.",
+    a: "Yes. Pulling a motor vehicle record is a consumer report under the FCRA, so explicit, written consent is required. Atlas collects and stores timestamped consent as part of the applicant flow.",
   },
 ];
 
@@ -107,22 +105,20 @@ export default function MvrPage() {
     <main id="main" className="bg-white text-[#01463A]">
       <ServiceJsonLd
         name="Motor Vehicle Records (MVR)"
-        description="State-by-state driving history for fleet, delivery, gig, and any role behind the wheel — with optional continuous monitoring and CDL support."
+        description="State-by-state driving history for fleet, delivery, gig, and any role behind the wheel, with optional continuous monitoring and CDL support."
         faqs={faqs}
         path="/services/mvr"
       />
       <ServiceHero
         eyebrow="Motor vehicle records"
         title="Driving records direct from the DMV."
-        description="License status, violations, accidents, CDL endorsements, and continuous monitoring — every detail your fleet, delivery, gig, or transportation team needs to hire behind the wheel with confidence."
-        steps={["License", "Violations", "Accidents", "Monitoring"]}
+        description="License status, violations, accidents, CDL endorsements, and continuous monitoring: every detail your fleet, delivery, gig, or transportation team needs to hire behind the wheel with confidence."
         image="/assets/services/mvr.webp"
-        start={{ service: "mvr" }}
       />
 
       <FeatureGrid
         title="The full picture of a driver's record."
-        intro="License status, violations, points, and endorsements pulled straight from state DMVs — the signal fleet and delivery roles depend on."
+        intro="License status, violations, points, and endorsements pulled straight from state DMVs: the signal fleet and delivery roles depend on."
         features={included}
       />
 

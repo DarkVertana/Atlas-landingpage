@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import Reveal from "../components/Reveal";
 import { categories } from "../lib/posts";
@@ -24,7 +25,7 @@ export default function BlogList({ posts }: { posts: BlogPost[] }) {
     const res = await subscribeNewsletter(email);
     if (res.ok) {
       setSubscribed(true);
-      setSubMsg("Thanks — you're on the list. New posts land in your inbox.");
+      setSubMsg("Thanks, you're on the list. New posts land in your inbox.");
       setEmail("");
     } else {
       setSubMsg(res.error ?? "Something went wrong.");
@@ -118,6 +119,20 @@ export default function BlogList({ posts }: { posts: BlogPost[] }) {
             variant="scale"
             className="relative overflow-hidden rounded-2xl px-8 md:px-16 py-10 md:py-14 flex items-center shadow-lg bg-[#01463A]"
           >
+            {/* Background image + green gradient overlay — matches the homepage CTA */}
+            <Image
+              src="/assets/banner_cta.webp"
+              alt=""
+              fill
+              sizes="(max-width: 1280px) 100vw, 1280px"
+              className="object-cover"
+            />
+            <div
+              aria-hidden
+              className="absolute inset-0"
+              style={{ background: "linear-gradient(to top right, #01463A 30%, transparent 100%)" }}
+            />
+
             <div className="relative z-10 max-w-xl">
               <p className="text-sm font-semibold tracking-widest uppercase text-white/50 mb-3">
                 Stay ahead
@@ -126,7 +141,7 @@ export default function BlogList({ posts }: { posts: BlogPost[] }) {
                 New posts, once a<br className="hidden md:block" /> fortnight.
               </h2>
               <p className="mt-4 text-white/60 text-base leading-relaxed max-w-md">
-                Compliance updates and hiring playbooks — straight to your inbox.
+                Compliance updates and hiring playbooks, straight to your inbox.
                 Unsubscribe any time.
               </p>
               <form onSubmit={handleSubscribe} className="mt-6 flex flex-wrap gap-3 max-w-md">
