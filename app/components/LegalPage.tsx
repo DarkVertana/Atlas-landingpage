@@ -41,7 +41,7 @@ export default function LegalPage({
           }}
         />
 
-        <div className="relative mx-auto max-w-4xl">
+        <div className="relative mx-auto max-w-6xl">
           <SectionHeader
             eyebrow={eyebrow}
             title={title}

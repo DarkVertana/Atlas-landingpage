@@ -186,10 +186,10 @@ export default function PricingPage() {
                 variant="up"
                 delay={i * 100}
                 key={t.name}
-                className={`relative rounded-3xl p-6 lg:p-7 flex flex-col transition-all duration-300 ${
+                className={`group relative rounded-3xl p-6 lg:p-7 flex flex-col transition-[transform,box-shadow,border-color] duration-300 ease-out will-change-transform hover:-translate-y-1.5 motion-reduce:transform-none motion-reduce:transition-none ${
                   t.highlight
-                    ? "bg-[#01463A] text-white shadow-xl shadow-[#058B74]/25 border border-[#058B74]/50"
-                    : "bg-white border border-gray-300 shadow-[0_1px_2px_rgba(15,42,36,0.05),0_10px_28px_-14px_rgba(15,42,36,0.14)] hover:border-[#058B74]/40 hover:shadow-lg hover:shadow-[#058B74]/10"
+                    ? "bg-[#01463A] text-white shadow-xl shadow-[#058B74]/25 border border-[#058B74]/50 hover:shadow-2xl hover:shadow-[#058B74]/35"
+                    : "bg-white border border-gray-300 shadow-[0_1px_2px_rgba(15,42,36,0.05),0_10px_28px_-14px_rgba(15,42,36,0.14)] hover:border-[#058B74]/40 hover:shadow-xl hover:shadow-[#058B74]/15"
                 }`}
               >
                 {t.highlight && (
@@ -263,7 +263,9 @@ export default function PricingPage() {
                   className={`mt-7 inline-flex items-center justify-center w-full min-h-[44px] px-6 py-3 rounded-xl text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${
                     t.highlight
                       ? "bg-white text-[#01463A] hover:bg-white/90 focus-visible:ring-white focus-visible:ring-offset-[#01463A]"
-                      : "bg-[#01463A] text-white hover:bg-[#058B74] focus-visible:ring-[#058B74]"
+                      : t.name === "Enterprise"
+                        ? "bg-[#0B0F0E] text-white hover:bg-black focus-visible:ring-[#0B0F0E]"
+                        : "bg-[#01463A] text-white hover:bg-[#058B74] focus-visible:ring-[#058B74]"
                   }`}
                 >
                   {t.cta}
@@ -355,9 +357,7 @@ export default function PricingPage() {
                 <ul className="mt-6 space-y-3">
                   {tier.features.map((feature) => (
                     <li key={feature} className={`flex items-start gap-3 text-sm ${tier.highlight ? "text-white/90" : "text-[#01463A]"}`}>
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={tier.highlight ? "#0aa88a" : "#058B74"} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0 mt-0.5">
-                        <path d="M5 12l5 5 9-11" />
-                      </svg>
+                      <FeatureIcon name={feature} color={tier.highlight ? "#0aa88a" : "#058B74"} />
                       {feature}
                     </li>
                   ))}
@@ -487,6 +487,66 @@ export default function PricingPage() {
       />
 
     </main>
+  );
+}
+
+function FeatureIcon({ name, color }: { name: string; color: string }) {
+  const key = name.toLowerCase();
+
+  // Neat 16px stroked icons, mapped to each feature's meaning.
+  const paths: Record<string, string> = {
+    ssn: "M4 6h16M4 10h16M4 14h10M4 18h6", // records / trace lines
+    national: "M4 7h16v12H4zM4 7l4-3h8l4 3M9 11h6M9 15h6", // database / building
+    offender: "M12 3l7 3v5c0 4.5-3 7-7 8-4-1-7-3.5-7-8V6zM12 9v3M12 15h.01", // shield alert
+    watchlist: "M12 3a9 9 0 100 18 9 9 0 000-18zM3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18", // globe
+    "pdf": "M7 3h7l4 4v14H7zM14 3v4h4M9 13h6M9 17h6", // file / report
+    support: "M4 13a8 8 0 0116 0v3a2 2 0 01-2 2h-1v-6h3M4 13v3a2 2 0 002 2h1v-6H4", // headset
+    everything: "M4 8h16M4 14h16M8 4l-2 16M18 4l-2 16", // layers / stack
+    county: "M11 4a7 7 0 100 14 7 7 0 000-14zM20 20l-4-4", // search
+    "motor": "M5 13l1.5-4.5A2 2 0 018.4 7h7.2a2 2 0 011.9 1.5L19 13v5h-2v-2H7v2H5zM7.5 16h.01M16.5 16h.01", // car
+    social: "M12 8a4 4 0 100 8 4 4 0 000-8zM16 12v1a3 3 0 006 0v-1a10 10 0 10-4 8", // at-sign
+    audit: "M4 4h11l5 5v11H4zM15 4v5h5M8 13h8M8 17h8", // export / log
+    federal: "M4 9l8-5 8 5M5 9v9M9 9v9M15 9v9M19 9v9M3 20h18", // landmark
+    employment: "M4 8h16v11H4zM9 8V6a2 2 0 012-2h2a2 2 0 012 2v2M4 13h16", // briefcase
+    education: "M12 4l9 4-9 4-9-4zM6 10v5c0 1.5 3 3 6 3s6-1.5 6-3v-5", // graduation cap
+    manager: "M12 4a3.5 3.5 0 100 7 3.5 3.5 0 000-7zM5 20a7 7 0 0114 0", // user
+    adjudication: "M6 4v6M6 14v6M18 4v10M18 18v2M12 4v2M12 10v10M4 12h4M16 8h4M10 8h4", // sliders / rules
+  };
+
+  const match =
+    key.includes("ssn") || key.includes("address") ? "ssn"
+    : key.includes("national") ? "national"
+    : key.includes("offender") ? "offender"
+    : key.includes("watchlist") ? "watchlist"
+    : key.includes("pdf") || key.includes("report") ? "pdf"
+    : key.includes("support") ? "support"
+    : key.includes("everything") ? "everything"
+    : key.includes("county") || key.includes("search") ? "county"
+    : key.includes("motor") || key.includes("vehicle") ? "motor"
+    : key.includes("social") ? "social"
+    : key.includes("audit") || key.includes("export") ? "audit"
+    : key.includes("federal") ? "federal"
+    : key.includes("employment") ? "employment"
+    : key.includes("education") ? "education"
+    : key.includes("manager") || key.includes("account") ? "manager"
+    : key.includes("adjudication") || key.includes("rules") ? "adjudication"
+    : "everything";
+
+  return (
+    <svg
+      aria-hidden="true"
+      width="17"
+      height="17"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke={color}
+      strokeWidth="1.9"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="flex-shrink-0 mt-0.5"
+    >
+      <path d={paths[match]} />
+    </svg>
   );
 }
 

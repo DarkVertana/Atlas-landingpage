@@ -1,15 +1,10 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import dynamic from "next/dynamic";
 import Header from "./Header";
 import Footer from "./Footer";
 
-// The chat widget is interaction-only and below the fold — defer it so it
-// never blocks first paint or hydration on low-end devices.
-const ChatWidget = dynamic(() => import("./ChatWidget"), { ssr: false });
-
-// Wraps the marketing site chrome (header, footer, chat) around page content,
+// Wraps the marketing site chrome (header, footer) around page content,
 // but hides all of it inside the admin panel, which has its own shell.
 export default function Chrome({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -30,7 +25,6 @@ export default function Chrome({ children }: { children: React.ReactNode }) {
       <Header />
       {children}
       <Footer />
-      <ChatWidget />
     </>
   );
 }
