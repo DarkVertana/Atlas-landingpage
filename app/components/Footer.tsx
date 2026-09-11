@@ -13,9 +13,12 @@ const columns: { title: string; links: FooterLink[] }[] = [
       { label: "Criminal Background Checks", href: "/services/criminal-background-checks" },
       { label: "Identity Verification", href: "/services/ssn-trace" },
       { label: "Employment Verification", href: "/services/employment-verification" },
-      { label: "County Court Searches", href: "/services/criminal-background-checks" },
+      { label: "County Court Searches", href: "/services/county-court-searches" },
+      { label: "International Background Checks", href: "/services/international-check" },
+      { label: "Driving Record (MVR) Checks", href: "/services/mvr" },
+      { label: "Credit Background Checks", href: "/services/credit-report" },
+      { label: "Continuous Risk Monitoring", href: "/services/continuous-checks" },
       { label: "Tenant Screening", href: "/services/tenant-screening" },
-      { label: "Social Media Screening", href: "/services/social-media-screening" },
     ],
   },
   {
@@ -91,10 +94,7 @@ export default function Footer() {
                 height={30}
                 className="h-auto w-[120px]"
               />
-              <p className="mt-4 text-[#5B6B64] text-sm leading-relaxed max-w-xs">
-                Atlas Screening is a Consumer Reporting Agency (CRA) that provides background screening services in accordance with the Fair Credit Reporting Act (FCRA) and applicable state laws.
-              </p>
-              <p className="mt-4 text-[#5B6B64] text-sm">Contact@atlasscreening.com</p>
+              <p className="mt-4 text-[#5B6B64] text-sm">contact@atlasscreening.com</p>
               <p className="text-[#5B6B64] text-sm">(917) 275-7712</p>
 
               {/* Social icons — under the contact details */}
@@ -157,7 +157,7 @@ export default function Footer() {
 
           <div className="pt-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <p className="text-[#5B6B64] text-xs leading-relaxed max-w-2xl">
-              Atlas Screening is a Consumer Reporting Agency (CRA) under the FCRA. We provide screening services for lawful purposes only and do not make hiring decisions.
+              Atlas Screening is a consumer reporting agency. Reports are provided only to end users who are verified and have certified a permissible purpose under the FCRA. Atlas Screening does not make hiring, housing, credit, or other adjudicative decisions.
             </p>
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
               <p className="text-[#5B6B64] text-xs">

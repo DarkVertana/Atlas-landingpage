@@ -19,9 +19,9 @@ ROUTES = [
     "/dispute-resolution", "/faq", "/how-it-works", "/pricing", "/privacy",
     "/resources/cost-calculator", "/resources/package-recommender", "/services",
     "/services/credit-report", "/services/criminal-background-checks",
-    "/services/employment-verification", "/services/global-watchlist",
+    "/services/employment-verification", "/services/international-check",
     "/services/mvr", "/services/sex-offender-registry",
-    "/services/social-media-screening", "/services/ssn-trace",
+    "/services/ssn-trace",
     "/services/tenant-screening", "/terms", "/trust",
     "/admin", "/admin/login", "/sitemap.xml", "/robots.txt", "/nonexistent-xyz",
 ] + [f"/blog/{s}" for s in BLOG_SLUGS]

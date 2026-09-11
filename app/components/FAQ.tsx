@@ -24,7 +24,7 @@ const faqs = [
   },
   {
     q: "What additional screening add-ons are available?",
-    a: "You can customize any predefined package with specific verifications. We offer Global Watchlist checks, Tenant Screening, and complete Credit Reports at an upfront and transparent price of $39.99 each.",
+    a: "You can customize any predefined package with specific verifications. We offer International Check, Tenant Screening, and complete Credit Reports at an upfront and transparent price of $39.99 each.",
   },
 ];
 

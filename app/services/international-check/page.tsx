@@ -3,7 +3,7 @@ import ServiceDetail from "../../components/ServiceDetail";
 import { startScreeningHref } from "../../lib/appUrl";
 
 export const metadata: Metadata = {
-  title: "Global Watchlist Screening | Atlas Screening",
+  title: "International Check Screening | Atlas Screening",
   description:
     "OFAC, PEP, sanctions, and terror-list screening across 1,000+ global sources, built for international hires, executives, and regulated industries.",
 };
@@ -14,13 +14,13 @@ const I = ({ d }: { d: string }) => (
   </svg>
 );
 
-export default function GlobalWatchlistPage() {
+export default function InternationalCheckPage() {
   return (
     <ServiceDetail
       eyebrow="Add-on · $39.99"
-      title="Global watchlist and sanctions screening."
-      path="/services/global-watchlist"
-      image="/assets/services/global-watchlist.webp"
+      title="International check and sanctions screening."
+      path="/services/international-check"
+      image="/assets/services/international-check.webp"
       description="OFAC, PEP, terror lists, and sanctions databases across 1,000+ global sources. Required for regulated industries, recommended for international or executive hires."
       primaryCta={{ label: "Start screening", href: startScreeningHref({ service: "global-watchlist" }) }}
       secondaryCta={{ label: "Talk to sales", href: "/contact" }}
@@ -49,7 +49,7 @@ export default function GlobalWatchlistPage() {
         { q: "How do you handle false positives?", a: "Fuzzy name matching is paired with secondary identifiers such as DOB, nationality, and known addresses, and every potential match is analyst-reviewed before it hits your report." },
       ]}
       ctaHeading="Regulated, international, or high-risk?"
-      ctaDescription="Run a global watchlist check in seconds. Enable continuous monitoring to catch status changes daily."
+      ctaDescription="Run an international check in seconds. Enable continuous monitoring to catch status changes daily."
     />
   );
 }

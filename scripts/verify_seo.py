@@ -25,8 +25,8 @@ ROUTES = ["/", "/about", "/blog", "/client-certification", "/compliance", "/cont
           "/dispute-resolution", "/faq", "/how-it-works", "/pricing", "/privacy",
           "/resources/cost-calculator", "/resources/package-recommender", "/services",
           "/services/credit-report", "/services/criminal-background-checks",
-          "/services/employment-verification", "/services/global-watchlist", "/services/mvr",
-          "/services/sex-offender-registry", "/services/social-media-screening",
+          "/services/employment-verification", "/services/international-check", "/services/mvr",
+          "/services/sex-offender-registry",
           "/services/ssn-trace", "/services/tenant-screening", "/terms",
           "/blog/fcra-adverse-action-checklist-2026", "/blog/ssn-trace-explained"]
 

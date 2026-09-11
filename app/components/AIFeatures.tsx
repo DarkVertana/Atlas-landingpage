@@ -40,7 +40,7 @@ const checkRows = [
   { label: "Identity & SSN trace", meta: "3 sources" },
   { label: "Criminal search", meta: "12 jurisdictions" },
   { label: "Employment verification", meta: "2 employers" },
-  { label: "Global watchlist", meta: "OFAC · Interpol" },
+  { label: "International Check", meta: "OFAC · Interpol" },
 ];
 
 /* ── document primitives (light product surface, matches the live app) ── */

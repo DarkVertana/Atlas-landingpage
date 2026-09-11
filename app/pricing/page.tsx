@@ -21,10 +21,11 @@ const tiers: Tier[] = [
     price: "$24.99",
     unit: "per check",
     features: [
-      "SSN trace & address history",
-      "National criminal database",
+      "Identity verification",
+      "National Criminal Search",
+      "SSN trace",
       "Sex offender registry",
-      "Global watchlist",
+      "Global watchlist search",
       "Branded PDF report",
       "Standard support",
     ],
@@ -34,15 +35,15 @@ const tiers: Tier[] = [
   {
     name: "Standard",
     tagline: "Most teams start here.",
-    price: "$34.99",
+    price: "$44.99",
     unit: "per check",
     features: [
-      "Everything in Basic",
-      "County criminal search (up to 7 yrs)",
-      "Motor vehicle records",
-      "Social media inquiry",
+      "Identity verification",
+      "National Criminal Search",
+      "SSN trace",
+      "Sex offender registry",
+      "Global watchlist search",
       "Priority applicant support",
-      "Audit log exports",
     ],
     highlight: true,
     cta: "Get started",
@@ -51,15 +52,16 @@ const tiers: Tier[] = [
   {
     name: "Premium",
     tagline: "Full verification suite.",
-    price: "$44.99",
+    price: "$74.99",
     unit: "per check",
     features: [
-      "Everything in Standard",
-      "Federal criminal search",
-      "Employment verification",
-      "Education verification",
+      "Identity verification",
+      "Federal Criminal Search",
+      "National Criminal Search",
+      "SSN trace",
+      "Sex offender registry",
+      "Global watchlist search",
       "Dedicated account manager",
-      "Custom adjudication rules",
     ],
     cta: "Get started",
     href: "/contact?plan=premium",
@@ -89,9 +91,9 @@ const addOns = [
     desc: "State-by-state driving history for fleet and gig operators.",
   },
   {
-    name: "Drug screening",
-    price: "$49.99",
-    desc: "Lab-based drug testing with nationwide collection-site network.",
+    name: "Document Verification",
+    price: "$9.99",
+    desc: "AI-assisted detection of fraudulent documents, IDs, bank statements, and contracts.",
   },
   {
     name: "Employment verification",
@@ -106,8 +108,8 @@ const addOns = [
     unit: "per record",
   },
   {
-    name: "Credit report",
-    price: "$39.99",
+    name: "Credit Check",
+    price: "$19.99",
     desc: "For financial, fiduciary, and executive roles (permissible-purpose required).",
   },
   {
@@ -116,25 +118,18 @@ const addOns = [
     desc: "Criminal, credit, and eviction history bundled for property managers.",
   },
   {
-    name: "Global watchlist",
+    name: "International Check",
     price: "$39.99",
     desc: "OFAC, sanctions, terror lists, and PEP screening.",
-  },
-  {
-    name: "Social media inquiry",
-    price: "$29.99",
-    desc: "FCRA-compliant review of public social profiles.",
   },
 ];
 
 const comparisonRows = [
-  { label: "SSN trace & address history", basic: true, standard: true, premium: true },
-  { label: "National criminal database", basic: true, standard: true, premium: true },
+  { label: "Identity verification", basic: true, standard: true, premium: true },
+  { label: "National Criminal Search", basic: true, standard: true, premium: true },
+  { label: "SSN trace", basic: true, standard: true, premium: true },
   { label: "Sex offender registry", basic: true, standard: true, premium: true },
-  { label: "Global watchlist", basic: true, standard: true, premium: true },
-  { label: "County criminal search", basic: false, standard: true, premium: true },
-  { label: "Motor vehicle records", basic: false, standard: true, premium: true },
-  { label: "Social media inquiry", basic: false, standard: true, premium: true },
+  { label: "Global watchlist search", basic: true, standard: true, premium: true },
   { label: "Federal criminal search", basic: false, standard: false, premium: true },
   { label: "Employment verification", basic: false, standard: false, premium: true },
   { label: "Education verification", basic: false, standard: false, premium: true },
@@ -275,8 +270,8 @@ export default function PricingPage() {
           </div>
 
           <p className="mt-8 text-center text-xs text-gray-600">
-            All prices in USD. Applicants pay nothing. Charges apply to the
-            requesting customer only.
+            All prices are in USD. At cost, with no markup, standard third-party
+            court and database access fees may apply.
           </p>
         </div>
       </section>

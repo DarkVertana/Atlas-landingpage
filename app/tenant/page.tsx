@@ -28,7 +28,7 @@ const PLANS: Plan[] = [
       "Identity & SSN trace",
       "Nationwide criminal database",
       "Sex offender registry",
-      "Global watchlist",
+      "International Check",
       "Eviction records search",
       "Applicant-guided intake",
     ],

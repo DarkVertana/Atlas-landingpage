@@ -54,13 +54,12 @@ function milestoneFor(v: number) {
 
 const addOnList = [
   { key: "mvr", label: "Motor vehicle records", price: 9.99 },
-  { key: "drug", label: "Drug screening", price: 49.99 },
+  { key: "document", label: "Document Verification", price: 9.99 },
   { key: "employment", label: "Employment verification", price: 19.99 },
   { key: "education", label: "Education verification", price: 19.99 },
   { key: "credit", label: "Credit report", price: 39.99 },
   { key: "tenant", label: "Tenant screening", price: 39.99 },
-  { key: "watchlist", label: "Global watchlist", price: 39.99 },
-  { key: "social", label: "Social media inquiry", price: 29.99 },
+  { key: "watchlist", label: "International Check", price: 39.99 },
 ];
 
 function fmt(n: number, opts: Intl.NumberFormatOptions = {}) {

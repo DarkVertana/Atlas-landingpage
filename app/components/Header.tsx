@@ -6,13 +6,14 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import dynamic from "next/dynamic";
 import { type StaggeredItem } from "./MobileStaggeredMenu";
-import { startScreeningHref } from "../lib/appUrl";
+import { startScreeningHref, APP_URL } from "../lib/appUrl";
 
 // GSAP-powered mobile menu — only pulled in after the user opens the menu,
 // so GSAP never ships in the initial JS for every page.
 const MobileStaggeredMenu = dynamic(() => import("./MobileStaggeredMenu"), { ssr: false });
 
 const startHref = startScreeningHref();
+const loginHref = `${APP_URL}/login`;
 
 /* Flat top-level items for the mobile staggered menu */
 const mobileMenuItems: StaggeredItem[] = [
@@ -22,6 +23,7 @@ const mobileMenuItems: StaggeredItem[] = [
   { label: "Pricing", link: "/pricing" },
   { label: "About", link: "/about" },
   { label: "Contact", link: "/contact" },
+  { label: "Login", link: loginHref },
 ];
 
 const servicesMenu = {
@@ -39,13 +41,15 @@ const servicesMenu = {
       title: "Background checks",
       compact: true,
       items: [
-        { label: "Criminal background checks", href: "/services/criminal-background-checks" },
-        { label: "SSN trace & address history", href: "/services/ssn-trace" },
+        { label: "Criminal Background Checks", href: "/services/criminal-background-checks" },
+        { label: "County Court Searches", href: "/services/county-court-searches" },
+        { label: "Identity Verification", href: "/services/ssn-trace" },
         { label: "Sex offender registry", href: "/services/sex-offender-registry" },
-        { label: "Motor vehicle records", href: "/services/mvr" },
-        { label: "Employment verification", href: "/services/employment-verification" },
-        { label: "Global watchlist", href: "/services/global-watchlist" },
-        { label: "Credit report", href: "/services/credit-report" },
+        { label: "International Background Checks", href: "/services/international-check" },
+        { label: "Driving Record (MVR) Checks", href: "/services/mvr" },
+        { label: "Credit Background Checks", href: "/services/credit-report" },
+        { label: "Employment Verification", href: "/services/employment-verification" },
+        { label: "Continuous Risk Monitoring", href: "/services/continuous-checks" },
         { label: "See all services", href: "/services" },
       ],
     },
@@ -60,6 +64,10 @@ const servicesMenu = {
         { label: "Retail & hospitality", href: "/industries/retail-hospitality" },
         { label: "Education", href: "/industries/education" },
         { label: "Nonprofit & volunteer", href: "/industries/nonprofit-volunteer" },
+        { label: "Real Estate", href: "/industries/real-estate" },
+        { label: "Professional Services", href: "/industries/professional-services" },
+        { label: "Startups", href: "/industries/startups" },
+        { label: "Enterprise", href: "/industries/enterprise" },
       ],
     },
   ],
@@ -319,17 +327,32 @@ export default function Header({ solid = false }: { solid?: boolean }) {
             })}
           </nav>
 
-          {/* Get Started — Desktop */}
-          <a
-            href={startHref}
-            className={`hidden md:flex items-center text-sm font-semibold tracking-wide px-6 py-3 rounded-xl transition-all duration-500 ease-in-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2 ${
-              scrolled
-                ? "bg-[#01463A] text-white hover:bg-[#01463A]/90 focus-visible:ring-offset-white"
-                : "bg-white text-[#01463A] hover:bg-white/90 focus-visible:ring-offset-transparent"
-            }`}
-          >
-            Get Started
-          </a>
+          {/* Login + Get Started — Desktop */}
+          <div className="hidden md:flex items-center gap-3">
+            {/* Login (existing clients) */}
+            <a
+              href={loginHref}
+              className={`flex items-center text-sm font-semibold tracking-wide px-6 py-3 rounded-xl border transition-all duration-500 ease-in-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2 ${
+                scrolled
+                  ? "border-[#01463A]/25 text-[#01463A] hover:bg-[#01463A]/5 focus-visible:ring-offset-white"
+                  : "border-white/40 text-white hover:bg-white/10 focus-visible:ring-offset-transparent"
+              }`}
+            >
+              Login
+            </a>
+
+            {/* Get Started */}
+            <a
+              href={startHref}
+              className={`flex items-center text-sm font-semibold tracking-wide px-6 py-3 rounded-xl transition-all duration-500 ease-in-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2 ${
+                scrolled
+                  ? "bg-[#01463A] text-white hover:bg-[#01463A]/90 focus-visible:ring-offset-white"
+                  : "bg-white text-[#01463A] hover:bg-white/90 focus-visible:ring-offset-transparent"
+              }`}
+            >
+              Get Started
+            </a>
+          </div>
 
           {/* Mobile menu button */}
           <button

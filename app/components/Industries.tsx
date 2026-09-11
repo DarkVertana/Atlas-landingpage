@@ -332,7 +332,7 @@ export default function Industries() {
           align="center"
           eyebrow="The platform"
           title="Built to screen at scale."
-          intro="One hire or a hundred, the effort is the same. Order in bulk, let Atlas chase the invites, and plug results straight into the tools you already use."
+          intro="One hire or a hundred, the effort is the same, let Atlas plug results into the tools that you already use."
         />
 
         <div

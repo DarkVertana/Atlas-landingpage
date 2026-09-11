@@ -205,14 +205,6 @@ export default function HeroSection() {
         className="relative z-10 flex w-full flex-col items-center justify-center px-5 pb-24 pt-40 text-center will-change-transform sm:px-6 sm:pb-28 sm:pt-44"
       >
         <div className="mx-auto max-w-4xl">
-          {/* Eyebrow: plain uppercase label — feeds directly into the title. */}
-          <p
-            className="animate-hero-enter mb-5 text-[12px] font-medium uppercase tracking-[0.24em] text-[#3EE8BE]/85"
-            style={{ animationDelay: "0ms" }}
-          >
-            FCRA-compliant consumer reporting
-          </p>
-
           {/* Title. The flip word is locked to its own centered line so the
               headline's line count is identical for every word — no reflow at
               any width — and the word, being centered, sits flush with no dead
@@ -229,7 +221,7 @@ export default function HeroSection() {
                 absolutely on top and both crossfade on the same curve. */}
             <span className="mt-1 block">
               Defined by{" "}
-              <span className="relative inline-block align-baseline">
+              <span className="relative inline-block min-w-[9ch] text-left align-baseline">
                 <span
                   key={`in-${index}`}
                   className="hero-word-in inline-block whitespace-nowrap font-semibold text-[#3EE8BE] [text-shadow:0_0_14px_rgba(62,232,190,0.28)]"
@@ -281,28 +273,22 @@ export default function HeroSection() {
             </a>
           </div>
 
-          {/* Trust row: the composition's calm foundation line — plain text +
-              hairline separators only (no pills, no badges), same optical width
-              as the block above. */}
-          <div
-            className="animate-hero-enter mt-11 flex flex-wrap items-center justify-center gap-x-0 gap-y-3 text-[13px] text-white/55"
-            style={{ animationDelay: "300ms" }}
-          >
-            {[
-              "Conducted under the FCRA & state law",
-              "Human-adjudicated reports",
-              "Consumer dispute rights preserved",
-            ].map((item, i) => (
-              <span key={item} className="inline-flex items-center">
-                {i > 0 && (
-                  <span aria-hidden className="mx-6 hidden h-3.5 w-px bg-white/20 sm:inline-block" />
-                )}
-                {item}
-              </span>
-            ))}
-          </div>
         </div>
       </div>
+
+      {/* Seam transition — eases the dark hero into the white section below.
+          Routed THROUGH the brand green (deep green → sage → pale mint → white)
+          so it never passes through muddy neutral grey, and it lands on pure
+          white so the seam with the section below is invisible. Sits above the
+          parallax background but below the z-10 content, so the copy stays crisp. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-[5] h-64 sm:h-72"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(2,11,8,0) 0%, rgba(2,11,8,0.35) 34%, rgba(3,26,19,0.7) 58%, rgba(6,66,50,0.7) 74%, rgba(255,255,255,0.85) 93%, #ffffff 100%)",
+        }}
+      />
     </section>
   );
 }

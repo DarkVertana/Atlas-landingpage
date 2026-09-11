@@ -7,6 +7,22 @@ const nextConfig: NextConfig = {
   turbopack: { root: path.resolve(__dirname) },
   // Keep the dev overlay badge out from under the admin sidebar (dev-only).
   devIndicators: { position: "bottom-right" },
+  async redirects() {
+    return [
+      // Service renamed: "Global watchlist" -> "International Check" (URL changed).
+      {
+        source: "/services/global-watchlist",
+        destination: "/services/international-check",
+        permanent: true,
+      },
+      // Social media screening retired; send old links to the services index.
+      {
+        source: "/services/social-media-screening",
+        destination: "/services",
+        permanent: true,
+      },
+    ];
+  },
   images: {
     // Serve modern formats (AVIF first, WebP fallback) for next/image assets.
     formats: ["image/avif", "image/webp"],

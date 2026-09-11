@@ -20,13 +20,13 @@ const services: Service[] = [
     image: "/assets/services-hero/criminal.webp",
   },
   {
-    label: "SSN Trace & Address History",
+    label: "Identity Verification",
     desc: "Establish a verified baseline identity for every report.",
     href: "/services/ssn-trace",
     image: "/assets/services-hero/ssn-trace.webp",
   },
   {
-    label: "Motor Vehicle Records",
+    label: "Driving Record (MVR) Checks",
     desc: "Detailed driving histories for transportation and fleet personnel.",
     href: "/services/mvr",
     image: "/assets/services-hero/mvr.webp",
@@ -39,7 +39,7 @@ const services: Service[] = [
   },
   {
     label: "Transparent Add-On Services",
-    desc: "Global Watchlist, Tenant Screening, and Credit Reports at a flat $39.99.",
+    desc: "Motor Vehicle Records, Document Verification, Employment and Education Verification, Credit Check, Tenant Screening, and International Check.",
     href: "/services/tenant-screening",
     image: "/assets/services-hero/add-ons.webp",
   },

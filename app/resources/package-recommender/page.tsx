@@ -23,7 +23,7 @@ const tierIncludes: Record<string, string[]> = {
     "Everything in Standard",
     "Federal criminal search",
     "Employment & education verification",
-    "Global watchlist screening",
+    "International Check screening",
   ],
 };
 
@@ -42,31 +42,29 @@ const includeIcons: Record<string, React.ReactNode> = {
   "Motor vehicle records (MVR)": iconSvg(<><path d="M5 13l1.5-4.5A2 2 0 018.4 7h7.2a2 2 0 011.9 1.5L19 13M5 13h14v4H5zM7 17v2M17 17v2" /><circle cx="7.5" cy="15" r=".8" /><circle cx="16.5" cy="15" r=".8" /></>),
   "Federal criminal search": iconSvg(<><path d="M3 21h18M4 21V10h16v11M12 3L4 8h16l-8-5zM8 21v-7M12 21v-7M16 21v-7" /></>),
   "Employment & education verification": iconSvg(<><rect x="3" y="7" width="18" height="13" rx="2" /><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2M3 12h18" /></>),
-  "Global watchlist screening": iconSvg(<><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18" /></>),
+  "International Check screening": iconSvg(<><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18" /></>),
   "Everything in Basic": iconSvg(<><path d="M12 3l9 5-9 5-9-5 9-5z" /><path d="M3 13l9 5 9-5" /></>),
   "Everything in Standard": iconSvg(<><path d="M12 3l9 5-9 5-9-5 9-5z" /><path d="M3 13l9 5 9-5" /></>),
 };
 
 const addOnLabels: Record<string, string> = {
   mvr: "Motor vehicle records",
-  drug: "Drug screening",
+  document: "Document Verification",
   employment: "Employment verification",
   education: "Education verification",
   credit: "Credit report",
   tenant: "Tenant screening",
-  watchlist: "Global watchlist",
-  social: "Social media inquiry",
+  watchlist: "International Check",
 };
 
 const addOnIcons: Record<string, React.ReactNode> = {
   mvr: iconSvg(<><path d="M5 13l1.5-4.5A2 2 0 018.4 7h7.2a2 2 0 011.9 1.5L19 13M5 13h14v4H5zM7 17v2M17 17v2" /><circle cx="7.5" cy="15" r=".8" /><circle cx="16.5" cy="15" r=".8" /></>),
-  drug: iconSvg(<><path d="M9 3h6M10 3v4l-5 9a3 3 0 002.7 4.3h8.6A3 3 0 0019 16l-5-9V3" /><path d="M6.5 14h11" /></>),
+  document: iconSvg(<><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8l-5-5z" /><path d="M14 3v5h5M9 13h6M9 17h6" /></>),
   employment: iconSvg(<><rect x="3" y="7" width="18" height="13" rx="2" /><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2M3 12h18" /></>),
   education: iconSvg(<><path d="M12 4L2 9l10 5 10-5-10-5z" /><path d="M6 11v5c0 1 3 2.5 6 2.5s6-1.5 6-2.5v-5" /></>),
   credit: iconSvg(<><rect x="2" y="5" width="20" height="14" rx="2" /><path d="M2 10h20M6 15h4" /></>),
   tenant: iconSvg(<><path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-4v-6H8v6H4a1 1 0 01-1-1v-9z" /></>),
   watchlist: iconSvg(<><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18" /></>),
-  social: iconSvg(<><circle cx="18" cy="5" r="3" /><circle cx="6" cy="12" r="3" /><circle cx="18" cy="19" r="3" /><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4" /></>),
 };
 
 type Industry =
@@ -143,7 +141,7 @@ function recommendPackage(industry: Industry, role: Role, volume: Volume) {
       tier: "Standard",
       badge: "Best for trust-sensitive roles",
       reason:
-        "Volunteer and in-home roles benefit from Standard's county criminal searches plus Global Watchlist coverage.",
+        "Volunteer and in-home roles benefit from Standard's county criminal searches plus International Check coverage.",
       addOns: ["watchlist"],
     };
   }
@@ -179,7 +177,7 @@ function recommendPackage(industry: Industry, role: Role, volume: Volume) {
     badge: "Most teams start here",
     reason:
       "Standard balances county criminal searches with identity and MVR coverage, a fit for most professional hires.",
-    addOns: ["social"],
+    addOns: ["mvr"],
   };
 }
 

@@ -296,7 +296,7 @@ export default function CareersPage() {
           />
           <Reveal delay={120} className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
-              href="mailto:Contact@atlasscreening.com?subject=Careers%20at%20Atlas%20Screening"
+              href="mailto:contact@atlasscreening.com?subject=Careers%20at%20Atlas%20Screening"
               className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#01463A] px-6 py-3 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-[#058B74] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#058B74] focus-visible:ring-offset-2"
             >
               Email us your resume
@@ -323,7 +323,7 @@ export default function CareersPage() {
           </>
         }
         description="We hire for curiosity and care as much as for a title. If you want to help build compliant screening, reach out."
-        primary={{ label: "Email the team", href: "mailto:Contact@atlasscreening.com?subject=Careers%20at%20Atlas%20Screening" }}
+        primary={{ label: "Email the team", href: "mailto:contact@atlasscreening.com?subject=Careers%20at%20Atlas%20Screening" }}
         secondary={{ label: "Learn about Atlas", href: "/about" }}
       />
     </main>

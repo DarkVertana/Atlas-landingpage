@@ -4,51 +4,28 @@ import ServicePricing from "../../components/ServicePricing";
 import Reveal from "../../components/Reveal";
 import FeatureGrid from "../../components/ui/FeatureGrid";
 import ServiceHero from "../../components/ui/ServiceHero";
-import Bento from "./Bento";
-import ProductShowcase from "../../components/ProductShowcase";
 import ServiceJsonLd from "../../components/ServiceJsonLd";
 
 export const metadata: Metadata = {
-  title: "Social Media Inquiry | Atlas Screening",
+  title: "Social Media Screening | Atlas Screening",
   description:
-    "FCRA-compliant social media screening. Public profiles only, protected-class signals redacted, and every hit reviewed by a trained analyst.",
+    "FCRA-compliant social media screening. A trained analyst reviews public profiles for risk-relevant content, with protected-class information redacted before it reaches you.",
 };
 
 const included = [
   {
     title: "Public profiles only",
-    desc: "Nothing behind a login, nothing scraped. Public posts on major platforms, the same view any hiring manager could see.",
+    desc: "Review is limited to publicly visible content on major platforms. No private accounts, no passwords, no pretexting.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-        <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" />
-        <path d="M2.458 12C3.732 7.943 7.523 5 12 5s8.268 2.943 9.542 7c-1.274 4.057-5.065 7-9.542 7S3.732 16.057 2.458 12z" />
-      </svg>
-    ),
-  },
-  {
-    title: "Protected-class redaction",
-    desc: "Race, religion, marital status, pregnancy, disability, and sexual orientation, all redacted before the report ever reaches your team.",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-        <path d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75" />
-        <path d="M6.75 10.5h10.5a2.25 2.25 0 012.25 2.25v6.75a2.25 2.25 0 01-2.25 2.25H6.75a2.25 2.25 0 01-2.25-2.25v-6.75a2.25 2.25 0 012.25-2.25z" />
-      </svg>
-    ),
-  },
-  {
-    title: "Role-based risk criteria",
-    desc: "Signal sets tuned to the role: customer-facing, leadership, fiduciary, or safety-sensitive. No one-size-fits-all screen.",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-        <path d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 8.25V6z" />
-        <path d="M13.5 6A2.25 2.25 0 0115.75 3.75H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25A2.25 2.25 0 0113.5 8.25V6z" />
-        <path d="M3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25z" />
+        <circle cx="12" cy="12" r="9" />
+        <path d="M3 12h18M12 3a15 15 0 010 18 15 15 0 010-18z" />
       </svg>
     ),
   },
   {
     title: "Human analyst review",
-    desc: "Every flagged post is reviewed for context and attribution by a trained analyst, with no raw algorithmic conclusions in the report.",
+    desc: "An FCRA-trained reviewer applies your policy to each profile, so you receive a considered assessment rather than a raw data dump.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
         <circle cx="12" cy="8" r="4" />
@@ -57,23 +34,43 @@ const included = [
     ),
   },
   {
-    title: "FCRA + EEOC aligned",
-    desc: "Adverse-action ready, fully disclosable, and delivered with source links so every decision is defensible under federal and state law.",
+    title: "Risk-relevant categories only",
+    desc: "Flags are limited to a permissible purpose: violent threats, drug-related posts, discriminatory content, or confidential-data leakage.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-        <path d="M6 3h9l4 4v14H6z" />
-        <path d="M15 3v4h4" />
-        <path d="M9 13l2 2 4-4" />
+        <path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z" />
+        <path d="M9 12l2 2 4-4" />
       </svg>
     ),
   },
   {
-    title: "Major platforms covered",
-    desc: "Facebook, X, Instagram, LinkedIn, TikTok, YouTube, Reddit, public blogs, and news mentions, reviewed in parallel.",
+    title: "Protected-class redaction",
+    desc: "Race, religion, age, disability, and other protected-class information is redacted before the report ever reaches your team.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-        <circle cx="12" cy="12" r="9" />
-        <path d="M12 3a14.95 14.95 0 010 18M12 3a14.95 14.95 0 000 18M3.5 12a14.95 14.95 0 0117 0M3.5 12a14.95 14.95 0 0017 0" />
+        <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z" />
+        <path d="M4 4l16 16" />
+      </svg>
+    ),
+  },
+  {
+    title: "Evidence, not rumor",
+    desc: "Every flag cites the public post with a timestamped screenshot and context, so a finding is defensible rather than hearsay.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+        <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+        <path d="M14 2v6h6" />
+        <path d="M9 13h6M9 17h4" />
+      </svg>
+    ),
+  },
+  {
+    title: "Policy matrices per customer",
+    desc: "Screening criteria are tailored to your role and industry, so what counts as relevant is defined up front and applied consistently.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+        <rect x="3" y="3" width="18" height="18" rx="2" />
+        <path d="M3 9h18M9 21V9" />
       </svg>
     ),
   },
@@ -81,24 +78,24 @@ const included = [
 
 const faqs = [
   {
-    q: "Is social media screening legal?",
-    a: "Yes, as long as it's FCRA-compliant, applicant-consented, and protected-class data is redacted before the report reaches the hiring manager. Atlas handles all three by default.",
+    q: "Is social media screening FCRA-compliant?",
+    a: "Yes. Because a social media report is a consumer report, it requires the same permissible purpose, disclosure, and written consent as any other check. A trained analyst reviews only public content against a defined policy, and protected-class information is redacted before you see it.",
   },
   {
-    q: "Why not just Google the candidate?",
-    a: "Two reasons. Bias: once a recruiter sees protected-class information, courts assume it influenced the decision. Documentation: a DIY search leaves no audit trail, so you can't defend an adverse decision if it's challenged.",
+    q: "Does Atlas review private accounts?",
+    a: "No. Review is strictly limited to content that is publicly visible. Atlas does not request passwords, connect with the applicant, or use pretexting to access non-public content.",
   },
   {
-    q: "What risk categories do you flag?",
-    a: "Violence, sexual harassment, hate speech, discriminatory content, illegal activity, and explicit threats, all tuned to the role. Political and religious content is never flagged.",
+    q: "What kind of content gets flagged?",
+    a: "Only content relevant to a permissible purpose: violent or threatening posts, illegal drug activity, discriminatory or hateful content, and leakage of confidential information. Lawful off-duty conduct and protected-class characteristics are not reported.",
   },
   {
-    q: "How far back does the review go?",
-    a: "Seven years by default. Publicly visible historical content within that window is in scope; deleted or private content is never accessed.",
+    q: "How do you prevent bias?",
+    a: "A human analyst applies your defined policy matrix, protected-class information is redacted, and every flag is tied to a specific public post with a timestamp, so decisions rest on documented, relevant evidence.",
   },
   {
-    q: "What happens if a candidate disputes a finding?",
-    a: "Applicants can open a dispute directly from the report. Our compliance team re-reviews the source post and responds within one business day, and corrections flow back to your dashboard automatically.",
+    q: "How are disputes handled?",
+    a: "Applicants can dispute any finding directly from their report. Our compliance team reinvestigates against the cited source and surfaces corrections within one business day.",
   },
 ];
 
@@ -106,50 +103,22 @@ export default function SocialMediaScreeningPage() {
   return (
     <main id="main" className="bg-white text-[#01463A]">
       <ServiceJsonLd
-        name="Social Media Inquiry"
-        description="FCRA-compliant social media screening. Public profiles only, protected-class signals redacted, every hit reviewed by a trained analyst."
+        name="Social Media Screening"
+        description="FCRA-compliant social media screening: a trained analyst reviews public profiles for risk-relevant content, with protected-class information redacted."
         faqs={faqs}
         path="/services/social-media-screening"
       />
       <ServiceHero
-        eyebrow="Social media inquiry"
-        title="Social screening, without the bias risk."
-        description="Atlas reviews public social profiles against role-based risk criteria. Protected-class signals are redacted before the report ever reaches your team, and every hit is signed off by a trained analyst."
+        eyebrow="Social media screening"
+        title="Public-profile review, done the compliant way."
+        description="A trained analyst reviews only publicly visible content against your policy, flags what's relevant to a permissible purpose, and redacts protected-class information before the report reaches you."
         image="/assets/services/social-media-screening.webp"
       />
 
       <FeatureGrid
-        title="Public content, reviewed the compliant way."
-        intro="AI surfaces potentially concerning public posts; trained analysts confirm each flag, with no protected-class data ever considered."
+        title="Insight from public content, without the risk."
+        intro="Human review of public profiles, scoped to risk-relevant categories and stripped of protected-class data, so every finding is defensible."
         features={included}
-      />
-
-      {/* Interactive bento */}
-      <section className="bg-white pb-8 px-6">
-        <div className="mx-auto max-w-6xl">
-          <Reveal variant="fade">
-            <Bento />
-          </Reveal>
-        </div>
-      </section>
-
-      <ProductShowcase
-        eyebrow="In the product"
-        title="Social media insights,"
-        highlight="compliance-safe."
-        description="Surface publicly available, job-relevant behavior, with protected-class information redacted before it ever reaches your team."
-        bullets={[
-          "Only job-relevant, public content reviewed",
-          "Protected characteristics auto-redacted",
-          "Analyst-reviewed reports, ready to act on",
-        ]}
-        image="/assets/app/reports.webp"
-        imageAlt="Atlas Screening social media report"
-        badges={[
-          { label: "Reviewed & redacted", tone: "info", position: "-top-4 -left-4" },
-          { label: "Analyst-reviewed", tone: "pending", position: "top-1/2 -right-5" },
-          { label: "Report ready", tone: "clear", position: "-bottom-4 left-10" },
-        ]}
       />
 
       <ServicePricing />
@@ -159,11 +128,11 @@ export default function SocialMediaScreeningPage() {
         <div className="mx-auto max-w-3xl">
           <div className="text-center mb-14">
             <Reveal as="h2" className="text-3xl md:text-5xl font-bold text-[#01463A] leading-tight">
-              Social media screening questions.
+              Social media questions.
             </Reveal>
             <Reveal as="p" delay={80} className="mt-5 text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
-              What we look at, what we won&apos;t look at, and why this one is
-              safer than a DIY Google search.
+              What gets reviewed, what stays off the report, and how findings are
+              kept relevant, compliant, and defensible.
             </Reveal>
           </div>
 

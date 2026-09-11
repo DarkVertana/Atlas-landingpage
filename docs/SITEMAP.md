@@ -19,8 +19,7 @@ atlasscreening.com
 │   ├── /services/credit-report                (add-on)
 │   ├── /services/mvr                         (add-on)
 │   ├── /services/sex-offender-registry       (add-on)
-│   ├── /services/global-watchlist            (add-on)
-│   └── /services/social-media-screening      (add-on)
+│   └── /services/international-check          (add-on)
 ├── /pricing                           Tiers + add-ons, #whats-included, #comparison
 ├── /how-it-works                      11-step workflow
 ├── /about                              Mission & story
