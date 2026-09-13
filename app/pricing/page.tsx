@@ -21,7 +21,6 @@ const tiers: Tier[] = [
     price: "$24.99",
     unit: "per check",
     features: [
-      "Identity verification",
       "National Criminal Search",
       "SSN trace",
       "Sex offender registry",
@@ -38,7 +37,6 @@ const tiers: Tier[] = [
     price: "$44.99",
     unit: "per check",
     features: [
-      "Identity verification",
       "National Criminal Search",
       "SSN trace",
       "Sex offender registry",
@@ -55,7 +53,6 @@ const tiers: Tier[] = [
     price: "$74.99",
     unit: "per check",
     features: [
-      "Identity verification",
       "Federal Criminal Search",
       "National Criminal Search",
       "SSN trace",
@@ -125,14 +122,12 @@ const addOns = [
 ];
 
 const comparisonRows = [
-  { label: "Identity verification", basic: true, standard: true, premium: true },
+  { label: "Identity verification", basic: false, standard: true, premium: true },
   { label: "National Criminal Search", basic: true, standard: true, premium: true },
   { label: "SSN trace", basic: true, standard: true, premium: true },
   { label: "Sex offender registry", basic: true, standard: true, premium: true },
   { label: "Global watchlist search", basic: true, standard: true, premium: true },
   { label: "Federal criminal search", basic: false, standard: false, premium: true },
-  { label: "Employment verification", basic: false, standard: false, premium: true },
-  { label: "Education verification", basic: false, standard: false, premium: true },
   { label: "Dedicated account manager", basic: false, standard: false, premium: true },
 ];
 

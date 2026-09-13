@@ -8,6 +8,7 @@ const NAV = [
   { href: "/admin", label: "Dashboard", exact: true, icon: GridIcon },
   { href: "/admin/posts", label: "Blog posts", icon: DocIcon },
   { href: "/admin/leads", label: "Contact leads", icon: InboxIcon },
+  { href: "/admin/tickets", label: "Support & disputes", icon: TicketIcon },
   { href: "/admin/subscribers", label: "Subscribers", icon: MailIcon },
 ];
 
@@ -115,6 +116,14 @@ function MailIcon({ className = "" }: { className?: string }) {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className}>
       <rect x="2" y="4" width="20" height="16" rx="2" /><path d="m22 7-10 5L2 7" />
+    </svg>
+  );
+}
+function TicketIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className}>
+      <path d="M3 9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2 2 2 0 0 0 0 4 2 2 0 0 1-2 2H5a2 2 0 0 1-2-2 2 2 0 0 0 0-4Z" />
+      <path d="M13 5v2M13 17v2M13 11v2" />
     </svg>
   );
 }

@@ -33,8 +33,8 @@ const servicesMenu = {
       items: [
         { label: "Employment screening", href: "/services", desc: "Background checks for hiring, at any volume" },
         { label: "Tenant screening", href: "/services/tenant-screening", desc: "Criminal, credit, and eviction history for landlords" },
-        { label: "Continuous monitoring", href: "/services/continuous-checks", desc: "Ongoing checks on your existing workforce" },
-        { label: "Applicants & disputes", href: "/dispute-resolution", desc: "Check a report status or file a dispute" },
+        { label: "Continuous Risk Monitoring", href: "/services/continuous-checks", desc: "Ongoing checks on your existing workforce" },
+        { label: "Personal", href: "/personal", desc: "Verify and share your credentials" },
       ],
     },
     {

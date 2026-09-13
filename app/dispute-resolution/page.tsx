@@ -1,6 +1,8 @@
 import LegalPage, { LegalSection } from "@/app/components/LegalPage";
+import SupportDisputePortal from "@/app/components/SupportDisputePortal";
 
 const sections = [
+  { id: "portal", title: "Support & Dispute portal" },
   { id: "right-to-dispute", title: "1. Right to Dispute" },
   { id: "how-to-submit", title: "2. How to Submit a Dispute" },
   { id: "reinvestigation", title: "3. Reinvestigation Process" },
@@ -18,9 +20,18 @@ export default function DisputeResolutionPage() {
       title="Dispute / reinvestigation policy."
       intro="How consumers can dispute report information and how we handle reinvestigations under the FCRA."
       image="/assets/images/call-center-agent-office-helping-customers-by-answering-questions.webp"
-      lastUpdated="April 1, 2026"
       sections={sections}
     >
+      <LegalSection id="portal" title="Support & Dispute portal">
+        <p>
+          Open a ticket below to reach our team. Choose a support request for
+          help with your account, an order, or the platform, or start a dispute
+          to challenge the accuracy of a completed report. You will receive a
+          reference number on submission, and our team is alerted right away.
+        </p>
+        <SupportDisputePortal />
+      </LegalSection>
+
       <LegalSection id="right-to-dispute" title="1. Right to Dispute">
         <p>
           Consumers have the right to dispute the accuracy or completeness

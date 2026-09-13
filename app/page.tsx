@@ -16,8 +16,8 @@ export default function Home() {
       <HeroSection />
       {/* <TrustedBySection /> */}
       <AboutIntro />
-      <Industries />
       <HowItWorks />
+      <Industries />
       <AIFeatures />
 
       <CTASection />

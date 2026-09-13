@@ -55,10 +55,10 @@ export default function OrderDetailsMockup() {
             Order information
           </p>
           <div className="grid grid-cols-4 gap-2.5 rounded-xl border border-[#E1E6E2] bg-white p-3">
-            <Field label="Package" value="Starter" />
+            <Field label="Package" value="Standard" />
             <Field label="Ordered" value="Jan 15, 2026" />
             <Field label="Order ID" value="BGC-2026-003" mono />
-            <Field label="Amount" value="$59.00" />
+            <Field label="Amount" value="$44.99" />
           </div>
         </div>
 

@@ -172,6 +172,18 @@ export async function deleteLead(id: string): Promise<void> {
   revalidatePath("/admin/leads");
 }
 
+export async function updateTicketStatus(id: string, status: string): Promise<void> {
+  const supabase = await createSupabaseServerClient();
+  await supabase.from("support_tickets").update({ status }).eq("id", id);
+  revalidatePath("/admin/tickets");
+}
+
+export async function deleteTicket(id: string): Promise<void> {
+  const supabase = await createSupabaseServerClient();
+  await supabase.from("support_tickets").delete().eq("id", id);
+  revalidatePath("/admin/tickets");
+}
+
 export async function deleteSubscriber(id: string): Promise<void> {
   const supabase = await createSupabaseServerClient();
   await supabase.from("newsletter_signups").delete().eq("id", id);

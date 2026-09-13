@@ -9,11 +9,13 @@ type RecentPost = { id: string; title: string; published: boolean; published_at:
 export default async function AdminDashboard() {
   const supabase = await createSupabaseServerClient();
 
-  const [postsRes, publishedRes, leadsRes, newLeadsRes, subsRes, recentRes] = await Promise.all([
+  const [postsRes, publishedRes, leadsRes, newLeadsRes, ticketsRes, newTicketsRes, subsRes, recentRes] = await Promise.all([
     supabase.from("posts").select("id", { count: "exact", head: true }),
     supabase.from("posts").select("id", { count: "exact", head: true }).eq("published", true),
     supabase.from("contact_submissions").select("id", { count: "exact", head: true }),
     supabase.from("contact_submissions").select("id", { count: "exact", head: true }).eq("status", "new"),
+    supabase.from("support_tickets").select("id", { count: "exact", head: true }),
+    supabase.from("support_tickets").select("id", { count: "exact", head: true }).eq("status", "new"),
     supabase.from("newsletter_signups").select("id", { count: "exact", head: true }),
     supabase.from("posts").select("id, title, published, published_at").order("published_at", { ascending: false }).limit(5),
   ]);
@@ -22,12 +24,15 @@ export default async function AdminDashboard() {
   const published = publishedRes.count ?? 0;
   const leads = leadsRes.count ?? 0;
   const newLeads = newLeadsRes.count ?? 0;
+  const tickets = ticketsRes.count ?? 0;
+  const newTickets = newTicketsRes.count ?? 0;
   const subs = subsRes.count ?? 0;
   const recent = (recentRes.data as RecentPost[] | null) ?? [];
 
   const quickLinks = [
     { href: "/admin/posts", label: "Blog posts" },
     { href: "/admin/leads", label: "Contact leads" },
+    { href: "/admin/tickets", label: "Support & disputes" },
     { href: "/admin/subscribers", label: "Subscribers" },
   ];
 
@@ -39,10 +44,11 @@ export default async function AdminDashboard() {
         action={<PrimaryLink href="/admin/posts/new">+ New post</PrimaryLink>}
       />
 
-      <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-4 lg:grid-cols-3 xl:grid-cols-5">
         <StatCard label="Blog posts" value={totalPosts} hint={`${published} published`} icon={<IconDoc />} />
         <StatCard label="Drafts" value={totalPosts - published} hint="unpublished" icon={<IconEdit />} />
         <StatCard label="Contact leads" value={leads} hint={`${newLeads} new`} icon={<IconInbox />} />
+        <StatCard label="Support & disputes" value={tickets} hint={`${newTickets} new`} icon={<IconTicket />} />
         <StatCard label="Subscribers" value={subs} hint="newsletter" icon={<IconMail />} />
       </div>
 
@@ -123,6 +129,14 @@ function IconMail() {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
       <rect x="2" y="4" width="20" height="16" rx="2" /><path d="m22 7-10 5L2 7" />
+    </svg>
+  );
+}
+function IconTicket() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="M3 9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2 2 2 0 0 0 0 4 2 2 0 0 1-2 2H5a2 2 0 0 1-2-2 2 2 0 0 0 0-4Z" />
+      <path d="M13 5v2M13 17v2M13 11v2" />
     </svg>
   );
 }

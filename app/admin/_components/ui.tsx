@@ -76,6 +76,8 @@ export function StatCard({
 const STATUS_STYLES: Record<string, string> = {
   new: "bg-amber-50 text-amber-700 ring-amber-600/20",
   read: "bg-sky-50 text-sky-700 ring-sky-600/20",
+  in_review: "bg-sky-50 text-sky-700 ring-sky-600/20",
+  resolved: "bg-emerald-50 text-emerald-700 ring-emerald-600/20",
   archived: "bg-slate-100 text-slate-500 ring-slate-400/20",
   published: "bg-emerald-50 text-emerald-700 ring-emerald-600/20",
   draft: "bg-slate-100 text-slate-500 ring-slate-400/20",
@@ -88,7 +90,7 @@ export function Badge({ status }: { status: string }) {
       className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium capitalize ring-1 ring-inset ${cls}`}
     >
       <span className="h-1.5 w-1.5 rounded-full bg-current opacity-70" />
-      {status}
+      {status.replace(/_/g, " ")}
     </span>
   );
 }
