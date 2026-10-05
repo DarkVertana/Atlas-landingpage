@@ -3,6 +3,7 @@ import Reveal from "./Reveal";
 import CTASection from "./CTASection";
 import ServiceHero from "./ui/ServiceHero";
 import FeatureGrid from "./ui/FeatureGrid";
+import ServicePricing from "./ServicePricing";
 import ServiceJsonLd from "./ServiceJsonLd";
 import FcraComplianceNote from "./FcraComplianceNote";
 
@@ -31,6 +32,8 @@ export type ServiceDetailProps = {
   image?: string; // optional hero backdrop image
   price?: string;
   priceUnit?: string;
+  /** Show the Basic/Standard/Premium package tier cards. Defaults to true; set false for subscription-only services. */
+  showPricing?: boolean;
   primaryCta?: { label: string; href: string };
   secondaryCta?: { label: string; href: string };
   heroSteps?: string[];
@@ -54,6 +57,7 @@ export default function ServiceDetail({
   image,
   price,
   priceUnit = "per check",
+  showPricing = true,
   primaryCta = { label: "Start a check", href: "/contact" },
   secondaryCta = { label: "Talk to sales", href: "/contact" },
   heroSteps,
@@ -135,6 +139,8 @@ export default function ServiceDetail({
           </div>
         </section>
       )}
+
+      {showPricing && <ServicePricing />}
 
       {/* FAQ */}
       <section className="bg-white py-14 sm:py-20 px-6">

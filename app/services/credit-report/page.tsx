@@ -17,7 +17,7 @@ const I = ({ d }: { d: string }) => (
 export default function CreditReportPage() {
   return (
     <ServiceDetail
-      eyebrow="Add-on · $39.99"
+      eyebrow="Add-on · $19.99"
       title="Credit reports for roles where it matters."
       path="/services/credit-report"
       image="/assets/services/credit-report.webp"

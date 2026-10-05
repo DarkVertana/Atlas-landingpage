@@ -47,7 +47,7 @@ export default function CriminalBackgroundChecksPage() {
         path="/services/criminal-background-checks"
       />
       <ServiceHero
-        eyebrow="Criminal background"
+        eyebrow="Criminal background · From $24.99"
         title="Criminal background checks that hold up in court."
         description="National, county, state, and federal records in one FCRA-compliant report. Choose the tier that fits your role, then upgrade later without re-onboarding candidates."
         image="/assets/services/criminal-background-checks.webp"

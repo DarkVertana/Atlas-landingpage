@@ -17,6 +17,7 @@ export default function ContinuousChecksPage() {
   return (
     <ServiceDetail
       eyebrow="Add-on · Ongoing monitoring"
+      showPricing={false}
       title="Continuous checks that keep your workforce safer."
       path="/services/continuous-checks"
       image="/assets/services/continuous-checks.webp"

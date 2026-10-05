@@ -110,7 +110,7 @@ export default function MvrPage() {
         path="/services/mvr"
       />
       <ServiceHero
-        eyebrow="Motor vehicle records"
+        eyebrow="Motor vehicle records · $9.99"
         title="Driving records direct from the DMV."
         description="License status, violations, accidents, CDL endorsements, and continuous monitoring: every detail your fleet, delivery, gig, or transportation team needs to hire behind the wheel with confidence."
         image="/assets/services/mvr.webp"

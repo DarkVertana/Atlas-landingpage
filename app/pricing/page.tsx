@@ -41,6 +41,7 @@ const tiers: Tier[] = [
       "SSN trace",
       "Sex offender registry",
       "Global watchlist search",
+      "Identity verification",
       "Priority applicant support",
     ],
     highlight: true,
@@ -58,6 +59,7 @@ const tiers: Tier[] = [
       "SSN trace",
       "Sex offender registry",
       "Global watchlist search",
+      "Identity verification",
       "Dedicated account manager",
     ],
     cta: "Get started",
@@ -81,7 +83,7 @@ const enterpriseTier: Tier = {
   href: "/contact?plan=enterprise",
 };
 
-const addOns = [
+const addOns: { name: string; price: string; desc: string; unit?: string }[] = [
   {
     name: "Motor vehicle records",
     price: "$9.99",
@@ -96,13 +98,11 @@ const addOns = [
     name: "Employment verification",
     price: "$19.99",
     desc: "Confirms titles, employment dates, and reason for separation.",
-    unit: "per record",
   },
   {
     name: "Education verification",
     price: "$19.99",
     desc: "Validates degrees, diplomas, and certifications.",
-    unit: "per record",
   },
   {
     name: "Credit Check",
@@ -111,13 +111,13 @@ const addOns = [
   },
   {
     name: "Tenant screening",
-    price: "$39.99",
-    desc: "Criminal, credit, and eviction history bundled for property managers.",
+    price: "$44.99",
+    desc: "Criminal, credit, and eviction history bundled in a single report.",
   },
   {
     name: "International Check",
-    price: "$39.99",
-    desc: "OFAC, sanctions, terror lists, and PEP screening.",
+    price: "Starting at $29.99",
+    desc: "Screen candidates living outside the United States. Final pricing varies by country and check type.",
   },
 ];
 

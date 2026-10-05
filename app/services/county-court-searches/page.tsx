@@ -108,7 +108,7 @@ export default function CountyCourtSearchesPage() {
         path="/services/county-court-searches"
       />
       <ServiceHero
-        eyebrow="County court searches"
+        eyebrow="County court searches · Included in Standard & Premium"
         title="Records pulled straight from the court of record."
         description="The most authoritative layer of a criminal check. Atlas searches every relevant county surfaced by the identity trace, confirms each disposition, and applies FCRA lookback rules automatically."
         image="/assets/services/criminal-background-checks.webp"

@@ -114,7 +114,7 @@ export default function EmploymentVerificationPage() {
         path="/services/employment-verification"
       />
       <ServiceHero
-        eyebrow="Employment verification"
+        eyebrow="Employment verification · $19.99 per employer"
         title="Verified titles, dates, and separation reasons."
         description="Atlas contacts prior employers directly, via automated networks, tracked email, or live phone, so every claim on a résumé is confirmed at the source, with a full audit trail."
         image="/assets/services/employment-verification.webp"

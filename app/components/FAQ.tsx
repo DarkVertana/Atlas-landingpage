@@ -24,7 +24,7 @@ const faqs = [
   },
   {
     q: "What additional screening add-ons are available?",
-    a: "You can customize any predefined package with specific verifications. We offer International Check, Tenant Screening, and complete Credit Reports at an upfront and transparent price of $39.99 each.",
+    a: "You can customize any predefined package with specific verifications. International Check and Tenant Screening are $39.99 each, and complete Credit Reports are $19.99, all at upfront, transparent pricing.",
   },
 ];
 

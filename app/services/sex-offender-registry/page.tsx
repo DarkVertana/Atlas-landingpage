@@ -110,7 +110,7 @@ export default function SexOffenderRegistryPage() {
         path="/services/sex-offender-registry"
       />
       <ServiceHero
-        eyebrow="Sex offender registry"
+        eyebrow="Sex offender registry · Included in all tiers"
         title="National registry search you can trust."
         description="Every state registry, the NSOPW federal database, and every U.S. territory, searched in parallel and refreshed daily. Purpose-built for roles where the stakes are highest."
         image="/assets/services/sex-offender-registry.webp"
