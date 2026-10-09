@@ -97,23 +97,6 @@ export default function ServicesPage() {
                                 ))}
                               </dd>
                             </div>
-                            <div className="rounded-xl border border-gray-200 bg-white px-4 py-3">
-                              <dt className="text-[10px] font-semibold uppercase tracking-widest text-gray-600">
-                                {s.priceNote ? "Pricing" : "Starts at"}
-                              </dt>
-                              {s.priceNote ? (
-                                <dd className="mt-1 inline-flex items-center gap-1.5 text-xs font-semibold text-[#058B74] bg-[#058B74]/10 ring-1 ring-inset ring-[#058B74]/15 px-2.5 py-1 rounded-full">
-                                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                                    <path d="M5 12l5 5 9-11" />
-                                  </svg>
-                                  {s.priceFrom}
-                                </dd>
-                              ) : (
-                                <dd className="mt-1 text-sm font-semibold text-[#01463A]">
-                                  {s.priceFrom}
-                                </dd>
-                              )}
-                            </div>
                           </dl>
 
                           {/* Feature bullets */}

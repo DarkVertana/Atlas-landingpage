@@ -4,7 +4,7 @@ import ServiceDetail from "../../components/ServiceDetail";
 export const metadata: Metadata = {
   title: "Continuous Checks | Atlas Screening",
   description:
-    "Ongoing criminal-record monitoring that alerts you when an existing employee's records change, using recurring searches of court, arrest, booking, national, and watchlist sources, powered by Atlas's data partner InformData.",
+    "Ongoing criminal-record monitoring that alerts you when an existing employee's records change, using recurring searches of court, arrest, booking, national, and watchlist sources, powered by Atlas's data partners.",
 };
 
 const I = ({ d }: { d: string }) => (
@@ -21,11 +21,11 @@ export default function ContinuousChecksPage() {
       title="Continuous checks that keep your workforce safer."
       path="/services/continuous-checks"
       image="/assets/services/continuous-checks.webp"
-      description="Atlas continuous monitoring is powered by a dedicated monitoring engine that runs recurring searches across court, arrest, booking, national, and watchlist sources, and raises an alert as changes are detected, so a hire stays informed, not just checked once. Continuous monitoring is delivered through Atlas's data partner, InformData."
+      description="Atlas continuous monitoring is powered by a dedicated monitoring engine that runs recurring searches across court, arrest, booking, national, and watchlist sources, and raises an alert as changes are detected, so a hire stays informed, not just checked once. Continuous monitoring is delivered through Atlas's data partners."
       primaryCta={{ label: "Talk to sales", href: "/contact?service=continuous-checks" }}
       secondaryCta={{ label: "See how it works", href: "/how-it-works" }}
       includedHeading="Sources that keep watching after the hire."
-      includedSubheading="Each enrolled worker is monitored by the InformData monitoring engine on a recurring schedule across the sources below. Any potential change is verified before it ever reaches you as an alert."
+      includedSubheading="Each enrolled worker is monitored by our partners' monitoring engine on a recurring schedule across the sources below. Any potential change is verified before it ever reaches you as an alert."
       features={[
         { title: "Arrest & booking records", desc: "Recurring searches across arrest and booking data sources; new activity surfaces as an alert once it has been verified.", icon: <I d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z M9 12l2 2 4-4" /> },
         { title: "Court records across jurisdictions", desc: "Ongoing county-level court record monitoring tied to the individual's addresses and history.", icon: <I d="M12 3l7 4v3H5V7l7-4zM7 10v8M12 10v8M17 10v8M6 21h12v-3H6z" /> },
@@ -37,14 +37,14 @@ export default function ContinuousChecksPage() {
       stepsHeading="How continuous checks run"
       steps={[
         { n: "01", t: "Enroll", d: "Consent captured, permissible purpose documented, and the employee added to monitoring." },
-        { n: "02", t: "Source sweep", d: "The InformData monitoring engine searches court, arrest, booking, national, and watchlist sources on the recurring schedule. Cadence is agreed with your team at setup." },
+        { n: "02", t: "Source sweep", d: "The monitoring engine searches court, arrest, booking, national, and watchlist sources on the recurring schedule. Cadence is agreed with your team at setup." },
         { n: "03", t: "Change verification", d: "Any change is verified at the source and reviewed by a trained analyst before anything is reported." },
         { n: "04", t: "Alert & act", d: "A reportable change generates an alert with the details and supporting documentation; adverse-action support is available if you proceed on it." },
       ]}
       faqHeading="Continuous-checks questions."
       faqSubheading="How ongoing monitoring differs from a one-time check, what triggers an alert, and how it stays FCRA compliant."
       faqs={[
-        { q: "Is this the same as a one-time background check?", a: "No. A one-time check is a snapshot taken at hiring; continuous checks keep searching on a recurring schedule and alert you to changes after hire. Monitoring is run through Atlas's data partner, InformData, and Atlas still obtains the required consent and permissible purpose before monitoring begins." },
+        { q: "Is this the same as a one-time background check?", a: "No. A one-time check is a snapshot taken at hiring; continuous checks keep searching on a recurring schedule and alert you to changes after hire. Monitoring is run through Atlas's data partners, and Atlas still obtains the required consent and permissible purpose before monitoring begins." },
         { q: "What kinds of changes will I be alerted about?", a: "New criminal records, arrests and bookings found in the recurring source sweep, watchlist additions, and sex-offender registration changes, reported after verification, with supporting documentation." },
         { q: "Are continuous checks FCRA compliant?", a: "Yes. Monitoring requires the same consent and permissible-purpose foundations as any consumer report, disclosure is provided, and any adverse action based on an alert follows the standard two-step process: a pre-adverse notice with the report and Summary of Consumer Rights plus a waiting period, then a final adverse-action notice." },
         { q: "How is this priced?", a: "Continuous checks are a subscription per monitored individual. Your team's volume and custom cadence are quoted by sales. Talk to us to design a program that fits." },

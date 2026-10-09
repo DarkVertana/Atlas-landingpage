@@ -19,6 +19,7 @@ const staticRoutes: {
   { path: "/services/employment-verification", priority: 0.8, changeFrequency: "monthly" },
   { path: "/services/tenant-screening", priority: 0.8, changeFrequency: "monthly" },
   { path: "/tenant", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/personal", priority: 0.8, changeFrequency: "monthly" },
   { path: "/services/credit-report", priority: 0.7, changeFrequency: "monthly" },
   { path: "/services/continuous-checks", priority: 0.7, changeFrequency: "monthly" },
   { path: "/services/mvr", priority: 0.7, changeFrequency: "monthly" },
